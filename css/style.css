@@ -1,5 +1,30 @@
 body { 
-    background-color: #FF7F11;
+
     color: white;
-    font-family: 'Arial';
+    font-family: 'Text Me One', sans-serif;
+    background-image: url('images/dog.jpg');
+    background-blend-mode: darken;
+
+}
+#login-portal { 
+    margin-top: 20%;
+    text-align: center;
+    font-size: 2em;
+}
+#flex-buttons  {
+    text-align: center;
+    flex-direction: column;
+}
+#flex-buttons  button { 
+    padding: 1em 3em;
+    background-color: transparent;
+    border: solid 5px white;
+    border-radius: 10px;
+    font-size: 0.5em;
+    color: white;
+}
+#flex-buttons  button:hover{ 
+    background-color: white; 
+    color:#FF7F11;
+    transition: 0.4s ease;  
 }
