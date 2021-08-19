@@ -1,10 +1,6 @@
 body { 
     background-color: #FF7F11;
     color: white;
-<<<<<<< Updated upstream
-    font-family: 'Arial';
-}
-=======
     font-family: 'Text Me One', sans-serif;
     background-blend-mode: darken;
     background-color: url('images/dog.jpg');
@@ -34,4 +30,3 @@ body {
     color:#FF7F11;
     transition: 0.4s ease;  
 }
->>>>>>> Stashed changes
