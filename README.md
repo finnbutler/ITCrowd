@@ -7,4 +7,5 @@ https://www.electronjs.org/docs/latest/tutorial/quick-start
 
 run npm start && npm build in the quick start folder 
 
-
+## Getting Started with Nativescript -- mobilee version of the app 
+https://docs.nativescript.org/#drawer
