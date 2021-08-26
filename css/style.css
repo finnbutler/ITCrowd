@@ -1,32 +1,37 @@
-body { 
-    background-color: #FF7F11;
-    color: white;
-    font-family: 'Text Me One', sans-serif;
-    background-blend-mode: darken;
-    background-color: url('images/dog.jpg');
-
+body {
+  display: flex;
+  background-color: white;
+  font-family: "Paytone One", sans-serif;
+  overflow: hidden;
 }
-#login-portal { 
-    margin-top: 19vh;
-    text-align: center;
-    font-size: 2em;
+#login-portal {
+  width: 40%;
+  margin-top: 10%;
+  padding: 2em 2em;
+  font-size: 1.5em;
 }
-#flex-buttons  {
-    text-align: center;
-    flex-direction: column;
+#login-portal input {
+  width: 87%;
+  padding: 0.5em 2em;
 }
-#flex-buttons  button { 
- 
-    padding: 1em 3em;
-    background-color: transparent;
-    border: solid 5px white;
-    border-radius: 10px;
-    font-size: 0.5em;
-    color: white;
-    font-weight: bold;
+#login-portal button {
+  font-family: "Paytone One", sans-serif;
+  margin-top: 5%;
+  padding: 1em 5em;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  border: none;
+  color: white;
+  width: 100%;
 }
-#flex-buttons  button:hover{ 
-    background-color: white; 
-    color:#FF7F11;
-    transition: 0.4s ease;  
+#background-section {
+  width: 79%;
+}
+#background-section > img {
+  width: 130%;
 }
