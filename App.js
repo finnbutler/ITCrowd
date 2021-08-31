@@ -1,137 +1,120 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-
-const FlexDirectionBasics = () => {
-  const [flexDirection, setflexDirection] = useState("column");
-
+import React from "react";
+import {
+  VStack,
+  HStack,
+  Avatar,
+  Image,
+  Text,
+  NativeBaseProvider,
+  AspectRatio,
+  Center,
+  Box,
+  Stack,
+  Heading,
+  StatusBar,
+  IconButton,
+  Icon,
+} from "native-base";
+import { MaterialIcons } from "@expo/vector-icons";
+function CardComponent() {
   return (
-    <PreviewLayout
-      label="Purrrfect Pets"
-      values={["The Adventure Quiz", "Your Pets", "Dashboard", "Settings"]}
-      selectedValue={flexDirection}
-      setSelectedValue={setflexDirection}
-    >
-      <View
-        style={[styles.header, { backgroundColor: "powderblue" }]} 
-        
-      >
-           <Text style={[{fontWeight: 500},{fontFamily:"Roboto"}, {textAlign:"center"}, {fontSize: 30} ]}> Choose Your Own Adventure, answer the questions to find your purrrfect pet!  </Text> 
-           </View> 
-
-
-      <View
-        style={[styles.box, { backgroundColor: "skyblue" }]}
-      > 
-        <TouchableOpacity
-          style={[
-           styles.selected2,
-          ]}
-        >
-           <Text style={[{fontWeight: 500}, {textAlign:"center"}, {fontSize: 30} ]}> Yes  </Text> 
-            </TouchableOpacity>
-      
-      </View> 
-      <View
-        style={[styles.box, { backgroundColor: "steelblue" }]}
-      > 
-      <TouchableOpacity
-          style={[
-           styles.selected2,
-          ]}
-        >
-  <Text style={[{fontWeight: 500}, {textAlign:"center"}, {fontSize: 30} ]}> No  </Text> 
-     
-     </TouchableOpacity>
-      </View> 
-    </PreviewLayout>
+    <Box bg="white" shadow={2} rounded="lg" maxWidth="90%">
+      <Image
+        source={{
+          uri: "https://sample-example.nativebase.io/static/media/dawki-river.ebbf5434.png",
+        }}
+        alt="image base"
+        resizeMode="cover"
+        height={150}
+        roundedTop="md"
+      />
+      <Text bold position="absolute" color="white" top={0} m={[4, 4, 8]}>
+        NEWS
+      </Text>
+      <Stack space={4} p={[4, 4, 8]}>
+        <Text color="gray.400">June 22, 2021</Text>
+        <Heading size={["md", "lg", "md"]} noOfLines={2}>
+          The Stunning Dawki River in Meghalaya is So Clear That Boats Appear
+          Floating in Air
+        </Heading>
+        <Text lineHeight={[5, 5, 7]} noOfLines={[4, 4, 2]} color="gray.700">
+          With lush green meadows, rivers clear as crystal, pine-covered hills,
+          gorgeous waterfalls, lakes and majestic forests, the mesmerizing.
+          Meghalaya is truly a Nature lover’s paradise…
+        </Text>
+      </Stack>
+    </Box>
   );
-};
+}
+function AppBar() {
+  return (
+    <>
+      <StatusBar backgroundColor="#3700B3" barStyle="light-content" />
 
-const PreviewLayout = ({
-  label,
-  children,
-  values,
-  selectedValue,
-  setSelectedValue,
-}) => (
-  <View style={{ padding: 10, flex: 1 }}>
-    <Text style={styles.label}>{label}</Text>
-    <View style={styles.row}>
-      {values.map((value) => (
-        <TouchableOpacity
-          key={value}
-          onPress={() => setSelectedValue(value)}
-          style={[
-            styles.button,
-            selectedValue === value && styles.selected,
-          ]}
-        >
-          <Text
-            style={[
-              styles.buttonLabel,
-              selectedValue === value && styles.selectedLabel,
-            ]}
-          >
-            {value}
+      <Box safeAreaTop backgroundColor="#6200ee" />
+
+      <HStack
+        bg="#6200ee"
+        px={1}
+        py={3}
+        justifyContent="space-between"
+        alignItems="center"
+      >
+        <HStack space={4} alignItems="center">
+          <IconButton
+            icon={
+              <Icon
+                size="sm"
+                as={<MaterialIcons name="menu" />}
+                color="white"
+              />
+            }
+          />
+          <Text color="white" fontSize={20} fontWeight="bold">
+            Home
           </Text>
-        </TouchableOpacity>
-      ))}
-    </View>
-    <View style={[styles.container, { [label]: selectedValue }]}>
-      {children}
-    </View>
-  </View>
-);
+        </HStack>
+        <HStack space={2}>
+          <IconButton
+            icon={
+              <Icon
+                as={<MaterialIcons name="favorite" />}
+                size="sm"
+                color="white"
+              />
+            }
+          />
+          <IconButton
+            icon={
+              <Icon
+                as={<MaterialIcons name="search" />}
+                color="white"
+                size="sm"
+              />
+            }
+          />
+          <IconButton
+            icon={
+              <Icon
+                as={<MaterialIcons name="more-vert" />}
+                size="sm"
+                color="white"
+              />
+            }
+          />
+        </HStack>
+      </HStack>
+    </>
+  );
+}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: 8,
-    backgroundColor: "aliceblue",
-  },
-  header: {
-     width: 360,
-  height: 400,
-  },
-  box: {
-    width: 360,
-    height: 70,
-  },
-  row: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-  },
-  button: {
-    paddingHorizontal: 8,
-    paddingVertical: 6,
-    borderRadius: 4,
-    backgroundColor: "oldlace",
-    alignSelf: "flex-start",
-    marginHorizontal: "1%",
-    marginBottom: 6,
-    minWidth: "48%",
-    textAlign: "center",
-  },
-  selected: {
-    backgroundColor: "coral",
-    borderWidth: 0,
-  },
-  selected2: {
-    opacity: 0.5,
-  },
-  buttonLabel: {
-    fontSize: 12,
-    fontWeight: "500",
-    color: "coral",
-  },
-  selectedLabel: {
-    color: "white",
-  },
-  label: {
-    textAlign: "center",
-    marginBottom: 10,
-    fontSize: 24,
-  },
-});
-
-export default FlexDirectionBasics;
+export default function () {
+  return (
+    <NativeBaseProvider>
+      <AppBar />
+      <Center flex={1}>
+        <CardComponent />
+      </Center>
+    </NativeBaseProvider>
+  );
+}
