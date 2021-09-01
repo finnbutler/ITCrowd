@@ -1,120 +1,94 @@
-import React from "react";
+import * as React from "react";
+import { View } from "react-native";
 import {
-  VStack,
-  HStack,
-  Avatar,
-  Image,
-  Text,
+  Button,
   NativeBaseProvider,
-  AspectRatio,
-  Center,
   Box,
-  Stack,
-  Heading,
-  StatusBar,
-  IconButton,
+  Image,
+  Center,
   Icon,
 } from "native-base";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import { NavigationContainer } from "@react-navigation/native";
 import { MaterialIcons } from "@expo/vector-icons";
-function CardComponent() {
-  return (
-    <Box bg="white" shadow={2} rounded="lg" maxWidth="90%">
-      <Image
-        source={{
-          uri: "https://sample-example.nativebase.io/static/media/dawki-river.ebbf5434.png",
-        }}
-        alt="image base"
-        resizeMode="cover"
-        height={150}
-        roundedTop="md"
-      />
-      <Text bold position="absolute" color="white" top={0} m={[4, 4, 8]}>
-        NEWS
-      </Text>
-      <Stack space={4} p={[4, 4, 8]}>
-        <Text color="gray.400">June 22, 2021</Text>
-        <Heading size={["md", "lg", "md"]} noOfLines={2}>
-          The Stunning Dawki River in Meghalaya is So Clear That Boats Appear
-          Floating in Air
-        </Heading>
-        <Text lineHeight={[5, 5, 7]} noOfLines={[4, 4, 2]} color="gray.700">
-          With lush green meadows, rivers clear as crystal, pine-covered hills,
-          gorgeous waterfalls, lakes and majestic forests, the mesmerizing.
-          Meghalaya is truly a Nature lover’s paradise…
-        </Text>
-      </Stack>
-    </Box>
-  );
-}
-function AppBar() {
-  return (
-    <>
-      <StatusBar backgroundColor="#3700B3" barStyle="light-content" />
 
-      <Box safeAreaTop backgroundColor="#6200ee" />
-
-      <HStack
-        bg="#6200ee"
-        px={1}
-        py={3}
-        justifyContent="space-between"
-        alignItems="center"
-      >
-        <HStack space={4} alignItems="center">
-          <IconButton
-            icon={
-              <Icon
-                size="sm"
-                as={<MaterialIcons name="menu" />}
-                color="white"
-              />
-            }
-          />
-          <Text color="white" fontSize={20} fontWeight="bold">
-            Home
-          </Text>
-        </HStack>
-        <HStack space={2}>
-          <IconButton
-            icon={
-              <Icon
-                as={<MaterialIcons name="favorite" />}
-                size="sm"
-                color="white"
-              />
-            }
-          />
-          <IconButton
-            icon={
-              <Icon
-                as={<MaterialIcons name="search" />}
-                color="white"
-                size="sm"
-              />
-            }
-          />
-          <IconButton
-            icon={
-              <Icon
-                as={<MaterialIcons name="more-vert" />}
-                size="sm"
-                color="white"
-              />
-            }
-          />
-        </HStack>
-      </HStack>
-    </>
-  );
-}
-
-export default function () {
+function HomeScreen({ navigation }) {
   return (
     <NativeBaseProvider>
-      <AppBar />
-      <Center flex={1}>
-        <CardComponent />
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <Button onPress={() => navigation.navigate("Login")} title="Login In!">
+          Login In
+        </Button>
+      </View>
+    </NativeBaseProvider>
+  );
+}
+
+function LoginScreen({ navigation }) {
+  return (
+    <NativeBaseProvider>
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <Button
+          onPress={() => navigation.navigate("Login")}
+          title="Login In!"
+        />
+      </View>
+    </NativeBaseProvider>
+  );
+}
+function APIScreen({ navigation }) {
+  return (
+    <NativeBaseProvider>
+      <Box
+        bg="primary.400"
+        p={4}
+        _text={{
+          fontSize: "md",
+          fontWeight: "bold",
+          color: "white",
+        }}
+      >
+        Calling Our API!
+      </Box>
+      <Center
+        bg="primary.400"
+        _text={{
+          color: "white",
+          fontWeight: "bold",
+        }}
+        height={200}
+        width={{
+          base: 200,
+          lg: 400,
+        }}
+      >
+        <Image
+          size={150}
+          resizeMode={"contain"}
+          borderRadius={100}
+          source={{
+            uri: "https://wallpaperaccess.com/full/317501.jpg",
+          }}
+          alt="Alternate Text"
+        />
+        <Center w="40px" h="40px" bg="primary.400">
+          <Icon as={<MaterialIcons name="pets" />} color="white" size={6} />
+        </Center>
       </Center>
     </NativeBaseProvider>
+  );
+}
+
+const Drawer = createDrawerNavigator();
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen name="Home" component={HomeScreen} />
+        <Drawer.Screen name="Login" component={LoginScreen} />
+        <Drawer.Screen name="API" component={APIScreen} />
+      </Drawer.Navigator>
+    </NavigationContainer>
   );
 }
