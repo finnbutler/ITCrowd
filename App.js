@@ -162,7 +162,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#60BEEB',
     width: window.width,
     paddingBottom: 20,
-    fontFamily: 'Roboto-Regular',
 
   },
   container: {
