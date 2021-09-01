@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import {
   Button,
   NativeBaseProvider,
@@ -11,6 +11,11 @@ import {
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import { MaterialIcons } from "@expo/vector-icons";
+import profile from './assets/pic.jpg';
+import email from './assets/email (1).png';
+import phone from './assets/phone-call.png';
+import date from './assets/date-of-birth.png';
+import location from './assets/pin.png';
 
 function HomeScreen({ navigation }) {
   return (
@@ -32,8 +37,63 @@ function LoginScreen({ navigation }) {
           onPress={() => navigation.navigate("Login")}
           title="Login In!"
         />
+        <Button
+          onPress={() => navigation.navigate("Profile")}
+          title="User Profile"
+        />
       </View>
     </NativeBaseProvider>
+  );
+}
+
+function ProfileScreen({ navigation }) {
+  return (
+    <NativeBaseProvider>
+      <View style={styles.container}>
+        <View style={styles.logo} >
+          <Image source={profile} style={{ width: 300, height: 300, borderRadius: 150, marginLeft: 'auto', marginRight: 'auto' }} />
+          <Text style={styles.heading}>
+            John Doe, 22
+          </Text>
+          <Text style={styles.heading}>
+            A University Student
+          </Text>
+        </View>
+
+        <View style={styles.profile}>
+
+          <View style={styles.info}>
+            <Image source={email} style={{ width: 50, height: 50, marginRight: 50 }} />
+            <Text style={styles.paragraph}>
+              Email Address{"\n"}johndoe@gmail.com
+            </Text>
+
+          </View>
+          <View style={styles.info}>
+            <Image source={phone} style={{ width: 50, height: 50, marginRight: 50 }} />
+            <Text style={styles.paragraph}>
+              Phone Number{"\n"}0412356700
+            </Text>
+          </View>
+
+          <View style={styles.info}>
+              <Image source={date} style={{ width: 50, height: 50, marginRight: 50 }} />
+            <Text style={styles.paragraph}>
+              Date of Birth{"\n"}04/08/2002
+            </Text>
+          </View>
+
+          <View style={styles.info}>
+              <Image source={location} style={{ width: 50, height: 50, marginRight: 50 }} />
+            <Text style={styles.paragraph}>
+              Postcode{"\n"}4067
+            </Text>
+          </View>
+
+        </View>
+      </View>
+    </NativeBaseProvider>
+
   );
 }
 function APIScreen({ navigation }) {
@@ -81,14 +141,55 @@ function APIScreen({ navigation }) {
 
 const Drawer = createDrawerNavigator();
 
+
+
 export default function App() {
   return (
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Home">
         <Drawer.Screen name="Home" component={HomeScreen} />
         <Drawer.Screen name="Login" component={LoginScreen} />
+        <Drawer.Screen name="Profile" component={ProfileScreen} />
         <Drawer.Screen name="API" component={APIScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
 }
+
+const styles = StyleSheet.create({
+  logo: {
+    justifyContent: 'center',
+    backgroundColor: '#60BEEB',
+    width: window.width,
+    paddingBottom: 20,
+    fontFamily: 'Roboto-Regular',
+
+  },
+  container: {
+    textAlign: 'center',
+  },
+  heading: {
+    color: '#FFFFFF',
+    paddingTop: 25,
+    fontSize: 20,
+  },
+  paragraph: {
+    paddingTop: 10,
+    fontSize: 17,
+  },
+  profile: {
+    backgroundColor: '#ffffff',
+    alignItems: 'center',
+    justifyContent: 'left',
+  },
+  info: {
+    flexDirection: 'row',
+    textAlign: 'left',
+    padding: 30,
+    width: 700,
+    marginTop: 15,
+    borderWidth: 3,
+    borderRadius: 10,
+    borderColor: '#89CFF0',
+  },
+});
