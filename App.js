@@ -1,6 +1,7 @@
 import * as React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import {
+  Text,
   Button,
   NativeBaseProvider,
   Box,
@@ -8,6 +9,9 @@ import {
   Center,
   Icon,
   extendTheme,
+  VStack,
+  FormControl,
+  Input,
 } from "native-base";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
@@ -23,15 +27,26 @@ function HomeScreen({ navigation }) {
     <Box bg="darkblue.500" height="100%">
       <NativeBaseProvider>
         <View
-          style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+          style={{ sflex: 1, alignItems: "center", justifyContent: "center" }}
         >
+          <Text color="white" mt="2em" fontSize="3em">
+            Purrrfect Pets!{" "}
+          </Text>
           <Button
+            mt="2em"
+            padding="1em 5em"
+            borderRadius="30px"
+            backgroundColor="lightpink"
             onPress={() => navigation.navigate("Login")}
             title="Login In!"
           >
             Login In
           </Button>
           <Button
+            mt="2em"
+            padding="1em 5em"
+            borderRadius="30px"
+            backgroundColor="lightpink"
             onPress={() => navigation.navigate("Login")}
             title="Login In!"
           >
@@ -45,18 +60,105 @@ function HomeScreen({ navigation }) {
 
 function LoginScreen({ navigation }) {
   return (
-    <NativeBaseProvider>
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Button
-          onPress={() => navigation.navigate("Login")}
-          title="Login In!"
-        />
-        <Button
-          onPress={() => navigation.navigate("Profile")}
-          title="User Profile"
-        />
-      </View>
-    </NativeBaseProvider>
+    <Box bg="lightpink.500" height="100%">
+      <NativeBaseProvider>
+        <View style={{ flex: 1, justifyContent: "center" }}>
+          <Text color="lightblue.500" mt="2em" fontSize="2em">
+            Hello! Please tell us a bit about yourself!
+          </Text>
+          <VStack width="90%" mx={3}>
+            <FormControl isRequired>
+              <FormControl.Label _text={{ bold: true }}>Name</FormControl.Label>
+              <Input
+                placeholder="John"
+                onChangeText={(value) => setData({ ...formData, name: value })}
+              />
+              <FormControl.HelperText _text={{ fontSize: "xs" }}>
+                Name should contain atleast 3 character.
+              </FormControl.HelperText>
+              <FormControl.ErrorMessage _text={{ fontSize: "xs" }}>
+                Error Name
+              </FormControl.ErrorMessage>
+            </FormControl>
+          </VStack>
+          <VStack width="90%" mx={3}>
+            <FormControl isRequired>
+              <FormControl.Label _text={{ bold: true }}>Name</FormControl.Label>
+              <Input
+                placeholder="John"
+                onChangeText={(value) => setData({ ...formData, name: value })}
+              />
+              <FormControl.HelperText _text={{ fontSize: "xs" }}>
+                Name should contain atleast 3 character.
+              </FormControl.HelperText>
+              <FormControl.ErrorMessage _text={{ fontSize: "xs" }}>
+                Error Name
+              </FormControl.ErrorMessage>
+            </FormControl>
+          </VStack>
+          <VStack width="90%" mx={3}>
+            <FormControl isRequired>
+              <FormControl.Label _text={{ bold: true }}>Name</FormControl.Label>
+              <Input
+                placeholder="John"
+                onChangeText={(value) => setData({ ...formData, name: value })}
+              />
+              <FormControl.HelperText _text={{ fontSize: "xs" }}>
+                Name should contain atleast 3 character.
+              </FormControl.HelperText>
+              <FormControl.ErrorMessage _text={{ fontSize: "xs" }}>
+                Error Name
+              </FormControl.ErrorMessage>
+            </FormControl>
+          </VStack>
+          <VStack width="90%" mx={3}>
+            <FormControl isRequired>
+              <FormControl.Label _text={{ bold: true }}>Name</FormControl.Label>
+              <Input
+                placeholder="John"
+                onChangeText={(value) => setData({ ...formData, name: value })}
+              />
+              <FormControl.HelperText _text={{ fontSize: "xs" }}>
+                Name should contain atleast 3 character.
+              </FormControl.HelperText>
+              <FormControl.ErrorMessage _text={{ fontSize: "xs" }}>
+                Error Name
+              </FormControl.ErrorMessage>
+            </FormControl>
+          </VStack>
+          <VStack width="90%" mx={3}>
+            <FormControl isRequired>
+              <FormControl.Label _text={{ bold: true }}>Name</FormControl.Label>
+              <Input
+                placeholder="John"
+                onChangeText={(value) => setData({ ...formData, name: value })}
+              />
+              <FormControl.HelperText _text={{ fontSize: "xs" }}>
+                Name should contain atleast 3 character.
+              </FormControl.HelperText>
+              <FormControl.ErrorMessage _text={{ fontSize: "xs" }}>
+                Error Name
+              </FormControl.ErrorMessage>
+            </FormControl>
+          </VStack>
+          <VStack width="90%" mx={3}>
+            <FormControl isRequired>
+              <FormControl.Label _text={{ bold: true }}>Name</FormControl.Label>
+              <Input
+                placeholder="John"
+                onChangeText={(value) => setData({ ...formData, name: value })}
+              />
+              <FormControl.HelperText _text={{ fontSize: "xs" }}>
+                Name should contain atleast 3 character.
+              </FormControl.HelperText>
+              <FormControl.ErrorMessage _text={{ fontSize: "xs" }}>
+                Error Name
+              </FormControl.ErrorMessage>
+            </FormControl>
+          </VStack>
+        </View>
+      </NativeBaseProvider>
+    </Box>
   );
 }
 
