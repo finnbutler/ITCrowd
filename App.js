@@ -219,46 +219,124 @@ function ProfileScreen({ navigation }) {
     </NativeBaseProvider>
   );
 }
-function APIScreen({ navigation }) {
+function AboutAdpoting({ navigation }) {
   return (
-    <NativeBaseProvider>
-      <Box
-        bg="primary.400"
-        p={4}
-        _text={{
-          fontSize: "md",
-          fontWeight: "bold",
-          color: "white",
-        }}
-      >
-        Calling Our API!
-      </Box>
-      <Center
-        bg="primary.400"
-        _text={{
-          color: "white",
-          fontWeight: "bold",
-        }}
-        height={200}
-        width={{
-          base: 200,
-          lg: 400,
-        }}
-      >
-        <Image
-          size={150}
-          resizeMode={"contain"}
-          borderRadius={100}
-          source={{
-            uri: "https://wallpaperaccess.com/full/317501.jpg",
-          }}
-          alt="Alternate Text"
-        />
-        <Center w="40px" h="40px" bg="primary.400">
-          <Icon as={<MaterialIcons name="pets" />} color="white" size={6} />
-        </Center>
-      </Center>
-    </NativeBaseProvider>
+    <Box
+      bg="darkblue.500"
+      color="lightblue.500"
+      height="100%"
+      overflowY="hidden"
+    >
+      <NativeBaseProvider>
+        <View
+          style={{ sflex: 1, alignItems: "center", justifyContent: "center" }}
+        >
+          <Text color="white" mt="2em" fontSize="3em">
+            Let's learn about adopting!
+          </Text>
+          <Button
+            mt="2em"
+            padding="1em 5em"
+            borderRadius="30px"
+            backgroundColor="white"
+            onPress={() => navigation.navigate("")}
+            title="Login In!"
+          >
+            Login In
+          </Button>
+
+          <Button
+            mt="2em"
+            padding="1em 5em"
+            borderRadius="30px"
+            backgroundColor="white"
+            onPress={() => navigation.navigate("")}
+            title="Login In!"
+          >
+            Login In
+          </Button>
+
+          <Button
+            mt="2em"
+            padding="1em 5em"
+            borderRadius="30px"
+            backgroundColor="white"
+            onPress={() => navigation.navigate("")}
+            title="Login In!"
+          >
+            Login In
+          </Button>
+          <Button
+            mt="2em"
+            padding="1em 5em"
+            borderRadius="30px"
+            backgroundColor="white"
+            onPress={() => navigation.navigate("")}
+            title="Login In!"
+          >
+            Login In
+          </Button>
+
+          <Button
+            mt="2em"
+            padding="1em 5em"
+            borderRadius="30px"
+            backgroundColor="white"
+            onPress={() => navigation.navigate("")}
+            title="Login In!"
+          >
+            Login In
+          </Button>
+          <Button
+            mt="2em"
+            padding="1em 5em"
+            borderRadius="30px"
+            backgroundColor="white"
+            onPress={() => navigation.navigate("")}
+            title="Login In!"
+          >
+            Login In
+          </Button>
+        </View>
+      </NativeBaseProvider>
+    </Box>
+  );
+}
+function Quiz({ navigation }) {
+  return (
+    <Box bg="darkblue.500" height="100%">
+      <NativeBaseProvider>
+        <View
+          style={{ sflex: 1, alignItems: "center", justifyContent: "center" }}
+        >
+          <Text color="white" mt="1.5em" fontSize="3em">
+            Purrrfect Match Game{" "}
+          </Text>
+          <Image
+            source={{
+              uri: "https://wallpaperaccess.com/full/317501.jpg",
+            }}
+            alt="Alternate Text"
+            size={"xl"}
+          />
+          <Image
+            source={{
+              uri: "https://wallpaperaccess.com/full/317501.jpg",
+            }}
+            alt="Alternate Text"
+            size={"xl"}
+          />
+          <Image
+            source={{
+              uri: "https://wallpaperaccess.com/full/317501.jpg",
+            }}
+            alt="Alternate Text"
+            size={"xl"}
+          />
+          // Load Questions Here
+        </View>
+      </NativeBaseProvider>
+    </Box>
   );
 }
 
@@ -307,7 +385,8 @@ export default function App() {
           <Drawer.Screen name="Home" component={HomeScreen} />
           <Drawer.Screen name="Login" component={LoginScreen} />
           <Drawer.Screen name="Profile" component={ProfileScreen} />
-          <Drawer.Screen name="API" component={APIScreen} />
+          <Drawer.Screen name="About Adopting" component={AboutAdpoting} />
+          <Drawer.Screen name="Quiz" component={Quiz} />
         </Drawer.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
