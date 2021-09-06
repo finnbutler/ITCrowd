@@ -238,64 +238,64 @@ function AboutAdpoting({ navigation }) {
             mt="2em"
             padding="1em 5em"
             borderRadius="30px"
-            backgroundColor="white"
+            backgroundColor="black"
             onPress={() => navigation.navigate("")}
-            title="Login In!"
+            title="Understanding requirements"
           >
-            Login In
+            Understanding requirements
           </Button>
 
           <Button
             mt="2em"
             padding="1em 5em"
             borderRadius="30px"
-            backgroundColor="white"
+            backgroundColor="black"
             onPress={() => navigation.navigate("")}
-            title="Login In!"
+            title="What to expect"
           >
-            Login In
+            What to expect
           </Button>
 
           <Button
             mt="2em"
             padding="1em 5em"
             borderRadius="30px"
-            backgroundColor="white"
+            backgroundColor="black"
             onPress={() => navigation.navigate("")}
-            title="Login In!"
+            title="Emergencies"
           >
-            Login In
+            Emergencies
           </Button>
           <Button
             mt="2em"
             padding="1em 5em"
             borderRadius="30px"
-            backgroundColor="white"
+            backgroundColor="black"
             onPress={() => navigation.navigate("")}
-            title="Login In!"
+            title="How to train"
           >
-            Login In
+            How to train
           </Button>
 
           <Button
             mt="2em"
             padding="1em 5em"
             borderRadius="30px"
-            backgroundColor="white"
+            backgroundColor="black"
             onPress={() => navigation.navigate("")}
-            title="Login In!"
+            title="Medical help"
           >
-            Login In
+            Medical help
           </Button>
           <Button
             mt="2em"
             padding="1em 5em"
             borderRadius="30px"
-            backgroundColor="white"
+            backgroundColor="black"
             onPress={() => navigation.navigate("")}
-            title="Login In!"
+            title="Community support"
           >
-            Login In
+            Community support
           </Button>
         </View>
       </NativeBaseProvider>
