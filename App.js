@@ -13,6 +13,8 @@ import {
   FormControl,
   Input,
 } from "native-base";
+import { useFormik } from "formik";
+import { Formik } from "formik";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -21,7 +23,8 @@ import email from "./assets/email (1).png";
 import phone from "./assets/phone-call.png";
 import date from "./assets/date-of-birth.png";
 import location from "./assets/pin.png";
-
+import { createGlobalStyle } from "styled-components";
+import LoginForm from "./loginForm";
 function HomeScreen({ navigation }) {
   return (
     <Box bg="darkblue.500" height="100%">
@@ -168,6 +171,9 @@ function SignUpScreen({ navigation }) {
       </NativeBaseProvider>
     </Box>
   );
+}
+function LogInScreen({ navigation }) {
+  return <LoginForm />;
 }
 
 function ProfileScreen({ navigation }) {
@@ -435,6 +441,7 @@ export default function App() {
         <Drawer.Navigator initialRouteName="Home">
           <Drawer.Screen name="Home" component={HomeScreen} />
           <Drawer.Screen name="Sign Up" component={SignUpScreen} />
+          <Drawer.Screen name="Log In" component={LogInScreen} />
           <Drawer.Screen name="Profile" component={ProfileScreen} />
           <Drawer.Screen name="About Adopting" component={AboutAdpoting} />
           <Drawer.Screen name="Quiz" component={Quiz} />
