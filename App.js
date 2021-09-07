@@ -68,7 +68,60 @@ function LoginScreen({ navigation }) {
           </Text>
           <VStack width="90%" mx={3}>
             <FormControl isRequired>
-              <FormControl.Label _text={{ bold: true }}>Name</FormControl.Label>
+              <FormControl.Label _text={{ bold: true }}>
+                First Name
+              </FormControl.Label>
+              <Input
+                placeholder="John"
+                onChangeText={(value) => setData({ ...formData, name: value })}
+              />
+              <FormControl.HelperText _text={{ fontSize: "xs" }}>
+                Name should contain atleast 3 character.
+              </FormControl.HelperText>
+              <FormControl.ErrorMessage _text={{ fontSize: "xs" }}>
+                Error Name
+              </FormControl.ErrorMessage>
+            </FormControl>
+          </VStack>
+          <VStack width="90%" mx={3}>
+            <FormControl isRequired>
+              <FormControl.Label _text={{ bold: true }}>
+                Last Name
+              </FormControl.Label>
+              <Input
+                placeholder="Smith"
+                onChangeText={(value) => setData({ ...formData, name: value })}
+              />
+              <FormControl.HelperText _text={{ fontSize: "xs" }}>
+                Name should contain atleast 3 character.
+              </FormControl.HelperText>
+              <FormControl.ErrorMessage _text={{ fontSize: "xs" }}>
+                Error Name
+              </FormControl.ErrorMessage>
+            </FormControl>
+          </VStack>
+          <VStack width="90%" mx={3}>
+            <FormControl isRequired>
+              <FormControl.Label _text={{ bold: true }}>
+                Date Of Birth
+              </FormControl.Label>
+              <Input
+                placeholder="John"
+                onChangeText={(value) => setData({ ...formData, name: value })}
+              />
+              <FormControl.HelperText _text={{ fontSize: "xs" }}>
+                Name should contain atleast 3 character.
+              </FormControl.HelperText>
+              <FormControl.ErrorMessage _text={{ fontSize: "xs" }}>
+                Error Name
+              </FormControl.ErrorMessage>
+            </FormControl>
+          </VStack>
+          <VStack width="90%" mx={3}>
+            <FormControl isRequired>
+              <FormControl.Label _text={{ bold: true }}>
+                Phone
+              </FormControl.Label>
               <Input
                 placeholder="John"
                 onChangeText={(value) => setData({ ...formData, name: value })}
@@ -98,52 +151,7 @@ function LoginScreen({ navigation }) {
           </VStack>
           <VStack width="90%" mx={3}>
             <FormControl isRequired>
-              <FormControl.Label _text={{ bold: true }}>Name</FormControl.Label>
-              <Input
-                placeholder="John"
-                onChangeText={(value) => setData({ ...formData, name: value })}
-              />
-              <FormControl.HelperText _text={{ fontSize: "xs" }}>
-                Name should contain atleast 3 character.
-              </FormControl.HelperText>
-              <FormControl.ErrorMessage _text={{ fontSize: "xs" }}>
-                Error Name
-              </FormControl.ErrorMessage>
-            </FormControl>
-          </VStack>
-          <VStack width="90%" mx={3}>
-            <FormControl isRequired>
-              <FormControl.Label _text={{ bold: true }}>Name</FormControl.Label>
-              <Input
-                placeholder="John"
-                onChangeText={(value) => setData({ ...formData, name: value })}
-              />
-              <FormControl.HelperText _text={{ fontSize: "xs" }}>
-                Name should contain atleast 3 character.
-              </FormControl.HelperText>
-              <FormControl.ErrorMessage _text={{ fontSize: "xs" }}>
-                Error Name
-              </FormControl.ErrorMessage>
-            </FormControl>
-          </VStack>
-          <VStack width="90%" mx={3}>
-            <FormControl isRequired>
-              <FormControl.Label _text={{ bold: true }}>Name</FormControl.Label>
-              <Input
-                placeholder="John"
-                onChangeText={(value) => setData({ ...formData, name: value })}
-              />
-              <FormControl.HelperText _text={{ fontSize: "xs" }}>
-                Name should contain atleast 3 character.
-              </FormControl.HelperText>
-              <FormControl.ErrorMessage _text={{ fontSize: "xs" }}>
-                Error Name
-              </FormControl.ErrorMessage>
-            </FormControl>
-          </VStack>
-          <VStack width="90%" mx={3}>
-            <FormControl isRequired>
-              <FormControl.Label _text={{ bold: true }}>Name</FormControl.Label>
+              <FormControl.Label _text={{ bold: true }}>City</FormControl.Label>
               <Input
                 placeholder="John"
                 onChangeText={(value) => setData({ ...formData, name: value })}
