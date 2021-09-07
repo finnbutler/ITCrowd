@@ -47,7 +47,7 @@ function HomeScreen({ navigation }) {
             padding="1em 5em"
             borderRadius="30px"
             backgroundColor="lightpink"
-            onPress={() => navigation.navigate("Login")}
+            onPress={() => navigation.navigate("Sign Up")}
             title="Login In!"
           >
             Sign Up
@@ -58,7 +58,7 @@ function HomeScreen({ navigation }) {
   );
 }
 
-function LoginScreen({ navigation }) {
+function SignUpScreen({ navigation }) {
   return (
     <Box bg="lightpink.500" height="100%">
       <NativeBaseProvider>
@@ -314,12 +314,17 @@ function Quiz({ navigation }) {
   return (
     <Box bg="darkblue.500" height="100%">
       <NativeBaseProvider>
+        <Text color="white" textAlign="center" mt="1.5em" fontSize="3em">
+          Purrrfect Match Game{" "}
+        </Text>
         <View
-          style={{ sflex: 1, alignItems: "center", justifyContent: "center" }}
+          style={{
+            sflex: 1,
+            alignItems: "center",
+            justifyContent: "center",
+            flexDirection: "row",
+          }}
         >
-          <Text color="white" mt="1.5em" fontSize="3em">
-            Purrrfect Match Game{" "}
-          </Text>
           <Image
             source={{
               uri: "https://wallpaperaccess.com/full/317501.jpg",
@@ -341,7 +346,45 @@ function Quiz({ navigation }) {
             alt="Alternate Text"
             size={"xl"}
           />
-          // Load Questions Here
+        </View>
+        <View
+          style={{
+            sflex: 1,
+            alignItems: "center",
+            justifyContent: "space-around",
+            flexDirection: "column",
+          }}
+        >
+          <Button
+            mt="2em"
+            padding="1em 5em"
+            borderRadius="30px"
+            backgroundColor="black"
+            onPress={() => navigation.navigate("")}
+            title="Medical help"
+          >
+            Clubbing
+          </Button>
+          <Button
+            mt="2em"
+            padding="1em 5em"
+            borderRadius="30px"
+            backgroundColor="black"
+            onPress={() => navigation.navigate("")}
+            title="Medical help"
+          >
+            At Home
+          </Button>
+          <Button
+            mt="2em"
+            padding="1em 5em"
+            borderRadius="30px"
+            backgroundColor="black"
+            onPress={() => navigation.navigate("")}
+            title="Medical help"
+          >
+            With Friends
+          </Button>
         </View>
       </NativeBaseProvider>
     </Box>
@@ -391,7 +434,7 @@ export default function App() {
       <NavigationContainer>
         <Drawer.Navigator initialRouteName="Home">
           <Drawer.Screen name="Home" component={HomeScreen} />
-          <Drawer.Screen name="Login" component={LoginScreen} />
+          <Drawer.Screen name="Sign Up" component={SignUpScreen} />
           <Drawer.Screen name="Profile" component={ProfileScreen} />
           <Drawer.Screen name="About Adopting" component={AboutAdpoting} />
           <Drawer.Screen name="Quiz" component={Quiz} />
