@@ -30,7 +30,6 @@ import {
   PaytoneOne_400Regular 
 } from '@expo-google-fonts/paytone-one'
 import { 
-  useFonts,
   Roboto_400Regular,
 } from '@expo-google-fonts/roboto'
 import AppLoading from 'expo-app-loading';
