@@ -233,6 +233,42 @@ function ProfileScreen({ navigation }) {
     </NativeBaseProvider>
   );
 }
+const styles = StyleSheet.create({
+  logo: {
+    paddingTop: 20,
+    justifyContent: 'center',
+    backgroundColor: '#60BEEB',
+    width: window.width,
+    paddingBottom: 20,
+
+  },
+  container: {
+    textAlign: 'center',
+  },
+  heading: {
+    color: '#FFFFFF',
+    paddingTop: 25,
+    fontSize: 20,
+  },
+  paragraph: {
+    fontSize: 17,
+  },
+  profile: {
+    backgroundColor: '#ffffff',
+    alignItems: 'center',
+    justifyContent: 'left',
+  },
+  info: {
+    flexDirection: 'row',
+    textAlign: 'left',
+    padding: 30,
+    width: 700,
+    marginTop: 30,
+    borderWidth: 3,
+    borderRadius: 10,
+    borderColor: '#89CFF0',
+  },
+});
 function AboutAdpoting({ navigation }) {
   return (
     <Box
