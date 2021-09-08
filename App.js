@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, StyleSheet } from "react-native";
+import { ImageBackground, View, StyleSheet } from "react-native";
 import {
   Text,
   Button,
@@ -23,49 +23,65 @@ import email from "./assets/email (1).png";
 import phone from "./assets/phone-call.png";
 import date from "./assets/date-of-birth.png";
 import location from "./assets/pin.png";
+import background from "./assets/background_pic.jpg";
 import { createGlobalStyle } from "styled-components";
 import LoginForm from "./loginForm";
-import { 
+import {
   useFonts,
-  PaytoneOne_400Regular 
+  PaytoneOne_400Regular
 } from '@expo-google-fonts/paytone-one'
-import { 
+import {
   Roboto_400Regular,
 } from '@expo-google-fonts/roboto'
 import AppLoading from 'expo-app-loading';
 function HomeScreen({ navigation }) {
+  let [fontsLoaded, error] = useFonts({
+    Roboto_400Regular,
+    PaytoneOne_400Regular
+  })
+  if (!fontsLoaded) {
+    return <AppLoading />
+  }
   return (
-    <Box bg="darkblue.500" height="100%">
+    <ImageBackground source={background} resizeMode="cover" style={{
+          flex: 1,
+          justifyContent: "center",
+          //  opacity: 0.85
+        }}>
       <NativeBaseProvider>
-        <View
-          style={{ sflex: 1, alignItems: "center", justifyContent: "center" }}
-        >
-          <Text color="white" mt="2em" fontSize="3em">
+        
+          <View style={{ alignItems: "center", justifyContent: "right", marginRight: "0px" }}>
+          <Text color="white" fontSize="5em" fontFamily='PaytoneOne_400Regular' marginTop="200px">
             Purrrfect Pets!{" "}
           </Text>
-          <Button
-            mt="2em"
-            padding="1em 5em"
-            borderRadius="30px"
-            backgroundColor="lightpink"
-            onPress={() => navigation.navigate("Login")}
-            title="Login In!"
-          >
-            Login In
-          </Button>
-          <Button
-            mt="2em"
-            padding="1em 5em"
-            borderRadius="30px"
-            backgroundColor="lightpink"
-            onPress={() => navigation.navigate("Sign Up")}
-            title="Login In!"
-          >
-            Sign Up
-          </Button>
-        </View>
+          
+            <Button
+              mt="2em"
+              mraginTop= "500px"
+              padding="1em 6em"
+              borderRadius="30px"
+              backgroundColor="#07DAC0"
+              fontFamily='Roboto_400Regular'
+              onPress={() => navigation.navigate("Login")}
+              title="Login In!"
+            >
+              Login In
+            </Button>
+            <Button
+              mt="2em"
+              padding="1em 6em"
+              borderRadius="30px"
+              backgroundColor="#07DAC0"
+              onPress={() => navigation.navigate("Sign Up")}
+              title="Login In!"
+            >
+              Sign Up
+            </Button>
+          </View>
       </NativeBaseProvider>
-    </Box>
+      </ImageBackground>
+
+    // </Box>
   );
 }
 
@@ -185,12 +201,12 @@ function LogInScreen({ navigation }) {
 }
 
 function ProfileScreen({ navigation }) {
-  let [fontsLoaded, error] = useFonts({ 
+  let [fontsLoaded, error] = useFonts({
     Roboto_400Regular,
     PaytoneOne_400Regular
   })
-  if (!fontsLoaded) { 
-    return <AppLoading /> 
+  if (!fontsLoaded) {
+    return <AppLoading />
   }
   return (
     <NativeBaseProvider>
