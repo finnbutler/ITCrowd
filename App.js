@@ -25,6 +25,15 @@ import date from "./assets/date-of-birth.png";
 import location from "./assets/pin.png";
 import { createGlobalStyle } from "styled-components";
 import LoginForm from "./loginForm";
+import { 
+  useFonts,
+  PaytoneOne_400Regular 
+} from '@expo-google-fonts/paytone-one'
+import { 
+  useFonts,
+  Roboto_400Regular,
+} from '@expo-google-fonts/roboto'
+import AppLoading from 'expo-app-loading';
 function HomeScreen({ navigation }) {
   return (
     <Box bg="darkblue.500" height="100%">
@@ -177,6 +186,13 @@ function LogInScreen({ navigation }) {
 }
 
 function ProfileScreen({ navigation }) {
+  let [fontsLoaded, error] = useFonts({ 
+    Roboto_400Regular,
+    PaytoneOne_400Regular
+  })
+  if (!fontsLoaded) { 
+    return <AppLoading /> 
+  }
   return (
     <NativeBaseProvider>
       <View style={styles.container}>
@@ -246,6 +262,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   heading: {
+    fontFamily: 'PaytoneOne_400Regular',
     color: '#FFFFFF',
     paddingTop: 25,
     fontSize: 20,
@@ -259,6 +276,7 @@ const styles = StyleSheet.create({
     justifyContent: 'left',
   },
   info: {
+    fontFamily: 'Roboto_400Regular',
     flexDirection: 'row',
     textAlign: 'left',
     padding: 30,
