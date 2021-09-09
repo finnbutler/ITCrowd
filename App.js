@@ -6,8 +6,6 @@ import {
   NativeBaseProvider,
   Box,
   Image,
-  Center,
-  Icon,
   extendTheme,
   VStack,
   FormControl,
@@ -81,7 +79,7 @@ function LoginScreen({ navigation }) {
               </FormControl.ErrorMessage>
             </FormControl>
           </VStack>
-          <VStack width="90%" mx={3}>
+          <VStack width="90%" mx={3}> asdasd
             <FormControl isRequired>
               <FormControl.Label _text={{ bold: true }}>Name</FormControl.Label>
               <Input
@@ -277,30 +275,8 @@ function AboutAdpoting({ navigation }) {
             How to train
           </Button>
 
-          <Button
-            mt="2em"
-            padding="1em 5em"
-            borderRadius="30px"
-            backgroundColor="black"
-            onPress={() => navigation.navigate("")}
-            title="Medical help"
-          >
-            Medical help
-          </Button>
-          <Button
-            mt="2em"
-            padding="1em 5em"
-            borderRadius="30px"
-            backgroundColor="black"
-            onPress={() => navigation.navigate("")}
-            title="Community support"
-          >
-            Community support
-          </Button>
-        </View>
-      </NativeBaseProvider>
-    </Box>
-  );
+function AboutAdpoting({ navigation }) {
+  <AboutAdopting />;
 }
 function Quiz({ navigation }) {
   return (
