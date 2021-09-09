@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ImageBackground, View, StyleSheet } from "react-native";
+import { ImageBackground, View, StyleSheet, ScrollView } from "react-native";
 import {
   Text,
   Button,
@@ -23,7 +23,7 @@ import email from "./assets/email (1).png";
 import phone from "./assets/phone-call.png";
 import date from "./assets/date-of-birth.png";
 import location from "./assets/pin.png";
-import background from "./assets/background_pic.jpg";
+import background from "./assets/background.jpg";
 import { createGlobalStyle } from "styled-components";
 import LoginForm from "./loginForm";
 import {
@@ -34,6 +34,7 @@ import {
   Roboto_400Regular,
 } from '@expo-google-fonts/roboto'
 import AppLoading from 'expo-app-loading';
+import { marginBottom } from "styled-system";
 function HomeScreen({ navigation }) {
   let [fontsLoaded, error] = useFonts({
     Roboto_400Regular,
@@ -43,45 +44,50 @@ function HomeScreen({ navigation }) {
     return <AppLoading />
   }
   return (
-    <ImageBackground source={background} resizeMode="cover" style={{
-          flex: 1,
-          justifyContent: "center",
-          //  opacity: 0.85
-        }}>
-      <NativeBaseProvider>
-        
-          <View style={{ alignItems: "center", justifyContent: "right", marginRight: "0px" }}>
-          <Text color="white" fontSize="5em" fontFamily='PaytoneOne_400Regular' marginTop="200px">
-            Purrrfect Pets!{" "}
+    <NativeBaseProvider>
+      <ImageBackground source={background} resizeMode="cover" style={{
+        justifyContent: "flex-start"
+      }}>
+        <View style={{ alignItems: "flex-end", marginRight: "200px", marginBottom: "400px" }}>
+          <Text color="white" fontSize="80" fontFamily='PaytoneOne_400Regular' marginRight="50px" marginTop="150px">
+            Purrrfect Pets
           </Text>
-          
-            <Button
-              mt="2em"
-              mraginTop= "500px"
-              padding="1em 6em"
-              borderRadius="30px"
-              backgroundColor="#07DAC0"
-              fontFamily='Roboto_400Regular'
-              onPress={() => navigation.navigate("Login")}
-              title="Login In!"
-            >
-              Login In
-            </Button>
-            <Button
-              mt="2em"
-              padding="1em 6em"
-              borderRadius="30px"
-              backgroundColor="#07DAC0"
-              onPress={() => navigation.navigate("Sign Up")}
-              title="Login In!"
-            >
-              Sign Up
-            </Button>
-          </View>
-      </NativeBaseProvider>
-      </ImageBackground>
+          <Text color="white" fontSize="30" paddingTop="10" textAlign='center' marginRight="120px" fontFamily='PaytoneOne_400Regular' flexShrink="1">
+            Match with and adopt a pet {"\n"}that is most suitable for you
+          </Text>
+          <Button
+            mt="3em"
+            title="Login In"
+            padding="25px 150px"
+            borderRadius="30px"
+            backgroundColor="#f1c737"
+            flex="1"
+            marginRight="150px"
+            justifyContent="center"
+            onPress={() => navigation.navigate("Login")}
+          >
+            <Text color="#545871" fontFamily='Roboto_400Regular'>Login In</Text>
+          </Button>
+          <Button
+            mt="3em"
+            marginRight="150px"
+            padding="25px 150px"
+            borderRadius="30px"
+            backgroundColor="#f1c737"
+            flex="1"
+            justifyContent="center"
+            onPress={() => navigation.navigate("Sign Up")}
+            title="Sign Up"
+          >
+            <Text color="#545871" fontFamily='Roboto_400Regular'>Sign Up</Text>
+          </Button>
 
-    // </Box>
+        </View>
+      </ImageBackground>
+      <View style={{ backgroundColor: "#bbadc6", width: "auto" }} >
+        <Text fontSize="72" textAlign="center" color="white" fontFamily="PaytoneOne_400Regular">Details of Purrrfect Pets</Text>
+      </View>
+    </NativeBaseProvider>
   );
 }
 
@@ -214,6 +220,7 @@ function ProfileScreen({ navigation }) {
         <View style={styles.logo}>
           <Image
             source={profile}
+            alt="logo"
             style={{
               width: 300,
               height: 300,
@@ -268,8 +275,8 @@ const styles = StyleSheet.create({
   logo: {
     paddingTop: 20,
     justifyContent: 'center',
-    backgroundColor: '#60BEEB',
-    width: window.width,
+    backgroundColor: '#bbadc6',
+    width: 'auto',
     paddingBottom: 20,
 
   },
@@ -280,7 +287,6 @@ const styles = StyleSheet.create({
     fontFamily: 'PaytoneOne_400Regular',
     color: '#FFFFFF',
     paddingTop: 25,
-    fontSize: 20,
   },
   paragraph: {
     fontSize: 17,
@@ -288,7 +294,7 @@ const styles = StyleSheet.create({
   profile: {
     backgroundColor: '#ffffff',
     alignItems: 'center',
-    justifyContent: 'left',
+    justifyContent: 'flex-start',
   },
   info: {
     fontFamily: 'Roboto_400Regular',
