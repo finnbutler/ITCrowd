@@ -8,15 +8,19 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@expo-google-fonts/paytone-one": "^0.2.0",
+    "@expo-google-fonts/roboto": "^0.2.0",
     "@react-native-community/datetimepicker": "^3.5.2",
     "@react-navigation/drawer": "^6.1.4",
     "@react-navigation/native": "^6.0.2",
     "@shoutem/ui": "^4.6.0",
     "bcryptjs": "2.4.3",
     "expo": "~42.0.1",
+    "expo-app-loading": "^1.1.2",
     "expo-constants": "~11.0.1",
     "expo-status-bar": "~1.0.4",
     "express": "4.17.0",
+    "formik": "^2.2.9",
     "jsonwebtoken": "*",
     "native-base": "^3.1.0",
     "react": "16.13.1",
@@ -35,7 +39,8 @@
     "react-native-webview": "~11.0.0",
     "sequelize": "6.6.5",
     "styled-components": "^5.3.1",
-    "styled-system": "^5.1.5"
+    "styled-system": "^5.1.5",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"

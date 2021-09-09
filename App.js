@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, StyleSheet } from "react-native";
+import { ImageBackground, View, StyleSheet } from "react-native";
 import {
   Text,
   Button,
@@ -13,6 +13,8 @@ import {
   FormControl,
   Input,
 } from "native-base";
+import { useFormik } from "formik";
+import { Formik } from "formik";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -21,44 +23,69 @@ import email from "./assets/email (1).png";
 import phone from "./assets/phone-call.png";
 import date from "./assets/date-of-birth.png";
 import location from "./assets/pin.png";
-
+import background from "./assets/background_pic.jpg";
+import { createGlobalStyle } from "styled-components";
+import LoginForm from "./loginForm";
+import {
+  useFonts,
+  PaytoneOne_400Regular
+} from '@expo-google-fonts/paytone-one'
+import {
+  Roboto_400Regular,
+} from '@expo-google-fonts/roboto'
+import AppLoading from 'expo-app-loading';
 function HomeScreen({ navigation }) {
+  let [fontsLoaded, error] = useFonts({
+    Roboto_400Regular,
+    PaytoneOne_400Regular
+  })
+  if (!fontsLoaded) {
+    return <AppLoading />
+  }
   return (
-    <Box bg="darkblue.500" height="100%">
+    <ImageBackground source={background} resizeMode="cover" style={{
+          flex: 1,
+          justifyContent: "center",
+          //  opacity: 0.85
+        }}>
       <NativeBaseProvider>
-        <View
-          style={{ sflex: 1, alignItems: "center", justifyContent: "center" }}
-        >
-          <Text color="white" mt="2em" fontSize="3em">
+        
+          <View style={{ alignItems: "center", justifyContent: "right", marginRight: "0px" }}>
+          <Text color="white" fontSize="5em" fontFamily='PaytoneOne_400Regular' marginTop="200px">
             Purrrfect Pets!{" "}
           </Text>
-          <Button
-            mt="2em"
-            padding="1em 5em"
-            borderRadius="30px"
-            backgroundColor="lightpink"
-            onPress={() => navigation.navigate("Login")}
-            title="Login In!"
-          >
-            Login In
-          </Button>
-          <Button
-            mt="2em"
-            padding="1em 5em"
-            borderRadius="30px"
-            backgroundColor="lightpink"
-            onPress={() => navigation.navigate("Login")}
-            title="Login In!"
-          >
-            Sign Up
-          </Button>
-        </View>
+          
+            <Button
+              mt="2em"
+              mraginTop= "500px"
+              padding="1em 6em"
+              borderRadius="30px"
+              backgroundColor="#07DAC0"
+              fontFamily='Roboto_400Regular'
+              onPress={() => navigation.navigate("Login")}
+              title="Login In!"
+            >
+              Login In
+            </Button>
+            <Button
+              mt="2em"
+              padding="1em 6em"
+              borderRadius="30px"
+              backgroundColor="#07DAC0"
+              onPress={() => navigation.navigate("Sign Up")}
+              title="Login In!"
+            >
+              Sign Up
+            </Button>
+          </View>
       </NativeBaseProvider>
-    </Box>
+      </ImageBackground>
+
+    // </Box>
   );
 }
 
-function LoginScreen({ navigation }) {
+function SignUpScreen({ navigation }) {
   return (
     <Box bg="lightpink.500" height="100%">
       <NativeBaseProvider>
@@ -68,7 +95,60 @@ function LoginScreen({ navigation }) {
           </Text>
           <VStack width="90%" mx={3}>
             <FormControl isRequired>
-              <FormControl.Label _text={{ bold: true }}>Name</FormControl.Label>
+              <FormControl.Label _text={{ bold: true }}>
+                First Name
+              </FormControl.Label>
+              <Input
+                placeholder="John"
+                onChangeText={(value) => setData({ ...formData, name: value })}
+              />
+              <FormControl.HelperText _text={{ fontSize: "xs" }}>
+                Name should contain atleast 3 character.
+              </FormControl.HelperText>
+              <FormControl.ErrorMessage _text={{ fontSize: "xs" }}>
+                Error Name
+              </FormControl.ErrorMessage>
+            </FormControl>
+          </VStack>
+          <VStack width="90%" mx={3}>
+            <FormControl isRequired>
+              <FormControl.Label _text={{ bold: true }}>
+                Last Name
+              </FormControl.Label>
+              <Input
+                placeholder="Smith"
+                onChangeText={(value) => setData({ ...formData, name: value })}
+              />
+              <FormControl.HelperText _text={{ fontSize: "xs" }}>
+                Name should contain atleast 3 character.
+              </FormControl.HelperText>
+              <FormControl.ErrorMessage _text={{ fontSize: "xs" }}>
+                Error Name
+              </FormControl.ErrorMessage>
+            </FormControl>
+          </VStack>
+          <VStack width="90%" mx={3}>
+            <FormControl isRequired>
+              <FormControl.Label _text={{ bold: true }}>
+                Date Of Birth
+              </FormControl.Label>
+              <Input
+                placeholder="John"
+                onChangeText={(value) => setData({ ...formData, name: value })}
+              />
+              <FormControl.HelperText _text={{ fontSize: "xs" }}>
+                Name should contain atleast 3 character.
+              </FormControl.HelperText>
+              <FormControl.ErrorMessage _text={{ fontSize: "xs" }}>
+                Error Name
+              </FormControl.ErrorMessage>
+            </FormControl>
+          </VStack>
+          <VStack width="90%" mx={3}>
+            <FormControl isRequired>
+              <FormControl.Label _text={{ bold: true }}>
+                Phone
+              </FormControl.Label>
               <Input
                 placeholder="John"
                 onChangeText={(value) => setData({ ...formData, name: value })}
@@ -98,52 +178,7 @@ function LoginScreen({ navigation }) {
           </VStack>
           <VStack width="90%" mx={3}>
             <FormControl isRequired>
-              <FormControl.Label _text={{ bold: true }}>Name</FormControl.Label>
-              <Input
-                placeholder="John"
-                onChangeText={(value) => setData({ ...formData, name: value })}
-              />
-              <FormControl.HelperText _text={{ fontSize: "xs" }}>
-                Name should contain atleast 3 character.
-              </FormControl.HelperText>
-              <FormControl.ErrorMessage _text={{ fontSize: "xs" }}>
-                Error Name
-              </FormControl.ErrorMessage>
-            </FormControl>
-          </VStack>
-          <VStack width="90%" mx={3}>
-            <FormControl isRequired>
-              <FormControl.Label _text={{ bold: true }}>Name</FormControl.Label>
-              <Input
-                placeholder="John"
-                onChangeText={(value) => setData({ ...formData, name: value })}
-              />
-              <FormControl.HelperText _text={{ fontSize: "xs" }}>
-                Name should contain atleast 3 character.
-              </FormControl.HelperText>
-              <FormControl.ErrorMessage _text={{ fontSize: "xs" }}>
-                Error Name
-              </FormControl.ErrorMessage>
-            </FormControl>
-          </VStack>
-          <VStack width="90%" mx={3}>
-            <FormControl isRequired>
-              <FormControl.Label _text={{ bold: true }}>Name</FormControl.Label>
-              <Input
-                placeholder="John"
-                onChangeText={(value) => setData({ ...formData, name: value })}
-              />
-              <FormControl.HelperText _text={{ fontSize: "xs" }}>
-                Name should contain atleast 3 character.
-              </FormControl.HelperText>
-              <FormControl.ErrorMessage _text={{ fontSize: "xs" }}>
-                Error Name
-              </FormControl.ErrorMessage>
-            </FormControl>
-          </VStack>
-          <VStack width="90%" mx={3}>
-            <FormControl isRequired>
-              <FormControl.Label _text={{ bold: true }}>Name</FormControl.Label>
+              <FormControl.Label _text={{ bold: true }}>City</FormControl.Label>
               <Input
                 placeholder="John"
                 onChangeText={(value) => setData({ ...formData, name: value })}
@@ -161,8 +196,18 @@ function LoginScreen({ navigation }) {
     </Box>
   );
 }
+function LogInScreen({ navigation }) {
+  return <LoginForm />;
+}
 
 function ProfileScreen({ navigation }) {
+  let [fontsLoaded, error] = useFonts({
+    Roboto_400Regular,
+    PaytoneOne_400Regular
+  })
+  if (!fontsLoaded) {
+    return <AppLoading />
+  }
   return (
     <NativeBaseProvider>
       <View style={styles.container}>
@@ -219,6 +264,44 @@ function ProfileScreen({ navigation }) {
     </NativeBaseProvider>
   );
 }
+const styles = StyleSheet.create({
+  logo: {
+    paddingTop: 20,
+    justifyContent: 'center',
+    backgroundColor: '#60BEEB',
+    width: window.width,
+    paddingBottom: 20,
+
+  },
+  container: {
+    textAlign: 'center',
+  },
+  heading: {
+    fontFamily: 'PaytoneOne_400Regular',
+    color: '#FFFFFF',
+    paddingTop: 25,
+    fontSize: 20,
+  },
+  paragraph: {
+    fontSize: 17,
+  },
+  profile: {
+    backgroundColor: '#ffffff',
+    alignItems: 'center',
+    justifyContent: 'left',
+  },
+  info: {
+    fontFamily: 'Roboto_400Regular',
+    flexDirection: 'row',
+    textAlign: 'left',
+    padding: 30,
+    width: 700,
+    marginTop: 30,
+    borderWidth: 3,
+    borderRadius: 10,
+    borderColor: '#89CFF0',
+  },
+});
 function AboutAdpoting({ navigation }) {
   return (
     <Box
@@ -306,12 +389,17 @@ function Quiz({ navigation }) {
   return (
     <Box bg="darkblue.500" height="100%">
       <NativeBaseProvider>
+        <Text color="white" textAlign="center" mt="1.5em" fontSize="3em">
+          Purrrfect Match Game{" "}
+        </Text>
         <View
-          style={{ sflex: 1, alignItems: "center", justifyContent: "center" }}
+          style={{
+            sflex: 1,
+            alignItems: "center",
+            justifyContent: "center",
+            flexDirection: "row",
+          }}
         >
-          <Text color="white" mt="1.5em" fontSize="3em">
-            Purrrfect Match Game{" "}
-          </Text>
           <Image
             source={{
               uri: "https://wallpaperaccess.com/full/317501.jpg",
@@ -333,7 +421,45 @@ function Quiz({ navigation }) {
             alt="Alternate Text"
             size={"xl"}
           />
-          // Load Questions Here
+        </View>
+        <View
+          style={{
+            sflex: 1,
+            alignItems: "center",
+            justifyContent: "space-around",
+            flexDirection: "column",
+          }}
+        >
+          <Button
+            mt="2em"
+            padding="1em 5em"
+            borderRadius="30px"
+            backgroundColor="black"
+            onPress={() => navigation.navigate("")}
+            title="Medical help"
+          >
+            Clubbing
+          </Button>
+          <Button
+            mt="2em"
+            padding="1em 5em"
+            borderRadius="30px"
+            backgroundColor="black"
+            onPress={() => navigation.navigate("")}
+            title="Medical help"
+          >
+            At Home
+          </Button>
+          <Button
+            mt="2em"
+            padding="1em 5em"
+            borderRadius="30px"
+            backgroundColor="black"
+            onPress={() => navigation.navigate("")}
+            title="Medical help"
+          >
+            With Friends
+          </Button>
         </View>
       </NativeBaseProvider>
     </Box>
@@ -383,7 +509,8 @@ export default function App() {
       <NavigationContainer>
         <Drawer.Navigator initialRouteName="Home">
           <Drawer.Screen name="Home" component={HomeScreen} />
-          <Drawer.Screen name="Login" component={LoginScreen} />
+          <Drawer.Screen name="Sign Up" component={SignUpScreen} />
+          <Drawer.Screen name="Log In" component={LogInScreen} />
           <Drawer.Screen name="Profile" component={ProfileScreen} />
           <Drawer.Screen name="About Adopting" component={AboutAdpoting} />
           <Drawer.Screen name="Quiz" component={Quiz} />
