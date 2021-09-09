@@ -2,7 +2,7 @@ import React from "react";
 import { Formik } from "formik";
 import { View, TextInput, Button } from "react-native";
 
-export default function LoginForm() {
+export default function SignUpForm() {
   return (
     <View>
       <Formik
@@ -22,7 +22,6 @@ export default function LoginForm() {
               value={props.values.password}
             />
             <Button
-              padding="2em"
               title="submit"
               color="lightpink"
               onPreess={props.handleSubmit}
