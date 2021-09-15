@@ -1,13 +1,9 @@
 import * as React from "react";
-import { ImageBackground, View, StyleSheet } from "react-native";
+import { ImageBackground, View } from "react-native";
 import {
   Text,
   Button,
   NativeBaseProvider,
-  Box,
-  Image,
-  Center,
-  Icon,
   extendTheme,
   VStack,
   FormControl,
@@ -18,26 +14,24 @@ import {
 import { Formik } from "formik";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
-import { MaterialIcons } from "@expo/vector-icons";
-import profile from "./assets/pic.jpg";
-import email from "./assets/email (1).png";
-import phone from "./assets/phone-call.png";
-import date from "./assets/date-of-birth.png";
-import location from "./assets/pin.png";
-import background from "./assets/background_pic.jpg";
-import { createGlobalStyle } from "styled-components";
-import LoginForm from "./loginForm";
-import SignUpForm from "./signupForm";
-import ProfileS from "./profile";
-import AboutAdopting from "./aboutAdopting";
+import LoginForm from "./js/loginForm.js";
+import SignUpForm from "./js/signupForm.js";
+import Profile from "./js/profile.js";
+import AboutAdopting from "./js/about.js";
 import {
   useFonts,
   PaytoneOne_400Regular,
 } from "@expo-google-fonts/paytone-one";
 import { Roboto_400Regular } from "@expo-google-fonts/roboto";
 import AppLoading from "expo-app-loading";
-import Quiz from "./quiz";
+import background from "./assets/background.jpg";
+import Quiz from "./js/quiz.js";
 function HomeScreen({ navigation }) {
+  // const response = await fetch('/api/names');
+  // const names = await response.json();
+
+  // console.log(names);
+  // https://itcrowdproject.uqcloud.net/?PET_PHOTO
   let [fontsLoaded, error] = useFonts({
     Roboto_400Regular,
     PaytoneOne_400Regular,
@@ -52,53 +46,67 @@ function HomeScreen({ navigation }) {
       style={{
         flex: 1,
         justifyContent: "center",
-        //  opacity: 0.85
       }}
     >
       <NativeBaseProvider>
         <View
           style={{
-            alignItems: "center",
-            justifyContent: "right",
-            marginRight: "0px",
+            alignItems: "flex-end",
+            justifyContent: "flex-end",
+            marginRight: "200px",
           }}
         >
           <Text
             color="white"
-            fontSize="5em"
+            fontSize="80"
             fontFamily="PaytoneOne_400Regular"
-            marginTop="200px"
+            marginTop="150px"
+            marginRight="50px"
           >
             Purrrfect Pets!{" "}
           </Text>
-
+          <Text
+            color="white"
+            fontSize="30"
+            paddingTop="10"
+            textAlign="center"
+            marginRight="120px"
+            fontFamily="PaytoneOne_400Regular"
+            flexShrink="1"
+          >
+            Match with and adopt a pet {"\n"}that is most suitable for you
+          </Text>
           <Button
             mt="2em"
             mraginTop="500px"
-            padding="1em 6em"
+            padding="25px 150px"
             borderRadius="30px"
-            backgroundColor="#07DAC0"
+            backgroundColor="#f1c737"
+            marginRight="150px"
             fontFamily="Roboto_400Regular"
             onPress={() => navigation.navigate("Login")}
             title="Login In!"
           >
-            Login In
+            <Text color="#545871" fontFamily="Roboto_400Regular">
+              Login In{" "}
+            </Text>
           </Button>
           <Button
             mt="2em"
-            padding="1em 6em"
+            padding="25px 150px"
             borderRadius="30px"
-            backgroundColor="#07DAC0"
+            marginRight="150px"
+            backgroundColor="#f1c737"
             onPress={() => navigation.navigate("Sign Up")}
-            title="Login In!"
+            title="Sign up"
           >
-            Sign Up
+            <Text color="#545871" fontFamily="Roboto_400Regular">
+              Sign Up
+            </Text>
           </Button>
         </View>
       </NativeBaseProvider>
     </ImageBackground>
-
-    // </Box>
   );
 }
 
@@ -110,50 +118,14 @@ function LogInScreen({ navigation }) {
 }
 
 function ProfileScreen({ navigation }) {
-  <ProfileS />;
+  return <Profile />;
 }
-const styles = StyleSheet.create({
-  logo: {
-    paddingTop: 20,
-    justifyContent: "center",
-    backgroundColor: "#60BEEB",
-    width: window.width,
-    paddingBottom: 20,
-  },
-  container: {
-    textAlign: "center",
-  },
-  heading: {
-    fontFamily: "PaytoneOne_400Regular",
-    color: "#FFFFFF",
-    paddingTop: 25,
-    fontSize: 20,
-  },
-  paragraph: {
-    fontSize: 17,
-  },
-  profile: {
-    backgroundColor: "#ffffff",
-    alignItems: "center",
-    justifyContent: "left",
-  },
-  info: {
-    fontFamily: "Roboto_400Regular",
-    flexDirection: "row",
-    textAlign: "left",
-    padding: 30,
-    width: 700,
-    marginTop: 30,
-    borderWidth: 3,
-    borderRadius: 10,
-    borderColor: "#89CFF0",
-  },
-});
+
 function AboutAdpoting({ navigation }) {
-  <AboutAdopting />;
+  return <AboutAdopting />;
 }
 function QuizScreen({ navigation }) {
-  <Quiz />;
+  return <Quiz />;
 }
 
 const Drawer = createDrawerNavigator();
