@@ -1,27 +1,19 @@
 import * as React from "react";
-import { ImageBackground, View, StyleSheet, ScrollView } from "react-native";
+import { ImageBackground, View } from "react-native";
 import {
   Text,
   Button,
   NativeBaseProvider,
-  Box,
-  Image,
-  Center,
-  Icon,
   extendTheme,
-  VStack,
-  FormControl,
-  Input,
-  TextInput,
 } from "native-base";
 //import { useFormik } from "formik";
 import { Formik } from "formik";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
-// import LoginForm from "./loginForm";
-// import SignUpForm from "./signupForm";
-// import ProfileS from "./profile";
-// import AboutAdopting from "./aboutAdopting";
+import LoginForm from "./js/loginForm.js";
+import SignUpForm from "./js/signupForm.js";
+import Profile from "./js/profile.js";
+import AboutAdopting from "./js/about.js";
 import {
   useFonts,
   PaytoneOne_400Regular,
@@ -29,7 +21,7 @@ import {
 import { Roboto_400Regular } from "@expo-google-fonts/roboto";
 import AppLoading from "expo-app-loading";
 import background from "./assets/background.jpg"
-// import Quiz from "./quiz";
+import Quiz from "./js/quiz.js";
 function HomeScreen({ navigation }) {
   // const response = await fetch('/api/names');
   // const names = await response.json();
@@ -109,49 +101,14 @@ function LogInScreen({ navigation }) {
 }
 
 function ProfileScreen({ navigation }) {
-  <ProfileS />;
+  return <Profile />;
 }
-const styles = StyleSheet.create({
-  logo: {
-    paddingTop: 20,
-    justifyContent: "center",
-    backgroundColor: "#60BEEB",
-    width: window.width,
-    paddingBottom: 20,
-  },
-  container: {
-    textAlign: "center",
-  },
-  heading: {
-    fontFamily: "PaytoneOne_400Regular",
-    color: "#FFFFFF",
-    paddingTop: 25,
-  },
-  paragraph: {
-    fontSize: 17,
-  },
-  profile: {
-    backgroundColor: "#ffffff",
-    alignItems: "center",
-    justifyContent: "left",
-  },
-  info: {
-    fontFamily: "Roboto_400Regular",
-    flexDirection: "row",
-    textAlign: "left",
-    padding: 30,
-    width: 700,
-    marginTop: 30,
-    borderWidth: 3,
-    borderRadius: 10,
-    borderColor: "#89CFF0",
-  },
-});
+
 function AboutAdpoting({ navigation }) {
-  <AboutAdopting />;
+  return <AboutAdopting />;
 }
 function QuizScreen({ navigation }) {
-  <Quiz />;
+  return <Quiz />;
 }
 
 const Drawer = createDrawerNavigator();
