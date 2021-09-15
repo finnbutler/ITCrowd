@@ -18,23 +18,24 @@ import {
 import { Formik } from "formik";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
-import LoginForm from "./loginForm";
-import SignUpForm from "./signupForm";
-import ProfileS from "./profile";
-import AboutAdopting from "./aboutAdopting";
+// import LoginForm from "./loginForm";
+// import SignUpForm from "./signupForm";
+// import ProfileS from "./profile";
+// import AboutAdopting from "./aboutAdopting";
 import {
   useFonts,
   PaytoneOne_400Regular,
 } from "@expo-google-fonts/paytone-one";
 import { Roboto_400Regular } from "@expo-google-fonts/roboto";
 import AppLoading from "expo-app-loading";
-import Quiz from "./quiz";
+import background from "./assets/background.jpg"
+// import Quiz from "./quiz";
 function HomeScreen({ navigation }) {
-  const response = await fetch('/api/names');
-  const names = await response.json();
+  // const response = await fetch('/api/names');
+  // const names = await response.json();
 
-  console.log(names); 
-  https://itcrowdproject.uqcloud.net/?PET_PHOTO
+  // console.log(names); 
+  // https://itcrowdproject.uqcloud.net/?PET_PHOTO
   let [fontsLoaded, error] = useFonts({
     Roboto_400Regular,
     PaytoneOne_400Regular,
@@ -49,47 +50,51 @@ function HomeScreen({ navigation }) {
       style={{
         flex: 1,
         justifyContent: "center",
-        //  opacity: 0.85
       }}
     >
       <NativeBaseProvider>
         <View
           style={{
-            alignItems: "center",
-            justifyContent: "right",
-            marginRight: "0px",
+            alignItems: "flex-end",
+            justifyContent: "flex-end",
+            marginRight: "200px",
           }}
         >
           <Text
             color="white"
-            fontSize="5em"
+            fontSize="80"
             fontFamily="PaytoneOne_400Regular"
-            marginTop="200px"
+            marginTop="150px"
+            marginRight="50px"
           >
             Purrrfect Pets!{" "}
           </Text>
-
+          <Text color="white" fontSize="30" paddingTop="10" textAlign='center' marginRight="120px" fontFamily='PaytoneOne_400Regular' flexShrink="1">
+            Match with and adopt a pet {"\n"}that is most suitable for you
+          </Text>
           <Button
             mt="2em"
             mraginTop="500px"
-            padding="1em 6em"
+            padding="25px 150px"
             borderRadius="30px"
-            backgroundColor="#07DAC0"
+            backgroundColor="#f1c737"
+            marginRight="150px"
             fontFamily="Roboto_400Regular"
             onPress={() => navigation.navigate("Login")}
             title="Login In!"
           >
-            Login In
+            <Text color="#545871" fontFamily='Roboto_400Regular'>Login In </Text>
           </Button>
           <Button
             mt="2em"
-            padding="1em 6em"
+            padding="25px 150px"
             borderRadius="30px"
-            backgroundColor="#07DAC0"
+            marginRight="150px"
+            backgroundColor="#f1c737"
             onPress={() => navigation.navigate("Sign Up")}
-            title="Login In!"
+            title="Sign up"
           >
-            Sign Up
+            <Text color="#545871" fontFamily='Roboto_400Regular'>Sign Up</Text>
           </Button>
         </View>
       </NativeBaseProvider>
