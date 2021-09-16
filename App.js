@@ -5,6 +5,10 @@ import {
   Button,
   NativeBaseProvider,
   extendTheme,
+  VStack,
+  FormControl,
+  Input,
+  TextInput,
 } from "native-base";
 //import { useFormik } from "formik";
 import { Formik } from "formik";
@@ -20,13 +24,14 @@ import {
 } from "@expo-google-fonts/paytone-one";
 import { Roboto_400Regular } from "@expo-google-fonts/roboto";
 import AppLoading from "expo-app-loading";
-import background from "./assets/background.jpg"
+import background from "./assets/background.jpg";
 import Quiz from "./js/quiz.js";
+import Test from "./js/test";
 function HomeScreen({ navigation }) {
   // const response = await fetch('/api/names');
   // const names = await response.json();
 
-  // console.log(names); 
+  // console.log(names);
   // https://itcrowdproject.uqcloud.net/?PET_PHOTO
   let [fontsLoaded, error] = useFonts({
     Roboto_400Regular,
@@ -61,7 +66,15 @@ function HomeScreen({ navigation }) {
           >
             Purrrfect Pets!{" "}
           </Text>
-          <Text color="white" fontSize="30" paddingTop="10" textAlign='center' marginRight="120px" fontFamily='PaytoneOne_400Regular' flexShrink="1">
+          <Text
+            color="white"
+            fontSize="30"
+            paddingTop="10"
+            textAlign="center"
+            marginRight="120px"
+            fontFamily="PaytoneOne_400Regular"
+            flexShrink="1"
+          >
             Match with and adopt a pet {"\n"}that is most suitable for you
           </Text>
           <Button
@@ -75,7 +88,9 @@ function HomeScreen({ navigation }) {
             onPress={() => navigation.navigate("Login")}
             title="Login In!"
           >
-            <Text color="#545871" fontFamily='Roboto_400Regular'>Login In </Text>
+            <Text color="#545871" fontFamily="Roboto_400Regular">
+              Login In{" "}
+            </Text>
           </Button>
           <Button
             mt="2em"
@@ -86,12 +101,15 @@ function HomeScreen({ navigation }) {
             onPress={() => navigation.navigate("Sign Up")}
             title="Sign up"
           >
-            <Text color="#545871" fontFamily='Roboto_400Regular'>Sign Up</Text>
+            <Text color="#545871" fontFamily="Roboto_400Regular">
+              Sign Up
+            </Text>
           </Button>
         </View>
       </NativeBaseProvider>
     </ImageBackground>
-  )}
+  );
+}
 
 function SignUpScreen({ navigation }) {
   return <SignUpForm />;
@@ -109,6 +127,9 @@ function AboutAdpoting({ navigation }) {
 }
 function QuizScreen({ navigation }) {
   return <Quiz />;
+}
+function TestScreen({ navigation }) {
+  return <Test />;
 }
 
 const Drawer = createDrawerNavigator();
@@ -159,6 +180,7 @@ export default function App() {
           <Drawer.Screen name="Profile" component={ProfileScreen} />
           <Drawer.Screen name="About Adopting" component={AboutAdpoting} />
           <Drawer.Screen name="Quiz" component={QuizScreen} />
+          <Drawer.Screen name="Test" component={TestScreen} />
         </Drawer.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
