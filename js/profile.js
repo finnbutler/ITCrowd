@@ -9,11 +9,11 @@ import {
   Roboto_400Regular,
 } from '@expo-google-fonts/roboto'
 import AppLoading from 'expo-app-loading';
-import profile from "C:/Users/dell/Desktop/IT CROWD/ITCrowd.github.io/assets/pic.jpg";
-import email from "C:/Users/dell/Desktop/IT CROWD/ITCrowd.github.io/assets/email (1).png";
-import phone from "C:/Users/dell/Desktop/IT CROWD/ITCrowd.github.io/assets/phone-call.png";
-import date from "C:/Users/dell/Desktop/IT CROWD/ITCrowd.github.io/assets/date-of-birth.png";
-import location from "C:/Users/dell/Desktop/IT CROWD/ITCrowd.github.io/assets/pin.png";
+import profile from "../assets/pic.jpg";
+import email from "../assets/email (1).png";
+import phone from "../assets/phone-call.png";
+import date from "../assets/date-of-birth.png";
+import location from "../assets/pin.png";
 
 const ProfileScreen = () => {
 
