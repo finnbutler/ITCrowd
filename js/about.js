@@ -85,3 +85,5 @@ export default function AboutAdopting() {
     </Box>
   );
 }
+
+//export default AboutAdopting;

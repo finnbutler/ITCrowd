@@ -74,7 +74,7 @@ const ProfileScreen = () => {
       </View>
     </NativeBaseProvider>
   );
-};
+} 
 const styles = StyleSheet.create({
   logo: {
     paddingTop: 20,

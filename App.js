@@ -26,6 +26,7 @@ import { Roboto_400Regular } from "@expo-google-fonts/roboto";
 import AppLoading from "expo-app-loading";
 import background from "./assets/background.jpg";
 import Quiz from "./js/quiz.js";
+import Test from "./js/test";
 function HomeScreen({ navigation }) {
   // const response = await fetch('/api/names');
   // const names = await response.json();
@@ -127,6 +128,9 @@ function AboutAdpoting({ navigation }) {
 function QuizScreen({ navigation }) {
   return <Quiz />;
 }
+function TestScreen({ navigation }) {
+  return <Test />;
+}
 
 const Drawer = createDrawerNavigator();
 
@@ -176,6 +180,7 @@ export default function App() {
           <Drawer.Screen name="Profile" component={ProfileScreen} />
           <Drawer.Screen name="About Adopting" component={AboutAdpoting} />
           <Drawer.Screen name="Quiz" component={QuizScreen} />
+          <Drawer.Screen name="Test" component={TestScreen} />
         </Drawer.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>

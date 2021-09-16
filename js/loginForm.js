@@ -7,6 +7,7 @@ import {
 } from "@expo-google-fonts/paytone-one";
 import { Roboto_400Regular } from "@expo-google-fonts/roboto";
 import AppLoading from "expo-app-loading";
+import { useEffect, useState } from "react";
 export default function LoginForm() {
   let [fontsLoaded, error] = useFonts({
     Roboto_400Regular,
@@ -15,6 +16,17 @@ export default function LoginForm() {
   if (!fontsLoaded) {
     return <AppLoading />;
   }
+  const URL = "https://itcrowdproject.uqcloud.net/?PET_PHOTO";
+  const [isLoading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch(URL)
+      .then((response) => response.json())
+      .then((json) => setData(json.PID))
+      .catch((error) => alert(error))
+      .finally(setLoading(false));
+  });
   return (
     <View>
       <Text
@@ -32,17 +44,6 @@ export default function LoginForm() {
           alert("Submitted");
           //console.log("submitted");
           alert(values);
-          fetch("https://itcrowdproject.uqcloud.net/?USERS").then((resp) => {
-            const JSON_of_users = resp.json();
-            return JSON_of_users;
-          });
-          for (const key of Object.keys(JSON_of_users)) {
-            console.log(key, JSON_of_users[key]);
-            if ((key = values.username)) {
-              if ((JSON_of_users[key] = values.password)) {
-              }
-            }
-          }
         }}
         // Query database here for users! https://itcrowdproject.uqcloud.net/?USERS search through pair
       >

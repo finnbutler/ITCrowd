@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, Button, NativeBaseProvider, Box, View } from "native-base";
+import { Text, Button, NativeBaseProvider, Box, View, Image } from "native-base";
 
 const QuizScreen = () => {
   return (
@@ -38,47 +38,9 @@ const QuizScreen = () => {
             size={"xl"}
           />
         </View>
-        <View
-          style={{
-            sflex: 1,
-            alignItems: "center",
-            justifyContent: "space-around",
-            flexDirection: "column",
-          }}
-        >
-          <Button
-            mt="2em"
-            padding="1em 5em"
-            borderRadius="30px"
-            backgroundColor="black"
-            onPress={() => navigation.navigate("")}
-            title="Medical help"
-          >
-            Clubbing
-          </Button>
-          <Button
-            mt="2em"
-            padding="1em 5em"
-            borderRadius="30px"
-            backgroundColor="black"
-            onPress={() => navigation.navigate("")}
-            title="Medical help"
-          >
-            At Home
-          </Button>
-          <Button
-            mt="2em"
-            padding="1em 5em"
-            borderRadius="30px"
-            backgroundColor="black"
-            onPress={() => navigation.navigate("")}
-            title="Medical help"
-          >
-            With Friends
-          </Button>
-        </View>
+        
       </NativeBaseProvider>
     </Box>
   );
-};
+}
 export default QuizScreen;
