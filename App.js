@@ -1,469 +1,114 @@
 import * as React from "react";
-import { ImageBackground, View, StyleSheet } from "react-native";
+import { ImageBackground, View } from "react-native";
 import {
   Text,
   Button,
   NativeBaseProvider,
-  Box,
-  Image,
-  Center,
-  Icon,
   extendTheme,
-  VStack,
-  FormControl,
-  Input,
 } from "native-base";
-import { useFormik } from "formik";
+//import { useFormik } from "formik";
 import { Formik } from "formik";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
-import { MaterialIcons } from "@expo/vector-icons";
-import profile from "./assets/pic.jpg";
-import email from "./assets/email (1).png";
-import phone from "./assets/phone-call.png";
-import date from "./assets/date-of-birth.png";
-import location from "./assets/pin.png";
-import background from "./assets/background_pic.jpg";
-import { createGlobalStyle } from "styled-components";
-import LoginForm from "./loginForm";
+import LoginForm from "./js/loginForm.js";
+import SignUpForm from "./js/signupForm.js";
+import Profile from "./js/profile.js";
+import AboutAdopting from "./js/about.js";
 import {
   useFonts,
-  PaytoneOne_400Regular
-} from '@expo-google-fonts/paytone-one'
-import {
-  Roboto_400Regular,
-} from '@expo-google-fonts/roboto'
-import AppLoading from 'expo-app-loading';
+  PaytoneOne_400Regular,
+} from "@expo-google-fonts/paytone-one";
+import { Roboto_400Regular } from "@expo-google-fonts/roboto";
+import AppLoading from "expo-app-loading";
+import background from "./assets/background.jpg"
+import Quiz from "./js/quiz.js";
 function HomeScreen({ navigation }) {
+  // const response = await fetch('/api/names');
+  // const names = await response.json();
+
+  // console.log(names); 
+  // https://itcrowdproject.uqcloud.net/?PET_PHOTO
   let [fontsLoaded, error] = useFonts({
     Roboto_400Regular,
-    PaytoneOne_400Regular
-  })
+    PaytoneOne_400Regular,
+  });
   if (!fontsLoaded) {
-    return <AppLoading />
+    return <AppLoading />;
   }
   return (
-    <ImageBackground source={background} resizeMode="cover" style={{
-          flex: 1,
-          justifyContent: "center",
-          //  opacity: 0.85
-        }}>
+    <ImageBackground
+      source={background}
+      resizeMode="cover"
+      style={{
+        flex: 1,
+        justifyContent: "center",
+      }}
+    >
       <NativeBaseProvider>
-        
-          <View style={{ alignItems: "center", justifyContent: "right", marginRight: "0px" }}>
-          <Text color="white" fontSize="5em" fontFamily='PaytoneOne_400Regular' marginTop="200px">
+        <View
+          style={{
+            alignItems: "flex-end",
+            justifyContent: "flex-end",
+            marginRight: "200px",
+          }}
+        >
+          <Text
+            color="white"
+            fontSize="80"
+            fontFamily="PaytoneOne_400Regular"
+            marginTop="150px"
+            marginRight="50px"
+          >
             Purrrfect Pets!{" "}
           </Text>
-          
-            <Button
-              mt="2em"
-              mraginTop= "500px"
-              padding="1em 6em"
-              borderRadius="30px"
-              backgroundColor="#07DAC0"
-              fontFamily='Roboto_400Regular'
-              onPress={() => navigation.navigate("Login")}
-              title="Login In!"
-            >
-              Login In
-            </Button>
-            <Button
-              mt="2em"
-              padding="1em 6em"
-              borderRadius="30px"
-              backgroundColor="#07DAC0"
-              onPress={() => navigation.navigate("Sign Up")}
-              title="Login In!"
-            >
-              Sign Up
-            </Button>
-          </View>
-      </NativeBaseProvider>
-      </ImageBackground>
-
-    // </Box>
-  );
-}
-
-function SignUpScreen({ navigation }) {
-  return (
-    <Box bg="lightpink.500" height="100%">
-      <NativeBaseProvider>
-        <View style={{ flex: 1, justifyContent: "center" }}>
-          <Text color="lightblue.500" mt="2em" fontSize="2em">
-            Hello! Please tell us a bit about yourself!
+          <Text color="white" fontSize="30" paddingTop="10" textAlign='center' marginRight="120px" fontFamily='PaytoneOne_400Regular' flexShrink="1">
+            Match with and adopt a pet {"\n"}that is most suitable for you
           </Text>
-          <VStack width="90%" mx={3}>
-            <FormControl isRequired>
-              <FormControl.Label _text={{ bold: true }}>
-                First Name
-              </FormControl.Label>
-              <Input
-                placeholder="John"
-                onChangeText={(value) => setData({ ...formData, name: value })}
-              />
-              <FormControl.HelperText _text={{ fontSize: "xs" }}>
-                Name should contain atleast 3 character.
-              </FormControl.HelperText>
-              <FormControl.ErrorMessage _text={{ fontSize: "xs" }}>
-                Error Name
-              </FormControl.ErrorMessage>
-            </FormControl>
-          </VStack>
-          <VStack width="90%" mx={3}>
-            <FormControl isRequired>
-              <FormControl.Label _text={{ bold: true }}>
-                Last Name
-              </FormControl.Label>
-              <Input
-                placeholder="Smith"
-                onChangeText={(value) => setData({ ...formData, name: value })}
-              />
-              <FormControl.HelperText _text={{ fontSize: "xs" }}>
-                Name should contain atleast 3 character.
-              </FormControl.HelperText>
-              <FormControl.ErrorMessage _text={{ fontSize: "xs" }}>
-                Error Name
-              </FormControl.ErrorMessage>
-            </FormControl>
-          </VStack>
-          <VStack width="90%" mx={3}>
-            <FormControl isRequired>
-              <FormControl.Label _text={{ bold: true }}>
-                Date Of Birth
-              </FormControl.Label>
-              <Input
-                placeholder="John"
-                onChangeText={(value) => setData({ ...formData, name: value })}
-              />
-              <FormControl.HelperText _text={{ fontSize: "xs" }}>
-                Name should contain atleast 3 character.
-              </FormControl.HelperText>
-              <FormControl.ErrorMessage _text={{ fontSize: "xs" }}>
-                Error Name
-              </FormControl.ErrorMessage>
-            </FormControl>
-          </VStack>
-          <VStack width="90%" mx={3}>
-            <FormControl isRequired>
-              <FormControl.Label _text={{ bold: true }}>
-                Phone
-              </FormControl.Label>
-              <Input
-                placeholder="John"
-                onChangeText={(value) => setData({ ...formData, name: value })}
-              />
-              <FormControl.HelperText _text={{ fontSize: "xs" }}>
-                Name should contain atleast 3 character.
-              </FormControl.HelperText>
-              <FormControl.ErrorMessage _text={{ fontSize: "xs" }}>
-                Error Name
-              </FormControl.ErrorMessage>
-            </FormControl>
-          </VStack>
-          <VStack width="90%" mx={3}>
-            <FormControl isRequired>
-              <FormControl.Label _text={{ bold: true }}>Name</FormControl.Label>
-              <Input
-                placeholder="John"
-                onChangeText={(value) => setData({ ...formData, name: value })}
-              />
-              <FormControl.HelperText _text={{ fontSize: "xs" }}>
-                Name should contain atleast 3 character.
-              </FormControl.HelperText>
-              <FormControl.ErrorMessage _text={{ fontSize: "xs" }}>
-                Error Name
-              </FormControl.ErrorMessage>
-            </FormControl>
-          </VStack>
-          <VStack width="90%" mx={3}>
-            <FormControl isRequired>
-              <FormControl.Label _text={{ bold: true }}>City</FormControl.Label>
-              <Input
-                placeholder="John"
-                onChangeText={(value) => setData({ ...formData, name: value })}
-              />
-              <FormControl.HelperText _text={{ fontSize: "xs" }}>
-                Name should contain atleast 3 character.
-              </FormControl.HelperText>
-              <FormControl.ErrorMessage _text={{ fontSize: "xs" }}>
-                Error Name
-              </FormControl.ErrorMessage>
-            </FormControl>
-          </VStack>
+          <Button
+            mt="2em"
+            mraginTop="500px"
+            padding="25px 150px"
+            borderRadius="30px"
+            backgroundColor="#f1c737"
+            marginRight="150px"
+            fontFamily="Roboto_400Regular"
+            onPress={() => navigation.navigate("Login")}
+            title="Login In!"
+          >
+            <Text color="#545871" fontFamily='Roboto_400Regular'>Login In </Text>
+          </Button>
+          <Button
+            mt="2em"
+            padding="25px 150px"
+            borderRadius="30px"
+            marginRight="150px"
+            backgroundColor="#f1c737"
+            onPress={() => navigation.navigate("Sign Up")}
+            title="Sign up"
+          >
+            <Text color="#545871" fontFamily='Roboto_400Regular'>Sign Up</Text>
+          </Button>
         </View>
       </NativeBaseProvider>
-    </Box>
-  );
+    </ImageBackground>
+  )}
+
+function SignUpScreen({ navigation }) {
+  return <SignUpForm />;
 }
 function LogInScreen({ navigation }) {
   return <LoginForm />;
 }
 
 function ProfileScreen({ navigation }) {
-  let [fontsLoaded, error] = useFonts({
-    Roboto_400Regular,
-    PaytoneOne_400Regular
-  })
-  if (!fontsLoaded) {
-    return <AppLoading />
-  }
-  return (
-    <NativeBaseProvider>
-      <View style={styles.container}>
-        <View style={styles.logo}>
-          <Image
-            source={profile}
-            style={{
-              width: 300,
-              height: 300,
-              borderRadius: 150,
-              marginLeft: "auto",
-              marginRight: "auto",
-            }}
-          />
-          <Text style={styles.heading}>John Doe, 22</Text>
-          <Text style={styles.heading}>A University Student</Text>
-        </View>
-
-        <View style={styles.profile}>
-          <View style={styles.info}>
-            <Image
-              source={email}
-              style={{ width: 50, height: 50, marginRight: 50 }}
-            />
-            <Text style={styles.paragraph}>
-              Email Address{"\n"}johndoe@gmail.com
-            </Text>
-          </View>
-          <View style={styles.info}>
-            <Image
-              source={phone}
-              style={{ width: 50, height: 50, marginRight: 50 }}
-            />
-            <Text style={styles.paragraph}>Phone Number{"\n"}0412356700</Text>
-          </View>
-
-          <View style={styles.info}>
-            <Image
-              source={date}
-              style={{ width: 50, height: 50, marginRight: 50 }}
-            />
-            <Text style={styles.paragraph}>Date of Birth{"\n"}04/08/2002</Text>
-          </View>
-
-          <View style={styles.info}>
-            <Image
-              source={location}
-              style={{ width: 50, height: 50, marginRight: 50 }}
-            />
-            <Text style={styles.paragraph}>Postcode{"\n"}4067</Text>
-          </View>
-        </View>
-      </View>
-    </NativeBaseProvider>
-  );
+  return <Profile />;
 }
-const styles = StyleSheet.create({
-  logo: {
-    paddingTop: 20,
-    justifyContent: 'center',
-    backgroundColor: '#60BEEB',
-    width: window.width,
-    paddingBottom: 20,
 
-  },
-  container: {
-    textAlign: 'center',
-  },
-  heading: {
-    fontFamily: 'PaytoneOne_400Regular',
-    color: '#FFFFFF',
-    paddingTop: 25,
-    fontSize: 20,
-  },
-  paragraph: {
-    fontSize: 17,
-  },
-  profile: {
-    backgroundColor: '#ffffff',
-    alignItems: 'center',
-    justifyContent: 'left',
-  },
-  info: {
-    fontFamily: 'Roboto_400Regular',
-    flexDirection: 'row',
-    textAlign: 'left',
-    padding: 30,
-    width: 700,
-    marginTop: 30,
-    borderWidth: 3,
-    borderRadius: 10,
-    borderColor: '#89CFF0',
-  },
-});
 function AboutAdpoting({ navigation }) {
-  return (
-    <Box
-      bg="darkblue.500"
-      color="lightblue.500"
-      height="100%"
-      overflowY="hidden"
-    >
-      <NativeBaseProvider>
-        <View
-          style={{ sflex: 1, alignItems: "center", justifyContent: "center" }}
-        >
-          <Text color="white" mt="2em" fontSize="3em">
-            Let's learn about adopting!
-          </Text>
-          <Button
-            mt="2em"
-            padding="1em 5em"
-            borderRadius="30px"
-            backgroundColor="black"
-            onPress={() => navigation.navigate("")}
-            title="Understanding requirements"
-          >
-            Understanding requirements
-          </Button>
-
-          <Button
-            mt="2em"
-            padding="1em 5em"
-            borderRadius="30px"
-            backgroundColor="black"
-            onPress={() => navigation.navigate("")}
-            title="What to expect"
-          >
-            What to expect
-          </Button>
-
-          <Button
-            mt="2em"
-            padding="1em 5em"
-            borderRadius="30px"
-            backgroundColor="black"
-            onPress={() => navigation.navigate("")}
-            title="Emergencies"
-          >
-            Emergencies
-          </Button>
-          <Button
-            mt="2em"
-            padding="1em 5em"
-            borderRadius="30px"
-            backgroundColor="black"
-            onPress={() => navigation.navigate("")}
-            title="How to train"
-          >
-            How to train
-          </Button>
-
-          <Button
-            mt="2em"
-            padding="1em 5em"
-            borderRadius="30px"
-            backgroundColor="black"
-            onPress={() => navigation.navigate("")}
-            title="Medical help"
-          >
-            Medical help
-          </Button>
-          <Button
-            mt="2em"
-            padding="1em 5em"
-            borderRadius="30px"
-            backgroundColor="black"
-            onPress={() => navigation.navigate("")}
-            title="Community support"
-          >
-            Community support
-          </Button>
-        </View>
-      </NativeBaseProvider>
-    </Box>
-  );
+  return <AboutAdopting />;
 }
-function Quiz({ navigation }) {
-  return (
-    <Box bg="darkblue.500" height="100%">
-      <NativeBaseProvider>
-        <Text color="white" textAlign="center" mt="1.5em" fontSize="3em">
-          Purrrfect Match Game{" "}
-        </Text>
-        <View
-          style={{
-            sflex: 1,
-            alignItems: "center",
-            justifyContent: "center",
-            flexDirection: "row",
-          }}
-        >
-          <Image
-            source={{
-              uri: "https://wallpaperaccess.com/full/317501.jpg",
-            }}
-            alt="Alternate Text"
-            size={"xl"}
-          />
-          <Image
-            source={{
-              uri: "https://wallpaperaccess.com/full/317501.jpg",
-            }}
-            alt="Alternate Text"
-            size={"xl"}
-          />
-          <Image
-            source={{
-              uri: "https://wallpaperaccess.com/full/317501.jpg",
-            }}
-            alt="Alternate Text"
-            size={"xl"}
-          />
-        </View>
-        <View
-          style={{
-            sflex: 1,
-            alignItems: "center",
-            justifyContent: "space-around",
-            flexDirection: "column",
-          }}
-        >
-          <Button
-            mt="2em"
-            padding="1em 5em"
-            borderRadius="30px"
-            backgroundColor="black"
-            onPress={() => navigation.navigate("")}
-            title="Medical help"
-          >
-            Clubbing
-          </Button>
-          <Button
-            mt="2em"
-            padding="1em 5em"
-            borderRadius="30px"
-            backgroundColor="black"
-            onPress={() => navigation.navigate("")}
-            title="Medical help"
-          >
-            At Home
-          </Button>
-          <Button
-            mt="2em"
-            padding="1em 5em"
-            borderRadius="30px"
-            backgroundColor="black"
-            onPress={() => navigation.navigate("")}
-            title="Medical help"
-          >
-            With Friends
-          </Button>
-        </View>
-      </NativeBaseProvider>
-    </Box>
-  );
+function QuizScreen({ navigation }) {
+  return <Quiz />;
 }
 
 const Drawer = createDrawerNavigator();
@@ -513,7 +158,7 @@ export default function App() {
           <Drawer.Screen name="Log In" component={LogInScreen} />
           <Drawer.Screen name="Profile" component={ProfileScreen} />
           <Drawer.Screen name="About Adopting" component={AboutAdpoting} />
-          <Drawer.Screen name="Quiz" component={Quiz} />
+          <Drawer.Screen name="Quiz" component={QuizScreen} />
         </Drawer.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
