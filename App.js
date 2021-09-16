@@ -13,6 +13,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import LoginForm from "./js/loginForm.js";
 import SignUpForm from "./js/signupForm.js";
 import Profile from "./js/profile.js";
+import Test from "./js/test.js";
 import AboutAdopting from "./js/about.js";
 import {
   useFonts,
@@ -110,6 +111,9 @@ function AboutAdpoting({ navigation }) {
 function QuizScreen({ navigation }) {
   return <Quiz />;
 }
+function TestScreen({ navigation }) {
+  return <Test />;
+}
 
 const Drawer = createDrawerNavigator();
 
@@ -155,10 +159,11 @@ export default function App() {
         <Drawer.Navigator initialRouteName="Home">
           <Drawer.Screen name="Home" component={HomeScreen} />
           <Drawer.Screen name="Sign Up" component={SignUpScreen} />
-          <Drawer.Screen name="Log In" component={LogInScreen} />
+          <Drawer.Screen name="Login" component={LogInScreen} />
           <Drawer.Screen name="Profile" component={ProfileScreen} />
           <Drawer.Screen name="About Adopting" component={AboutAdpoting} />
           <Drawer.Screen name="Quiz" component={QuizScreen} />
+          <Drawer.Screen name="Test" component={TestScreen} />
         </Drawer.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
