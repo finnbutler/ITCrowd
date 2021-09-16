@@ -3,10 +3,12 @@ import { Text, StyleSheet, View } from "react-native";
 import { NativeBaseProvider, Image } from "native-base";
 import {
   useFonts,
-  PaytoneOne_400Regular,
-} from "@expo-google-fonts/paytone-one";
-import { Roboto_400Regular } from "@expo-google-fonts/roboto";
-import AppLoading from "expo-app-loading";
+  PaytoneOne_400Regular
+} from '@expo-google-fonts/paytone-one'
+import {
+  Roboto_400Regular,
+} from '@expo-google-fonts/roboto'
+import AppLoading from 'expo-app-loading';
 import profile from "../assets/pic.jpg";
 import email from "../assets/email (1).png";
 import phone from "../assets/phone-call.png";
