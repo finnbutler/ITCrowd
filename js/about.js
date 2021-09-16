@@ -24,7 +24,7 @@ const AboutAdopting = () => {
 
     <NativeBaseProvider>
       <View style={styles.box}>
-        <Text >This is the about adopting page</Text>
+        <Text >This is the about adopting page if this box shows in main, haram branch successfully merged</Text>
       </View>
         <View style={styles.profile} > 
       
