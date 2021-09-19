@@ -1,5 +1,14 @@
 import React from "react";
-import { Text, Button, NativeBaseProvider, Box, View, Image } from "native-base";
+import {
+  Text,
+  Button,
+  NativeBaseProvider,
+  Box,
+  View,
+  Image,
+  ButtonGroup,
+  StatusBar,
+} from "native-base";
 
 const QuizScreen = () => {
   return (
@@ -7,6 +16,15 @@ const QuizScreen = () => {
       <NativeBaseProvider>
         <Text color="white" textAlign="center" mt="1.5em" fontSize="3em">
           Purrrfect Match Game{" "}
+        </Text>
+        <Text
+          color="white"
+          textAlign="center"
+          mb="1.5em"
+          mt="1.5em"
+          fontSize="3em"
+        >
+          [Insert Random Question from database here]
         </Text>
         <View
           style={{
@@ -16,31 +34,39 @@ const QuizScreen = () => {
             flexDirection: "row",
           }}
         >
-          <Image
-            source={{
-              uri: "https://wallpaperaccess.com/full/317501.jpg",
+          <Button
+            colorScheme="green"
+            _text={{
+              color: "white",
             }}
-            alt="Alternate Text"
-            size={"xl"}
-          />
-          <Image
-            source={{
-              uri: "https://wallpaperaccess.com/full/317501.jpg",
+            mr="2em"
+            onPress={() => console.log("hello world")}
+          >
+            Yes
+          </Button>
+          <Button
+            colorScheme="danger"
+            _text={{
+              color: "white",
             }}
-            alt="Alternate Text"
-            size={"xl"}
-          />
-          <Image
-            source={{
-              uri: "https://wallpaperaccess.com/full/317501.jpg",
-            }}
-            alt="Alternate Text"
-            size={"xl"}
-          />
+            onPress={() => console.log("hello world")}
+          >
+            No
+          </Button>
         </View>
-        
+        <Text
+          color="white"
+          textAlign="left"
+          mb="1.5em"
+          mt="1.5em"
+          fontSize="3em"
+          pl="1em"
+        >
+          Your Pets
+        </Text>
+        <StatusBar></StatusBar>
       </NativeBaseProvider>
     </Box>
   );
-}
+};
 export default QuizScreen;
