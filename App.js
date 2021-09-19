@@ -54,7 +54,7 @@ function HomeScreen({ navigation }) {
           style={{
             alignItems: "flex-end",
             justifyContent: "flex-end",
-            marginRight: "200px",
+            marginLeft: "25em",
           }}
         >
           <Text
