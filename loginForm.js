@@ -1,6 +1,5 @@
 import React from "react";
 import { Formik } from "formik";
-import { View, TextInput, Button } from "react-native";
 
 export default function LoginForm() {
   return (
@@ -22,7 +21,6 @@ export default function LoginForm() {
               value={props.values.password}
             />
             <Button
-              padding="2em"
               title="submit"
               color="lightpink"
               onPreess={props.handleSubmit}
@@ -32,4 +30,18 @@ export default function LoginForm() {
       </Formik>
     </View>
   );
+}
+function validateForm() {
+  //Add Spring Boot Validation Logic in here
+  const getMoviesFromApi = () => {
+    return fetch("https://reactnative.dev/movies.json")
+      .then((response) => response.json())
+      .then((json) => {
+        return json.movies;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+  const pass_and_user = JSON.stringify(getMoviesFromApi);
 }
