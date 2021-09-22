@@ -27,6 +27,9 @@ import AppLoading from "expo-app-loading";
 import background from "./assets/background.jpg";
 import Quiz from "./js/quiz.js";
 import Test from "./js/test";
+import Train from "./js/train.js";
+
+
 function HomeScreen({ navigation }) {
   // const response = await fetch('/api/names');
   // const names = await response.json();
@@ -131,6 +134,9 @@ function QuizScreen({ navigation }) {
 function TestScreen({ navigation }) {
   return <Test />;
 }
+function TestTrain({ navigation }) {
+  return <Train />;
+}
 
 const Drawer = createDrawerNavigator();
 
@@ -181,6 +187,7 @@ export default function App() {
           <Drawer.Screen name="About Adopting" component={AboutAdpoting} />
           <Drawer.Screen name="Quiz" component={QuizScreen} />
           <Drawer.Screen name="Test" component={TestScreen} />
+          <Drawer.Screen name="Train" component={TestTrain} />
         </Drawer.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
