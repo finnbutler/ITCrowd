@@ -11,26 +11,31 @@ const Test = () => {
   useEffect(() => {
     fetch(URL)
       .then((response) => response.json())
-      .then((json) => setData(json.PID))
+      .then((json) => setData(json))
       .catch((error) => alert(error))
+      //.alert(data)
       .finally(setLoading(false));
   });
-
+  //alert(data);
+  alert(setData);
   return (
+    // <SafeAreaView>
+    //   {isLoading ? (
+    //     <ActivityIndicator />
+    //   ) : (
+    //     <FlatList
+    //   data={data.PID}
+    //   keyExtractor={({ id }, index) => id}
+    //   renderItem={({ item }) => <Text>{item}</Text>}
+    // />
 
-    <SafeAreaView>
-      {isLoading ? (
-        <ActivityIndicator />
-      ) : (
-        <FlatList
-          data={data}
-          keyExtractor={({ id }, index) => id}
-          renderItem={({ item }) => <Text>{item.PID}</Text>}
-        />
-
-      )}
-    </SafeAreaView>
-        
+    // )}
+    <View>
+      {" "}
+      TESTS
+      <Text>{data[0]}</Text>
+    </View>
+    // {/* </SafeAreaView> */}
   );
 };
 export default Test;

@@ -1,54 +1,37 @@
-import React from "react";
-import { Formik } from "formik";
-import { useEffect, useState } from "react";
-import { View, TextInput, Button } from "react-native";
-const URL = "https://itcrowdproject.uqcloud.net/?ACCOUNTS";
-export default function SignUpForm() {
-  const [isLoading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
+import React, { useState, useEffect } from "react";
+import { View, Text } from "react-native";
+import auth from "@react-native-firebase/auth";
+
+function App() {
+  // Set an initializing state whilst Firebase connects
+  const [initializing, setInitializing] = useState(true);
+  const [user, setUser] = useState();
+
+  // Handle user state changes
+  function onAuthStateChanged(user) {
+    setUser(user);
+    if (initializing) setInitializing(false);
+  }
 
   useEffect(() => {
-    fetch(URL)
-      .then((response) => response.json())
-      .then((json) => setData(json.PID))
-      .catch((error) => alert(error))
-      .finally(setLoading(false));
-  });
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber; // unsubscribe on unmount
+  }, []);
+
+  if (initializing) return null;
+
+  if (!user) {
+    return (
+      <View>
+        <Text>Login</Text>
+      </View>
+    );
+  }
 
   return (
     <View>
-      <Formik
-        initialValues={{ username: "", password: "" }}
-        onSubmit={(values) => {}}
-      >
-        {(props) => (
-          <View>
-            <TextInput
-              placeholder="Username"
-              pb="2em"
-              pt="5em"
-              onChangeText={props.handleChange("username")}
-              value={props.values.username}
-            />
-            <TextInput
-              placeholder="Password"
-              pb="2em"
-              pt="5em"
-              onChangeText={props.handleChange("password")}
-              value={props.values.password}
-            />
-            <Button
-              title="submit"
-              color="lightpink"
-              pb="2em"
-              pt="5em"
-              onPreess={props.handleSubmit}
-            />
-          </View>
-        )}
-      </Formik>
+      <Text>Welcome {user.email}</Text>
     </View>
   );
 }
-
-//export default SignUpForm;
+export default App;
