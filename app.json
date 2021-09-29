@@ -13,11 +13,12 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
-
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
@@ -25,15 +26,7 @@
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png",
-      "config": {
-        "firebase": {
-          "appId": "1:372766421375:web:e092a8c4883270628a6a4a",
-          "apiKey": "AIzaSyAXqjPWQ5FBL5Ere2yBCafdvXPwQS6llSM",
-          "projectId": "deco3801-91e98",
-          "measurementId": "G-YEQ5SF31WE"
-        }
-      }
+      "favicon": "./assets/favicon.png"
     }
   }
 }
