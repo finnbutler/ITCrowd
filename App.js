@@ -6,7 +6,6 @@ import {
   Button,
   NativeBaseProvider,
   extendTheme,
-  Input,
 } from "native-base";
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
