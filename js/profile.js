@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageBackground,Text, StyleSheet, View, TouchableOpacity } from 'react-native';
+import { ImageBackground,Text, StyleSheet, View, TouchableOpacity, ScrollView} from 'react-native';
 import { NativeBaseProvider, Image} from "native-base";
 import {
   useFonts,
@@ -14,6 +14,7 @@ import email from "../assets/email (1).png";
 import phone from "../assets/phone-call.png";
 import date from "../assets/date-of-birth.png";
 import location from "../assets/pin.png";
+import logo from "../assets/Logo.jpg";
 
 const ProfileScreen = () => {
 
@@ -25,20 +26,21 @@ if (!fontsLoaded) {
   return <AppLoading />
 }
 return (
-  <NativeBaseProvider>
+  <ScrollView>
+    <NativeBaseProvider>
+    <View style={{ width: 'auto', height: 83, backgroundColor: 'white', alignItems:'center', paddingTop: 23}}>
+          <Image source={logo} style={{ width: 65, height: 58}} alt="logo_image"/>
+    </View>
+  
       <View style={styles.logo}>
-      <ImageBackground
-      source={profile}
-      resizeMode="cover"
-      imageStyle= 
-{{opacity:0.5}}
+      <ImageBackground source={profile} resizeMode="cover" style={{opacity:0.5}} alt="background_image"
       >
         <Image
           source={profile}
           alt="logo"
           style={{
-            width: 300,
-            height: 300,
+            width: 120,
+            height: 120,
             borderRadius: 150,
             marginLeft: "auto",
             marginRight: "auto",
@@ -59,7 +61,8 @@ return (
         <View style={styles.info}>
           <Image
             source={email}
-            style={{ width: 50, height: 50, marginRight: 100 }}
+            style={{ width: 25, height: 25, marginRight: 40 }}
+            alt="email.icon"
           />
           <Text style={styles.paragraph}>
             Email Address{"\n"}johndoe@gmail.com
@@ -68,27 +71,31 @@ return (
         <View style={styles.info}>
           <Image
             source={phone}
-            style={{ width: 50, height: 50, marginRight: 100}}
+            style={{ width: 25, height: 25, marginRight: 40}}
+            alt="phone_icon"
           />
           <Text style={styles.paragraph}>Phone Number{"\n"}0412356700</Text>
         </View>
         <View style={styles.info}>
           <Image
             source={date}
-            style={{ width: 50, height: 50, marginRight: 100}}
+            style={{ width: 25, height: 25, marginRight: 40}}
+            alt="date_icon"
           />
           <Text style={styles.paragraph}>Date of Birth{"\n"}04/08/2002</Text>
         </View>
         <View style={styles.info}>
           <Image
             source={location}
-            style={{ width: 50, height: 50, marginRight: 100}}
+            style={{ width: 25, height: 25, marginRight: 40}}
+            alt="location_icon"
           />
           <Text style={styles.paragraph}>Postcode{"\n"}4067</Text>
         </View>
       </View>
       </View>
   </NativeBaseProvider>
+  </ScrollView>
 );
 }
 const styles = StyleSheet.create({
@@ -102,13 +109,13 @@ heading: {
   textAlign: 'center',
   fontFamily: 'PaytoneOne_400Regular',
   color: 'white',
-  paddingTop: 25,
-  fontSize: 25,
-  marginBottom: 30,
+  paddingTop: 15,
+  fontSize: 16,
+  marginBottom: 15,
 },
 paragraph: {
   textAlign: 'left',
-  fontSize: 20,
+  fontSize: 14,
   color: '#545871',
 },
 profile: {
@@ -121,7 +128,7 @@ info: {
   fontFamily: 'Roboto_400Regular',
   flexDirection: 'row',
   padding: 30,
-  width: 700,
+  width: 290,
   borderBottomWidth: 2,
   borderBottomColor: '#e8e9ed',
   backgroundColor: '#ffffff',
