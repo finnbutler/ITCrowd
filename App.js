@@ -5,6 +5,7 @@ import {
   Button,
   NativeBaseProvider,
   extendTheme,
+  Input,
 } from "native-base";
 //import { useFormik } from "formik";
 import { Formik } from "formik";
@@ -21,13 +22,19 @@ import {
 } from "@expo-google-fonts/paytone-one";
 import { Roboto_400Regular } from "@expo-google-fonts/roboto";
 import AppLoading from "expo-app-loading";
-import background from "./assets/background.jpg"
+import background from "./assets/background.jpg";
 import Quiz from "./js/quiz.js";
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import Firebase from "./config/firebase";
+
+// TODO: Replace the following with your app's Firebase project configuration
+const auth = Firebase.auth();
 function HomeScreen({ navigation }) {
   // const response = await fetch('/api/names');
   // const names = await response.json();
 
-  // console.log(names); 
+  // console.log(names);
   // https://itcrowdproject.uqcloud.net/?PET_PHOTO
   let [fontsLoaded, error] = useFonts({
     Roboto_400Regular,
@@ -92,7 +99,112 @@ function HomeScreen({ navigation }) {
         </View>
       </NativeBaseProvider>
     </ImageBackground>
-  )}
+  );*/
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordVisibility, setPasswordVisibility] = useState(true);
+  const [rightIcon, setRightIcon] = useState("eye");
+  const [loginError, setLoginError] = useState("");
+
+  const handlePasswordVisibility = () => {
+    if (rightIcon === "eye") {
+      setRightIcon("eye-off");
+      setPasswordVisibility(!passwordVisibility);
+    } else if (rightIcon === "eye-off") {
+      setRightIcon("eye");
+      setPasswordVisibility(!passwordVisibility);
+    }
+  };
+
+  const onLogin = async () => {
+    try {
+      if (email !== "" && password !== "") {
+        await auth.signInWithEmailAndPassword(email, password);
+        alert("Correctly logedin");
+      }
+    } catch (error) {
+      alert("ERROR!");
+      setLoginError(error.message);
+    }
+  };
+  const unsubscribeAuth = auth.onAuthStateChanged(async (authenticatedUser) => {
+    try {
+      await (authenticatedUser ? setUser(authenticatedUser) : setUser(null));
+      return <ProfileScreen></ProfileScreen>;
+    } catch (error) {
+      console.log(error);
+    }
+  });
+  return (
+    <NativeBaseProvider>
+      <View>
+        <StatusBar style="dark-content" />
+        <Text>Login</Text>
+        <Input
+          inputStyle={{
+            fontSize: 14,
+          }}
+          containerStyle={{
+            backgroundColor: "#fff",
+            marginBottom: 20,
+          }}
+          leftIcon="email"
+          placeholder="Enter email"
+          autoCapitalize="none"
+          keyboardType="email-address"
+          textContentType="emailAddress"
+          autoFocus={true}
+          value={email}
+          onChangeText={(text) => setEmail(text)}
+        />
+        <Input
+          inputStyle={{
+            fontSize: 14,
+          }}
+          containerStyle={{
+            backgroundColor: "#fff",
+            marginBottom: 20,
+          }}
+          leftIcon="lock"
+          placeholder="Enter password"
+          autoCapitalize="none"
+          autoCorrect={false}
+          secureTextEntry={passwordVisibility}
+          textContentType="password"
+          rightIcon={rightIcon}
+          value={password}
+          onChangeText={(text) => setPassword(text)}
+          handlePasswordVisibility={handlePasswordVisibility}
+        />
+        <Button
+          onPress={onLogin}
+          backgroundColor="#f57c00"
+          title="Login"
+          tileColor="#fff"
+          titleSize={20}
+          containerStyle={{
+            marginBottom: 24,
+          }}
+        >
+          {" "}
+          <Text color="#545871" fontFamily="Roboto_400Regular">
+            Login In
+          </Text>
+        </Button>
+        <Button
+          onPress={() => navigation.navigate("Signup")}
+          text="Go to Signup"
+          color="#fff"
+        >
+          {" "}
+          <Text color="#545871" fontFamily="Roboto_400Regular">
+            Sign Up
+          </Text>
+        </Button>
+      </View>
+    </NativeBaseProvider>
+  );
+}
 
 function SignUpScreen({ navigation }) {
   return <SignUpForm />;
@@ -154,18 +266,40 @@ export default function App() {
     },
   });
   return (
-    <NativeBaseProvider theme={theme}>
-      <NavigationContainer>
-        <Drawer.Navigator initialRouteName="Home">
-          <Drawer.Screen name="Home" component={HomeScreen} />
-          <Drawer.Screen name="Sign Up" component={SignUpScreen} />
-          <Drawer.Screen name="Login" component={LogInScreen} />
-          <Drawer.Screen name="Profile" component={ProfileScreen} />
-          <Drawer.Screen name="About Adopting" component={AboutAdpoting} />
-          <Drawer.Screen name="Quiz" component={QuizScreen} />
-          <Drawer.Screen name="Test" component={TestScreen} />
-        </Drawer.Navigator>
-      </NavigationContainer>
-    </NativeBaseProvider>
+    <NavigationContainer>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
+
+            if (route.name === "Home") {
+              iconName = focused
+                ? "ios-information-circle"
+                : "ios-information-circle-outline";
+            }
+            if (route.name === "Quiz") {
+              iconName = focused ? "ios-list-box" : "ios-list";
+            }
+            if (route.name === "AboutAdopting") {
+              iconName = focused ? "ios-pet" : "ios-pet";
+            }
+            if (route.name === "Profile") {
+              iconName = focused ? "ios-account" : "ios-list";
+            }
+
+            // You can return any component that you like here!
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+          tabBarActiveTintColor: "tomato",
+          tabBarInactiveTintColor: "gray",
+        })}
+      >
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Quiz" component={QuizScreen} />
+        <Tab.Screen name="About Adopting" component={AboutAdpoting} />
+        <Tab.Screen name="Profile" component={ProfileScreen} />
+        <Tab.Screen name="Sign Page" component={SignUpScreen} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
