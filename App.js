@@ -5,6 +5,7 @@ import {
   Button,
   NativeBaseProvider,
   extendTheme,
+  Input,
 } from "native-base";
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
@@ -24,9 +25,8 @@ import {
 } from "@expo-google-fonts/paytone-one";
 import { Roboto_400Regular } from "@expo-google-fonts/roboto";
 import AppLoading from "expo-app-loading";
-import background from "./assets/background.jpg"
+import background from "./assets/background.jpg";
 import Quiz from "./js/quiz.js";
-import Test from "./js/test";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import Firebase from "./config/firebase";
@@ -37,7 +37,7 @@ function HomeScreen({ navigation }) {
   // const response = await fetch('/api/names');
   // const names = await response.json();
 
-  // console.log(names); 
+  // console.log(names);
   // https://itcrowdproject.uqcloud.net/?PET_PHOTO
   /* let [fontsLoaded, error] = useFonts({
     Roboto_400Regular,

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text } from "react-native";
+import { View, Text, Input } from "react-native";
 import auth from "@react-native-firebase/auth";
 
 function App() {
@@ -27,12 +27,6 @@ function App() {
       </View>
     );
   }
-
-const SignUpForm = () => {
-  return (
-    <View>
-      <Text>Welcome {user.email}</Text>
-    </View>
-  )
 }
+
 export default App;
