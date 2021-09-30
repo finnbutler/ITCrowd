@@ -1,6 +1,7 @@
 import * as React from "react";
-import { ImageBackground, View } from "react-native";
+import { ImageBackground, View, Image, ScrollView } from "react-native";
 import {
+  Input,
   Text,
   Button,
   NativeBaseProvider,
@@ -8,7 +9,7 @@ import {
 } from "native-base";
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, AntDesign } from "@expo/vector-icons";
 //import { useFormik } from "formik";
 import { Formik } from "formik";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -16,8 +17,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import LoginForm from "./js/loginForm.js";
 import SignUpForm from "./js/signupForm.js";
 import Profile from "./js/profile.js";
-import Test from "./js/test.js";
-import AboutAdopting from "./js/about.js";
+import Adopting from "./js/about.js";
 import {
   useFonts,
   PaytoneOne_400Regular,
@@ -26,14 +26,15 @@ import { Roboto_400Regular } from "@expo-google-fonts/roboto";
 import AppLoading from "expo-app-loading";
 import background from "./assets/background.jpg"
 import Quiz from "./js/quiz.js";
-import Test from "./js/test";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import Firebase from "./config/firebase";
+import logo from "./assets/Logo.jpg";
 
 // TODO: Replace the following with your app's Firebase project configuration
 const auth = Firebase.auth();
 function HomeScreen({ navigation }) {
+  
   // const response = await fetch('/api/names');
   // const names = await response.json();
 
@@ -123,6 +124,7 @@ function HomeScreen({ navigation }) {
     try {
       if (email !== "" && password !== "") {
         await auth.signInWithEmailAndPassword(email, password);
+        alert("Login Correct!");
       }
     } catch (error) {
       alert("ERROR!");
@@ -137,96 +139,140 @@ function HomeScreen({ navigation }) {
       console.log(error);
     }
   });
+
+  let [fontsLoaded, error] = useFonts({
+    Roboto_400Regular,
+    PaytoneOne_400Regular,
+  });
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
   return (
-    <NativeBaseProvider>
-      <View>
-        <StatusBar style="dark-content" />
-        <Text>Login</Text>
-        <Input
-          inputStyle={{
-            fontSize: 14,
-          }}
-          containerStyle={{
-            backgroundColor: "#fff",
-            marginBottom: 20,
-          }}
-          leftIcon="email"
-          placeholder="Enter email"
-          autoCapitalize="none"
-          keyboardType="email-address"
-          textContentType="emailAddress"
-          autoFocus={true}
-          value={email}
-          onChangeText={(text) => setEmail(text)}
-        />
-        <Input
-          inputStyle={{
-            fontSize: 14,
-          }}
-          containerStyle={{
-            backgroundColor: "#fff",
-            marginBottom: 20,
-          }}
-          leftIcon="lock"
-          placeholder="Enter password"
-          autoCapitalize="none"
-          autoCorrect={false}
-          secureTextEntry={passwordVisibility}
-          textContentType="password"
-          rightIcon={rightIcon}
-          value={password}
-          onChangeText={(text) => setPassword(text)}
-          handlePasswordVisibility={handlePasswordVisibility}
-        />
-        <Button
-          onPress={onLogin}
-          backgroundColor="#f57c00"
-          title="Login"
-          tileColor="#fff"
-          titleSize={20}
-          containerStyle={{
-            marginBottom: 24,
-          }}
+    <ScrollView>
+      <NativeBaseProvider>
+      <View style={{ width: 'auto', height: 83, backgroundColor: 'white', alignItems:'center', paddingTop: 23}}>
+          <Image source={logo} style={{ width: 65, height: 58}} alt="logo_image"/>
+        </View>
+    <ImageBackground
+      source={background}
+      resizeMode="cover"
+      style={{
+        flex: 1,
+        justifyContent: "center",
+      }}
+      alt="background_image"
+    >
+      
+        
+        <View style={{
+          alignItems: "flex-end",
+          justifyContent: "flex-end",
+          marginRight: 10,
+        }}
         >
-          {" "}
-          <Text color="#545871" fontFamily="Roboto_400Regular">
-            Login In
+          <Text
+            color="white"
+            fontSize="22"
+            fontFamily="PaytoneOne_400Regular"
+            marginTop="50px"
+            marginRight="17px"
+          >
+            Purrrfect Pets!{" "}
           </Text>
-        </Button>
-        <Button
-          onPress={() => navigation.navigate("Signup")}
-          text="Go to Signup"
-          color="#fff"
-        >
-          {" "}
-          <Text color="#545871" fontFamily="Roboto_400Regular">
-            Sign Up
+          <Text color="white" fontSize="14" paddingTop="5" textAlign='center' fontFamily='PaytoneOne_400Regular' flexShrink="1">
+            Match with and adopt a pet {"\n"}that is most suitable for you
           </Text>
-        </Button>
-      </View>
+
+          <StatusBar style="dark-content" />
+          <Input
+            inputStyle={{
+              fontSize: 14,
+            }}
+            containerStyle={{
+              backgroundColor: "#fff",
+              marginBottom: 20,
+            }}
+            leftIcon="email"
+            placeholder="Enter email"
+            autoCapitalize="none"
+            keyboardType="email-address"
+            textContentType="emailAddress"
+            autoFocus={true}
+            value={email}
+            onChangeText={(text) => setEmail(text)}
+          />
+          <Input
+            inputStyle={{
+              fontSize: 14,
+            }}
+            containerStyle={{
+              backgroundColor: "#fff",
+              marginBottom: 20,
+            }}
+            leftIcon="lock"
+            placeholder="Enter password"
+            autoCapitalize="none"
+            autoCorrect={false}
+            secureTextEntry={passwordVisibility}
+            textContentType="password"
+            rightIcon={rightIcon}
+            value={password}
+            onChangeText={(text) => setPassword(text)}
+            handlePasswordVisibility={handlePasswordVisibility}
+          />
+          <Button
+            onPress={onLogin}
+            backgroundColor="#f1c737"
+            title="Login"
+            marginTop='5'
+            marginBottom='5'
+            width='40'
+            borderRadius="7"
+            marginRight="17"
+          >
+            <Text fontSize='13' color="#545871" fontFamily="Roboto_400Regular">
+              Login In
+            </Text>
+          </Button>
+          <Button
+            onPress={() => navigation.navigate("Signup")}
+            backgroundColor="#f1c737"
+            text="Go to Signup"
+            width='40'
+            borderRadius="7"
+            marginRight="17"
+            marginBottom='20'
+          >
+            <Text fontSize='13' color="#545871" fontFamily="Roboto_400Regular">
+              Sign Up
+            </Text>
+          </Button>
+        </View>
+    </ImageBackground>
+    <View style={{height: 500, backgroundColor: '#9e8fae'}}>
+
+    </View>
     </NativeBaseProvider>
+    </ScrollView>
   );
 }
 
 function SignUpScreen({ navigation }) {
   return <SignUpForm />;
 }
-function LogInScreen({ navigation }) {
-  return <LoginForm />;
-}
+// function LogInScreen({ navigation }) {
+//   return <LoginForm />;
+// }
 
 function ProfileScreen({ navigation }) {
   return <Profile />;
 }
 
-function AboutAdpoting({ navigation }) {
-  return <AboutAdopting />;
+function AboutAdopting({ navigation }) {
+  return <Adopting />;
 }
 function QuizScreen({ navigation }) {
   return <Quiz />;
-}
-function TestScreen({ navigation }) {
-  return <Test />;
 }
 
 export default function App() {
@@ -275,19 +321,17 @@ export default function App() {
 
             if (route.name === "Home") {
               iconName = focused
-                ? "ios-information-circle"
-                : "ios-information-circle-outline";
+                ? "home-outline" : "home-outline";
             }
             if (route.name === "Quiz") {
-              iconName = focused ? "ios-list-box" : "ios-list";
+              iconName = focused ? "help-circle-outline" : "help-circle-outline";
             }
-            if (route.name === "AboutAdopting") {
-              iconName = focused ? "ios-pet" : "ios-pet";
+            if (route.name === "Adopting") {
+              iconName = focused ? "paw-outline" : "paw-outline";
             }
             if (route.name === "Profile") {
-              iconName = focused ? "ios-account" : "ios-list";
+              iconName = focused ? "ios-person" : "person";
             }
-
             // You can return any component that you like here!
             return <Ionicons name={iconName} size={size} color={color} />;
           },
@@ -295,11 +339,11 @@ export default function App() {
           tabBarInactiveTintColor: "gray",
         })}
       >
-        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
         <Tab.Screen name="Quiz" component={QuizScreen} />
-        <Tab.Screen name="About Adopting" component={AboutAdpoting} />
-        <Tab.Screen name="Profile" component={ProfileScreen} />
-        <Tab.Screen name="Login" component={SignUpScreen} />
+        <Tab.Screen name="Adopting" component={AboutAdopting} />
+        <Tab.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
+        {/* <Tab.Screen name="Login" component={SignUpScreen} /> */}
       </Tab.Navigator>
     </NavigationContainer>
   );

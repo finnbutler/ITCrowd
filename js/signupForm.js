@@ -1,38 +1,40 @@
-import React, { useState, useEffect } from "react";
+//import React, { useState, useEffect } from "react";
 import { View, Text } from "react-native";
-import auth from "@react-native-firebase/auth";
+//import auth from "@react-native-firebase/auth";
 
-function App() {
-  // Set an initializing state whilst Firebase connects
-  const [initializing, setInitializing] = useState(true);
-  const [user, setUser] = useState();
+// function App() {
+  // // Set an initializing state whilst Firebase connects
+  // const [initializing, setInitializing] = useState(true);
+  // const [user, setUser] = useState();
 
-  // Handle user state changes
-  function onAuthStateChanged(user) {
-    setUser(user);
-    if (initializing) setInitializing(false);
-  }
+  // // Handle user state changes
+  // function onAuthStateChanged(user) {
+  //   setUser(user);
+  //   if (initializing) setInitializing(false);
+  // }
 
-  useEffect(() => {
-    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-    return subscriber; // unsubscribe on unmount
-  }, []);
+  // useEffect(() => {
+  //   const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+  //   return subscriber; // unsubscribe on unmount
+  // }, []);
 
-  if (initializing) return null;
+  // if (initializing) return null;
 
-  if (!user) {
-    return (
-      <View>
-        <Text>Login</Text>
-      </View>
-    );
-  }
+  // if (!user) {
+  //   return (
+  //     <View>
+  //       <Text>Login</Text>
+  //     </View>
+  //   );
+  // }
 
 const SignUpForm = () => {
   return (
     <View>
-      <Text>Welcome {user.email}</Text>
+      <Text>Welcome 
+       </Text>
     </View>
   )
 }
-export default App;
+//}
+export default SignUpForm;
