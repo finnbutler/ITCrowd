@@ -122,7 +122,6 @@ function HomeScreen({ navigation }) {
     try {
       if (email !== "" && password !== "") {
         await auth.signInWithEmailAndPassword(email, password);
-        alert("Correctly logedin");
       }
     } catch (error) {
       alert("ERROR!");
