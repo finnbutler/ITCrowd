@@ -369,19 +369,13 @@ export default function App() {
           options={{ headerShown: false }}
         />
         <Tab.Screen name="Quiz" component={QuizScreen} />
-<<<<<<< HEAD
         <Tab.Screen name="Adopting" component={AboutAdopting} />
         <Tab.Screen
           name="Profile"
           component={ProfileScreen}
           options={{ headerShown: false }}
         />
-        {/* <Tab.Screen name="Login" component={SignUpScreen} /> */}
-=======
-        <Tab.Screen name="About Adopting" component={AboutAdpoting} />
-        <Tab.Screen name="Profile" component={ProfileScreen} />
         <Tab.Screen name="Login" component={SignUpScreen} />
->>>>>>> parent of 685720e7... Changes to signuppage (#10)
       </Tab.Navigator>
     </NavigationContainer>
   );
