@@ -123,6 +123,7 @@ function HomeScreen({ navigation }) {
     try {
       if (email !== "" && password !== "") {
         await auth.signInWithEmailAndPassword(email, password);
+        alert("Correctly logedin");
       }
     } catch (error) {
       alert("ERROR!");
@@ -299,7 +300,7 @@ export default function App() {
         <Tab.Screen name="Quiz" component={QuizScreen} />
         <Tab.Screen name="About Adopting" component={AboutAdpoting} />
         <Tab.Screen name="Profile" component={ProfileScreen} />
-        <Tab.Screen name="Login" component={SignUpScreen} />
+        <Tab.Screen name="Sign Page" component={SignUpScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
