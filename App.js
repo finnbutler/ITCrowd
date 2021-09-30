@@ -26,8 +26,7 @@ import { Roboto_400Regular } from "@expo-google-fonts/roboto";
 import AppLoading from "expo-app-loading";
 import background from "./assets/background.jpg";
 import Quiz from "./js/quiz.js";
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+
 import Firebase from "./config/firebase";
 import logo from "./assets/Logo.jpg";
 
@@ -123,6 +122,7 @@ function HomeScreen({ navigation }) {
     try {
       if (email !== "" && password !== "") {
         await auth.signInWithEmailAndPassword(email, password);
+        alert("Correctly logedin");
       }
     } catch (error) {
       alert("ERROR!");

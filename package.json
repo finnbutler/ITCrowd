@@ -21,6 +21,7 @@
     "expo-constants": "~11.0.1",
     "expo-status-bar": "~1.0.4",
     "express": "4.17.0",
+    "firebase": "^9.1.0",
     "formik": "^2.2.9",
     "jsonwebtoken": "*",
     "native-base": "^3.1.0",
