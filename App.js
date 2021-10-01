@@ -24,7 +24,7 @@ import {
 } from "@expo-google-fonts/paytone-one";
 import { Roboto_400Regular } from "@expo-google-fonts/roboto";
 import AppLoading from "expo-app-loading";
-import background from "./assets/background.jpg"
+import background from "./assets/background.jpg";
 import Quiz from "./js/quiz.js";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
@@ -34,7 +34,6 @@ import logo from "./assets/Logo.jpg";
 // TODO: Replace the following with your app's Firebase project configuration
 const auth = Firebase.auth();
 function HomeScreen({ navigation }) {
-  
   // const response = await fetch('/api/names');
   // const names = await response.json();
 
@@ -84,109 +83,133 @@ function HomeScreen({ navigation }) {
   return (
     <ScrollView>
       <NativeBaseProvider>
-      <View style={{ width: 'auto', height: 83, backgroundColor: 'white', alignItems:'center', paddingTop: 23}}>
-          <Image source={logo} style={{ width: 65, height: 58}} alt="logo_image"/>
-        </View>
-    <ImageBackground
-      source={background}
-      resizeMode="cover"
-      style={{
-        flex: 1,
-        justifyContent: "center",
-      }}
-      alt="background_image"
-    >
-      
-        
-        <View style={{
-          alignItems: "flex-end",
-          justifyContent: "flex-end",
-          marginRight: 10,
-        }}
+        <View
+          style={{
+            width: "auto",
+            height: 83,
+            backgroundColor: "white",
+            alignItems: "center",
+            paddingTop: 23,
+          }}
         >
-          <Text
-            color="white"
-            fontSize="22"
-            fontFamily="PaytoneOne_400Regular"
-            marginTop="50px"
-            marginRight="17px"
-          >
-            Purrrfect Pets!{" "}
-          </Text>
-          <Text color="white" fontSize="14" paddingTop="5" textAlign='center' fontFamily='PaytoneOne_400Regular' flexShrink="1">
-            Match with and adopt a pet {"\n"}that is most suitable for you
-          </Text>
-
-          <StatusBar style="dark-content" />
-          <Input
-            inputStyle={{
-              fontSize: 14,
-            }}
-            containerStyle={{
-              backgroundColor: "#fff",
-              marginBottom: 20,
-            }}
-            leftIcon="email"
-            placeholder="Enter email"
-            autoCapitalize="none"
-            keyboardType="email-address"
-            textContentType="emailAddress"
-            autoFocus={true}
-            value={email}
-            onChangeText={(text) => setEmail(text)}
+          <Image
+            source={logo}
+            style={{ width: 65, height: 58 }}
+            alt="logo_image"
           />
-          <Input
-            inputStyle={{
-              fontSize: 14,
-            }}
-            containerStyle={{
-              backgroundColor: "#fff",
-              marginBottom: 20,
-            }}
-            leftIcon="lock"
-            placeholder="Enter password"
-            autoCapitalize="none"
-            autoCorrect={false}
-            secureTextEntry={passwordVisibility}
-            textContentType="password"
-            rightIcon={rightIcon}
-            value={password}
-            onChangeText={(text) => setPassword(text)}
-            handlePasswordVisibility={handlePasswordVisibility}
-          />
-          <Button
-            onPress={onLogin}
-            backgroundColor="#f1c737"
-            title="Login"
-            marginTop='5'
-            marginBottom='5'
-            width='40'
-            borderRadius="7"
-            marginRight="17"
-          >
-            <Text fontSize='13' color="#545871" fontFamily="Roboto_400Regular">
-              Login In
-            </Text>
-          </Button>
-          <Button
-            onPress={() => navigation.navigate("Signup")}
-            backgroundColor="#f1c737"
-            text="Go to Signup"
-            width='40'
-            borderRadius="7"
-            marginRight="17"
-            marginBottom='20'
-          >
-            <Text fontSize='13' color="#545871" fontFamily="Roboto_400Regular">
-              Sign Up
-            </Text>
-          </Button>
         </View>
-    </ImageBackground>
-    <View style={{height: 500, backgroundColor: '#9e8fae'}}>
+        <ImageBackground
+          source={background}
+          resizeMode="cover"
+          style={{
+            flex: 1,
+            justifyContent: "center",
+          }}
+          alt="background_image"
+        >
+          <View
+            style={{
+              alignItems: "flex-end",
+              justifyContent: "flex-end",
+              marginRight: 10,
+            }}
+          >
+            <Text
+              color="white"
+              fontSize="22"
+              fontFamily="PaytoneOne_400Regular"
+              marginTop="50px"
+              marginRight="17px"
+            >
+              Purrrfect Pets!{" "}
+            </Text>
+            <Text
+              color="white"
+              fontSize="14"
+              paddingTop="5"
+              textAlign="center"
+              fontFamily="PaytoneOne_400Regular"
+              flexShrink="1"
+            >
+              Match with and adopt a pet {"\n"}that is most suitable for you
+            </Text>
 
-    </View>
-    </NativeBaseProvider>
+            <StatusBar style="dark-content" />
+            <Input
+              inputStyle={{
+                fontSize: 14,
+              }}
+              containerStyle={{
+                backgroundColor: "#fff",
+                marginBottom: 20,
+              }}
+              leftIcon="email"
+              placeholder="Enter email"
+              autoCapitalize="none"
+              keyboardType="email-address"
+              textContentType="emailAddress"
+              autoFocus={true}
+              value={email}
+              onChangeText={(text) => setEmail(text)}
+            />
+            <Input
+              inputStyle={{
+                fontSize: 14,
+              }}
+              containerStyle={{
+                backgroundColor: "#fff",
+                marginBottom: 20,
+              }}
+              leftIcon="lock"
+              placeholder="Enter password"
+              autoCapitalize="none"
+              autoCorrect={false}
+              secureTextEntry={passwordVisibility}
+              textContentType="password"
+              rightIcon={rightIcon}
+              value={password}
+              onChangeText={(text) => setPassword(text)}
+              handlePasswordVisibility={handlePasswordVisibility}
+            />
+            <Button
+              onPress={onLogin}
+              backgroundColor="#f1c737"
+              title="Login"
+              marginTop="5"
+              marginBottom="5"
+              width="40"
+              borderRadius="7"
+              marginRight="17"
+            >
+              <Text
+                fontSize="13"
+                color="#545871"
+                fontFamily="Roboto_400Regular"
+              >
+                Login In
+              </Text>
+            </Button>
+            <Button
+              onPress={() => navigation.navigate("Signup")}
+              backgroundColor="#f1c737"
+              text="Go to Signup"
+              width="40"
+              borderRadius="7"
+              marginRight="17"
+              marginBottom="20"
+            >
+              <Text
+                fontSize="13"
+                color="#545871"
+                fontFamily="Roboto_400Regular"
+              >
+                Sign Up
+              </Text>
+            </Button>
+          </View>
+        </ImageBackground>
+        <View style={{ height: 500, backgroundColor: "#9e8fae" }}></View>
+      </NativeBaseProvider>
     </ScrollView>
   );
 }
@@ -254,11 +277,12 @@ export default function App() {
             let iconName;
 
             if (route.name === "Home") {
-              iconName = focused
-                ? "home-outline" : "home-outline";
+              iconName = focused ? "home-outline" : "home-outline";
             }
             if (route.name === "Quiz") {
-              iconName = focused ? "help-circle-outline" : "help-circle-outline";
+              iconName = focused
+                ? "help-circle-outline"
+                : "help-circle-outline";
             }
             if (route.name === "Adopting") {
               iconName = focused ? "paw-outline" : "paw-outline";
@@ -273,10 +297,18 @@ export default function App() {
           tabBarInactiveTintColor: "gray",
         })}
       >
-        <Tab.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
+        <Tab.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ headerShown: false }}
+        />
         <Tab.Screen name="Quiz" component={QuizScreen} />
         <Tab.Screen name="Adopting" component={AboutAdopting} />
-        <Tab.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
+        <Tab.Screen
+          name="Profile"
+          component={ProfileScreen}
+          options={{ headerShown: false }}
+        />
         {/* <Tab.Screen name="Login" component={SignUpScreen} /> */}
       </Tab.Navigator>
     </NavigationContainer>
