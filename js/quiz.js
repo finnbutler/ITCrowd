@@ -13,19 +13,31 @@ import {
   Avatar,
   VStack,
   Spacer,
+  AspectRatio,
+  Stack,
+  Center,
+  Image,
+  Button,
+  Flex,
 } from "native-base";
 import { SwipeListView } from "react-native-swipe-list-view";
 import { MaterialIcons, Ionicons, Entypo } from "@expo/vector-icons";
+import Firebase from "../config/firebase";
 
 export default function QuizScreen() {
+  /*fetch("https://deco3801-91e98-default-rtdb.firebaseio.com/10/data")
+    .then((response) => response.json())
+    .then((data) => console.log(data));*/
+
+  // Attach an asynchronous callback to read the data at our posts reference
+  const numberOfUsers = 15;
+  const randomIndex = Math.floor(Math.random() * numberOfUsers);
+
   const [mode, setMode] = useState("Basic");
 
   return (
     <NativeBaseProvider>
       <Box bg="white" flex="1" safeAreaTop>
-        <Heading p="4" pb="3" size="lg">
-          My Pets
-        </Heading>
         <Basic />
       </Box>
     </NativeBaseProvider>
@@ -46,7 +58,7 @@ function Basic() {
       id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
       fullName: "Sujita Mathur",
       timeStamp: "11:11 PM",
-      recentText: "Cheer up, there!",
+      recentText: "A dog cat ",
       avatarUrl:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyEaZqT3fHeNrPGcnjLLX1v_W4mvBlgpwxnA&usqp=CAU",
     },
@@ -54,14 +66,14 @@ function Basic() {
       id: "58694a0f-3da1-471f-bd96-145571e29d72",
       fullName: "Anci Barroco",
       timeStamp: "6:22 PM",
-      recentText: "Good Day!",
+      recentText: "A cat dog ",
       avatarUrl: "https://miro.medium.com/max/1400/0*0fClPmIScV5pTLoE.jpg",
     },
     {
       id: "68694a0f-3da1-431f-bd56-142371e29d72",
       fullName: "Aniket Kumar",
       timeStamp: "8:56 PM",
-      recentText: "All the best",
+      recentText: "A dog ",
       avatarUrl:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSr01zI37DYuR8bMV5exWQBSw28C1v_71CAh8d7GP1mplcmTgQA6Q66Oo--QedAN1B4E1k&usqp=CAU",
     },
@@ -69,7 +81,7 @@ function Basic() {
       id: "28694a0f-3da1-471f-bd96-142456e29d72",
       fullName: "Kiara",
       timeStamp: "12:47 PM",
-      recentText: "I will call today.",
+      recentText: "A Cat",
       avatarUrl:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU",
     },
@@ -168,8 +180,89 @@ function Basic() {
     </HStack>
   );
 
+  function CardComponent() {
+    var leadsRef = Firebase.database().ref("8/data/0");
+    var leadsRefName = Firebase.database().ref("8/data/0/Name");
+    leadsRefName.on("value", function (snapshot) {
+      snapshot.val();
+      alert(snapshot.val());
+      global.Name1 = snapshot.val();
+    });
+    leadsRef.on("value", function (snapshot) {
+      snapshot.forEach(function (childSnapshot) {
+        var childData = childSnapshot.val();
+        //  alert(childData);
+      });
+    });
+    return (
+      <Box
+        rounded="lg"
+        overflow="hidden"
+        width="72"
+        shadow={1}
+        _light={{ backgroundColor: "gray.50" }}
+        _dark={{ backgroundColor: "gray.700" }}
+      >
+        <Box>
+          <Center
+            bg="red.500"
+            _text={{ color: "white", fontWeight: "700", fontSize: "xs" }}
+            position="absolute"
+            bottom={0}
+            px="3"
+            py="1.5"
+          >
+            QUIZ
+          </Center>
+        </Box>
+        <Stack p="4" space={3}>
+          <Heading size="md" ml="-1">
+            Question 1
+          </Heading>
+          <Text
+            fontSize="xs"
+            _light={{ color: "violet.500" }}
+            _dark={{ color: "violet.300" }}
+            fontWeight="500"
+            ml="-0.5"
+            mt="-1"
+          >
+            What's a cooler name?
+          </Text>
+          <Flex
+            direction="row"
+            mb="2.5"
+            mt="1.5"
+            _text={{
+              color: "coolGray.800",
+            }}
+          >
+            {leadsRefName.on("value", function (snapshot) {
+              snapshot.val();
+              global.Name1 = snapshot.val();
+            })}
+            <Button
+              size="sm" //  onPress={() => console.log('hello world')}
+            ></Button>
+            <Button
+              size="sm"
+              colorScheme="secondary" // onPress={() => console.log('hello world')}
+            ></Button>
+          </Flex>
+        </Stack>
+      </Box>
+    );
+  }
   return (
     <Box bg="white" safeArea flex="1">
+      <NativeBaseProvider>
+        <Center mt="200" flex={1} px="3">
+          <CardComponent />
+        </Center>
+      </NativeBaseProvider>
+      <Heading mt="350" p="4" pb="3" size="lg">
+        My Pets
+      </Heading>
       <SwipeListView
         data={listData}
         renderItem={renderItem}

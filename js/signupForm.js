@@ -11,6 +11,7 @@ import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 
 import Firebase from "../config/firebase";
+import "firebase/firestore";
 
 // TODO: Replace the following with your app's Firebase project configuration
 const auth = Firebase.auth();
@@ -86,6 +87,8 @@ function HomeScreen({ navigation }) {
   );*/
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [passwordVisibility, setPasswordVisibility] = useState(true);
   const [rightIcon, setRightIcon] = useState("eye");
   const [loginError, setLoginError] = useState("");
@@ -109,8 +112,12 @@ function HomeScreen({ navigation }) {
         const db = Firebase.firestore();
         db.collection("users").doc(currentUser.uid).set({
           email: currentUser.email,
-          /*        lastName: lastName,
-          firstName: firstName,*/
+          lastName: lastName,
+          firstName: firstName,
+        });
+        currentUser.updateProfile({
+          displayName: "Finnasdasdd",
+          photoURL: "https://example.com/jane-q-user/profile.jpg",
         });
       }
     } catch (error) {
@@ -123,7 +130,44 @@ function HomeScreen({ navigation }) {
     <NativeBaseProvider>
       <View>
         <StatusBar style="dark-content" />
-        <Text>Login</Text>
+        <Text>Sign Up</Text>
+
+        <Input
+          inputStyle={{
+            fontSize: 14,
+          }}
+          containerStyle={{
+            backgroundColor: "#fff",
+            marginBottom: 20,
+          }}
+          leftIcon="email"
+          placeholder="Enter First Name"
+          autoCapitalize="none"
+          keyboardType="email-address"
+          textContentType="emailAddress"
+          autoFocus={true}
+          value={firstName}
+          onChangeText={(text) => setFirstName(text)}
+        />
+
+        <Input
+          inputStyle={{
+            fontSize: 14,
+          }}
+          containerStyle={{
+            backgroundColor: "#fff",
+            marginBottom: 20,
+          }}
+          leftIcon="email"
+          placeholder="Enter Last Name"
+          autoCapitalize="none"
+          keyboardType="email-address"
+          textContentType="emailAddress"
+          autoFocus={true}
+          value={lastName}
+          onChangeText={(text) => setLastName(text)}
+        />
+
         <Input
           inputStyle={{
             fontSize: 14,
@@ -165,6 +209,7 @@ function HomeScreen({ navigation }) {
           backgroundColor="#f57c00"
           title="Login"
           tileColor="#fff"
+          s
           titleSize={20}
           containerStyle={{
             marginBottom: 24,

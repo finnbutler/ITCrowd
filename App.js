@@ -30,8 +30,6 @@ import Quiz from "./js/quiz.js";
 import Test from "./js/test";
 import Train from "./js/train.js";
 
-
-
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import Firebase from "./config/firebase";
@@ -248,7 +246,6 @@ function QuizScreen({ navigation }) {
 
 //const Drawer = createDrawerNavigator();
 
-
 export default function App() {
   const theme = extendTheme({
     colors: {
@@ -287,7 +284,6 @@ export default function App() {
   });
   const Tab = createBottomTabNavigator();
   return (
-
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={({ route }) => ({
@@ -327,9 +323,8 @@ export default function App() {
           component={ProfileScreen}
           options={{ headerShown: false }}
         />
-        {/* <Tab.Screen name="Login" component={SignUpScreen} /> */}
+        <Tab.Screen name="Login" component={SignUpScreen} />
       </Tab.Navigator>
     </NavigationContainer>
-
   );
 }
