@@ -34,6 +34,7 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import Firebase from "./config/firebase";
 import logo from "./assets/Logo.jpg";
+import { createStackNavigator } from '@react-navigation/stack';
 
 // TODO: Replace the following with your app's Firebase project configuration
 const auth = Firebase.auth();
@@ -114,33 +115,30 @@ function HomeScreen({ navigation }) {
         >
           <View
             style={{
+              marginTop: 80,
               alignItems: "flex-end",
-              justifyContent: "flex-end",
-              marginRight: 10,
             }}
           >
             <Text
               color="white"
-              fontSize="22"
+              fontSize={25}
               fontFamily="PaytoneOne_400Regular"
-              marginTop="50px"
-              marginRight="17px"
+              marginRight={4}
             >
               Purrrfect Pets!{" "}
             </Text>
             <Text
               color="white"
-              fontSize="14"
-              paddingTop="5"
-              textAlign="center"
+              fontSize={15}
+              paddingTop={5}
+              marginRight={1}
               fontFamily="PaytoneOne_400Regular"
-              flexShrink="1"
             >
-              Match with and adopt a pet {"\n"}that is most suitable for you
+              Match with and adopt a pet {"\n"}that is most suitable for you 
             </Text>
 
             <StatusBar style="dark-content" />
-            <Input
+            {/* <Input
               inputStyle={{
                 fontSize: 14,
               }}
@@ -175,36 +173,36 @@ function HomeScreen({ navigation }) {
               value={password}
               onChangeText={(text) => setPassword(text)}
               handlePasswordVisibility={handlePasswordVisibility}
-            />
+            /> */}
             <Button
-              onPress={onLogin}
+              onPress={() => navigation.navigate("Login")}
               backgroundColor="#f1c737"
               title="Login"
-              marginTop="5"
-              marginBottom="5"
-              width="40"
-              borderRadius="7"
-              marginRight="17"
+              marginTop={5}
+              marginBottom={5}
+              width={40}
+              borderRadius={7}
+              marginRight={7}
             >
               <Text
                 fontSize="13"
                 color="#545871"
                 fontFamily="Roboto_400Regular"
               >
-                Login In
+                Login
               </Text>
             </Button>
             <Button
               onPress={() => navigation.navigate("Signup")}
               backgroundColor="#f1c737"
               text="Go to Signup"
-              width="40"
-              borderRadius="7"
-              marginRight="17"
-              marginBottom="20"
+              width={40}
+              borderRadius={7}
+              marginBottom= {150}
+              marginRight={7}
             >
               <Text
-                fontSize="13"
+                fontSize={13}
                 color="#545871"
                 fontFamily="Roboto_400Regular"
               >
@@ -213,18 +211,23 @@ function HomeScreen({ navigation }) {
             </Button>
           </View>
         </ImageBackground>
-        <View style={{ height: 500, backgroundColor: "#9e8fae" }}></View>
+        <View style={{ height: 500, backgroundColor: "#9e8fae" }}>
+        <Text marginTop={6} textAlign="center" fontSize={24} color="white" fontFamily="PaytoneOne_400Regular">
+          Planning to adopt a pet?{"\n"}Here is what you need to consider...
+        </Text>
+        </View>
       </NativeBaseProvider>
     </ScrollView>
   );
 }
 
 function SignUpScreen({ navigation }) {
+  //SignUpScreen.navigation = HomeScreen.navigation;
   return <SignUpForm />;
 }
-// function LogInScreen({ navigation }) {
-//   return <LoginForm />;
-// }
+ function LogInScreen() {
+  return <LoginForm />;
+ }
 
 function ProfileScreen({ navigation }) {
   return <Profile />;
@@ -283,9 +286,12 @@ export default function App() {
     },
   });
   const Tab = createBottomTabNavigator();
+  const Stack = createStackNavigator();
   return (
     <NavigationContainer>
-      <Tab.Navigator
+      <Stack.Navigator>
+        <Stack.Screen name="HomePage" options={{ headerShown: false }} initialRoute>{() =>(
+          <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
@@ -323,8 +329,12 @@ export default function App() {
           component={ProfileScreen}
           options={{ headerShown: false }}
         />
-        <Tab.Screen name="Login" component={SignUpScreen} />
-      </Tab.Navigator>
+      </Tab.Navigator>)}
+        </Stack.Screen>
+        <Stack.Screen name="Signup" options={{ headerShown: false }} component={SignUpScreen}  /> 
+        <Stack.Screen name="Login" options={{ headerShown: false }} component={LogInScreen} /> 
+        {/* <LogInScreen navigation={this.props.navigation} /> */}
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }

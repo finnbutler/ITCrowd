@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ImageBackground, View } from "react-native";
+import { ImageBackground, View, Image } from "react-native";
 import {
   Text,
   Button,
@@ -9,82 +9,17 @@ import {
 } from "native-base";
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-
+import background from "../assets/login_background.jpg";
 import Firebase from "../config/firebase";
 import "firebase/firestore";
+import logo from "../assets/Logo.jpg";
+import { createStackNavigator } from '@react-navigation/stack';
+import Login from '../js/loginForm.js';
 
 // TODO: Replace the following with your app's Firebase project configuration
 const auth = Firebase.auth();
-function HomeScreen({ navigation }) {
-  // const response = await fetch('/api/names');
-  // const names = await response.json();
 
-  // console.log(names);
-  // https://itcrowdproject.uqcloud.net/?PET_PHOTO
-  /* let [fontsLoaded, error] = useFonts({
-    Roboto_400Regular,
-    PaytoneOne_400Regular,
-  });
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  }
-  return (
-    <ImageBackground
-      source={background}
-      resizeMode="cover"
-      style={{
-        flex: 1,
-        justifyContent: "center",
-      }}
-    >
-      <NativeBaseProvider>
-        <View
-          style={{
-            alignItems: "flex-end",
-            justifyContent: "flex-end",
-            marginRight: "200px",
-          }}
-        >
-          <Text
-            color="white"
-            fontSize="80"
-            fontFamily="PaytoneOne_400Regular"
-            marginTop="150px"
-            marginRight="50px"
-          >
-            Purrrfect Pets!{" "}
-          </Text>
-          <Text color="white" fontSize="30" paddingTop="10" textAlign='center' marginRight="120px" fontFamily='PaytoneOne_400Regular' flexShrink="1">
-            Match with and adopt a pet {"\n"}that is most suitable for you
-          </Text>
-          <Button
-            mt="2em"
-            mraginTop="500px"
-            padding="25px 150px"
-            borderRadius="30px"
-            backgroundColor="#f1c737"
-            marginRight="150px"
-            fontFamily="Roboto_400Regular"
-            onPress={() => navigation.navigate("Login")}
-            title="Login In!"
-          >
-            <Text color="#545871" fontFamily='Roboto_400Regular'>Login In </Text>
-          </Button>
-          <Button
-            mt="2em"
-            padding="25px 150px"
-            borderRadius="30px"
-            marginRight="150px"
-            backgroundColor="#f1c737"
-            onPress={() => navigation.navigate("Sign Up")}
-            title="Sign up"
-          >
-            <Text color="#545871" fontFamily='Roboto_400Regular'>Sign Up</Text>
-          </Button>
-        </View>
-      </NativeBaseProvider>
-    </ImageBackground>
-  );*/
+function HomeScreen({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -128,18 +63,41 @@ function HomeScreen({ navigation }) {
 
   return (
     <NativeBaseProvider>
-      <View>
+      <View
+          style={{
+            width: "auto",
+            height: 83,
+            backgroundColor: "white",
+            alignItems: "center",
+            paddingTop: 23,
+          }}
+        >
+          <Image
+            source={logo}
+            style={{ width: 65, height: 58 }}
+            alt="logo_image"
+          />
+        </View>
+      <ImageBackground
+      source={background}
+      resizeMode="cover"
+      style={{
+        flex: 1,
+        justifyContent: "center",
+      }}
+      alt="background_image">
+      <View style={{marginTop: -150}}>
         <StatusBar style="dark-content" />
-        <Text>Sign Up</Text>
+        <Text style={{ marginBottom: 5, textAlign: "center"}}>Sign Up</Text>
 
         <Input
           inputStyle={{
             fontSize: 14,
           }}
-          containerStyle={{
-            backgroundColor: "#fff",
-            marginBottom: 20,
-          }}
+          borderColor="grey"
+          width="300px"
+          margin="auto"
+          marginBottom="10px"
           leftIcon="email"
           placeholder="Enter First Name"
           autoCapitalize="none"
@@ -154,10 +112,10 @@ function HomeScreen({ navigation }) {
           inputStyle={{
             fontSize: 14,
           }}
-          containerStyle={{
-            backgroundColor: "#fff",
-            marginBottom: 20,
-          }}
+          borderColor="grey"
+          width="300px"
+          margin="auto"
+          marginBottom="10px"
           leftIcon="email"
           placeholder="Enter Last Name"
           autoCapitalize="none"
@@ -172,10 +130,10 @@ function HomeScreen({ navigation }) {
           inputStyle={{
             fontSize: 14,
           }}
-          containerStyle={{
-            backgroundColor: "#fff",
-            marginBottom: 20,
-          }}
+          borderColor="grey"
+          width="300px"
+          margin="auto"
+          marginBottom="5px"
           leftIcon="email"
           placeholder="Enter email"
           autoCapitalize="none"
@@ -189,10 +147,10 @@ function HomeScreen({ navigation }) {
           inputStyle={{
             fontSize: 14,
           }}
-          containerStyle={{
-            backgroundColor: "#fff",
-            marginBottom: 20,
-          }}
+          borderColor="grey"
+          width="300px"
+          margin="auto"
+          marginBottom="10px"
           leftIcon="lock"
           placeholder="Enter password"
           autoCapitalize="none"
@@ -205,33 +163,42 @@ function HomeScreen({ navigation }) {
           handlePasswordVisibility={handlePasswordVisibility}
         />
         <Button
+          width="300px"
+          margin="auto"
+          marginBottom="10px"
           onPress={onLogin}
-          backgroundColor="#f57c00"
+          backgroundColor="#f1c737"
           title="Login"
-          tileColor="#fff"
-          s
           titleSize={20}
           containerStyle={{
             marginBottom: 24,
           }}
         >
-          {" "}
           <Text color="#545871" fontFamily="Roboto_400Regular">
-            Login In
+            Login
           </Text>
         </Button>
         <Button
-          onPress={() => navigation.navigate("Signup")}
+          width="300px"
+          margin="auto"
+          backgroundColor="#f1c737"
+          marginBottom="10px"
+          //onPress={() => navigation.navigate("Signup")}
           text="Go to Signup"
-          color="#fff"
         >
-          {" "}
           <Text color="#545871" fontFamily="Roboto_400Regular">
             Sign Up
           </Text>
         </Button>
+        <Text textAlign="center" color="#545871" fontFamily="Roboto_400Regular">
+            Already have an account? <Text textDecorationLine= 'underline'  onPress={LogInScreen()}>Login</Text> 
+        </Text>
       </View>
+      </ImageBackground>
     </NativeBaseProvider>
   );
 }
+function LogInScreen() {
+  return <Login />;
+ }
 export default HomeScreen;
