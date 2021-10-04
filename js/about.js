@@ -30,12 +30,16 @@ const AboutAdopting = () => {
 
      
         <View style={styles.buttonbox} > 
+
+          <View style={styles.preadoption}>
+            <Text>Information about pre-adoption</Text>
+          </View>
       
           <Button
             mt="2em"
             padding="1em 3em"
             borderRadius="30px"
-            backgroundColor="#545871"
+            backgroundColor="#E19D98"
             onPress={() => navigation.navigate("")}
             title="Understanding requirements"
           >
@@ -46,13 +50,28 @@ const AboutAdopting = () => {
             mt="2em"
             padding="1em 5.5em"
             borderRadius="30px"
-            backgroundColor="#545871"
+            backgroundColor="#E19D98"
             onPress={() => navigation.navigate("")}
             title="What to expect"
           >
             What to expect
           </Button>
 
+          <Button
+            mt="2em"
+            padding="1em 5.5em"
+            borderRadius="30px"
+            backgroundColor="#E19D98"
+            onPress={() => navigation.navigate("")}
+            title=""
+          >
+            Quiz
+          </Button>
+
+
+          <View style={styles.postbox}>
+            <Text>Information about post-adoption</Text>
+          </View>
           <Button
             mt="2em"
             padding="1em 5.5em"
@@ -64,7 +83,7 @@ const AboutAdopting = () => {
             Emergency help
           </Button>
 
-          <View style={styles.box}>
+          <View style={styles.postbox}>
             <Text style={styles.heading}>
               When to seek emergency help {'\n'}
             </Text>
@@ -84,11 +103,11 @@ const AboutAdopting = () => {
               Nearby facilities
             </Text>
             <Text style={styles.paragraph}> 
-              If you need emergency assistance, please use the following numbers to call for help or drive to your nearest animal hospital 
+              If you need emergency assistance, please use the following numbers to call for help or drive to your nearest animal hospital:
               {'\n'}
-              3379 6408, Sherwood veterinary Practice 
+              {'\u2B24'}3379 6408, Sherwood veterinary Practice 
               {'\n'}
-              (07) 3062 7686, Animal Emergency Service
+              {'\u2B24'}(07) 3062 7686, Animal Emergency Service
               {'\n'}
               
             </Text>
@@ -108,6 +127,38 @@ const AboutAdopting = () => {
           >
             How to train
           </Button>
+
+          <View style={styles.postbox}>
+            <Text style={styles.heading}>
+              How to bond {'\n'}
+            </Text>
+
+            <Text style={styles.paragraph}> 
+              text for bonding 
+              {'\n'}
+              {'\n'}
+              {'\u2B24'} Significant injury - hit by a car, falling from a considerable height, etc.
+              {'\n'}
+              {'\u2B24'} Vomiting, coughing, diarrhea
+
+
+            </Text>
+
+            <Text style={styles.heading}>
+              Advanced training 
+            </Text>
+            <Text style={styles.paragraph}> 
+              If you need advanced training assistance, please use the following numbers to call for help or drive to your nearest training centre:
+              {'\n'}
+              {'\u2B24'}  +61 738 991 899, DOGUE Bulimba
+              {'\n'}
+              {'\u2B24'} +61 434 067 536, Bonnies Dog Obedience & Puppy School
+              {'\n'}
+              
+            </Text>
+
+
+          </View>
 
 
 
@@ -151,15 +202,50 @@ const styles = StyleSheet.create({
   },
   paragraph: {
     textAlign: "left",
+    fontFamily: 'Roboto_400Regular',
     fontSize: 14,
     color: "#545871",
   },
   box: {
     paddingTop: 20,
+    paddingBottom: 20,
+    paddingLeft: 20,
+    paddingRight: 20,
     justifyContent: 'center',
     backgroundColor: '#bbadc6',
     width: 'auto',
+    
+  },
+  postbox: {
+    paddingTop: 20,
     paddingBottom: 20,
+    paddingLeft: 20,
+    paddingRight: 20,
+    justifyContent: 'center',
+    //backgroundColor: '#535971',
+    backgroundColor: '#bbadc6',
+    width: 'auto',
+    
+  },
+  preadoption: {
+    paddingTop: 20,
+    paddingBottom: 20,
+    paddingLeft: 20,
+    paddingRight: 20,
+    justifyContent: 'center',
+    backgroundColor: '#E19D98',
+    width: 'auto',
+    
+  },
+  postadoption: {
+    paddingTop: 20,
+    paddingBottom: 20,
+    paddingLeft: 20,
+    paddingRight: 20,
+    justifyContent: 'center',
+    backgroundColor: '#535971',
+    width: 'auto',
+    
   },
   container: {
     textAlign: 'center',
