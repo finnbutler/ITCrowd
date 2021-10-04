@@ -28,10 +28,8 @@ const AboutAdopting = () => {
     <ScrollView>
       <NativeBaseProvider>
 
-      <View style={styles.box}>
-        <Text >This is the about adopting page if this box shows in main, haram branch successfully merged</Text>
-      </View>
-        <View style={styles.profile} > 
+     
+        <View style={styles.buttonbox} > 
       
           <Button
             mt="2em"
@@ -63,19 +61,55 @@ const AboutAdopting = () => {
             onPress={() => navigation.navigate("")}
             title="Emergencies"
           >
-            Emergencies
+            Emergency help
           </Button>
+
+          <View style={styles.box}>
+            <Text style={styles.heading}>
+              When to seek emergency help {'\n'}
+            </Text>
+
+            <Text style={styles.paragraph}> 
+              If you have any emergencies or major concerns with your new pet, you should consider taking it to an emergency pet centre. It is important to distinguish between the need for an emergency appointment and a regular vet booking to avoid overcrowding the emergency centres. If your pet is displaying any of the following symptoms, please phone your nearest emergency centre:
+              {'\n'}
+              {'\n'}
+              {'\u2B24'} Significant injury - hit by a car, falling from a considerable height, etc.
+              {'\n'}
+              {'\u2B24'} Vomiting, coughing, diarrhea
+
+
+            </Text>
+
+            <Text style={styles.heading}>
+              Nearby facilities
+            </Text>
+            <Text style={styles.paragraph}> 
+              If you need emergency assistance, please use the following numbers to call for help or drive to your nearest animal hospital 
+              {'\n'}
+              3379 6408, Sherwood veterinary Practice 
+              {'\n'}
+              (07) 3062 7686, Animal Emergency Service
+              {'\n'}
+              
+            </Text>
+
+
+          </View>
+            
+
+
           <Button
             mt="2em"
             padding="1em 5.5em"
             borderRadius="30px"
             backgroundColor="#545871"
             onPress={() => navigation.navigate("")}
-            title="Login In!"
             title="How to train"
           >
             How to train
           </Button>
+
+
 
           <Button
             mt="2em"
@@ -107,6 +141,19 @@ const AboutAdopting = () => {
 }
 
 const styles = StyleSheet.create({
+  heading: {
+    textAlign: "center",
+    fontFamily: "PaytoneOne_400Regular",
+    color: "white",
+    paddingTop: 15,
+    fontSize: 16,
+    marginBottom: 15,
+  },
+  paragraph: {
+    textAlign: "left",
+    fontSize: 14,
+    color: "#545871",
+  },
   box: {
     paddingTop: 20,
     justifyContent: 'center',
@@ -128,7 +175,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: '#89CFF0',
   },
-  profile: {
+  buttonbox: {
     // backgroundColor: '#ffffff',
     alignItems: 'center',
     justifyContent: 'flex-start',
