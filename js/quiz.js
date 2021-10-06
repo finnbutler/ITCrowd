@@ -23,6 +23,7 @@ import {
 import { SwipeListView } from "react-native-swipe-list-view";
 import { MaterialIcons, Ionicons, Entypo } from "@expo/vector-icons";
 import Firebase from "../config/firebase";
+import parseErrorStack from "react-native/Libraries/Core/Devtools/parseErrorStack";
 
 export default function QuizScreen() {
   /*fetch("https://deco3801-91e98-default-rtdb.firebaseio.com/10/data")
@@ -181,13 +182,21 @@ function Basic() {
   );
 
   function CardComponent() {
+    const [data, setData] = useState("");
+    const [data2, setData2] = useState("");
     var leadsRef = Firebase.database().ref("8/data/0");
-    var leadsRefName = Firebase.database().ref("8/data/0/Name");
+    var leadsRefName = Firebase.database().ref("8/data/1/Name");
+
     leadsRefName.on("value", function (snapshot) {
       snapshot.val();
-      alert(snapshot.val());
-      global.Name1 = snapshot.val();
+      // alert(snapshot.val());
+      const Name1 = snapshot.val();
+      if (data == "") {
+        setData(Name1);
+      }
+      //alert(Name1);
     });
+
     leadsRef.on("value", function (snapshot) {
       snapshot.forEach(function (childSnapshot) {
         var childData = childSnapshot.val();
@@ -198,7 +207,9 @@ function Basic() {
       <Box
         rounded="lg"
         overflow="hidden"
-        width="72"
+        width="100%"
+        height="300px"
+        textalign="center"
         shadow={1}
         _light={{ backgroundColor: "gray.50" }}
         _dark={{ backgroundColor: "gray.700" }}
@@ -237,17 +248,23 @@ function Basic() {
               color: "coolGray.800",
             }}
           >
-            {leadsRefName.on("value", function (snapshot) {
-              snapshot.val();
-              global.Name1 = snapshot.val();
-            })}
             <Button
+              title={data}
               size="sm" //  onPress={() => console.log('hello world')}
-            ></Button>
+              pt="1em"
+              pl="2.4em"
+              pr="2.4em"
+              pb="1em"
+            >
+              <Text>{data}</Text>
+            </Button>
             <Button
               size="sm"
               colorScheme="secondary" // onPress={() => console.log('hello world')}
-            ></Button>
+            >
+              {" "}
+              <Text>{data2}</Text>
+            </Button>
           </Flex>
         </Stack>
       </Box>
