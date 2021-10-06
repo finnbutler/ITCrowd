@@ -31,9 +31,9 @@ const AboutAdopting = () => {
      
         <View style={styles.buttonbox} > 
 
-          <View style={styles.preadoption}>
+          {/* <View style={styles.preadoption}>
             <Text>Information about pre-adoption</Text>
-          </View>
+          </View> */}
       
           <Button
             mt="2em"
@@ -48,7 +48,7 @@ const AboutAdopting = () => {
 
           <Button
             mt="2em"
-            padding="1em 5.5em"
+            padding="1em 6em"
             borderRadius="30px"
             backgroundColor="#E19D98"
             onPress={() => navigation.navigate("")}
@@ -59,7 +59,7 @@ const AboutAdopting = () => {
 
           <Button
             mt="2em"
-            padding="1em 5.5em"
+            padding="1em 8em"
             borderRadius="30px"
             backgroundColor="#E19D98"
             onPress={() => navigation.navigate("")}
@@ -68,10 +68,35 @@ const AboutAdopting = () => {
             Quiz
           </Button>
 
+          <View style={styles.prebox}>
+            <Text style={styles.heading}>
+              How to bond {'\n'}
+            </Text>
 
-          <View style={styles.postbox}>
-            <Text>Information about post-adoption</Text>
+            <Text style={styles.paragraph}> 
+              text for bonding 
+                
+
+
+            </Text>
+
+            <Text style={styles.heading}>
+              Advanced training 
+            </Text>
+            <Text style={styles.paragraph}> 
+              If you need advanced training assistance, please use the following numbers to call for help or drive to your nearest training centre:
+              {'\n'}
+             
+              
+            </Text>
+
+
           </View>
+
+
+          {/* <View style={styles.postbox}>
+            <Text>Information about post-adoption</Text>
+          </View> */}
           <Button
             mt="2em"
             padding="1em 5.5em"
@@ -119,7 +144,7 @@ const AboutAdopting = () => {
 
           <Button
             mt="2em"
-            padding="1em 5.5em"
+            padding="1em 8em"
             borderRadius="30px"
             backgroundColor="#545871"
             onPress={() => navigation.navigate("")}
@@ -164,7 +189,7 @@ const AboutAdopting = () => {
 
           <Button
             mt="2em"
-            padding="1em 5.5em"
+            padding="1em 6em"
             borderRadius="30px"
             backgroundColor="#545871"
             onPress={() => navigation.navigate("")}
@@ -216,6 +241,17 @@ const styles = StyleSheet.create({
     width: 'auto',
     
   },
+  prebox: {
+    paddingTop: 20,
+    paddingBottom: 20,
+    paddingLeft: 20,
+    paddingRight: 20,
+    justifyContent: 'center',
+    backgroundColor: '#FBDADB',
+    // backgroundColor: '#FBE2E1',
+    width: 'auto',
+    
+  },
   postbox: {
     paddingTop: 20,
     paddingBottom: 20,
@@ -250,17 +286,7 @@ const styles = StyleSheet.create({
   container: {
     textAlign: 'center',
   },
-  info: {
-    fontFamily: 'Roboto_400Regular',
-    flexDirection: 'row',
-    textAlign: 'left',
-    padding: 30,
-    width: 700,
-    marginTop: 30,
-    borderWidth: 3,
-    borderRadius: 10,
-    borderColor: '#89CFF0',
-  },
+  
   buttonbox: {
     // backgroundColor: '#ffffff',
     alignItems: 'center',
@@ -268,41 +294,6 @@ const styles = StyleSheet.create({
   },
 });
 
-// const styles = StyleSheet.create({
-//   logo: {
-//     justifyContent: 'center',
-//     backgroundColor: '#ffffff',
-//     width: 'auto',
-    
-//   },
-//   heading: {
-//     textAlign: 'center',
-//     fontFamily: 'PaytoneOne_400Regular',
-//     color: 'white',
-//     paddingTop: 15,
-//     fontSize: 16,
-//     marginBottom: 15,
-//   },
-//   paragraph: {
-//     textAlign: 'left',
-//     fontSize: 14,
-//     color: '#545871',
-//   },
-//   profile: {
-//     backgroundColor: '#e8e9ed',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-//   info: {
-//     justifyContent: 'flex-start',
-//     fontFamily: 'Roboto_400Regular',
-//     flexDirection: 'row',
-//     padding: 30,
-//     width: 290,
-//     borderBottomWidth: 2,
-//     borderBottomColor: '#e8e9ed',
-//     backgroundColor: '#ffffff',
-//   },
-//   });
+
 
 export default AboutAdopting;
