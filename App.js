@@ -333,7 +333,6 @@ export default function App() {
         </Stack.Screen>
         <Stack.Screen name="Signup" options={{ headerShown: false }} component={SignUpScreen}  /> 
         <Stack.Screen name="Login" options={{ headerShown: false }} component={LogInScreen} /> 
-        {/* <LogInScreen navigation={this.props.navigation} /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );

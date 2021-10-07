@@ -18,6 +18,7 @@ import Firebase from "../config/firebase";
 import logo from "../assets/Logo.jpg";
 import background from "../assets/login_background.jpg";
 import { NavigationContainer } from "@react-navigation/native";
+import { useNavigation } from '@react-navigation/native';
 
 // export async function registration(email, password, lastName, firstName) {
 //   try {
@@ -67,7 +68,8 @@ import { NavigationContainer } from "@react-navigation/native";
 //     </View>
 //   );
 // };
-const LoginScreen = ({navigation}) => {
+const LoginScreen = () => {
+  const navigation = useNavigation();
 
   const auth = Firebase.auth();
   const [email, setEmail] = useState("");
@@ -90,7 +92,7 @@ const LoginScreen = ({navigation}) => {
     try {
       if (email !== "" && password !== "") {
         await auth.signInWithEmailAndPassword(email, password);
-        alert("Login Correct!");
+        navigation.navigate("Quiz");
       }
     } catch (error) {
       alert("ERROR!");

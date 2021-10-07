@@ -15,11 +15,13 @@ import "firebase/firestore";
 import logo from "../assets/Logo.jpg";
 import { createStackNavigator } from '@react-navigation/stack';
 import Login from '../js/loginForm.js';
+import { useNavigation } from '@react-navigation/native';
 
 // TODO: Replace the following with your app's Firebase project configuration
 const auth = Firebase.auth();
 
-function HomeScreen({ navigation }) {
+function HomeScreen() {
+  const navigation = useNavigation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -38,7 +40,7 @@ function HomeScreen({ navigation }) {
     }
   };
 
-  const onLogin = async () => {
+  const onSignup = async () => {
     try {
       if (email !== "" && password !== "") {
         await auth.createUserWithEmailAndPassword(email, password);
@@ -54,6 +56,7 @@ function HomeScreen({ navigation }) {
           displayName: "Finnasdasdd",
           photoURL: "https://example.com/jane-q-user/profile.jpg",
         });
+        alert("You sign up successfully! You can login now");
       }
     } catch (error) {
       alert(error.message);
@@ -162,7 +165,7 @@ function HomeScreen({ navigation }) {
           onChangeText={(text) => setPassword(text)}
           handlePasswordVisibility={handlePasswordVisibility}
         />
-        <Button
+        {/* <Button
           width="300px"
           margin="auto"
           marginBottom="10px"
@@ -177,13 +180,13 @@ function HomeScreen({ navigation }) {
           <Text color="#545871" fontFamily="Roboto_400Regular">
             Login
           </Text>
-        </Button>
+        </Button> */}
         <Button
           width="300px"
           margin="auto"
           backgroundColor="#f1c737"
           marginBottom="10px"
-          //onPress={() => navigation.navigate("Signup")}
+          onPress={(onSignup)}
           text="Go to Signup"
         >
           <Text color="#545871" fontFamily="Roboto_400Regular">
@@ -191,7 +194,7 @@ function HomeScreen({ navigation }) {
           </Text>
         </Button>
         <Text textAlign="center" color="#545871" fontFamily="Roboto_400Regular">
-            Already have an account? <Text textDecorationLine= 'underline'  onPress={LogInScreen()}>Login</Text> 
+            Already have an account? <Text textDecorationLine= 'underline'  onPress={() => navigation.navigate("Login")}>Login</Text> 
         </Text>
       </View>
       </ImageBackground>
