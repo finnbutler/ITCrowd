@@ -5,6 +5,7 @@ The backend of the app is a firebase that has a constructed schema from a phpmya
 
 ## Runing the app 
 The application uses expo to create the app both in web (for testing) and on a iphone or andriod phone. 
+Find more information about the docs for getting expo started here: https://docs.expo.dev/
 
 # Disclamier
 
