@@ -185,14 +185,27 @@ function Basic() {
     const [data, setData] = useState("");
     const [data2, setData2] = useState("");
     var leadsRef = Firebase.database().ref("8/data/0");
-    var leadsRefName = Firebase.database().ref("8/data/1/Name");
+    var randomInt = Math.floor(Math.random() * 10);
+    var randomInt2 = Math.floor(Math.random() * 10);
+    var item1 = Firebase.database().ref("8/data/" + randomInt + "/Name");
+    var item2 = Firebase.database().ref("8/data/" + randomInt2 + "/Name");
 
-    leadsRefName.on("value", function (snapshot) {
+    item1.on("value", function (snapshot) {
       snapshot.val();
       // alert(snapshot.val());
       const Name1 = snapshot.val();
       if (data == "") {
         setData(Name1);
+      }
+      //alert(Name1);
+    });
+
+    item2.on("value", function (snapshot) {
+      snapshot.val();
+      // alert(snapshot.val());
+      const Name1 = snapshot.val();
+      if (data2 == "") {
+        setData2(Name1);
       }
       //alert(Name1);
     });
