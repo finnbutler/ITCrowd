@@ -142,7 +142,7 @@ function Basic() {
       <Pressable
         w="70"
         ml="auto"
-        cursor="pointer"
+        //cursor="pointer"
         bg="coolGray.200"
         justifyContent="center"
         onPress={() => closeRow(rowMap, data.item.key)}
@@ -163,7 +163,7 @@ function Basic() {
       </Pressable>
       <Pressable
         w="70"
-        cursor="pointer"
+        //cursor="pointer"
         bg="red.500"
         justifyContent="center"
         onPress={() => deleteRow(rowMap, data.item.key)}
