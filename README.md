@@ -12,4 +12,4 @@ Find more information about the docs for getting expo started here: https://docs
 
 # Disclamier
 
-Code is currently copied as a base login from a tutorial, this will be edited for the final project
+Some code is currently copied from tutorials and UI kits and unreferenced this is shortly due to be changed. 
