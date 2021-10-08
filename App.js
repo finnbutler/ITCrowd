@@ -18,6 +18,11 @@ import LoginForm from "./js/loginForm.js";
 import SignUpForm from "./js/signupForm.js";
 import Profile from "./js/profile.js";
 import Adopting from "./js/about.js";
+import Cat from "./js/cat.js";
+import Dog from "./js/dog.js";
+import Preadopting from "./js/preadoption.js";
+import Postadopting from "./js/postadoption.js";
+
 import {
   useFonts,
   PaytoneOne_400Regular,
@@ -27,8 +32,7 @@ import AppLoading from "expo-app-loading";
 import background from "./assets/background.jpg";
 import Quiz from "./js/quiz.js";
 
-import Test from "./js/test";
-import Train from "./js/train.js";
+
 
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
@@ -239,15 +243,19 @@ function AboutAdopting({ navigation }) {
 function QuizScreen({ navigation }) {
   return <Quiz />;
 }
-// <<<<<<< HEAD
-// function TestScreen({ navigation }) {
-//   return <Test />;
-// }
-// function TestTrain({ navigation }) {
-//   return <Train />;
-// }
 
-//const Drawer = createDrawerNavigator();
+function CatScreen({ navigation }) {
+  return <Cat />;
+}
+function DogScreen({ navigation }) {
+  return <Dog />;
+}
+function PreadoptScreen({ navigation }) {
+  return <Preadopting />;
+}
+function PostadoptScreen({ navigation }) {
+  return <Postadopting />;
+}
 
 export default function App() {
   const theme = extendTheme({
@@ -333,6 +341,10 @@ export default function App() {
         </Stack.Screen>
         <Stack.Screen name="Signup" options={{ headerShown: false }} component={SignUpScreen}  /> 
         <Stack.Screen name="Login" options={{ headerShown: false }} component={LogInScreen} /> 
+        <Stack.Screen name="Cat" component={CatScreen} /> 
+        <Stack.Screen name="Dog" component={DogScreen} /> 
+        <Stack.Screen name="Pre-adoption" component={PreadoptScreen} /> 
+        <Stack.Screen name="Post-adoption" component={PostadoptScreen} /> 
       </Stack.Navigator>
     </NavigationContainer>
   );
