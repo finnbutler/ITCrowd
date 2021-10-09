@@ -25,26 +25,108 @@ import { MaterialIcons, Ionicons, Entypo } from "@expo/vector-icons";
 import Firebase from "../config/firebase";
 import parseErrorStack from "react-native/Libraries/Core/Devtools/parseErrorStack";
 
-export default function QuizScreen() {
-  /*fetch("https://deco3801-91e98-default-rtdb.firebaseio.com/10/data")
-    .then((response) => response.json())
-    .then((data) => console.log(data));*/
+function CardComponent() {
+  const [data, setData] = useState("");
+  const [data2, setData2] = useState("");
+  var leadsRef = Firebase.database().ref("8/data/0");
+  var randomInt = Math.floor(Math.random() * 10);
+  var randomInt2 = Math.floor(Math.random() * 10);
+  var item1 = Firebase.database().ref("8/data/" + randomInt + "/Name");
+  var item2 = Firebase.database().ref("8/data/" + randomInt2 + "/Name");
 
-  // Attach an asynchronous callback to read the data at our posts reference
-  const numberOfUsers = 15;
-  const randomIndex = Math.floor(Math.random() * numberOfUsers);
+  item1.on("value", function (snapshot) {
+    snapshot.val();
+    // alert(snapshot.val());
+    const Name1 = snapshot.val();
+    if (data == "") {
+      setData(Name1);
+    }
+    //alert(Name1);
+  });
 
-  const [mode, setMode] = useState("Basic");
+  item2.on("value", function (snapshot) {
+    snapshot.val();
+    // alert(snapshot.val());
+    const Name1 = snapshot.val();
+    if (data2 == "") {
+      setData2(Name1);
+    }
+    //alert(Name1);
+  });
 
+  leadsRef.on("value", function (snapshot) {
+    snapshot.forEach(function (childSnapshot) {
+      var childData = childSnapshot.val();
+      //  alert(childData);
+    });
+  });
   return (
-    <NativeBaseProvider>
-      <Box bg="white" flex="1" safeAreaTop>
-        <Basic />
+    <Box
+      rounded="lg"
+      overflow="hidden"
+      width="100%"
+      height="300px"
+      textalign="center"
+      shadow={1}
+      _light={{ backgroundColor: "gray.50" }}
+      _dark={{ backgroundColor: "gray.700" }}
+    >
+      <Box>
+        <Center
+          bg="red.500"
+          _text={{ color: "white", fontWeight: "700", fontSize: "xs" }}
+          position="absolute"
+          bottom={0}
+          px="3"
+          py="1.5"
+        >
+          QUIZ
+        </Center>
       </Box>
-    </NativeBaseProvider>
+      <Stack p="4" space={3}>
+        <Heading size="md" ml="-1">
+          Question 1
+        </Heading>
+        <Text
+          fontSize="xs"
+          _light={{ color: "violet.500" }}
+          _dark={{ color: "violet.300" }}
+          fontWeight="500"
+          ml="-0.5"
+          mt="-1"
+        >
+          What's a cooler name?
+        </Text>
+        <Flex
+          direction="row"
+          mb="2.5"
+          mt="1.5"
+          _text={{
+            color: "coolGray.800",
+          }}
+        >
+          <Button
+            title={data}
+            size="sm" //  onPress={() => console.log('hello world')}
+            pt="1em"
+            pl="2.4em"
+            pr="2.4em"
+            pb="1em"
+          >
+            <Text>{data}</Text>
+          </Button>
+          <Button
+            size="sm"
+            colorScheme="secondary" // onPress={() => console.log('hello world')}
+          >
+            {" "}
+            <Text>{data2}</Text>
+          </Button>
+        </Flex>
+      </Stack>
+    </Box>
   );
 }
-
 function Basic() {
   const data = [
     {
@@ -180,109 +262,6 @@ function Basic() {
       </Pressable>
     </HStack>
   );
-
-  function CardComponent() {
-    const [data, setData] = useState("");
-    const [data2, setData2] = useState("");
-    var leadsRef = Firebase.database().ref("8/data/0");
-    var randomInt = Math.floor(Math.random() * 10);
-    var randomInt2 = Math.floor(Math.random() * 10);
-    var item1 = Firebase.database().ref("8/data/" + randomInt + "/Name");
-    var item2 = Firebase.database().ref("8/data/" + randomInt2 + "/Name");
-
-    item1.on("value", function (snapshot) {
-      snapshot.val();
-      // alert(snapshot.val());
-      const Name1 = snapshot.val();
-      if (data == "") {
-        setData(Name1);
-      }
-      //alert(Name1);
-    });
-
-    item2.on("value", function (snapshot) {
-      snapshot.val();
-      // alert(snapshot.val());
-      const Name1 = snapshot.val();
-      if (data2 == "") {
-        setData2(Name1);
-      }
-      //alert(Name1);
-    });
-
-    leadsRef.on("value", function (snapshot) {
-      snapshot.forEach(function (childSnapshot) {
-        var childData = childSnapshot.val();
-        //  alert(childData);
-      });
-    });
-    return (
-      <Box
-        rounded="lg"
-        overflow="hidden"
-        width="100%"
-        height="300px"
-        textalign="center"
-        shadow={1}
-        _light={{ backgroundColor: "gray.50" }}
-        _dark={{ backgroundColor: "gray.700" }}
-      >
-        <Box>
-          <Center
-            bg="red.500"
-            _text={{ color: "white", fontWeight: "700", fontSize: "xs" }}
-            position="absolute"
-            bottom={0}
-            px="3"
-            py="1.5"
-          >
-            QUIZ
-          </Center>
-        </Box>
-        <Stack p="4" space={3}>
-          <Heading size="md" ml="-1">
-            Question 1
-          </Heading>
-          <Text
-            fontSize="xs"
-            _light={{ color: "violet.500" }}
-            _dark={{ color: "violet.300" }}
-            fontWeight="500"
-            ml="-0.5"
-            mt="-1"
-          >
-            What's a cooler name?
-          </Text>
-          <Flex
-            direction="row"
-            mb="2.5"
-            mt="1.5"
-            _text={{
-              color: "coolGray.800",
-            }}
-          >
-            <Button
-              title={data}
-              size="sm" //  onPress={() => console.log('hello world')}
-              pt="1em"
-              pl="2.4em"
-              pr="2.4em"
-              pb="1em"
-            >
-              <Text>{data}</Text>
-            </Button>
-            <Button
-              size="sm"
-              colorScheme="secondary" // onPress={() => console.log('hello world')}
-            >
-              {" "}
-              <Text>{data2}</Text>
-            </Button>
-          </Flex>
-        </Stack>
-      </Box>
-    );
-  }
   return (
     <Box bg="white" safeArea flex="1">
       <NativeBaseProvider>
@@ -304,5 +283,24 @@ function Basic() {
         onRowDidOpen={onRowDidOpen}
       />
     </Box>
+  );
+}
+export default function QuizScreen() {
+  /*fetch("https://deco3801-91e98-default-rtdb.firebaseio.com/10/data")
+    .then((response) => response.json())
+    .then((data) => console.log(data));*/
+
+  // Attach an asynchronous callback to read the data at our posts reference
+  const numberOfUsers = 15;
+  const randomIndex = Math.floor(Math.random() * numberOfUsers);
+
+  const [mode, setMode] = useState("Basic");
+
+  return (
+    <NativeBaseProvider>
+      <Box bg="white" flex="1" safeAreaTop>
+        <Basic />
+      </Box>
+    </NativeBaseProvider>
   );
 }
