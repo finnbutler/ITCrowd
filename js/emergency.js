@@ -4,7 +4,7 @@ import { NativeBaseProvider, Image, Button} from "native-base";
 
 // import { NavigationContainer } from '@react-navigation/native';
 // import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useNavigation } from '@react-navigation/native';
+
 
 import {
   useFonts,
@@ -17,10 +17,8 @@ import AppLoading from 'expo-app-loading';
 
 
 
-const AboutAdopting = () => {
 
-  const navigation = useNavigation();
-
+const Emergency = () => {
   let [fontsLoaded, error] = useFonts({
     Roboto_400Regular,
     PaytoneOne_400Regular
@@ -32,54 +30,24 @@ const AboutAdopting = () => {
     
     <ScrollView>
       <NativeBaseProvider>
-    
+      
 
      
         <View style={styles.buttonbox} > 
+
+        
       
           <Button
             mt="2em"
             padding="1em 3em"
             borderRadius="30px"
             backgroundColor="#E19D98"
-            onPress={() => navigation.navigate("Pre-adoption")}
-            title="preadoption"
+            onPress={() => navigation.navigate("")}
+            title="Understanding requirements"
           >
-            Pre-adoption 
+            Understanding requirements
           </Button>
 
-          <Button
-            mt="2em"
-            padding="1em 3em"
-            borderRadius="30px"
-            backgroundColor="#545871"
-            onPress={() => navigation.navigate("Post-adoption")}
-            title="postadoption"
-          >
-            Post-adoption
-          </Button>
-
-          {/* <Button
-            mt="2em"
-            padding="1em 3em"
-            borderRadius="30px"
-            backgroundColor="#E19D98"
-            onPress={() => navigation.navigate("Cat")}
-            title="cat"
-          >
-            Cat
-          </Button>
-
-          <Button
-            mt="2em"
-            padding="1em 3em"
-            borderRadius="30px"
-            backgroundColor="#545871"
-            onPress={() => navigation.navigate("Dog")}
-            title="dog"
-          >
-            Dog
-          </Button> */}
          
         </View>
 
@@ -170,4 +138,4 @@ const styles = StyleSheet.create({
 
 
 
-export default AboutAdopting;
+export default Emergency;

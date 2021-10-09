@@ -1,15 +1,15 @@
-# Sample Snack app
+# ITCrowd Project Perfect Pet App 
 
-Open the `App.js` file to start writing some code. You can preview the changes directly on your phone or tablet by scanning the **QR code** or use the iOS or Android emulators. When you're done, click **Save** and share the link!
+The following app has been mode in react native using react navgiation, native base framewworks and modified UI Kits. 
+The backend of the app is a firebase that has a constructed schema from a phpmyadmin database setup and regalarly imported as JSON. 
+To get started hit the signup button on the signup page, and then login via the login page. The application allows you to answer
+questions about pet data and then store your faviourate pets. 
+![Current Version](https://cdn.discordapp.com/attachments/828399486019174444/895774078454087700/Screen_Shot_2021-10-08_at_6.45.58_am.png)
 
-When you're ready to see everything that Expo provides (or if you want to use your own editor) you can **Download** your project and use it with [expo-cli](https://docs.expo.io/get-started/installation).
-
-All projects created in Snack are publicly available, so you can easily share the link to this project via link, or embed it on a web page with the `<>` button.
-
-If you're having problems, you can tweet to us [@expo](https://twitter.com/expo) or ask in our [forums](https://forums.expo.io/c/snack).
-
-Snack is Open Source. You can find the code on the [GitHub repo](https://github.com/expo/snack).
+## Runing the app 
+The application uses expo to create the app both in web (for testing) and on a iphone or andriod phone. 
+Find more information about the docs for getting expo started here: https://docs.expo.dev/
 
 # Disclamier
 
-Code is currently copied as a base login from a tutorial, this will be edited for the final project
+Some code is currently copied from tutorials and UI kits and unreferenced this is shortly due to be changed. 
