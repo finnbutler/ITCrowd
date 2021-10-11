@@ -22,6 +22,7 @@ import Cat from "./js/cat.js";
 import Dog from "./js/dog.js";
 import Preadopting from "./js/preadoption.js";
 import Postadopting from "./js/postadoption.js";
+import StartQuiz from "./js/start_quiz.js";
 
 import {
   useFonts,
@@ -41,7 +42,7 @@ import logo from "./assets/Logo.jpg";
 import { createStackNavigator } from '@react-navigation/stack';
 
 // TODO: Replace the following with your app's Firebase project configuration
-const auth = Firebase.auth();
+//const auth = Firebase.auth();
 
 function HomeScreen({ navigation }) {
 
@@ -55,21 +56,6 @@ function HomeScreen({ navigation }) {
   return (
     <ScrollView>
       <NativeBaseProvider>
-        <View
-          style={{
-            width: "auto",
-            height: 83,
-            backgroundColor: "white",
-            alignItems: "center",
-            paddingTop: 23,
-          }}
-        >
-          <Image
-            source={logo}
-            style={{ width: 65, height: 58 }}
-            alt="logo_image"
-          />
-        </View>
         <ImageBackground
           source={background}
           resizeMode="cover"
@@ -100,7 +86,7 @@ function HomeScreen({ navigation }) {
               marginRight={1}
               fontFamily="PaytoneOne_400Regular"
             >
-              Match with and adopt a pet {"\n"}that is most suitable for you 
+              Match with and adopt a pet {"\n"}that is most suitable for you
             </Text>
 
             <StatusBar style="dark-content" />
@@ -128,7 +114,7 @@ function HomeScreen({ navigation }) {
               text="Go to Signup"
               width={40}
               borderRadius={7}
-              marginBottom= {150}
+              marginBottom={150}
               marginRight={7}
             >
               <Text
@@ -142,9 +128,9 @@ function HomeScreen({ navigation }) {
           </View>
         </ImageBackground>
         <View style={{ height: 500, backgroundColor: "#9e8fae" }}>
-        <Text marginTop={6} textAlign="center" fontSize={24} color="white" fontFamily="PaytoneOne_400Regular">
-          Planning to adopt a pet?{"\n"}Here is what you need to consider...
-        </Text>
+          <Text marginTop={6} textAlign="center" fontSize={24} color="white" fontFamily="PaytoneOne_400Regular">
+            Planning to adopt a pet?{"\n"}Here is what you need to consider...
+          </Text>
         </View>
       </NativeBaseProvider>
     </ScrollView>
@@ -154,9 +140,9 @@ function HomeScreen({ navigation }) {
 function SignUpScreen({ navigation }) {
   return <SignUpForm />;
 }
- function LogInScreen() {
+function LogInScreen() {
   return <LoginForm />;
- }
+}
 
 function ProfileScreen({ navigation }) {
   return <Profile />;
@@ -180,6 +166,9 @@ function PreadoptScreen({ navigation }) {
 }
 function PostadoptScreen({ navigation }) {
   return <Postadopting />;
+}
+function StartQuizScreen({ navigation }) {
+  return <StartQuiz />;
 }
 
 export default function App() {
@@ -223,53 +212,103 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="HomePage" options={{ headerShown: false }} initialRoute>{() =>(
+        <Stack.Screen name="Back" options={{ headerShown: false }} initialRoute>{() => (
           <Tab.Navigator
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
+            screenOptions={({ route }) => ({
+              tabBarIcon: ({ focused, color, size }) => {
+                let iconName;
 
-            if (route.name === "Home") {
-              iconName = focused ? "home-outline" : "home-outline";
-            }
-            if (route.name === "Quiz") {
-              iconName = focused
-                ? "help-circle-outline"
-                : "help-circle-outline";
-            }
-            if (route.name === "Adopting") {
-              iconName = focused ? "paw-outline" : "paw-outline";
-            }
-            if (route.name === "Profile") {
-              iconName = focused ? "ios-person" : "person";
-            }
-            // You can return any component that you like here!
-            return <Ionicons name={iconName} size={size} color={color} />;
-          },
-          tabBarActiveTintColor: "tomato",
-          tabBarInactiveTintColor: "gray",
-        })}
-      >
-        <Tab.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{ headerShown: false }}
-        />
-        <Tab.Screen name="Quiz" component={QuizScreen} />
-        <Tab.Screen name="Adopting" component={AboutAdopting} />
-        <Tab.Screen
-          name="Profile"
-          component={ProfileScreen}
-          options={{ headerShown: false }}
-        />
-      </Tab.Navigator>)}
+                if (route.name === "Home") {
+                  iconName = focused ? "home-outline" : "home-outline";
+                }
+                if (route.name === "Quiz") {
+                  iconName = focused
+                    ? "help-circle-outline"
+                    : "help-circle-outline";
+                }
+                if (route.name === "Adopting") {
+                  iconName = focused ? "paw-outline" : "paw-outline";
+                }
+                if (route.name === "Profile") {
+                  iconName = focused ? "ios-person" : "person";
+                }
+                // You can return any component that you like here!
+                return <Ionicons name={iconName} size={size} color={color} />;
+              },
+              tabBarActiveTintColor: "tomato",
+              tabBarInactiveTintColor: "gray",
+            })}
+          >
+            <Tab.Screen
+              name="Home"
+              component={HomeScreen}
+              options={{
+                headerTitle: () => (
+                  <Image
+                    style={{ width: 67, height: 61 }}
+                    source={logo}
+                    resizeMode='contain' />), headerTitleStyle: { flex: 1, textAlign: 'center' },
+                headerStyle: { height: 83 }
+              }}
+            />
+            <Tab.Screen name="Quiz" options={{
+              headerTitle: (Quiz) => (
+                <Image
+                  style={{ width: 67, height: 61 }}
+                  source={logo}
+                  resizeMode='contain' />), headerTitleStyle: { flex: 1, textAlign: 'center' },
+              headerStyle: { height: 83 }
+            }} component={QuizScreen} />
+            <Tab.Screen name="Adopting" options={{
+              headerTitle: () => (
+                <Image
+                  style={{ width: 67, height: 61 }}
+                  source={logo}
+                  resizeMode='contain' />), headerTitleStyle: { flex: 1, textAlign: 'center' },
+              headerStyle: { height: 83 }
+            }} component={AboutAdopting} />
+            <Tab.Screen
+              name="Profile"
+              component={ProfileScreen}
+              options={{
+                headerTitle: () => (
+                  <Image
+                    style={{ width: 67, height: 61 }}
+                    source={logo}
+                    resizeMode='contain' />), headerTitleStyle: { flex: 1, textAlign: 'center' },
+                headerStyle: { height: 83 }
+              }}
+            />
+          </Tab.Navigator>)}
         </Stack.Screen>
-        <Stack.Screen name="Signup" options={{ headerShown: false }} component={SignUpScreen}  /> 
-        <Stack.Screen name="Login" options={{ headerShown: false }} component={LogInScreen} /> 
-        <Stack.Screen name="Cat" component={CatScreen} /> 
-        <Stack.Screen name="Dog" component={DogScreen} /> 
-        <Stack.Screen name="Pre-adoption" component={PreadoptScreen} /> 
-        <Stack.Screen name="Post-adoption" component={PostadoptScreen} /> 
+        <Stack.Screen name="Signup" options={{
+          headerTitle: () => (
+            <Image
+              style={{ width: 67, height: 61 }}
+              source={logo}
+              resizeMode='contain' />), headerTitleStyle: { flex: 1, textAlign: 'center' },
+          headerStyle: { height: 83 }
+        }} component={SignUpScreen} />
+        <Stack.Screen name="Login" options={{
+          headerTitle: () => (
+            <Image
+              style={{ width: 67, height: 61 }}
+              source={logo}
+              resizeMode='contain' />), headerTitleStyle: { flex: 1, textAlign: 'center' },
+          headerStyle: { height: 83 }
+        }} component={LogInScreen} />
+        <Stack.Screen name="Cat" component={CatScreen} />
+        <Stack.Screen name="Dog" component={DogScreen} />
+        <Stack.Screen name="Pre-adoption" component={PreadoptScreen} />
+        <Stack.Screen name="Post-adoption" component={PostadoptScreen} />
+        <Stack.Screen name="start_quiz" options={{
+          headerTitle: () => (
+            <Image
+              style={{ width: 67, height: 61 }}
+              source={logo}
+              resizeMode='contain' />), headerTitleStyle: { flex: 1, textAlign: 'center' },
+          headerStyle: { height: 83 }
+        }} component={StartQuizScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

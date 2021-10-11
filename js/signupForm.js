@@ -66,21 +66,6 @@ function HomeScreen() {
 
   return (
     <NativeBaseProvider>
-      <View
-          style={{
-            width: "auto",
-            height: 83,
-            backgroundColor: "white",
-            alignItems: "center",
-            paddingTop: 23,
-          }}
-        >
-          <Image
-            source={logo}
-            style={{ width: 65, height: 58 }}
-            alt="logo_image"
-          />
-        </View>
       <ImageBackground
       source={background}
       resizeMode="cover"

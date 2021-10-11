@@ -15,7 +15,7 @@ import { useState } from "react";
 import AppLoading from "expo-app-loading";
 import { Roboto_400Regular } from "@expo-google-fonts/roboto";
 import Firebase from "../config/firebase";
-import logo from "../assets/Logo.jpg";
+import "firebase/auth";
 import background from "../assets/login_background.jpg";
 import { NavigationContainer } from "@react-navigation/native";
 import { useNavigation } from '@react-navigation/native';
@@ -63,21 +63,6 @@ const LoginScreen = () => {
   }
   return (
     <NativeBaseProvider>
-      <View
-        style={{
-          width: "auto",
-          height: 83,
-          backgroundColor: "white",
-          alignItems: "center",
-          paddingTop: 23,
-        }}
-      >
-        <Image
-          source={logo}
-          style={{ width: 65, height: 58 }}
-          alt="logo_image"
-        />
-      </View>
       <ImageBackground
         source={background}
         resizeMode="cover"
