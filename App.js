@@ -44,44 +44,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 const auth = Firebase.auth();
 
 function HomeScreen({ navigation }) {
-  // const response = await fetch('/api/names');
-  // const names = await response.json();
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordVisibility, setPasswordVisibility] = useState(true);
-  const [rightIcon, setRightIcon] = useState("eye");
-  const [loginError, setLoginError] = useState("");
-
-  const handlePasswordVisibility = () => {
-    if (rightIcon === "eye") {
-      setRightIcon("eye-off");
-      setPasswordVisibility(!passwordVisibility);
-    } else if (rightIcon === "eye-off") {
-      setRightIcon("eye");
-      setPasswordVisibility(!passwordVisibility);
-    }
-  };
-
-  const onLogin = async () => {
-    try {
-      if (email !== "" && password !== "") {
-        await auth.signInWithEmailAndPassword(email, password);
-        alert("Login Correct!");
-      }
-    } catch (error) {
-      alert("ERROR!");
-      setLoginError(error.message);
-    }
-  };
-  const unsubscribeAuth = auth.onAuthStateChanged(async (authenticatedUser) => {
-    try {
-      await (authenticatedUser ? setUser(authenticatedUser) : setUser(null));
-      return <ProfileScreen></ProfileScreen>;
-    } catch (error) {
-      console.log(error);
-    }
-  });
 
   let [fontsLoaded, error] = useFonts({
     Roboto_400Regular,
@@ -142,42 +104,6 @@ function HomeScreen({ navigation }) {
             </Text>
 
             <StatusBar style="dark-content" />
-            {/* <Input
-              inputStyle={{
-                fontSize: 14,
-              }}
-              containerStyle={{
-                backgroundColor: "#fff",
-                marginBottom: 20,
-              }}
-              leftIcon="email"
-              placeholder="Enter email"
-              autoCapitalize="none"
-              keyboardType="email-address"
-              textContentType="emailAddress"
-              autoFocus={true}
-              value={email}
-              onChangeText={(text) => setEmail(text)}
-            />
-            <Input
-              inputStyle={{
-                fontSize: 14,
-              }}
-              containerStyle={{
-                backgroundColor: "#fff",
-                marginBottom: 20,
-              }}
-              leftIcon="lock"
-              placeholder="Enter password"
-              autoCapitalize="none"
-              autoCorrect={false}
-              secureTextEntry={passwordVisibility}
-              textContentType="password"
-              rightIcon={rightIcon}
-              value={password}
-              onChangeText={(text) => setPassword(text)}
-              handlePasswordVisibility={handlePasswordVisibility}
-            /> */}
             <Button
               onPress={() => navigation.navigate("Login")}
               backgroundColor="#f1c737"
@@ -226,7 +152,6 @@ function HomeScreen({ navigation }) {
 }
 
 function SignUpScreen({ navigation }) {
-  //SignUpScreen.navigation = HomeScreen.navigation;
   return <SignUpForm />;
 }
  function LogInScreen() {

@@ -165,22 +165,6 @@ function HomeScreen() {
           onChangeText={(text) => setPassword(text)}
           handlePasswordVisibility={handlePasswordVisibility}
         />
-        {/* <Button
-          width="300px"
-          margin="auto"
-          marginBottom="10px"
-          onPress={onLogin}
-          backgroundColor="#f1c737"
-          title="Login"
-          titleSize={20}
-          containerStyle={{
-            marginBottom: 24,
-          }}
-        >
-          <Text color="#545871" fontFamily="Roboto_400Regular">
-            Login
-          </Text>
-        </Button> */}
         <Button
           width="300px"
           margin="auto"
@@ -201,7 +185,4 @@ function HomeScreen() {
     </NativeBaseProvider>
   );
 }
-function LogInScreen() {
-  return <Login />;
- }
 export default HomeScreen;
