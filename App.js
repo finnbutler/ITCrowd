@@ -331,7 +331,7 @@ export default function App() {
           options={{ headerShown: false }}
         />
         <Tab.Screen name="Quiz" component={QuizScreen} />
-        <Tab.Screen name="Adopting" component={AboutAdopting} />
+        <Tab.Screen name="Adopting" component={AboutAdopting} />        
         <Tab.Screen
           name="Profile"
           component={ProfileScreen}

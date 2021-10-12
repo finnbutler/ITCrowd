@@ -33,12 +33,7 @@ const Preadoption = () => {
     <ScrollView>
       <NativeBaseProvider>
       
-     
-
-     
         <View style={styles.buttonbox} > 
-
-      
 
           <Button
             mt="2em"
@@ -51,10 +46,6 @@ const Preadoption = () => {
             What to expect
           </Button>
 
-         
-            
-
-
           <Button
             mt="2em"
             padding="1em 2.5em"
@@ -65,10 +56,6 @@ const Preadoption = () => {
           >
             Understanding requirements
           </Button>
-
-         
-
-
 
           <Button
             mt="2em"

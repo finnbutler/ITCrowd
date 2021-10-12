@@ -15,6 +15,7 @@ import {
 } from '@expo-google-fonts/roboto'
 import AppLoading from 'expo-app-loading';
 
+import logo from "../assets/Logo.jpg";
 
 
 const AboutAdopting = () => {
@@ -58,6 +59,8 @@ const AboutAdopting = () => {
           >
             Post-adoption
           </Button>
+          
+          
 
           {/* <Button
             mt="2em"
@@ -83,6 +86,17 @@ const AboutAdopting = () => {
          
         </View>
 
+        <View>
+          <TouchableOpacity style={styles.card} onPress={() => navigation.navigate("Post-adoption")} > 
+            testing
+            <Image
+              source={logo}
+              style={{ width: 65, height: 58 }}
+              alt="logo_image"
+            />
+          </TouchableOpacity>
+        </View>
+
 
         
     </NativeBaseProvider>
@@ -90,7 +104,15 @@ const AboutAdopting = () => {
   );
 }
 
+
+
 const styles = StyleSheet.create({
+  card: {
+    margin: 10,
+    padding: 10,
+    borderRadius: 15,
+    backgroundColor: "#DDDDDD",
+  },
   heading: {
     textAlign: "center",
     fontFamily: "PaytoneOne_400Regular",
