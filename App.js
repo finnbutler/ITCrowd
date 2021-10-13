@@ -221,12 +221,12 @@ export default function App() {
                 if (route.name === "Home") {
                   iconName = focused ? "home-outline" : "home-outline";
                 }
-                if (route.name === "Quiz") {
+                if (route.name === "About") {
                   iconName = focused
                     ? "help-circle-outline"
                     : "help-circle-outline";
                 }
-                if (route.name === "Adopting") {
+                if (route.name === "Adopt") {
                   iconName = focused ? "paw-outline" : "paw-outline";
                 }
                 if (route.name === "Profile") {
@@ -251,15 +251,15 @@ export default function App() {
                 headerStyle: { height: 83 }
               }}
             />
-            <Tab.Screen name="Quiz" options={{
-              headerTitle: (Quiz) => (
+            <Tab.Screen name="Adopt" options={{
+              headerTitle: () => (
                 <Image
                   style={{ width: 67, height: 61 }}
                   source={logo}
                   resizeMode='contain' />), headerTitleStyle: { flex: 1, textAlign: 'center' },
               headerStyle: { height: 83 }
             }} component={QuizScreen} />
-            <Tab.Screen name="Adopting" options={{
+            <Tab.Screen name="About" options={{
               headerTitle: () => (
                 <Image
                   style={{ width: 67, height: 61 }}
