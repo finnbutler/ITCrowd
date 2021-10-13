@@ -16,6 +16,14 @@ import {
 import AppLoading from 'expo-app-loading';
 
 import logo from "../assets/Logo.jpg";
+import background from "../assets/background.jpg";
+import sick_dog from "../assets/sick_dog.jpg";
+import study_dog from "../assets/study_dog.jpg";
+import misconception from "../assets/misconception.jpg";
+
+
+
+import { borderLeft } from 'styled-system';
 
 
 const AboutAdopting = () => {
@@ -38,63 +46,87 @@ const AboutAdopting = () => {
      
         <View style={styles.buttonbox} > 
       
-          <Button
-            mt="2em"
-            padding="1em 3em"
-            borderRadius="30px"
-            backgroundColor="#E19D98"
-            onPress={() => navigation.navigate("Pre-adoption")}
-            title="preadoption"
-          >
-            Pre-adoption 
-          </Button>
-
-          <Button
-            mt="2em"
-            padding="1em 3em"
-            borderRadius="30px"
-            backgroundColor="#545871"
-            onPress={() => navigation.navigate("Post-adoption")}
-            title="postadoption"
-          >
-            Post-adoption
-          </Button>
           
-          
-
-          {/* <Button
-            mt="2em"
-            padding="1em 3em"
-            borderRadius="30px"
-            backgroundColor="#E19D98"
-            onPress={() => navigation.navigate("Cat")}
-            title="cat"
-          >
-            Cat
-          </Button>
-
-          <Button
-            mt="2em"
-            padding="1em 3em"
-            borderRadius="30px"
-            backgroundColor="#545871"
-            onPress={() => navigation.navigate("Dog")}
-            title="dog"
-          >
-            Dog
-          </Button> */}
          
         </View>
 
-        <View>
-          <TouchableOpacity style={styles.card} onPress={() => navigation.navigate("Post-adoption")} > 
-            testing
+        <View style={styles.cardbox}>
+          <View style={{paddingLeft: 10,}}>
+            <Text style={{ fontSize:20, fontFamily: "PaytoneOne_400Regular",}}>Pre-adoption</Text>
+          </View>
+          
+          
+          <TouchableOpacity style={styles.card} onPress={() => navigation.navigate("Common Misconception")} > 
+            
             <Image
-              source={logo}
-              style={{ width: 65, height: 58 }}
-              alt="logo_image"
+              source={misconception}
+              style={{ height: 150, borderRadius:10, }}
+              alt="misconception"
             />
+            <View style={styles.text_in_card}>
+              <Text >Common Misconceptions</Text>
+              <Text style={{ color: "#777", paddingTop: 5 }}>
+                Misconceptions you should know before adopting...
+              </Text>
+            </View>
+            
+
           </TouchableOpacity>
+          
+          <TouchableOpacity style={styles.card} onPress={() => navigation.navigate("Pre-adoption")} > 
+            
+            <Image
+              source={study_dog}
+              style={{ height: 150, borderRadius:10, }}
+              alt="study_dog"
+            />
+            <View style={styles.text_in_card}>
+              <Text style={{ fontSize:12,  fontFamily: "PaytoneOne_400Regular",}}>Basic Knowledge</Text>
+              <Text style={{ color: "#777", paddingTop: 5, fontFamily: 'Roboto_400Regular', }}>
+                Knowledge you should know before adopting...
+              </Text>
+            </View>
+          </TouchableOpacity>
+
+          
+          <View style={{paddingLeft: 10,}}>
+            <Text style={{ fontSize:20,  fontFamily: "PaytoneOne_400Regular",}}>Post-adoption</Text>
+          </View>
+          
+          
+          <TouchableOpacity style={styles.card} onPress={() => navigation.navigate("Post-adoption")} > 
+            
+            <Image
+              source={sick_dog}
+              style={{ height: 150, borderRadius:10, }}
+              alt="sick_dog"
+            />
+            <View style={styles.text_in_card}>
+              <Text>Emergency help</Text>
+              <Text style={{ color: "#777", paddingTop: 5 }}>
+                Urgent contacts and how to cope with situation ...
+              </Text>
+            </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.card} onPress={() => navigation.navigate("Post-adoption")} > 
+            
+            <Image
+              source={background}
+              style={{ height: 150, borderRadius:10, }}
+              alt="background"
+            />
+            <View style={styles.text_in_card}>
+              <Text>How to train</Text>
+              <Text style={{ color: "#777", paddingTop: 5 }}>
+                Learn tips of training your pet...
+              </Text>
+            </View>
+          </TouchableOpacity>
+
+          
+
+
         </View>
 
 
@@ -107,11 +139,17 @@ const AboutAdopting = () => {
 
 
 const styles = StyleSheet.create({
+  cardbox: {
+    
+  },
   card: {
     margin: 10,
-    padding: 10,
+    //padding: 10,
     borderRadius: 15,
     backgroundColor: "#DDDDDD",
+  },
+  text_in_card: {
+    padding:5,
   },
   heading: {
     textAlign: "center",

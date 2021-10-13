@@ -20,7 +20,7 @@ import Profile from "./js/profile.js";
 import Adopting from "./js/about.js";
 import Cat from "./js/cat.js";
 import Dog from "./js/dog.js";
-import Preadopting from "./js/preadoption.js";
+import Misconcept from "./js/preadoption.js";
 import Postadopting from "./js/postadoption.js";
 
 import {
@@ -250,8 +250,8 @@ function CatScreen({ navigation }) {
 function DogScreen({ navigation }) {
   return <Dog />;
 }
-function PreadoptScreen({ navigation }) {
-  return <Preadopting />;
+function MisconceptScreen({ navigation }) {
+  return <Misconcept />;
 }
 function PostadoptScreen({ navigation }) {
   return <Postadopting />;
@@ -307,12 +307,12 @@ export default function App() {
             if (route.name === "Home") {
               iconName = focused ? "home-outline" : "home-outline";
             }
-            if (route.name === "Quiz") {
+            if (route.name === "Adopting") {
               iconName = focused
                 ? "help-circle-outline"
                 : "help-circle-outline";
             }
-            if (route.name === "Adopting") {
+            if (route.name === "About") {
               iconName = focused ? "paw-outline" : "paw-outline";
             }
             if (route.name === "Profile") {
@@ -330,8 +330,8 @@ export default function App() {
           component={HomeScreen}
           options={{ headerShown: false }}
         />
-        <Tab.Screen name="Quiz" component={QuizScreen} />
-        <Tab.Screen name="Adopting" component={AboutAdopting} />        
+        <Tab.Screen name="Adopting" component={QuizScreen} />
+        <Tab.Screen name="About" component={AboutAdopting} />        
         <Tab.Screen
           name="Profile"
           component={ProfileScreen}
@@ -343,7 +343,7 @@ export default function App() {
         <Stack.Screen name="Login" options={{ headerShown: false }} component={LogInScreen} /> 
         <Stack.Screen name="Cat" component={CatScreen} /> 
         <Stack.Screen name="Dog" component={DogScreen} /> 
-        <Stack.Screen name="Pre-adoption" component={PreadoptScreen} /> 
+        <Stack.Screen name="Common Misconception" component={MisconceptScreen} /> 
         <Stack.Screen name="Post-adoption" component={PostadoptScreen} /> 
       </Stack.Navigator>
     </NavigationContainer>
