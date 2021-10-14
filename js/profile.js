@@ -19,7 +19,6 @@ import email from "../assets/email (1).png";
 import phone from "../assets/phone-call.png";
 import date from "../assets/date-of-birth.png";
 import location from "../assets/pin.png";
-import logo from "../assets/Logo.jpg";
 import Firebase from "../config/firebase";
 
 const ProfileScreen = () => {
@@ -35,22 +34,6 @@ const ProfileScreen = () => {
   return (
     <ScrollView>
       <NativeBaseProvider>
-        <View
-          style={{
-            width: "auto",
-            height: 83,
-            backgroundColor: "white",
-            alignItems: "center",
-            paddingTop: 23,
-          }}
-        >
-          <Image
-            source={logo}
-            style={{ width: 65, height: 58 }}
-            alt="logo_image"
-          />
-        </View>
-
         <View style={styles.logo}>
           <ImageBackground
             source={profile}
@@ -94,7 +77,7 @@ const ProfileScreen = () => {
               <Image
                 source={email}
                 style={{ width: 25, height: 25, marginRight: 40 }}
-                alt="email.icon"
+                alt="email_icon"
               />
               <Text style={styles.paragraph}>
                 Email Address{"\n"}

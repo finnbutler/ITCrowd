@@ -1,6 +1,11 @@
 import React, { useState } from "react";
-import { Dimensions, TouchableOpacity, View } from "react-native";
-
+import {
+  Dimensions,
+  TouchableOpacity,
+  View,
+  ImageBackground,
+} from "react-native";
+import background from "../assets/quiz_background.jpg";
 import {
   NativeBaseProvider,
   Box,
@@ -24,6 +29,13 @@ import { SwipeListView } from "react-native-swipe-list-view";
 import { MaterialIcons, Ionicons, Entypo } from "@expo/vector-icons";
 import Firebase from "../config/firebase";
 import parseErrorStack from "react-native/Libraries/Core/Devtools/parseErrorStack";
+import {
+  useFonts,
+  PaytoneOne_400Regular,
+} from "@expo-google-fonts/paytone-one";
+import AppLoading from "expo-app-loading";
+import { Roboto_400Regular } from "@expo-google-fonts/roboto";
+import { useNavigation } from "@react-navigation/native";
 
 function saveData1(data) {
   alert(data);
@@ -198,14 +210,62 @@ export default function QuizScreen() {
   // Attach an asynchronous callback to read the data at our posts reference
   const numberOfUsers = 15;
   const randomIndex = Math.floor(Math.random() * numberOfUsers);
-
+  const navigation = useNavigation();
   const [mode, setMode] = useState("Basic");
 
+  let [fontsLoaded, error] = useFonts({
+    Roboto_400Regular,
+    PaytoneOne_400Regular,
+  });
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
   return (
     <NativeBaseProvider>
-      <Center mt="200" flex={1} px="3">
-        <CardComponent />
-      </Center>
+      <ImageBackground
+        source={background}
+        style={{
+          flex: 1,
+        }}
+        alt="background_image"
+      >
+        <Text
+          style={{
+            textAlign: "center",
+            paddingTop: 30,
+            fontFamily: "PaytoneOne_400Regular",
+            color: "white",
+            fontSize: 25,
+          }}
+        >
+          Quiz Time
+        </Text>
+        <Text
+          style={{
+            textAlign: "center",
+            paddingTop: 20,
+            fontFamily: "PaytoneOne_400Regular",
+            color: "white",
+            fontSize: 20,
+          }}
+        >
+          Here, you can find your purrrfect{"\n"}pet with this fun game!
+        </Text>
+        <Button
+          onPress={() => navigation.navigate("start_quiz")}
+          backgroundColor="#9e8fae"
+          title="Start"
+          marginLeft="auto"
+          marginRight="auto"
+          marginTop={5}
+          width={40}
+          borderRadius={7}
+        >
+          <Text fontSize={15} color="white" fontFamily="Roboto_400Regular">
+            Play Quiz
+          </Text>
+        </Button>
+      </ImageBackground>
     </NativeBaseProvider>
   );
 }

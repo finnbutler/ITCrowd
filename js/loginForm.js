@@ -15,59 +15,11 @@ import { useState } from "react";
 import AppLoading from "expo-app-loading";
 import { Roboto_400Regular } from "@expo-google-fonts/roboto";
 import Firebase from "../config/firebase";
-import logo from "../assets/Logo.jpg";
+import "firebase/auth";
 import background from "../assets/login_background.jpg";
 import { NavigationContainer } from "@react-navigation/native";
 import { useNavigation } from '@react-navigation/native';
 
-// export async function registration(email, password, lastName, firstName) {
-//   try {
-//     await firebase.auth().createUserWithEmailAndPassword(email, password);
-//     const currentUser = firebase.auth().currentUser;
-
-//     const db = firebase.firestore();
-//     db.collection("users").doc(currentUser.uid).set({
-//       email: currentUser.email,
-//       lastName: lastName,
-//       firstName: firstName,
-//     });
-//   } catch (err) {
-//     Alert.alert("There is something wrong!!!!", err.message);
-//   }
-// }
-// const LoginForm = () => {
-//   return (
-//     <View>
-//       <Text>Create an account </Text>
-
-//       <ScrollView onBlur={Keyboard.dismiss}>
-//         <TextInput placeholder="First name*" />
-//         <TextInput placeholder="Last name" />
-
-//         <TextInput
-//           placeholder="Enter your email"
-//           keyboardType="email-address"
-//           autoCapitalize="none"
-//         />
-
-//         <TextInput placeholder="Enter your password" secureTextEntry={true} />
-//         <TextInput
-//           placeholder="Retype your password to confirm*"
-//           onChangeText={(password2) => setConfirmPassword(password2)}
-//           secureTextEntry={true}
-//         />
-//         <TouchableOpacity onPress={handlePress}>
-//           <Text>Sign Up</Text>
-//         </TouchableOpacity>
-
-//         <Text>Already have an account?</Text>
-//         <TouchableOpacity onPress={() => navigation.navigate("Sign In")}>
-//           <Text>Sign In</Text>
-//         </TouchableOpacity>
-//       </ScrollView>
-//     </View>
-//   );
-// };
 const LoginScreen = () => {
   const navigation = useNavigation();
 
@@ -110,23 +62,7 @@ const LoginScreen = () => {
     return <AppLoading />;
   }
   return (
-    //<NavigationContainer>   
     <NativeBaseProvider>
-      <View
-        style={{
-          width: "auto",
-          height: 83,
-          backgroundColor: "white",
-          alignItems: "center",
-          paddingTop: 23,
-        }}
-      >
-        <Image
-          source={logo}
-          style={{ width: 65, height: 58 }}
-          alt="logo_image"
-        />
-      </View>
       <ImageBackground
         source={background}
         resizeMode="cover"
@@ -197,7 +133,7 @@ const LoginScreen = () => {
           <Text style={{color: "#545871", fontFamily: "Roboto_400Regular", textAlign: "center"}}>Do not have an account? <TouchableOpacity onPress={()=> navigation.navigate("Signup")}><Text style={{textDecorationLine: 'underline'}}>Sign up</Text></TouchableOpacity></Text>
         </View>
       </ImageBackground>
-    </NativeBaseProvider>//</NavigationContainer> 
+    </NativeBaseProvider>
   );
 };
 
