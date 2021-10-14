@@ -8,10 +8,7 @@ import {
   extendTheme,
 } from "native-base";
 import { StatusBar } from "expo-status-bar";
-import { useState } from "react";
 import { Ionicons, AntDesign } from "@expo/vector-icons";
-//import { useFormik } from "formik";
-import { Formik } from "formik";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import LoginForm from "./js/loginForm.js";
@@ -32,17 +29,10 @@ import { Roboto_400Regular } from "@expo-google-fonts/roboto";
 import AppLoading from "expo-app-loading";
 import background from "./assets/background.jpg";
 import Quiz from "./js/quiz.js";
-
-
-
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import Firebase from "./config/firebase";
 import logo from "./assets/Logo.jpg";
 import { createStackNavigator } from '@react-navigation/stack';
 
 // TODO: Replace the following with your app's Firebase project configuration
-//const auth = Firebase.auth();
 
 function HomeScreen({ navigation }) {
 
@@ -62,6 +52,7 @@ function HomeScreen({ navigation }) {
           style={{
             flex: 1,
             justifyContent: "center",
+            height: "auto",
           }}
           alt="background_image"
         >
@@ -137,37 +128,37 @@ function HomeScreen({ navigation }) {
   );
 }
 
-function SignUpScreen({ navigation }) {
+function SignUpScreen() {
   return <SignUpForm />;
 }
 function LogInScreen() {
   return <LoginForm />;
 }
 
-function ProfileScreen({ navigation }) {
+function ProfileScreen() {
   return <Profile />;
 }
 
-function AboutAdopting({ navigation }) {
+function AboutAdopting() {
   return <Adopting />;
 }
-function QuizScreen({ navigation }) {
+function QuizScreen() {
   return <Quiz />;
 }
 
-function CatScreen({ navigation }) {
+function CatScreen() {
   return <Cat />;
 }
-function DogScreen({ navigation }) {
+function DogScreen() {
   return <Dog />;
 }
-function MisconceptScreen({ navigation }) {
+function MisconceptScreen() {
   return <Misconcept />;
 }
-function PostadoptScreen({ navigation }) {
+function PostadoptScreen() {
   return <Postadopting />;
 }
-function StartQuizScreen({ navigation }) {
+function StartQuizScreen() {
   return <StartQuiz />;
 }
 
@@ -246,27 +237,27 @@ export default function App() {
               options={{
                 headerTitle: () => (
                   <Image
-                    style={{ width: 67, height: 61 }}
+                    style={{ width: 60, height: 55 }}
                     source={logo}
-                    resizeMode='contain' />), headerTitleStyle: { flex: 1, textAlign: 'center' },
-                headerStyle: { height: 83 }
+                    resizeMode='contain' />), headerTitleStyle: { textAlign: 'center' },
+                headerStyle: { height: 102 }
               }}
             />
             <Tab.Screen name="Adopting" options={{
               headerTitle: (Quiz) => (
                 <Image
-                  style={{ width: 67, height: 61 }}
+                  style={{ width: 60, height: 55 }}
                   source={logo}
                   resizeMode='contain' />), headerTitleStyle: { flex: 1, textAlign: 'center' },
-              headerStyle: { height: 83 }
+              headerStyle: { height: 102 }
             }} component={QuizScreen} />
             <Tab.Screen name="About" options={{
               headerTitle: () => (
                 <Image
-                  style={{ width: 67, height: 61 }}
+                  style={{ width: 60, height: 55 }}
                   source={logo}
                   resizeMode='contain' />), headerTitleStyle: { flex: 1, textAlign: 'center' },
-              headerStyle: { height: 83 }
+              headerStyle: { height: 102 }
             }} component={AboutAdopting} />
             <Tab.Screen
               name="Profile"
@@ -274,10 +265,10 @@ export default function App() {
               options={{
                 headerTitle: () => (
                   <Image
-                    style={{ width: 67, height: 61 }}
+                    style={{ width: 60, height: 55 }}
                     source={logo}
                     resizeMode='contain' />), headerTitleStyle: { flex: 1, textAlign: 'center' },
-                headerStyle: { height: 83 }
+                headerStyle: { height: 102 }
               }}
             />
           </Tab.Navigator>)}
@@ -285,30 +276,58 @@ export default function App() {
         <Stack.Screen name="Signup" options={{
           headerTitle: () => (
             <Image
-              style={{ width: 67, height: 61 }}
+              style={{ width: 60, height: 55 }}
               source={logo}
               resizeMode='contain' />), headerTitleStyle: { flex: 1, textAlign: 'center' },
-          headerStyle: { height: 83 }
+          headerStyle: { height: 102 }
         }} component={SignUpScreen} />
         <Stack.Screen name="Login" options={{
           headerTitle: () => (
             <Image
-              style={{ width: 67, height: 61 }}
+              style={{ width: 60, height: 55 }}
               source={logo}
               resizeMode='contain' />), headerTitleStyle: { flex: 1, textAlign: 'center' },
-          headerStyle: { height: 83 }
+          headerStyle: { height: 102 }
         }} component={LogInScreen} />
-        <Stack.Screen name="Cat" component={CatScreen} />
-        <Stack.Screen name="Dog" component={DogScreen} />
-        <Stack.Screen name="Common Misconception" component={MisconceptScreen} /> 
-        <Stack.Screen name="Post-adoption" component={PostadoptScreen} /> 
+        <Stack.Screen name="Cat" options={{
+          headerTitle: () => (
+            <Image
+              style={{ width: 60, height: 55 }}
+              source={logo}
+              resizeMode='contain' />), headerTitleStyle: { flex: 1, textAlign: 'center' },
+          headerStyle: { height: 102 }
+        }} component={CatScreen} />
+        <Stack.Screen name="Dog" options={{
+          headerTitle: () => (
+            <Image
+              style={{ width: 60, height: 55 }}
+              source={logo}
+              resizeMode='contain' />), headerTitleStyle: { flex: 1, textAlign: 'center' },
+          headerStyle: { height: 102 }
+        }} component={DogScreen} />
+        <Stack.Screen name="Common Misconception" options={{
+          headerTitle: () => (
+            <Image
+              style={{ width: 60, height: 55 }}
+              source={logo}
+              resizeMode='contain' />), headerTitleStyle: { flex: 1, textAlign: 'center' },
+          headerStyle: { height: 102 }
+        }} component={MisconceptScreen} />
+        <Stack.Screen name="Post-adoption" options={{
+          headerTitle: () => (
+            <Image
+              style={{ width: 60, height: 55 }}
+              source={logo}
+              resizeMode='contain' />), headerTitleStyle: { flex: 1, textAlign: 'center' },
+          headerStyle: { height: 102 }
+        }} component={PostadoptScreen} />
         <Stack.Screen name="start_quiz" options={{
           headerTitle: () => (
             <Image
-              style={{ width: 67, height: 61 }}
+              style={{ width: 60, height: 55 }}
               source={logo}
               resizeMode='contain' />), headerTitleStyle: { flex: 1, textAlign: 'center' },
-          headerStyle: { height: 83 }
+          headerStyle: { height: 102 }
         }} component={StartQuizScreen} />
 
       </Stack.Navigator>
