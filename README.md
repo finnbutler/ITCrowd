@@ -11,6 +11,13 @@ questions about pet data and then store your faviourate pets. Users can select p
 
 ![Current Version](https://cdn.discordapp.com/attachments/828399486019174444/895774078454087700/Screen_Shot_2021-10-08_at_6.45.58_am.png)
 
+![login](https://user-images.githubusercontent.com/75866626/137260148-f8b89382-6d9e-45d0-98ce-1a0d64892ac6.png)
+![home](https://user-images.githubusercontent.com/75866626/137260172-38fcf17d-ddf1-4cc8-b917-8b83af5cc116.png)
+![profile ](https://user-images.githubusercontent.com/75866626/137260191-ebb02b74-854c-44a8-a6f8-e12f62154647.png)
+![adopt](https://user-images.githubusercontent.com/75866626/137260223-9664a1a7-ab10-4c92-8e6c-4ad43c4b0900.png)
+![quiz](https://user-images.githubusercontent.com/75866626/137260277-b1de180a-2a4f-4914-85ca-894628f943fb.png)
+
+
 ## Runing the app 
 The application uses expo to create the app both in web (for testing) and on a iphone or andriod phone. 
 Find more information about the docs for getting expo started here: https://docs.expo.dev/
