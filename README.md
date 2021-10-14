@@ -1,3 +1,5 @@
+![Logo](https://user-images.githubusercontent.com/75866626/137253836-d04cfc98-ab05-47a9-8528-602886435690.jpg)
+
 # ITCrowd Project Perfect Pet App 
 
 The following app has been mode in react native using react navgiation, native base framewworks and modified UI Kits. 
