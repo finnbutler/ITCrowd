@@ -41,8 +41,8 @@ const Preadoption = () => {
             alt="misconception"
             />
             <View style={{paddingLeft: 10,}}>
-              <Text style={{ fontSize:20, fontWeight: "bold", }}>Common Misconceptions 
-                  {"\n"} </Text>
+              {/* <Text style={{ fontSize:20, fontWeight: "bold", }}>Common Misconceptions 
+                  {"\n"} </Text> */}
 
               <View style={styles.paragraph}>
                 <Text>

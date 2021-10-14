@@ -60,7 +60,7 @@ const Postadoption = () => {
                     
                 </Text>
                 <Text style={{ color: "#777",  paddingLeft: 15, }}>
-                  <Text style={{color:"#afec88"}}>normal:</Text> missing 1-2 meals, particularly in warmer weather.{"\n"}
+                  <Text style={{color:"#008000"}}>normal:</Text> missing 1-2 meals, particularly in warmer weather.{"\n"}
                   <Text style={{color:"#e68861"}}>concerning:</Text> 48 hours without eating or drinking an excessive amount of water. {"\n"}
                 </Text>
 

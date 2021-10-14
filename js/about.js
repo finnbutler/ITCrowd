@@ -81,7 +81,7 @@ const AboutAdopting = () => {
               alt="study_dog"
             />
             <View style={styles.text_in_card}>
-              <Text style={{ fontSize:12,  fontFamily: "PaytoneOne_400Regular",}}>Basic Knowledge</Text>
+              <Text >Basic Knowledge</Text>
               <Text style={{ color: "#777", paddingTop: 5, fontFamily: 'Roboto_400Regular', }}>
                 Knowledge you should know before adopting...
               </Text>
