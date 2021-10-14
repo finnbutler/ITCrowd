@@ -1,8 +1,10 @@
-![Logo](https://user-images.githubusercontent.com/75866626/137253836-d04cfc98-ab05-47a9-8528-602886435690.jpg)
+![Logo (Small) (Custom)](https://user-images.githubusercontent.com/75866626/137254111-101c6467-142a-4ada-907e-54cdf6a37cea.jpg)
 
 # ITCrowd Project Perfect Pet App 
 
-The following app has been mode in react native using react navgiation, native base framewworks and modified UI Kits. 
+
+
+The following app has been made in react native using react navgiation, native base framewworks and modified UI Kits. 
 The backend of the app is a firebase that has a constructed schema from a phpmyadmin database setup and regalarly imported as JSON. 
 To get started hit the signup button on the signup page, and then login via the login page. The application allows you to answer
 questions about pet data and then store your faviourate pets. 
