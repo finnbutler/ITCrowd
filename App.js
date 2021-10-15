@@ -298,10 +298,10 @@ export default function App() {
               resizeMode='contain' />), headerTitleStyle: { flex: 1, textAlign: 'center' },
           headerStyle: { height: 83 }
         }} component={LogInScreen} />
-        <Stack.Screen name="Cat" component={CatScreen} />
+        <Stack.Screen name="Basic Knowledge" component={CatScreen} />
         <Stack.Screen name="Dog" component={DogScreen} />
         <Stack.Screen name="Common Misconception" component={MisconceptScreen} /> 
-        <Stack.Screen name="Post-adoption" component={PostadoptScreen} /> 
+        <Stack.Screen name="Emergency Help" component={PostadoptScreen} /> 
         <Stack.Screen name="start_quiz" options={{
           headerTitle: () => (
             <Image
