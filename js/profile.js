@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   ImageBackground,
   Text,
@@ -20,10 +20,50 @@ import phone from "../assets/phone-call.png";
 import date from "../assets/date-of-birth.png";
 import location from "../assets/pin.png";
 import Firebase from "../config/firebase";
+import { getDatabase, ref, onValue } from 'firebase/database';
 
 const ProfileScreen = () => {
   const user = Firebase.auth().currentUser;
-  alert();
+  const [postcode, setpostcode] = useState("");
+  const [phone_number, setNumber] = useState("");
+  const [first_name, setFirst] = useState("");
+  const [last_name, setLast] = useState("");
+
+  var ref1 = Firebase.database().ref('2/data/' + user.uid + '/postcode');
+  ref1.on("value", function (snapshot) {
+    const data = snapshot.val();
+    if (postcode == ""){
+      setpostcode(data);
+    }
+  })
+
+  var ref2 = Firebase.database().ref('2/data/' + user.uid + '/firstName');
+  ref2.on("value", function (snapshot) {
+    const data = snapshot.val();
+    if (first_name == ""){
+      setFirst(data);
+    }
+  })
+
+  var ref3 = Firebase.database().ref('2/data/' + user.uid + '/lastName');
+  ref3.on("value", function (snapshot) {
+    const data = snapshot.val();
+    if (last_name == ""){
+      setLast(data);
+    }
+  })
+
+  var ref4 = Firebase.database().ref('2/data/' + user.uid + '/phone_number');
+  ref4.on("value", function (snapshot) {
+    const data = snapshot.val();
+    if (phone_number == ""){
+      setNumber(data);
+    }
+  })
+
+
+
+
   let [fontsLoaded, error] = useFonts({
     Roboto_400Regular,
     PaytoneOne_400Regular,
@@ -59,7 +99,7 @@ const ProfileScreen = () => {
     </TouchableOpacity>
   </View> */}
             <Text style={styles.heading}>
-              {user.firstName} {user.lastName}, 22
+              {first_name}  {last_name}, 22
             </Text>
             <Text style={styles.heading}>A University Student</Text>
           </ImageBackground>
@@ -74,11 +114,11 @@ const ProfileScreen = () => {
             }}
           >
             <View style={styles.info}>
-              <Image
+              {/* <Image
                 source={email}
                 style={{ width: 25, height: 25, marginRight: 40 }}
                 alt="email_icon"
-              />
+              /> */}
               <Text style={styles.paragraph}>
                 Email Address{"\n"}
                 {user.email}
@@ -90,17 +130,7 @@ const ProfileScreen = () => {
                 style={{ width: 25, height: 25, marginRight: 40 }}
                 alt="phone_icon"
               />
-              <Text style={styles.paragraph}>Phone Number{"\n"}0412356700</Text>
-            </View>
-            <View style={styles.info}>
-              <Image
-                source={date}
-                style={{ width: 25, height: 25, marginRight: 40 }}
-                alt="date_icon"
-              />
-              <Text style={styles.paragraph}>
-                Date of Birth{"\n"} {user.firstName}
-              </Text>
+              <Text style={styles.paragraph}>Phone Number{"\n"}{phone_number}</Text>
             </View>
             <View style={styles.info}>
               <Image
@@ -108,7 +138,8 @@ const ProfileScreen = () => {
                 style={{ width: 25, height: 25, marginRight: 40 }}
                 alt="location_icon"
               />
-              <Text style={styles.paragraph}>Postcode{"\n"}4067</Text>
+              <Text style={styles.paragraph}>Postcode{"\n"}{postcode}</Text>
+
             </View>
           </View>
         </View>
@@ -127,12 +158,12 @@ const styles = StyleSheet.create({
     fontFamily: "PaytoneOne_400Regular",
     color: "white",
     paddingTop: 15,
-    fontSize: 16,
+    fontSize: 19,
     marginBottom: 15,
   },
   paragraph: {
     textAlign: "left",
-    fontSize: 14,
+    fontSize: 15,
     color: "#545871",
   },
   profile: {
