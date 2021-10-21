@@ -1,44 +1,38 @@
-import React from 'react';
-import { ImageBackground,Text, StyleSheet, View, TouchableOpacity, ScrollView} from 'react-native';
-import { NativeBaseProvider, Image, Button} from "native-base"; 
+import React from "react";
+import {
+  ImageBackground,
+  Text,
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
+import { NativeBaseProvider, Image, Button } from "native-base";
 
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
 
 import {
   useFonts,
-  PaytoneOne_400Regular
-} from '@expo-google-fonts/paytone-one'
-import {
-  Roboto_400Regular,
-} from '@expo-google-fonts/roboto'
-import AppLoading from 'expo-app-loading';
+  PaytoneOne_400Regular,
+} from "@expo-google-fonts/paytone-one";
+import { Roboto_400Regular } from "@expo-google-fonts/roboto";
+import AppLoading from "expo-app-loading";
 
-
-
-
+// Const for the Cat component
 const Cat = () => {
-
-    const navigation = useNavigation();
+  const navigation = useNavigation();
 
   let [fontsLoaded, error] = useFonts({
     Roboto_400Regular,
-    PaytoneOne_400Regular
-  })
+    PaytoneOne_400Regular,
+  });
   if (!fontsLoaded) {
-    return <AppLoading />
+    return <AppLoading />;
   }
   return (
-    
     <ScrollView>
       <NativeBaseProvider>
-      
-     
-
-     
-        <View style={styles.buttonbox} > 
-
-      
-
+        <View style={styles.buttonbox}>
           <Button
             mt="2em"
             padding="1em 4.5em"
@@ -50,10 +44,6 @@ const Cat = () => {
             Emergency help
           </Button>
 
-         
-            
-
-
           <Button
             mt="2em"
             padding="1em 5em"
@@ -64,10 +54,6 @@ const Cat = () => {
           >
             How to train
           </Button>
-
-         
-
-
 
           <Button
             mt="2em"
@@ -90,13 +76,10 @@ const Cat = () => {
             Community support
           </Button>
         </View>
-
-
-        
-    </NativeBaseProvider>
+      </NativeBaseProvider>
     </ScrollView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   heading: {
@@ -109,7 +92,7 @@ const styles = StyleSheet.create({
   },
   paragraph: {
     textAlign: "left",
-    fontFamily: 'Roboto_400Regular',
+    fontFamily: "Roboto_400Regular",
     fontSize: 14,
     color: "#545871",
   },
@@ -118,64 +101,57 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     paddingLeft: 20,
     paddingRight: 20,
-    justifyContent: 'center',
-    backgroundColor: '#bbadc6',
-    width: 'auto',
-    
+    justifyContent: "center",
+    backgroundColor: "#bbadc6",
+    width: "auto",
   },
   prebox: {
     paddingTop: 20,
     paddingBottom: 20,
     paddingLeft: 20,
     paddingRight: 20,
-    justifyContent: 'center',
-    backgroundColor: '#FBDADB',
+    justifyContent: "center",
+    backgroundColor: "#FBDADB",
     // backgroundColor: '#FBE2E1',
-    width: 'auto',
-    
+    width: "auto",
   },
   postbox: {
     paddingTop: 20,
     paddingBottom: 20,
     paddingLeft: 20,
     paddingRight: 20,
-    justifyContent: 'center',
+    justifyContent: "center",
     //backgroundColor: '#535971',
-    backgroundColor: '#bbadc6',
-    width: 'auto',
-    
+    backgroundColor: "#bbadc6",
+    width: "auto",
   },
   preadoption: {
     paddingTop: 20,
     paddingBottom: 20,
     paddingLeft: 20,
     paddingRight: 20,
-    justifyContent: 'center',
-    backgroundColor: '#E19D98',
-    width: 'auto',
-    
+    justifyContent: "center",
+    backgroundColor: "#E19D98",
+    width: "auto",
   },
   postadoption: {
     paddingTop: 20,
     paddingBottom: 20,
     paddingLeft: 20,
     paddingRight: 20,
-    justifyContent: 'center',
-    backgroundColor: '#535971',
-    width: 'auto',
-    
+    justifyContent: "center",
+    backgroundColor: "#535971",
+    width: "auto",
   },
   container: {
-    textAlign: 'center',
+    textAlign: "center",
   },
-  
+
   buttonbox: {
     // backgroundColor: '#ffffff',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
+    alignItems: "center",
+    justifyContent: "flex-start",
   },
 });
-
-
 
 export default Cat;
