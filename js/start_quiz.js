@@ -43,7 +43,7 @@ function saveData1(data, petName) {
   const petData = data;
   petArray.push(petName);
   Firebase.database()
-    .ref("2/data/" + auth.user.uid)
+    .ref("2/data/" + Firebase.auth().currentUser.uid)
     .set({
       petArray: petArray,
     });
@@ -63,7 +63,7 @@ function saveData2(data, petName) {
   const petData = data;
   petArray.push(petName);
   Firebase.database()
-    .ref("2/data/" + auth.user.uid)
+    .ref("2/data/" + Firebase.auth().currentUser.uid)
     .set({
       petArray: petArray,
     });

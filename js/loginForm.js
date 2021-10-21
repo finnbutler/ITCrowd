@@ -44,7 +44,7 @@ const LoginScreen = () => {
     try {
       if (email !== "" && password !== "") {
         await auth.signInWithEmailAndPassword(email, password);
-        navigation.navigate("Adopt");
+        navigation.navigate("Adopting");
       }
     } catch (error) {
       alert("ERROR!");
