@@ -43,7 +43,7 @@ function saveData1(data, petName) {
   const petData = data;
   petArray.push(data);
   Firebase.database()
-    .ref("2/data/" + auth.user.uid)
+    .ref("2/data/" + Firebase.auth().currentUser.uid)
     .set({
       petArray: petArray,
     });
@@ -63,7 +63,7 @@ function saveData2(data, petName) {
   const petData = data;
   petArray.push(data);
   Firebase.database()
-    .ref("2/data/" + auth.user.uid)
+    .ref("2/data/" + Firebase.auth().currentUser.uid)
     .set({
       petArray: petArray,
     });
@@ -92,7 +92,7 @@ function CardComponent() {
     "What's a cooler name?",
     "Old soul or young at heart?",
     "Do you like to listen to one song, or mix them together? ",
-    "What's your favourite colour, (ps. ours is #2423fe)? ",
+    "What's your favourite colour, (ps. ours is #f72fe3)? ",
     "Would you rather a small party or a medium disco? Just asking for a friend? ",
     "Men or Women?",
     "Vaxed or Unvaxed, or anti-vaxer? Haha, we're joking. ",
