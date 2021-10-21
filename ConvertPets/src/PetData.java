@@ -1,6 +1,8 @@
 import java.util.List;
 
-
+/**
+ * Class for storing pet data from JSON and outputting as SQL.
+ */
 public class PetData {
     private int id;
 

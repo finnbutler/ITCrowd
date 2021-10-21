@@ -2,6 +2,9 @@ package com.itcrowd.data.model;
 
 import javax.persistence.*;
 
+/**
+ * Model for storing account data.
+ */
 @Entity
 @Table(name = "TEST_ACCOUNT")
 public class Account {

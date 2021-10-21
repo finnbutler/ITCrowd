@@ -1,3 +1,6 @@
+/**
+ * Class for storing photo data from JSON and outputting as SQL.
+ */
 public class PhotoData {
     private String small;
     private String medium;

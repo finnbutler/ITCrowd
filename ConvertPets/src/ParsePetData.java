@@ -7,7 +7,9 @@ import java.util.Scanner;
 
 import org.json.*;
 
-
+/**
+ * Takes the name of a pet data JSON file and creates a SQL INSERT file based on the pet data.
+ */
 public class ParsePetData {
     public static void main(String[] args) {
         LinkedList<PetData> allPetData = new LinkedList<>();
