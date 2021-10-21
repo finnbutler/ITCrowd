@@ -88,19 +88,19 @@ function CardComponent() {
   var randomInt = Math.floor(Math.random() * 10);
   var randomInt2 = Math.floor(Math.random() * 10);
   var questions = [
-    "What's better species?",
-    "What's a cooler name?",
+    "Which species is superior?",
+    "Which name is more cool?",
     "Old soul or young at heart?",
-    "Do you like to listen to one song, or mix them together? ",
-    "What's your favourite colour, (ps. ours is #f72fe3)? ",
-    "Would you rather a small party or a medium disco? Just asking for a friend? ",
+    "Do you like to listen to one song, or mix them together?",
+    "What's your favourite colour? (ours is #f72fe3)",
+    "Would you rather a small party or a medium disco?",
     "Men or Women?",
     "Vaxed or Unvaxed, or anti-vaxer? Haha, we're joking. ",
     "Caring for someone living with a disability, or not?",
     "Do you like when the claws come out?",
     "What's a better breed?",
     "Do you want more pets?",
-    "At home or away?",
+    "Spending time at home or away?",
   ];
   var listOfValues = [
     "Species",
