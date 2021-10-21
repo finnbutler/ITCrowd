@@ -2,7 +2,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
 import Constants from "expo-constants";
-// Initialize Firebase
+// Initialize the Firebase taken from firebase expo docs
 const firebaseConfig = {
   apiKey: "AIzaSyAXqjPWQ5FBL5Ere2yBCafdvXPwQS6llSM",
   authDomain: "deco3801-91e98.firebaseapp.com",

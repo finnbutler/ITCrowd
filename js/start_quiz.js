@@ -5,6 +5,7 @@ import {
   Image,
   ImageBackground,
   TouchableOpacity,
+  RefreshControl,
 } from "react-native";
 import {
   NativeBaseProvider,
@@ -30,21 +31,56 @@ import background from "../assets/login_background.jpg";
 import { NavigationContainer } from "@react-navigation/native";
 import { useNavigation } from "@react-navigation/native";
 var currentPos = 0;
-function saveData1(data) {
+var petArray = [];
+/**
+ * Save data attached to button 1
+ * @param data: value from the onsubmit button
+ */
+function saveData1(data, petName) {
   currentPos++;
   alert(currentPos);
   alert(data);
-  const petName = data;
+  const petData = data;
+  petArray.push(petName);
+  Firebase.database()
+    .ref("2/data/" + auth.user.uid)
+    .set({
+      petArray: petArray,
+    });
+
+  //this.props.navigation.navigate("start_quiz");
+  /* add data to users pets */
+  //CardComponent();
 }
-function saveData2(data) {
+/**
+ * Save data attached to button 2
+ * @param data: value from the onsubmit button
+ */
+function saveData2(data, petName) {
   currentPos++;
   alert(currentPos);
   alert(data);
-  const petName = data;
+  const petData = data;
+  petArray.push(petName);
+  Firebase.database()
+    .ref("2/data/" + auth.user.uid)
+    .set({
+      petArray: petArray,
+    });
+
+  //navigation.navigate("start_quiz");
+  /* add data to users pets */
+  //CardComponent();
 }
 function nextQuestion(currentPoint) {
   return questions[currentPoint];
 }
+//Modified from NativeBase Card Component, with signification style changes
+/**
+ * Component to display the UI for the questions asked to the user
+ * also generates questions attached to firebase data
+ * @returns void
+ */
 function CardComponent() {
   const [data, setData] = useState("");
   const [data2, setData2] = useState("");
@@ -81,10 +117,12 @@ function CardComponent() {
     "IsSpayedorNeutered",
     "IsHouseTrained",
   ];
-
   var valueDB = listOfValues[currentPos];
   var currentItem1 = "8/data/" + randomInt + "/" + valueDB;
   var currentItem2 = "8/data/" + randomInt2 + "/" + valueDB;
+  var petName1 = "8/data/" + randomInt + "/name";
+  var petName2 = "8/data/" + randomInt2 + "/name";
+
   var item1 = Firebase.database().ref(currentItem1);
   var item2 = Firebase.database().ref(currentItem2);
   item1.on("value", function (snapshot) {
@@ -129,6 +167,8 @@ function CardComponent() {
       //  alert(childData);
     });
   });
+  /* Card Componented taken from nativebase.io with modified style changes 
+  REFERENCE: */
   return (
     <Box
       rounded="lg"
@@ -146,7 +186,7 @@ function CardComponent() {
           fontFamily="PaytoneOne_400Regular"
           textAlign="center"
         >
-          Question 1
+          Question {currentPos}
         </Heading>
         <Text
           style={{
@@ -164,7 +204,7 @@ function CardComponent() {
             size="sm" //  onPress={() => console.log('hello world')}
             margin={1}
             p={4}
-            onPress={() => saveData1(data)}
+            onPress={() => saveData1(data, petName1)}
           >
             <Text style={{ color: "white", fontFamily: "Roboto_400Regular" }}>
               {data}
@@ -175,22 +215,34 @@ function CardComponent() {
             margin={1}
             p={4}
             colorScheme="secondary"
-            onPress={() => saveData2(data2)}
+            onPress={() => saveData2(data2, petName2)}
           >
             <Text style={{ color: "white", fontFamily: "Roboto_400Regular" }}>
               {data2}
             </Text>
           </Button>
         </Flex>
+        <Text
+          style={{
+            color: "#545871",
+            fontSize: 15,
+            fontFamily: "PaytoneOne_400Regular",
+            textAlign: "center",
+          }}
+        >
+          Your Pets
+          {petArray}
+        </Text>
       </Stack>
     </Box>
   );
 }
+/* Self-authored component */
 export default function StartQuizScreen() {
   const numberOfUsers = 15;
   const randomIndex = Math.floor(Math.random() * numberOfUsers);
-  const navigation = useNavigation();
   const [mode, setMode] = useState("Basic");
+  const navigation = useNavigation();
 
   let [fontsLoaded, error] = useFonts({
     Roboto_400Regular,

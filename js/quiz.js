@@ -157,7 +157,7 @@ function CardComponent() {
       </Box>
       <Stack p="4" space={3}>
         <Heading size="md" ml="-1">
-          Question 1
+          Question {currentPos}
         </Heading>
         <Text
           fontSize="xs"
