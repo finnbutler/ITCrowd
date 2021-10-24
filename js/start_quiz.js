@@ -41,7 +41,7 @@ function saveData1(data, petData1) {
   alert(currentPos);
   alert(data);
   var petData = "";
-  var petNameInput = String(petName);
+  var petNameInput = String(petData1);
   alert(petData1);
 
   var refName = Firebase.database().ref(petData1);
@@ -73,14 +73,17 @@ function saveData1(data, petData1) {
 function saveData2(data, petData2) {
   alert(currentPos);
   alert(petData2);
-  var petData = "";
+  let petData = "";
   var refName = Firebase.database().ref(petData2);
-  var refName = Firebase.database().ref("8/data/6/name");
+  //var refName = Firebase.database().ref("8/data/6/name");
   refName.on("value", function (snapshot) {
     const ref = snapshot.val();
     alert("tHIS ONE:" + ref);
     petData = ref;
   });
+  if (petData == "") {
+    alert("nah!");
+  }
   petArray.push(petData);
   printablePetArray.push(petData);
   /*var pushItem = Firebase.database().ref(petName);
@@ -265,15 +268,17 @@ function CardComponent() {
   );
 }
 function PetComponent() {
+  var count = 0;
   const [petArray, setPetArray] = useState("");
   var ref1 = Firebase.database().ref(
     "2/data/" + Firebase.auth().currentUser.uid + "/petArray"
   );
+  let childData = "";
   ref1.on("value", function (snapshot) {
-    const pet1 = snapshot.val();
-    if (pet1 == "") {
-      setPetArray(pet1);
-    }
+    snapshot.forEach(function (childSnapshot) {
+      childData = childSnapshot.val();
+      alert("child data " + childData["name"]);
+    });
   });
   /* for (var i = 0; i < petArray.length; i++) {
  //  
@@ -301,7 +306,7 @@ function PetComponent() {
         _light={{ backgroundColor: "red.500" }}
         _dark={{ backgroundColor: "red.500" }}
       >
-        <Text> {petArray} </Text>
+        <Text> {String(childData)} </Text>
       </Box>
     </Box>
   );
