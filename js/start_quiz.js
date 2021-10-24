@@ -273,13 +273,13 @@ function PetComponent() {
   var ref1 = Firebase.database().ref(
     "2/data/" + Firebase.auth().currentUser.uid + "/petArray"
   );
-  let childData = "";
+  let childData = [];
   ref1.on("value", function (snapshot) {
     snapshot.forEach(function (childSnapshot) {
-      childData = childSnapshot.val();
-      alert("child data " + childData["name"]);
+      childData.push(JSON.stringify(childSnapshot.val()));
     });
   });
+
   /* for (var i = 0; i < petArray.length; i++) {
  //  
     /*add all pet data for each attribute of pet in pet array */
@@ -300,13 +300,13 @@ function PetComponent() {
       </Text>
       <Box
         rounded="lg"
-        width="100%"
+        width="50%"
         height="150px"
         shadow={1}
         _light={{ backgroundColor: "red.500" }}
         _dark={{ backgroundColor: "red.500" }}
       >
-        <Text> {String(childData)} </Text>
+        <Text> {childData} </Text>
       </Box>
     </Box>
   );
@@ -317,12 +317,13 @@ export default function StartQuizScreen() {
   const randomIndex = Math.floor(Math.random() * numberOfUsers);
   const [mode, setMode] = useState("Basic");
   const navigation = useNavigation();
+  const uid = Firebase.auth().currentUser.uid;
 
   let [fontsLoaded, error] = useFonts({
     Roboto_400Regular,
     PaytoneOne_400Regular,
   });
-  if (!fontsLoaded) {
+  if (!fontsLoaded || uid == null) {
     return <AppLoading />;
   }
   return (

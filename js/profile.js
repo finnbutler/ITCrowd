@@ -6,6 +6,7 @@ import {
   View,
   TouchableOpacity,
   ScrollView,
+  Button,
 } from "react-native";
 import { NativeBaseProvider, Image } from "native-base";
 import {
@@ -20,7 +21,8 @@ import phone from "../assets/phone-call.png";
 import date from "../assets/date-of-birth.png";
 import location from "../assets/pin.png";
 import Firebase from "../config/firebase";
-import { getDatabase, ref, onValue } from 'firebase/database';
+import { useNavigation } from "@react-navigation/native";
+import { getDatabase, ref, onValue } from "firebase/database";
 
 const ProfileScreen = () => {
   const user = Firebase.auth().currentUser;
@@ -28,41 +30,42 @@ const ProfileScreen = () => {
   const [phone_number, setNumber] = useState("");
   const [first_name, setFirst] = useState("");
   const [last_name, setLast] = useState("");
-
-  var ref1 = Firebase.database().ref('2/data/' + user.uid + '/postcode');
+  const navigation = useNavigation();
+  const signOut = async () => {
+    await Firebase.auth().signOut();
+    navigation.navigate("Login");
+  };
+  var ref1 = Firebase.database().ref("2/data/" + user.uid + "/postcode");
   ref1.on("value", function (snapshot) {
     const data = snapshot.val();
-    if (postcode == ""){
+    if (postcode == "") {
       setpostcode(data);
     }
-  })
+  });
 
-  var ref2 = Firebase.database().ref('2/data/' + user.uid + '/firstName');
+  var ref2 = Firebase.database().ref("2/data/" + user.uid + "/firstName");
   ref2.on("value", function (snapshot) {
     const data = snapshot.val();
-    if (first_name == ""){
+    if (first_name == "") {
       setFirst(data);
     }
-  })
+  });
 
-  var ref3 = Firebase.database().ref('2/data/' + user.uid + '/lastName');
+  var ref3 = Firebase.database().ref("2/data/" + user.uid + "/lastName");
   ref3.on("value", function (snapshot) {
     const data = snapshot.val();
-    if (last_name == ""){
+    if (last_name == "") {
       setLast(data);
     }
-  })
+  });
 
-  var ref4 = Firebase.database().ref('2/data/' + user.uid + '/phone_number');
+  var ref4 = Firebase.database().ref("2/data/" + user.uid + "/phone_number");
   ref4.on("value", function (snapshot) {
     const data = snapshot.val();
-    if (phone_number == ""){
+    if (phone_number == "") {
       setNumber(data);
     }
-  })
-
-
-
+  });
 
   let [fontsLoaded, error] = useFonts({
     Roboto_400Regular,
@@ -99,7 +102,7 @@ const ProfileScreen = () => {
     </TouchableOpacity>
   </View> */}
             <Text style={styles.heading}>
-              {first_name}  {last_name}, 22
+              {first_name} {last_name}, 22
             </Text>
             <Text style={styles.heading}>A University Student</Text>
           </ImageBackground>
@@ -130,7 +133,10 @@ const ProfileScreen = () => {
                 style={{ width: 25, height: 25, marginRight: 40 }}
                 alt="phone_icon"
               />
-              <Text style={styles.paragraph}>Phone Number{"\n"}{phone_number}</Text>
+              <Text style={styles.paragraph}>
+                Phone Number{"\n"}
+                {phone_number}
+              </Text>
             </View>
             <View style={styles.info}>
               <Image
@@ -138,10 +144,18 @@ const ProfileScreen = () => {
                 style={{ width: 25, height: 25, marginRight: 40 }}
                 alt="location_icon"
               />
-              <Text style={styles.paragraph}>Postcode{"\n"}{postcode}</Text>
-
+              <Text style={styles.paragraph}>
+                Postcode{"\n"}
+                {postcode}
+              </Text>
             </View>
           </View>
+          <Button
+            onPress={signOut}
+            title="Sign Out!"
+            color="#841584"
+            accessibilityLabel="This is a signout button!"
+          />
         </View>
       </NativeBaseProvider>
     </ScrollView>
