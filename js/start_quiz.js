@@ -30,13 +30,16 @@ import "firebase/auth";
 import background from "../assets/login_background.jpg";
 import { NavigationContainer } from "@react-navigation/native";
 import { useNavigation } from "@react-navigation/native";
+
 var currentPos = 0;
 var petArray = [];
 var printablePetArray = [];
+
 /**
  * Save data attached to button 1
  * @param data: value from the onsubmit button
  */
+
 function saveData1(data, petData1) {
   alert(currentPos);
   alert(data);
@@ -65,7 +68,9 @@ function saveData1(data, petData1) {
       petArray: petArray,
     });
   currentPos++;
-  //this.props.navigation.navigate("start_quiz");
+  //this.props.navigation.state.params.refresh();
+  //navigate("Child", { refresh: refreshFunction });
+
   /* add data to users pets */
   //CardComponent();
 }
@@ -74,7 +79,7 @@ function saveData1(data, petData1) {
  * @param data: value from the onsubmit button
  */
 
-function saveData2(data, petData2) {
+function saveData2(data, petData2, navigation) {
   alert(currentPos);
   alert(petData2);
   let petData = "";
@@ -102,7 +107,9 @@ function saveData2(data, petData2) {
       petArray: petArray,
     });
   currentPos++;
-  //navigation.navigate("start_quiz");
+  if (navigation.navigate("start_quiz")) {
+    alert("yay!");
+  }
   /* add data to users pets */
   //CardComponent();
 }
@@ -116,6 +123,7 @@ function nextQuestion(currentPoint) {
  * @returns void
  */
 function CardComponent() {
+  const navigation = useNavigation();
   const [name, setRefName] = useState("");
   const [data, setData] = useState("");
   const [data2, setData2] = useState("");
@@ -239,7 +247,7 @@ function CardComponent() {
             size="sm" //  onPress={() => console.log('hello world')}
             margin={1}
             p={4}
-            onPress={() => saveData1(data, petData1)}
+            onPress={() => saveData1(data, petData1, navigation)}
           >
             <Text style={{ color: "white", fontFamily: "Roboto_400Regular" }}>
               {data}
@@ -250,7 +258,7 @@ function CardComponent() {
             margin={1}
             p={4}
             colorScheme="secondary"
-            onPress={() => saveData2(data2, petData2)}
+            onPress={() => saveData2(data2, petData2, navigation)}
           >
             <Text style={{ color: "white", fontFamily: "Roboto_400Regular" }}>
               {data2}
@@ -283,12 +291,6 @@ function PetComponent() {
       childData.push(JSON.stringify(childSnapshot.val()));
     });
   });
-  for (var i = 0; i < childData.length; i++) {
-    if (childData[i] != "") {
-      var name = childData[i].Name;
-      // return name;
-    }
-  }
 
   /* for (var i = 0; i < petArray.length; i++) {
  //  
@@ -316,7 +318,8 @@ function PetComponent() {
         _light={{ backgroundColor: "red.500" }}
         _dark={{ backgroundColor: "red.500" }}
       >
-        <Text> {} </Text>
+        <Text> {childData} </Text>
+        <Button> Email Agency </Button>
       </Box>
     </Box>
   );
