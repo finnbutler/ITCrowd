@@ -30,25 +30,47 @@ import "firebase/auth";
 import background from "../assets/login_background.jpg";
 import { NavigationContainer } from "@react-navigation/native";
 import { useNavigation } from "@react-navigation/native";
+
 var currentPos = 0;
 var petArray = [];
+var printablePetArray = [];
+
 /**
  * Save data attached to button 1
  * @param data: value from the onsubmit button
  */
-function saveData1(data, petName) {
-  currentPos++;
+
+function saveData1(data, petData1) {
   alert(currentPos);
   alert(data);
-  const petData = data;
-  petArray.push(data);
+  var petData = "";
+  var petNameInput = String(petData1);
+  alert(petData1);
+
+  var refName = Firebase.database().ref(petData1);
+  //var refName = Firebase.database().ref("8/data/6/name");
+  refName.on("value", function (snapshot) {
+    const ref = snapshot.val();
+    alert("tHIS ONE:" + ref);
+    petData = ref;
+  });
+  if (petData == "") {
+    alert("nah!");
+  }
+  petArray.push(petData);
+  printablePetArray.push(petData);
+  //petArray.push(Firebase.database().ref(petNameString).val());
+
+  //printablePetArray.push(Firebase.database().ref(petNameString).val());
   Firebase.database()
     .ref("2/data/" + Firebase.auth().currentUser.uid)
-    .set({
+    .update({
       petArray: petArray,
     });
+  currentPos++;
+  //this.props.navigation.state.params.refresh();
+  //navigate("Child", { refresh: refreshFunction });
 
-  //this.props.navigation.navigate("start_quiz");
   /* add data to users pets */
   //CardComponent();
 }
@@ -56,19 +78,38 @@ function saveData1(data, petName) {
  * Save data attached to button 2
  * @param data: value from the onsubmit button
  */
-function saveData2(data, petName) {
-  currentPos++;
+
+function saveData2(data, petData2, navigation) {
   alert(currentPos);
-  alert(data);
-  const petData = data;
-  petArray.push(data);
+  alert(petData2);
+  let petData = "";
+  var refName = Firebase.database().ref(petData2);
+  //var refName = Firebase.database().ref("8/data/6/name");
+  refName.on("value", function (snapshot) {
+    const ref = snapshot.val();
+    alert("tHIS ONE:" + ref);
+    petData = ref;
+  });
+  if (petData == "") {
+    alert("nah!");
+  }
+  petArray.push(petData);
+  printablePetArray.push(petData);
+  /*var pushItem = Firebase.database().ref(petName);
+  pushItem.on("value", function (snapshot) {
+    var pushable = snapshot.val();
+    alert(pushable);
+    printablePetArray.push(pushable);
+  });*/
   Firebase.database()
     .ref("2/data/" + Firebase.auth().currentUser.uid)
-    .set({
+    .update({
       petArray: petArray,
     });
-
-  //navigation.navigate("start_quiz");
+  currentPos++;
+  if (navigation.navigate("start_quiz")) {
+    alert("yay!");
+  }
   /* add data to users pets */
   //CardComponent();
 }
@@ -82,6 +123,8 @@ function nextQuestion(currentPoint) {
  * @returns void
  */
 function CardComponent() {
+  const navigation = useNavigation();
+  const [name, setRefName] = useState("");
   const [data, setData] = useState("");
   const [data2, setData2] = useState("");
   var leadsRef = Firebase.database().ref("8/data/0");
@@ -96,7 +139,7 @@ function CardComponent() {
     "Would you rather a small party or a medium disco?",
     "Men or Women?",
     "Vaxed or Unvaxed, or anti-vaxer? Haha, we're joking. ",
-    "Caring for someone living with a disability, or not?",
+    "Pet Living with a disability?",
     "Do you like when the claws come out?",
     "What's a better breed?",
     "Do you want more pets?",
@@ -120,8 +163,8 @@ function CardComponent() {
   var valueDB = listOfValues[currentPos];
   var currentItem1 = "8/data/" + randomInt + "/" + valueDB;
   var currentItem2 = "8/data/" + randomInt2 + "/" + valueDB;
-  var petName1 = "8/data/" + randomInt + "/name";
-  var petName2 = "8/data/" + randomInt2 + "/name";
+  var petData1 = "8/data/" + randomInt;
+  var petData2 = "8/data/" + randomInt2;
 
   var item1 = Firebase.database().ref(currentItem1);
   var item2 = Firebase.database().ref(currentItem2);
@@ -204,7 +247,7 @@ function CardComponent() {
             size="sm" //  onPress={() => console.log('hello world')}
             margin={1}
             p={4}
-            onPress={() => saveData1(data, petName1)}
+            onPress={() => saveData1(data, petData1, navigation)}
           >
             <Text style={{ color: "white", fontFamily: "Roboto_400Regular" }}>
               {data}
@@ -215,7 +258,7 @@ function CardComponent() {
             margin={1}
             p={4}
             colorScheme="secondary"
-            onPress={() => saveData2(data2, petName2)}
+            onPress={() => saveData2(data2, petData2, navigation)}
           >
             <Text style={{ color: "white", fontFamily: "Roboto_400Regular" }}>
               {data2}
@@ -231,18 +274,78 @@ function CardComponent() {
           }}
         >
           Your Pets
-          {petArray}
         </Text>
       </Stack>
     </Box>
   );
 }
+function PetComponent() {
+  var count = 0;
+  const [petArray, setPetArray] = useState("");
+  var ref1 = Firebase.database().ref(
+    "2/data/" + Firebase.auth().currentUser.uid + "/petArray"
+  );
+  let childData = [];
+  ref1.on("value", function (snapshot) {
+    snapshot.forEach(function (childSnapshot) {
+      childData.push(JSON.stringify(childSnapshot.val()));
+    });
+  });
+
+  /* for (var i = 0; i < petArray.length; i++) {
+ //  
+    /*add all pet data for each attribute of pet in pet array */
+  // }
+  return (
+    <Box>
+      {" "}
+      <Text
+        style={{
+          color: "#545871",
+          fontSize: 15,
+          fontFamily: "PaytoneOne_400Regular",
+          textAlign: "center",
+        }}
+      >
+        {" "}
+        Your Pets{" "}
+      </Text>
+      <Box
+        rounded="lg"
+        width="50%"
+        height="150px"
+        shadow={1}
+        _light={{ backgroundColor: "red.500" }}
+        _dark={{ backgroundColor: "red.500" }}
+      >
+        <Text> {childData} </Text>
+        <Button> Email Agency </Button>
+      </Box>
+    </Box>
+  );
+}
 /* Self-authored component */
+function NoLogin() {
+  return (
+    <Text
+      style={{
+        color: "red.500",
+        textAlign: Center,
+        fontSize: 15,
+        fontFamily: "PaytoneOne_400Regular",
+        textAlign: "center",
+      }}
+    >
+      Please head to the Login Screen!{" "}
+    </Text>
+  );
+}
 export default function StartQuizScreen() {
   const numberOfUsers = 15;
   const randomIndex = Math.floor(Math.random() * numberOfUsers);
   const [mode, setMode] = useState("Basic");
   const navigation = useNavigation();
+  var user = Firebase.auth().currentUser;
 
   let [fontsLoaded, error] = useFonts({
     Roboto_400Regular,
@@ -251,12 +354,16 @@ export default function StartQuizScreen() {
   if (!fontsLoaded) {
     return <AppLoading />;
   }
+  if (!user) {
+    return <NoLogin />;
+  }
   return (
     <NativeBaseProvider>
       <View
         style={{ marginLeft: "auto", marginRight: "auto", marginTop: "25%" }}
       >
         <CardComponent />
+        <PetComponent />
       </View>
     </NativeBaseProvider>
   );

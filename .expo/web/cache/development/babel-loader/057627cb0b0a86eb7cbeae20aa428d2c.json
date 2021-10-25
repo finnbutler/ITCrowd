@@ -1,0 +1,1 @@
+{"ast":null,"code":"import Firebase from \"../config/firebase\";","map":{"version":3,"sources":["/Users/finnbeardmore/Documents/GitHub/ITCrowd.github.io/Untitled/js/signOut.js"],"names":["Firebase"],"mappings":"AAAA,OAAOA,QAAP","sourcesContent":["import Firebase from \"../config/firebase\";\n"]},"metadata":{},"sourceType":"module"}
