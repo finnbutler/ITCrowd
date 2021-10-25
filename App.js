@@ -289,7 +289,8 @@ export default function App() {
               resizeMode='contain' />), headerTitleStyle: { flex: 1, textAlign: 'center' },
           headerStyle: { height: 102 }
         }} component={LogInScreen} />
-        <Stack.Screen name="Cat" options={{
+
+        <Stack.Screen name="Basic Knowledge" options={{
           headerTitle: () => (
             <Image
               style={{ width: 60, height: 55 }}
@@ -313,7 +314,7 @@ export default function App() {
               resizeMode='contain' />), headerTitleStyle: { flex: 1, textAlign: 'center' },
           headerStyle: { height: 102 }
         }} component={MisconceptScreen} />
-        <Stack.Screen name="Post-adoption" options={{
+        <Stack.Screen name="Emergency Help" options={{
           headerTitle: () => (
             <Image
               style={{ width: 60, height: 55 }}
@@ -321,6 +322,7 @@ export default function App() {
               resizeMode='contain' />), headerTitleStyle: { flex: 1, textAlign: 'center' },
           headerStyle: { height: 102 }
         }} component={PostadoptScreen} />
+
         <Stack.Screen name="start_quiz" options={{
           headerTitle: () => (
             <Image
