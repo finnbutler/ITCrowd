@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * AccountController defines API endpoints for ACCOUNT data.
+ */
 @CrossOrigin(origins = "http://localhost:8801")
 @RestController
 @RequestMapping("/api")

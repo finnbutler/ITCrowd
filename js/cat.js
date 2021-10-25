@@ -1,8 +1,10 @@
+
 import React, {useState} from 'react';
 import { ImageBackground,Text, StyleSheet, View, TouchableOpacity, ScrollView, Linking } from 'react-native';
 import { NativeBaseProvider, Image, Button} from "native-base"; 
 
-import { useNavigation } from '@react-navigation/native';
+
+import { useNavigation } from "@react-navigation/native";
 
 import {
   useFonts,
@@ -17,9 +19,10 @@ import { bottom } from 'styled-system';
 
 
 
-const Cat = () => {
 
-    const navigation = useNavigation();
+// Const for the Cat component
+const Cat = () => {
+  const navigation = useNavigation();
 
     
     const [content1, setContent1] = useState(false);
@@ -27,15 +30,15 @@ const Cat = () => {
 
   let [fontsLoaded, error] = useFonts({
     Roboto_400Regular,
-    PaytoneOne_400Regular
-  })
+    PaytoneOne_400Regular,
+  });
   if (!fontsLoaded) {
-    return <AppLoading />
+    return <AppLoading />;
   }
   return (
-    
     <ScrollView>
       <NativeBaseProvider>
+
         
         <View>
             <Image
@@ -154,17 +157,15 @@ const Cat = () => {
             
             
 
+
         </View>
-
-
-        
-    </NativeBaseProvider>
+      </NativeBaseProvider>
     </ScrollView>
 
 
 
   );
-}
+};
 
 const styles = StyleSheet.create({
   heading: {
@@ -177,7 +178,7 @@ const styles = StyleSheet.create({
   },
   paragraph: {
     textAlign: "left",
-    fontFamily: 'Roboto_400Regular',
+    fontFamily: "Roboto_400Regular",
     fontSize: 14,
     color: "#545871",
   },
@@ -208,10 +209,9 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     paddingLeft: 20,
     paddingRight: 20,
-    justifyContent: 'center',
-    backgroundColor: '#bbadc6',
-    width: 'auto',
-    
+    justifyContent: "center",
+    backgroundColor: "#bbadc6",
+    width: "auto",
   },
   card: {
     marginBottom: 10,
@@ -225,54 +225,50 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     paddingLeft: 20,
     paddingRight: 20,
+
     
     backgroundColor: '#FBDADB',
+
     // backgroundColor: '#FBE2E1',
-    width: 'auto',
-    
+    width: "auto",
   },
   postbox: {
     paddingTop: 20,
     paddingBottom: 20,
     paddingLeft: 20,
     paddingRight: 20,
-    justifyContent: 'center',
+    justifyContent: "center",
     //backgroundColor: '#535971',
-    backgroundColor: '#bbadc6',
-    width: 'auto',
-    
+    backgroundColor: "#bbadc6",
+    width: "auto",
   },
   preadoption: {
     paddingTop: 20,
     paddingBottom: 20,
     paddingLeft: 20,
     paddingRight: 20,
-    justifyContent: 'center',
-    backgroundColor: '#E19D98',
-    width: 'auto',
-    
+    justifyContent: "center",
+    backgroundColor: "#E19D98",
+    width: "auto",
   },
   postadoption: {
     paddingTop: 20,
     paddingBottom: 20,
     paddingLeft: 20,
     paddingRight: 20,
-    justifyContent: 'center',
-    backgroundColor: '#535971',
-    width: 'auto',
-    
+    justifyContent: "center",
+    backgroundColor: "#535971",
+    width: "auto",
   },
   container: {
-    textAlign: 'center',
+    textAlign: "center",
   },
-  
+
   buttonbox: {
     // backgroundColor: '#ffffff',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
+    alignItems: "center",
+    justifyContent: "flex-start",
   },
 });
-
-
 
 export default Cat;
