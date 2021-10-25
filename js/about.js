@@ -73,7 +73,7 @@ const AboutAdopting = () => {
 
           </TouchableOpacity>
           
-          <TouchableOpacity style={styles.card} onPress={() => navigation.navigate("Pre-adoption")} > 
+          <TouchableOpacity style={styles.card} onPress={() => navigation.navigate("Basic Knowledge")} > 
             
             <Image
               source={study_dog}
@@ -81,7 +81,7 @@ const AboutAdopting = () => {
               alt="study_dog"
             />
             <View style={styles.text_in_card}>
-              <Text style={{ fontSize:12,  fontFamily: "PaytoneOne_400Regular",}}>Basic Knowledge</Text>
+              <Text >Basic Knowledge</Text>
               <Text style={{ color: "#777", paddingTop: 5, fontFamily: 'Roboto_400Regular', }}>
                 Knowledge you should know before adopting...
               </Text>
@@ -94,7 +94,7 @@ const AboutAdopting = () => {
           </View>
           
           
-          <TouchableOpacity style={styles.card} onPress={() => navigation.navigate("Post-adoption")} > 
+          <TouchableOpacity style={styles.card} onPress={() => navigation.navigate("Emergency Help")} > 
             
             <Image
               source={sick_dog}
@@ -105,21 +105,6 @@ const AboutAdopting = () => {
               <Text>Emergency help</Text>
               <Text style={{ color: "#777", paddingTop: 5 }}>
                 Urgent contacts and how to cope with situation ...
-              </Text>
-            </View>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.card} onPress={() => navigation.navigate("Post-adoption")} > 
-            
-            <Image
-              source={background}
-              style={{ height: 150, borderRadius:10, }}
-              alt="background"
-            />
-            <View style={styles.text_in_card}>
-              <Text>How to train</Text>
-              <Text style={{ color: "#777", paddingTop: 5 }}>
-                Learn tips of training your pet...
               </Text>
             </View>
           </TouchableOpacity>
