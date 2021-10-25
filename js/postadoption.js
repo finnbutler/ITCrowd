@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { ImageBackground,Text, StyleSheet, View, TouchableOpacity, ScrollView} from 'react-native';
 import { NativeBaseProvider, Image, Button} from "native-base"; 
 
@@ -24,6 +24,10 @@ const Postadoption = () => {
 
     const navigation = useNavigation();
 
+    const [content1, setContent1] = useState(false);
+    const [content2, setContent2] = useState(false);
+ 
+
   let [fontsLoaded, error] = useFonts({
     Roboto_400Regular,
     PaytoneOne_400Regular
@@ -43,16 +47,22 @@ const Postadoption = () => {
             alt="sick_dog"
             />
             <View style={{paddingLeft: 10,}}>
-              {/* <Text style={{ fontSize:20, fontWeight: "bold", }}>Medical Emergency assistance
-                  {"\n"} </Text> */}
 
-              <View style={styles.paragraph}>
+              <View style={styles.header}>
+                <Text style={{fontSize:20, fontFamily: "PaytoneOne_400Regular", }}>Medical Emergency assistance
+                    </Text>
+              </View>
+
+              <TouchableOpacity style={styles.card} onPress={() => setContent1(!content1)} > 
                 <Text style={styles.subt}>
                   Common Concerns
-
-                </Text>
-
-                <Text style={styles.tex1}>
+                  </Text>
+              </TouchableOpacity>
+              {content1 ?
+                (
+                  <View style={styles.paragraph}>
+                        
+                        <Text style={styles.tex1}>
                     As a new pet owner, it can be difficult to determine what changes in your pet’s behaviour are normal and which are signs you should take them to a vet immediately. Dogs and cats each have their own ways of telling their human family when they are unwell, so it is important to keep an eye out for the following symptoms.
                     {"\n"}
                 </Text>
@@ -100,25 +110,33 @@ const Postadoption = () => {
                  {"\n"}{"\n"}
                 </Text>
 
-              </View> 
+    
+    
+                  </View>
+                ) : null}
 
-              <View style={styles.paragraph}>
-                <Text style={styles.subt}>
-                  Nearby Emergency facilities
-
-                </Text>
-
-                <Text style={styles.tex1}>
-                  If you need emergency assistance, please use the following map to locate your nearest emergency veterinary clinic. {"\n"}
-                </Text>
-                <Text style={styles.tex2}>
-                    {'\u2022'} <Text style={{fontWeight:"bold", }}>include google map here </Text>
-                    
-                </Text>
-                
-
-              </View>
               
+              <TouchableOpacity style={styles.card} onPress={() => setContent2(!content2)} > 
+                <Text style={styles.subt}>
+                     Nearby Emergency facilities
+                  </Text>
+              </TouchableOpacity>
+              {content2 ?
+                (
+                  <View style={styles.paragraph}>
+                        
+                        <Text style={styles.tex1}>
+                          If you need emergency assistance, please use the following map to locate your nearest emergency veterinary clinic. {"\n"}
+                        </Text>
+                        <Text style={styles.tex2}>
+                            {'\u2022'} <Text style={{fontWeight:"bold", }}>include google map here </Text>
+                            
+                        </Text>
+                 
+    
+                  </View>
+                ) : null}
+
 
 
               <View style={styles.paragraph}>
@@ -174,9 +192,14 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "#545871",
   },
+  header: {
+    textAlign: "center",
+    padding: 10,
+    
+  },  
   subt: {
-    fontSize: 16,
-    fontFamily: "PaytoneOne_400Regular",
+    fontSize: 14,
+    fontWeight: "bold",
   },
   tex1: {
     color: "#777", 
@@ -203,6 +226,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#bbadc6',
     width: 'auto',
+    
+  },
+  card: {
+    marginBottom: 10,
+    padding: 5,
+    borderRadius: 5,
+    backgroundColor: "#DDDDDD",
     
   },
   container: {
