@@ -35,6 +35,9 @@ const ProfileScreen = () => {
     await Firebase.auth().signOut();
     navigation.navigate("Login");
   };
+  if (!user) {
+    return <NoLogin />;
+  }
   var ref1 = Firebase.database().ref("2/data/" + user.uid + "/postcode");
   ref1.on("value", function (snapshot) {
     const data = snapshot.val();
@@ -73,6 +76,9 @@ const ProfileScreen = () => {
   });
   if (!fontsLoaded) {
     return <AppLoading />;
+  }
+  function NoLogin() {
+    return "Please head to the Login Screen!";
   }
   return (
     <ScrollView>

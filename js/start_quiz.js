@@ -45,11 +45,15 @@ function saveData1(data, petData1) {
   alert(petData1);
 
   var refName = Firebase.database().ref(petData1);
+  //var refName = Firebase.database().ref("8/data/6/name");
   refName.on("value", function (snapshot) {
     const ref = snapshot.val();
     alert("tHIS ONE:" + ref);
     petData = ref;
   });
+  if (petData == "") {
+    alert("nah!");
+  }
   petArray.push(petData);
   printablePetArray.push(petData);
   //petArray.push(Firebase.database().ref(petNameString).val());
@@ -279,6 +283,12 @@ function PetComponent() {
       childData.push(JSON.stringify(childSnapshot.val()));
     });
   });
+  for (var i = 0; i < childData.length; i++) {
+    if (childData[i] != "") {
+      var name = childData[i].Name;
+      // return name;
+    }
+  }
 
   /* for (var i = 0; i < petArray.length; i++) {
  //  
@@ -306,25 +316,43 @@ function PetComponent() {
         _light={{ backgroundColor: "red.500" }}
         _dark={{ backgroundColor: "red.500" }}
       >
-        <Text> {childData} </Text>
+        <Text> {} </Text>
       </Box>
     </Box>
   );
 }
 /* Self-authored component */
+function NoLogin() {
+  return (
+    <Text
+      style={{
+        color: "red.500",
+        textAlign: Center,
+        fontSize: 15,
+        fontFamily: "PaytoneOne_400Regular",
+        textAlign: "center",
+      }}
+    >
+      Please head to the Login Screen!{" "}
+    </Text>
+  );
+}
 export default function StartQuizScreen() {
   const numberOfUsers = 15;
   const randomIndex = Math.floor(Math.random() * numberOfUsers);
   const [mode, setMode] = useState("Basic");
   const navigation = useNavigation();
-  const uid = Firebase.auth().currentUser.uid;
+  var user = Firebase.auth().currentUser;
 
   let [fontsLoaded, error] = useFonts({
     Roboto_400Regular,
     PaytoneOne_400Regular,
   });
-  if (!fontsLoaded || uid == null) {
+  if (!fontsLoaded) {
     return <AppLoading />;
+  }
+  if (!user) {
+    return <NoLogin />;
   }
   return (
     <NativeBaseProvider>
