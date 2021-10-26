@@ -13,6 +13,8 @@ import {
   Input,
   Button,
   Box,
+  AspectRatio,
+  HStack,
   Center,
   Stack,
   Heading,
@@ -128,8 +130,8 @@ function CardComponent() {
   const [data, setData] = useState("");
   const [data2, setData2] = useState("");
   var leadsRef = Firebase.database().ref("8/data/0");
-  var randomInt = Math.floor(Math.random() * 10);
-  var randomInt2 = Math.floor(Math.random() * 10);
+  var randomInt = Math.floor(Math.random() * 119);
+  var randomInt2 = Math.floor(Math.random() * 119);
   var questions = [
     "Which species is superior?",
     "Which name is more cool?",
@@ -265,16 +267,6 @@ function CardComponent() {
             </Text>
           </Button>
         </Flex>
-        <Text
-          style={{
-            color: "#545871",
-            fontSize: 15,
-            fontFamily: "PaytoneOne_400Regular",
-            textAlign: "center",
-          }}
-        >
-          Your Pets
-        </Text>
       </Stack>
     </Box>
   );
@@ -286,16 +278,36 @@ function PetComponent() {
     "2/data/" + Firebase.auth().currentUser.uid + "/petArray"
   );
   let childData = [];
+  //let items = [];
+  const [items, setItems] = useState([]);
+  /* Complex function to itterate through each pet's values -- self coded */
   ref1.on("value", function (snapshot) {
-    snapshot.forEach(function (childSnapshot) {
-      childData.push(JSON.stringify(childSnapshot.val()));
+    //snapshot.forEach(function (childSnapshot) {
+    //childData.push(JSON.parse(childSnapshot.val()));
+    snapshot.forEach((child) => {
+      if (items.length != 5) {
+        setItems([
+          ...items,
+          {
+            name: child.val().Name,
+            age: child.val().Age,
+            description: child.val().Description,
+            petPhotos: child.val().PetPhots,
+          },
+        ]);
+      }
     });
+
+    console.log(items);
+    //return "Name" + items[0].name + "Age" + items[0].age;
   });
+  //});
 
   /* for (var i = 0; i < petArray.length; i++) {
  //  
     /*add all pet data for each attribute of pet in pet array */
   // }
+  //REFERENCE UI COMPONENT USED BELOW WITH CHANGES https://docs.nativebase.io/building-card ACCESSED: 27th of OCTOBER 2021
   return (
     <Box>
       {" "}
@@ -318,8 +330,64 @@ function PetComponent() {
         _light={{ backgroundColor: "red.500" }}
         _dark={{ backgroundColor: "red.500" }}
       >
-        <Text> {childData} </Text>
-        <Button> Email Agency </Button>
+        {items.map((item) => (
+          <Box
+            rounded="lg"
+            overflow="hidden"
+            width="72"
+            shadow={1}
+            _light={{ backgroundColor: "gray.50" }}
+            _dark={{ backgroundColor: "gray.700" }}
+          >
+            <Box>
+              <AspectRatio ratio={16 / 9}>
+                <Image
+                  source={{
+                    uri: "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/53225902/1/?bust=1633926865&width=600",
+                  }}
+                  alt="image"
+                />
+              </AspectRatio>
+              <Center
+                bg="violet.500"
+                _text={{ color: "white", fontWeight: "700", fontSize: "xs" }}
+                position="absolute"
+                bottom={0}
+                px="3"
+                py="1.5"
+              >
+                PET
+              </Center>
+            </Box>
+            <Stack p="4" space={3}>
+              <Stack space={2}>
+                <Heading size="md" ml="-1">
+                  Name: {item.name}
+                </Heading>
+                <Text
+                  fontSize="xs"
+                  _light={{ color: "violet.500" }}
+                  _dark={{ color: "violet.300" }}
+                  fontWeight="500"
+                  ml="-0.5"
+                  mt="-1"
+                >
+                  Age: {item.age}
+                </Text>
+              </Stack>
+              <Text fontWeight="400">Description: {item.description}</Text>
+              <HStack
+                alignItems="center"
+                space={4}
+                justifyContent="space-between"
+              >
+                <HStack alignItems="center">
+                  <Button> Email Agency </Button>
+                </HStack>
+              </HStack>
+            </Stack>
+          </Box>
+        ))}
       </Box>
     </Box>
   );
