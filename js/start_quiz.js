@@ -6,6 +6,7 @@ import {
   ImageBackground,
   TouchableOpacity,
   RefreshControl,
+  ScrollView,
 } from "react-native";
 import {
   NativeBaseProvider,
@@ -108,15 +109,15 @@ function saveData2(data, petData2, navigation) {
     .update({
       petArray: petArray,
     });
-  currentPos++;
+  currentPos = currentPos + 1;
   if (navigation.navigate("start_quiz")) {
     alert("yay!");
   }
   /* add data to users pets */
   //CardComponent();
 }
-function nextQuestion(currentPoint) {
-  return questions[currentPoint];
+function getPos(currentPoint) {
+  return currentPoint;
 }
 //Modified from NativeBase Card Component, with signification style changes
 /**
@@ -129,6 +130,7 @@ function CardComponent() {
   const [name, setRefName] = useState("");
   const [data, setData] = useState("");
   const [data2, setData2] = useState("");
+  const [position, setPosition] = useState(0);
   var leadsRef = Firebase.database().ref("8/data/0");
   var randomInt = Math.floor(Math.random() * 119);
   var randomInt2 = Math.floor(Math.random() * 119);
@@ -186,9 +188,7 @@ function CardComponent() {
     if (data == "" && count == 0) {
       setData(Name1);
     }
-    //alert(Name1);
   });
-  //alert(data);
 
   item2.on("value", function (snapshot) {
     snapshot.val();
@@ -203,13 +203,11 @@ function CardComponent() {
     if (data2 == "") {
       setData2(Name1);
     }
-    //alert(Name1);
   });
 
   leadsRef.on("value", function (snapshot) {
     snapshot.forEach(function (childSnapshot) {
       var childData = childSnapshot.val();
-      //  alert(childData);
     });
   });
   /* Card Componented taken from nativebase.io with modified style changes 
@@ -217,7 +215,7 @@ function CardComponent() {
   return (
     <Box
       rounded="lg"
-      width="60%"
+      width="300px"
       height="300px"
       shadow={1}
       _light={{ backgroundColor: "gray.50" }}
@@ -231,7 +229,7 @@ function CardComponent() {
           fontFamily="PaytoneOne_400Regular"
           textAlign="center"
         >
-          Question {currentPos}
+          Question {position}
         </Heading>
         <Text
           style={{
@@ -241,15 +239,17 @@ function CardComponent() {
             textAlign: "center",
           }}
         >
-          {questions[currentPos]}
+          {questions[position]}
         </Text>
-        <Flex direction="row">
+        <Flex direction="row" justifyContent="center">
           <Button
             title={data}
             size="sm" //  onPress={() => console.log('hello world')}
             margin={1}
             p={4}
-            onPress={() => saveData1(data, petData1, navigation)}
+            onPress={() =>
+              saveData1(data, petData1, navigation) + setPosition(position + 1)
+            }
           >
             <Text style={{ color: "white", fontFamily: "Roboto_400Regular" }}>
               {data}
@@ -260,7 +260,9 @@ function CardComponent() {
             margin={1}
             p={4}
             colorScheme="secondary"
-            onPress={() => saveData2(data2, petData2, navigation)}
+            onPress={() =>
+              saveData2(data2, petData2, navigation) + setPosition(position + 1)
+            }
           >
             <Text style={{ color: "white", fontFamily: "Roboto_400Regular" }}>
               {data2}
@@ -273,7 +275,7 @@ function CardComponent() {
 }
 function PetComponent() {
   var count = 0;
-  const [petArray, setPetArray] = useState("");
+  const [petArray, setPetArray] = useState([]);
   var ref1 = Firebase.database().ref(
     "2/data/" + Firebase.auth().currentUser.uid + "/petArray"
   );
@@ -307,89 +309,90 @@ function PetComponent() {
  //  
     /*add all pet data for each attribute of pet in pet array */
   // }
-  //REFERENCE UI COMPONENT USED BELOW WITH CHANGES https://docs.nativebase.io/building-card ACCESSED: 27th of OCTOBER 2021
   return (
-    <Box>
-      {" "}
-      <Text
-        style={{
-          color: "#545871",
-          fontSize: 15,
-          fontFamily: "PaytoneOne_400Regular",
-          textAlign: "center",
-        }}
-      >
+    <ScrollView>
+      <Box>
         {" "}
-        Your Pets{" "}
-      </Text>
-      <Box
-        rounded="lg"
-        width="50%"
-        height="150px"
-        shadow={1}
-        _light={{ backgroundColor: "red.500" }}
-        _dark={{ backgroundColor: "red.500" }}
-      >
-        {items.map((item) => (
-          <Box
-            rounded="lg"
-            overflow="hidden"
-            width="72"
-            shadow={1}
-            _light={{ backgroundColor: "gray.50" }}
-            _dark={{ backgroundColor: "gray.700" }}
-          >
-            <Box>
-              <AspectRatio ratio={16 / 9}>
-                <Image
-                  source={{
-                    uri: "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/53225902/1/?bust=1633926865&width=600",
-                  }}
-                  alt="image"
-                />
-              </AspectRatio>
-              <Center
-                bg="violet.500"
-                _text={{ color: "white", fontWeight: "700", fontSize: "xs" }}
-                position="absolute"
-                bottom={0}
-                px="3"
-                py="1.5"
-              >
-                PET
-              </Center>
-            </Box>
-            <Stack p="4" space={3}>
-              <Stack space={2}>
-                <Heading size="md" ml="-1">
-                  Name: {item.name}
-                </Heading>
-                <Text
-                  fontSize="xs"
-                  _light={{ color: "violet.500" }}
-                  _dark={{ color: "violet.300" }}
-                  fontWeight="500"
-                  ml="-0.5"
-                  mt="-1"
+        <Text
+          style={{
+            color: "#545871",
+            fontSize: 15,
+            fontFamily: "PaytoneOne_400Regular",
+            textAlign: "center",
+          }}
+        >
+          {" "}
+          Your Pets{" "}
+        </Text>
+        <Box
+          rounded="lg"
+          width="300px"
+          height="150px"
+          shadow={1}
+          _light={{ backgroundColor: "red.500" }}
+          _dark={{ backgroundColor: "red.500" }}
+        >
+          {items.map((item) => (
+            <Box
+              rounded="lg"
+              overflow="hidden"
+              width="72"
+              shadow={1}
+              _light={{ backgroundColor: "gray.50" }}
+              _dark={{ backgroundColor: "gray.700" }}
+            >
+              <Box>
+                <AspectRatio ratio={16 / 9}>
+                  <Image
+                    source={{
+                      uri: "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/53225902/1/?bust=1633926865&width=600",
+                    }}
+                    alt="image"
+                  />
+                </AspectRatio>
+                <Center
+                  bg="violet.500"
+                  _text={{ color: "white", fontWeight: "700", fontSize: "xs" }}
+                  position="absolute"
+                  bottom={0}
+                  px="3"
+                  py="1.5"
                 >
-                  Age: {item.age}
-                </Text>
-              </Stack>
-              <Text fontWeight="400">Description: {item.description}</Text>
-              <HStack
-                alignItems="center"
-                space={4}
-                justifyContent="space-between"
-              >
-                <HStack alignItems="center">
-                  <Button> Email Agency </Button>
+                  PET
+                </Center>
+              </Box>
+              <Stack p="4" space={3}>
+                <Stack space={2}>
+                  <Heading size="md" ml="-1">
+                    Name: {item.name}
+                  </Heading>
+                  <Text
+                    fontSize="xs"
+                    _light={{ color: "violet.500" }}
+                    _dark={{ color: "violet.300" }}
+                    fontWeight="500"
+                    ml="-0.5"
+                    mt="-1"
+                  >
+                    Age: {item.age}
+                  </Text>
+                </Stack>
+                <Text fontWeight="400">Description: {item.description}</Text>
+                <HStack
+                  alignItems="center"
+                  space={4}
+                  justifyContent="space-between"
+                >
+                  <HStack alignItems="center">
+                    <Button> Email Agency </Button>
+                  </HStack>
                 </HStack>
-              </HStack>
-            </Stack>
-          </Box>
-        ))}
+              </Stack>
+            </Box>
+          ))}
+        </Box>
       </Box>
-    </Box>
+    </ScrollView>
   );
 }
 /* Self-authored component */

@@ -1,9 +1,7 @@
 import React from 'react';
 import { ImageBackground,Text, StyleSheet, View, TouchableOpacity, ScrollView} from 'react-native';
-import { NativeBaseProvider, Image, Button} from "native-base"; 
+import { NativeBaseProvider, Image, Button, Center} from "native-base"; 
 
-// import { NavigationContainer } from '@react-navigation/native';
-// import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
 
 import {
@@ -15,17 +13,15 @@ import {
 } from '@expo-google-fonts/roboto'
 import AppLoading from 'expo-app-loading';
 
-import logo from "../assets/Logo.jpg";
-import background from "../assets/background.jpg";
 import sick_dog from "../assets/sick_dog.jpg";
 import study_dog from "../assets/study_dog.jpg";
 import misconception from "../assets/misconception.jpg";
 
 
 
-import { borderLeft } from 'styled-system';
+import { borderLeft, marginRight } from 'styled-system';
 
-
+// About page that lists useful information before and after adoption
 const AboutAdopting = () => {
 
   const navigation = useNavigation();
@@ -43,13 +39,7 @@ const AboutAdopting = () => {
       <NativeBaseProvider>
     
 
-     
-        <View style={styles.buttonbox} > 
       
-          
-         
-        </View>
-
         <View style={styles.cardbox}>
           <View style={{paddingLeft: 10,}}>
             <Text style={{ fontSize:20, fontFamily: "PaytoneOne_400Regular",}}>Pre-adoption</Text>
@@ -66,7 +56,7 @@ const AboutAdopting = () => {
             <View style={styles.text_in_card}>
               <Text >Common Misconceptions</Text>
               <Text style={{ color: "#777", paddingTop: 5 }}>
-                Misconceptions you should know before adopting...
+                Misconceptions you should know before ...
               </Text>
             </View>
             
@@ -83,7 +73,7 @@ const AboutAdopting = () => {
             <View style={styles.text_in_card}>
               <Text >Basic Knowledge</Text>
               <Text style={{ color: "#777", paddingTop: 5, fontFamily: 'Roboto_400Regular', }}>
-                Knowledge you should know before adopting...
+                Knowledge you should know before ...
               </Text>
             </View>
           </TouchableOpacity>
@@ -104,16 +94,12 @@ const AboutAdopting = () => {
             <View style={styles.text_in_card}>
               <Text>Emergency help</Text>
               <Text style={{ color: "#777", paddingTop: 5 }}>
-                Urgent contacts and how to cope with situation ...
+                Urgent contacts and how to cope with ...
               </Text>
             </View>
           </TouchableOpacity>
 
-          
-
-
         </View>
-
 
         
     </NativeBaseProvider>
@@ -121,10 +107,12 @@ const AboutAdopting = () => {
   );
 }
 
-
-
+//style sheet for View, texts, touchoubleobject, etc..
 const styles = StyleSheet.create({
   cardbox: {
+
+    alignItems: 'center',
+    justifyContent: 'flex-start', 
     
   },
   card: {
@@ -132,6 +120,9 @@ const styles = StyleSheet.create({
     //padding: 10,
     borderRadius: 15,
     backgroundColor: "#DDDDDD",
+    width: 290,
+    // flexDirection: "row",
+    // justifyContent: Center,   
   },
   text_in_card: {
     padding:5,
@@ -150,67 +141,9 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "#545871",
   },
-  box: {
-    paddingTop: 20,
-    paddingBottom: 20,
-    paddingLeft: 20,
-    paddingRight: 20,
-    justifyContent: 'center',
-    backgroundColor: '#bbadc6',
-    width: 'auto',
-    
-  },
-  prebox: {
-    paddingTop: 20,
-    paddingBottom: 20,
-    paddingLeft: 20,
-    paddingRight: 20,
-    justifyContent: 'center',
-    backgroundColor: '#FBDADB',
-    // backgroundColor: '#FBE2E1',
-    width: 'auto',
-    
-  },
-  postbox: {
-    paddingTop: 20,
-    paddingBottom: 20,
-    paddingLeft: 20,
-    paddingRight: 20,
-    justifyContent: 'center',
-    //backgroundColor: '#535971',
-    backgroundColor: '#bbadc6',
-    width: 'auto',
-    
-  },
-  preadoption: {
-    paddingTop: 20,
-    paddingBottom: 20,
-    paddingLeft: 20,
-    paddingRight: 20,
-    justifyContent: 'center',
-    backgroundColor: '#E19D98',
-    width: 'auto',
-    
-  },
-  postadoption: {
-    paddingTop: 20,
-    paddingBottom: 20,
-    paddingLeft: 20,
-    paddingRight: 20,
-    justifyContent: 'center',
-    backgroundColor: '#535971',
-    width: 'auto',
-    
-  },
-  container: {
-    textAlign: 'center',
-  },
   
-  buttonbox: {
-    // backgroundColor: '#ffffff',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-  },
+ 
+ 
 });
 
 

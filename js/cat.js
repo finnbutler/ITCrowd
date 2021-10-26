@@ -1,6 +1,6 @@
 
 import React, {useState} from 'react';
-import { ImageBackground,Text, StyleSheet, View, TouchableOpacity, ScrollView, Linking } from 'react-native';
+import { ImageBackground,Text, StyleSheet, View, TouchableOpacity, ScrollView, Linking, WebView } from 'react-native';
 import { NativeBaseProvider, Image, Button} from "native-base"; 
 
 
@@ -15,16 +15,18 @@ import {
 } from '@expo-google-fonts/roboto'
 import AppLoading from 'expo-app-loading';
 import study_dog from "../assets/study_dog.jpg";
-import { bottom } from 'styled-system';
+
+// import Iframe from 'react-iframe';
+// import YoutubePlayer from 'react-native-youtube-iframe';
 
 
 
 
-// Const for the Cat component
+// Const for the Cat component, THIS IS FOR PAGE BASIC KNOWLEDGE 
 const Cat = () => {
   const navigation = useNavigation();
 
-    
+    // contents boolean variable with useState function to be triggered by button click 
     const [content1, setContent1] = useState(false);
     const [content2, setContent2] = useState(true);
 
@@ -37,17 +39,20 @@ const Cat = () => {
   }
   return (
     <ScrollView>
+     
       <NativeBaseProvider>
-
+      
         
-        <View>
+        <View >
+            {/* Top image for the Basic Knowledge page */}
             <Image
             source={study_dog}
             style={{ height: 250}}
             alt="study_dog"
             />
 
-            <View style={{paddingLeft: 10, paddingRight: 10}}>
+            {/* container for main contents */}
+            <View style={styles.cardbox} >
 
                                   
               <View style={styles.header}>
@@ -55,6 +60,11 @@ const Cat = () => {
                     </Text>
               </View>
 
+              {/* <Iframe width="560" height="315" src="https://www.youtube.com/embed/bdFJ4H3WL3Q" 
+                title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen></Iframe> */}
+                
+              {/* drop-down button to make the corresponding contents visible */}
               <TouchableOpacity style={styles.card} onPress={() => setContent1(!content1)} > 
                 <Text style={styles.subt}>
                       Expenses
@@ -98,7 +108,7 @@ const Cat = () => {
 
               
               
-
+              {/* drop-down button to make the corresponding contents visible */}
               <TouchableOpacity style={styles.card} onPress={() => setContent2(!content2)} > 
                 <Text style={styles.subt}>
                      Bringing them home
@@ -111,23 +121,26 @@ const Cat = () => {
                         <Text style={styles.tex1}>
                   During the first few days can be a stressful time for both you and your new pet as you learn more about each other and start establishing routines. Here are some videos to get you started on preparing for your new family member:
                 </Text>
+                <Text style={{fontSize: 14, fontWeight: "bold", color: "#777",}}> 
+                   {"\n   "}LINK TO YOUTUBE VIDEOS
+                 </Text>
 
                 <Text style={styles.tex2}>
                   <Text style={{color: '#6495ed',fontWeight:'500'}}
                         onPress={() => Linking.openURL('https://www.youtube.com/watch?v=-_5xd0pSy28')}>
-                          {'\u2022'} https://www.youtube.com/watch?v=-_5xd0pSy28 {"\n"}
+                          {'\u2022'} Puppy First Day Home Tips {"\n"}
                   </Text>
                   <Text style={{color: '#6495ed',fontWeight:'500'}}
                         onPress={() => Linking.openURL('https://www.youtube.com/watch?v=-H0zq475mGA')}>
-                          {'\u2022'} https://www.youtube.com/watch?v=-H0zq475mGA {"\n"}
+                          {'\u2022'} 6 Tips for Bringing a New Cat Home {"\n"}
                   </Text>
                   <Text style={{color: '#6495ed',fontWeight:'500'}}
                         onPress={() => Linking.openURL('https://www.youtube.com/watch?v=rMUPeTda69s')}>
-                          {'\u2022'} https://www.youtube.com/watch?v=rMUPeTda69s {"\n"}
+                          {'\u2022'} How to prepare for a RESCUE DOG {"\n"}
                   </Text>
                   <Text style={{color: '#6495ed',fontWeight:'500'}}
                         onPress={() => Linking.openURL('https://www.youtube.com/watch?v=jPhGpktH56Q')}>
-                          {'\u2022'} https://www.youtube.com/watch?v=jPhGpktH56Q {"\n"}
+                          {'\u2022'} Tips for Adopting a Cat from a Shelter {"\n"}
                   </Text>
 
                                        
@@ -140,12 +153,6 @@ const Cat = () => {
 
               
 
-              <View style={styles.paragraph}>
-
-              </View>
-
-                
-
             </View>
             
 
@@ -153,12 +160,7 @@ const Cat = () => {
             
         </View>
       
-        <View style={styles.buttonbox} > 
-            
-            
 
-
-        </View>
       </NativeBaseProvider>
     </ScrollView>
 
@@ -167,14 +169,15 @@ const Cat = () => {
   );
 };
 
+//style sheet for View, texts, touchoubleobject, etc..
 const styles = StyleSheet.create({
-  heading: {
-    textAlign: "center",
-    fontFamily: "PaytoneOne_400Regular",
-    color: "white",
-    paddingTop: 15,
-    fontSize: 16,
-    marginBottom: 15,
+  cardbox: {
+
+    alignItems: 'center',
+    justifyContent: 'flex-start', 
+    paddingLeft: 10,
+    paddingRight: 10
+    
   },
   paragraph: {
     textAlign: "left",
@@ -190,6 +193,7 @@ const styles = StyleSheet.create({
   subt: {
     fontSize: 14,
     fontWeight: "bold",
+    width:290,
     
   },
   tex1: {
@@ -204,15 +208,6 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     
   }, 
-  box: {
-    paddingTop: 20,
-    paddingBottom: 20,
-    paddingLeft: 20,
-    paddingRight: 20,
-    justifyContent: "center",
-    backgroundColor: "#bbadc6",
-    width: "auto",
-  },
   card: {
     marginBottom: 10,
     padding: 5,
@@ -220,55 +215,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#DDDDDD",
     
   },
-  prebox: {
-    paddingTop: 20,
-    paddingBottom: 20,
-    paddingLeft: 20,
-    paddingRight: 20,
-
-    
-    backgroundColor: '#FBDADB',
-
-    // backgroundColor: '#FBE2E1',
-    width: "auto",
-  },
-  postbox: {
-    paddingTop: 20,
-    paddingBottom: 20,
-    paddingLeft: 20,
-    paddingRight: 20,
-    justifyContent: "center",
-    //backgroundColor: '#535971',
-    backgroundColor: "#bbadc6",
-    width: "auto",
-  },
-  preadoption: {
-    paddingTop: 20,
-    paddingBottom: 20,
-    paddingLeft: 20,
-    paddingRight: 20,
-    justifyContent: "center",
-    backgroundColor: "#E19D98",
-    width: "auto",
-  },
-  postadoption: {
-    paddingTop: 20,
-    paddingBottom: 20,
-    paddingLeft: 20,
-    paddingRight: 20,
-    justifyContent: "center",
-    backgroundColor: "#535971",
-    width: "auto",
-  },
-  container: {
-    textAlign: "center",
-  },
-
-  buttonbox: {
-    // backgroundColor: '#ffffff',
-    alignItems: "center",
-    justifyContent: "flex-start",
-  },
+ 
+ 
 });
 
 export default Cat;

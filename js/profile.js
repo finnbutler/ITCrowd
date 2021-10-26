@@ -1,18 +1,7 @@
 import React, { useState } from "react";
-import {
-  ImageBackground,
-  Text,
-  StyleSheet,
-  View,
-  TouchableOpacity,
-  ScrollView,
-  Button,
-} from "react-native";
+import { ImageBackground, Text,  StyleSheet, View, TouchableOpacity, ScrollView,} from "react-native";
 import { NativeBaseProvider, Image } from "native-base";
-import {
-  useFonts,
-  PaytoneOne_400Regular,
-} from "@expo-google-fonts/paytone-one";
+import {  useFonts, PaytoneOne_400Regular,} from "@expo-google-fonts/paytone-one";
 import { Roboto_400Regular } from "@expo-google-fonts/roboto";
 import AppLoading from "expo-app-loading";
 import profile from "../assets/pic.jpg";

@@ -16,7 +16,6 @@ import SignUpForm from "./js/signupForm.js";
 import Profile from "./js/profile.js";
 import Adopting from "./js/about.js";
 import Cat from "./js/cat.js";
-import Dog from "./js/dog.js";
 import Misconcept from "./js/preadoption.js";
 import Postadopting from "./js/postadoption.js";
 import StartQuiz from "./js/start_quiz.js";
@@ -149,9 +148,7 @@ function QuizScreen() {
 function CatScreen() {
   return <Cat />;
 }
-function DogScreen() {
-  return <Dog />;
-}
+
 function MisconceptScreen() {
   return <Misconcept />;
 }
@@ -298,15 +295,7 @@ export default function App() {
               resizeMode='contain' />), headerTitleStyle: { flex: 1, textAlign: 'center' },
           headerStyle: { height: 102 }
         }} component={CatScreen} />
-        <Stack.Screen name="Dog" options={{
-          headerTitle: () => (
-            <Image
-              style={{ width: 60, height: 55 }}
-              source={logo}
-              resizeMode='contain' />), headerTitleStyle: { flex: 1, textAlign: 'center' },
-          headerStyle: { height: 102 }
-        }} component={DogScreen} />
-        <Stack.Screen name="Common Misconception" options={{
+       <Stack.Screen name="Common Misconception" options={{
           headerTitle: () => (
             <Image
               style={{ width: 60, height: 55 }}
