@@ -13,9 +13,9 @@ import background from "../assets/login_background.jpg";
 import Firebase from "../config/firebase";
 import "firebase/firestore";
 import logo from "../assets/Logo.jpg";
-import { createStackNavigator } from '@react-navigation/stack';
-import Login from '../js/loginForm.js';
-import { useNavigation } from '@react-navigation/native';
+import { createStackNavigator } from "@react-navigation/stack";
+import Login from "../js/loginForm.js";
+import { useNavigation } from "@react-navigation/native";
 // TODO: Replace the following with your app's Firebase project configuration
 const auth = Firebase.auth();
 
@@ -42,16 +42,17 @@ function HomeScreen() {
   };
 
   const onSignup = async () => {
-    auth.createUserWithEmailAndPassword(email, password)
-      .then((res) => {
-        Firebase.database().ref('2/data/' + res.user.uid ).set({
+    auth.createUserWithEmailAndPassword(email, password).then((res) => {
+      Firebase.database()
+        .ref("2/data/" + res.user.uid)
+        .set({
           firstName: firstName,
           lastName: lastName,
           phone_number: phone_number,
           postcode: postcode,
-        })
-      })
-  }
+        });
+    });
+  };
 
   return (
     <NativeBaseProvider>
@@ -62,7 +63,8 @@ function HomeScreen() {
           flex: 1,
           justifyContent: "center",
         }}
-        alt="background_image">
+        alt="background_image"
+      >
         <View style={{ marginTop: -150 }}>
           <StatusBar style="dark-content" />
           <Text style={{ marginBottom: 5, textAlign: "center" }}>Sign Up</Text>
@@ -136,7 +138,6 @@ function HomeScreen() {
             onChangeText={(text) => setPostcode(text)}
           />
 
-
           <Input
             inputStyle={{
               fontSize: 14,
@@ -176,15 +177,25 @@ function HomeScreen() {
             margin="auto"
             backgroundColor="#f1c737"
             marginBottom="10px"
-            onPress={(onSignup)}
+            onPress={onSignup}
             text="Go to Signup"
           >
             <Text color="#545871" fontFamily="Roboto_400Regular">
               Sign Up
             </Text>
           </Button>
-          <Text textAlign="center" color="#545871" fontFamily="Roboto_400Regular">
-            Already have an account? <Text textDecorationLine='underline' onPress={() => navigation.navigate("Login")}>Login</Text>
+          <Text
+            textAlign="center"
+            color="#545871"
+            fontFamily="Roboto_400Regular"
+          >
+            Already have an account?{" "}
+            <Text
+              textDecorationLine="underline"
+              onPress={() => navigation.navigate("Login")}
+            >
+              Login
+            </Text>
           </Text>
         </View>
       </ImageBackground>

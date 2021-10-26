@@ -1,3 +1,5 @@
+import javax.json.*;
+
 /**
  * Class for storing photo data from JSON and outputting as SQL.
  */
@@ -12,6 +14,16 @@ public class PhotoData {
         this.medium = medium;
         this.large = large;
         this.full = full;
+    }
+
+    public JsonObject toJsonObject() {
+        JsonObject json = Json.createObjectBuilder()
+                .add("PhotoFull", this.full)
+                .add("PhotoLarge", this.large)
+                .add("PhotoMedium", this.medium)
+                .add("PhotoSmall", this.small)
+                .build();
+        return json;
     }
 
     @Override
