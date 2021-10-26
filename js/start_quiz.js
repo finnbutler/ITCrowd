@@ -6,6 +6,7 @@ import {
   ImageBackground,
   TouchableOpacity,
   RefreshControl,
+  ScrollView
 } from "react-native";
 import {
   NativeBaseProvider,
@@ -106,15 +107,15 @@ function saveData2(data, petData2, navigation) {
     .update({
       petArray: petArray,
     });
-  currentPos++;
+  currentPos = currentPos + 1;
   if (navigation.navigate("start_quiz")) {
     alert("yay!");
   }
   /* add data to users pets */
   //CardComponent();
 }
-function nextQuestion(currentPoint) {
-  return questions[currentPoint];
+function getPos(currentPoint) {
+  return currentPoint;
 }
 //Modified from NativeBase Card Component, with signification style changes
 /**
@@ -127,6 +128,7 @@ function CardComponent() {
   const [name, setRefName] = useState("");
   const [data, setData] = useState("");
   const [data2, setData2] = useState("");
+  const [position, setPosition] = useState(0);
   var leadsRef = Firebase.database().ref("8/data/0");
   var randomInt = Math.floor(Math.random() * 10);
   var randomInt2 = Math.floor(Math.random() * 10);
@@ -184,9 +186,7 @@ function CardComponent() {
     if (data == "" && count == 0) {
       setData(Name1);
     }
-    //alert(Name1);
   });
-  //alert(data);
 
   item2.on("value", function (snapshot) {
     snapshot.val();
@@ -201,21 +201,20 @@ function CardComponent() {
     if (data2 == "") {
       setData2(Name1);
     }
-    //alert(Name1);
   });
 
   leadsRef.on("value", function (snapshot) {
     snapshot.forEach(function (childSnapshot) {
       var childData = childSnapshot.val();
-      //  alert(childData);
     });
   });
   /* Card Componented taken from nativebase.io with modified style changes 
   REFERENCE: */
   return (
+    
     <Box
       rounded="lg"
-      width="60%"
+      width="300px"
       height="300px"
       shadow={1}
       _light={{ backgroundColor: "gray.50" }}
@@ -229,7 +228,7 @@ function CardComponent() {
           fontFamily="PaytoneOne_400Regular"
           textAlign="center"
         >
-          Question {currentPos}
+          Question {position}
         </Heading>
         <Text
           style={{
@@ -239,15 +238,15 @@ function CardComponent() {
             textAlign: "center",
           }}
         >
-          {questions[currentPos]}
+          {questions[position]}
         </Text>
-        <Flex direction="row">
+        <Flex direction="row" justifyContent="center">
           <Button
             title={data}
             size="sm" //  onPress={() => console.log('hello world')}
             margin={1}
             p={4}
-            onPress={() => saveData1(data, petData1, navigation)}
+            onPress={() => saveData1(data, petData1, navigation) + setPosition(position + 1)}
           >
             <Text style={{ color: "white", fontFamily: "Roboto_400Regular" }}>
               {data}
@@ -258,13 +257,14 @@ function CardComponent() {
             margin={1}
             p={4}
             colorScheme="secondary"
-            onPress={() => saveData2(data2, petData2, navigation)}
+            onPress={() => saveData2(data2, petData2, navigation) + setPosition(position + 1)}
           >
             <Text style={{ color: "white", fontFamily: "Roboto_400Regular" }}>
               {data2}
             </Text>
           </Button>
         </Flex>
+        
         <Text
           style={{
             color: "#545871",
@@ -281,7 +281,7 @@ function CardComponent() {
 }
 function PetComponent() {
   var count = 0;
-  const [petArray, setPetArray] = useState("");
+  const [petArray, setPetArray] = useState([]);
   var ref1 = Firebase.database().ref(
     "2/data/" + Firebase.auth().currentUser.uid + "/petArray"
   );
@@ -296,7 +296,7 @@ function PetComponent() {
  //  
     /*add all pet data for each attribute of pet in pet array */
   // }
-  return (
+  return (<ScrollView>
     <Box>
       {" "}
       <Text
@@ -312,7 +312,7 @@ function PetComponent() {
       </Text>
       <Box
         rounded="lg"
-        width="50%"
+        width="300px"
         height="150px"
         shadow={1}
         _light={{ backgroundColor: "red.500" }}
@@ -321,7 +321,7 @@ function PetComponent() {
         <Text> {childData} </Text>
         <Button> Email Agency </Button>
       </Box>
-    </Box>
+    </Box></ScrollView>
   );
 }
 /* Self-authored component */
@@ -338,6 +338,7 @@ function NoLogin() {
     >
       Please head to the Login Screen!{" "}
     </Text>
+    
   );
 }
 export default function StartQuizScreen() {

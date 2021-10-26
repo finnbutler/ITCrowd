@@ -1,3 +1,8 @@
+import org.json.JSONObject;
+
+import javax.json.*;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -80,6 +85,60 @@ public class PetData {
 
     public void populateBlankValues() {
 
+    }
+
+    public void jsonAddOrNull(JsonObjectBuilder json, String tag, Boolean val) {
+        if (val == null) {
+            json.add(tag, JsonValue.NULL);
+        } else {
+            json.add(tag, val);
+        }
+    }
+
+    public void jsonAddOrNull(JsonObjectBuilder json, String tag, String val) {
+        if (val == null) {
+            json.add(tag, JsonValue.NULL);
+        } else {
+            json.add(tag, val);
+        }
+    }
+
+    public JsonObject toJsonObject() {
+        JsonObjectBuilder json = Json.createObjectBuilder();
+        jsonAddOrNull(json, "Age", this.age);
+        jsonAddOrNull(json, "BreedIsMixed", this.breedIsMixed);
+        jsonAddOrNull(json, "BreedIsUnknown", this.breedIsUnknown);
+        jsonAddOrNull(json, "BreedPrimary", this.breedPrimary);
+        jsonAddOrNull(json, "Coat", this.coat);
+        jsonAddOrNull(json, "ColourPrimary", this.colourPrimary);
+        jsonAddOrNull(json, "CreationTime", LocalDateTime.now().toString());
+        jsonAddOrNull(json, "Description", this.description);
+        //jsonAddOrNull(json, "HappinessValue", this.);
+        //jsonAddOrNull(json, "ID", this.id);
+        jsonAddOrNull(json, "IsDeclawed", this.isDeclawed);
+        jsonAddOrNull(json, "isFriendlyToCats", this.isFriendlyToCats);
+        jsonAddOrNull(json, "isFriendlyToDogs", this.isFriendlyToDogs);
+        jsonAddOrNull(json, "isHouseTrained", this.isHouseTrained);
+        jsonAddOrNull(json, "isShotsCurrent", this.isShotsCurrent);
+        jsonAddOrNull(json, "isSpayedOrNeutered", this.isSpayedOrNeutered);
+        jsonAddOrNull(json, "isSpecialNeeds", this.isSpecialNeeds);
+        jsonAddOrNull(json, "Name", this.name);
+        jsonAddOrNull(json, "Sex", this.sex);
+        jsonAddOrNull(json, "Size", this.size);
+        jsonAddOrNull(json, "Species", this.species);
+        jsonAddOrNull(json, "Type", this.type);
+        json.add("PetPhotos", photosTOJson());
+        return json.build();
+    }
+
+    public JsonArray photosTOJson() {
+        JsonArrayBuilder json = Json.createArrayBuilder();
+
+        for (PhotoData photo : this.photos) {
+            json.add(photo.toJsonObject());
+        }
+
+        return json.build();
     }
 
     public String toSQLPet() {
