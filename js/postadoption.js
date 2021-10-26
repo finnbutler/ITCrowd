@@ -41,15 +41,16 @@ const Postadoption = () => {
       <NativeBaseProvider>
         
         <View>
+            {/* Top image for the Emergency Help page */}
             <Image
             source={sick_dog}
             style={{ height: 250}}
             alt="sick_dog"
             />
-            <View style={{paddingLeft: 10,}}>
+            <View style={styles.cardbox}>
 
               <View style={styles.header}>
-                <Text style={{fontSize:20, fontFamily: "PaytoneOne_400Regular", }}>Medical Emergency assistance
+                <Text style={{fontSize:20, fontFamily: "PaytoneOne_400Regular", }}> Emergency assistance
                     </Text>
               </View>
 
@@ -146,12 +147,6 @@ const Postadoption = () => {
                 
 
                 
-                    
-                
-                
-                
-
-                
 
             </View>
             
@@ -178,13 +173,13 @@ const Postadoption = () => {
 }
 
 const styles = StyleSheet.create({
-  heading: {
-    textAlign: "center",
-    fontFamily: "PaytoneOne_400Regular",
-    color: "white",
-    paddingTop: 15,
-    fontSize: 16,
-    marginBottom: 15,
+  cardbox: {
+
+    alignItems: 'center',
+    justifyContent: 'flex-start', 
+    paddingLeft: 10,
+    paddingRight: 10
+    
   },
   paragraph: {
     textAlign: "left",
@@ -200,6 +195,7 @@ const styles = StyleSheet.create({
   subt: {
     fontSize: 14,
     fontWeight: "bold",
+    width:290,
   },
   tex1: {
     color: "#777", 
@@ -218,16 +214,6 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     
   }, 
-  box: {
-    paddingTop: 20,
-    paddingBottom: 20,
-    paddingLeft: 20,
-    paddingRight: 20,
-    justifyContent: 'center',
-    backgroundColor: '#bbadc6',
-    width: 'auto',
-    
-  },
   card: {
     marginBottom: 10,
     padding: 5,
@@ -235,10 +221,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#DDDDDD",
     
   },
-  container: {
-    textAlign: 'center',
-  },
-  
   buttonbox: {
     // backgroundColor: '#ffffff',
     alignItems: 'center',

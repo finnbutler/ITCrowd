@@ -1,6 +1,6 @@
 
 import React, {useState} from 'react';
-import { ImageBackground,Text, StyleSheet, View, TouchableOpacity, ScrollView, Linking } from 'react-native';
+import { ImageBackground,Text, StyleSheet, View, TouchableOpacity, ScrollView, Linking, WebView } from 'react-native';
 import { NativeBaseProvider, Image, Button} from "native-base"; 
 
 
@@ -16,11 +16,13 @@ import {
 import AppLoading from 'expo-app-loading';
 import study_dog from "../assets/study_dog.jpg";
 import { bottom } from 'styled-system';
+// import Iframe from 'react-iframe';
+// import YoutubePlayer from 'react-native-youtube-iframe';
 
 
 
 
-// Const for the Cat component
+// Const for the Cat component, THIS IS FOR PAGE BASIC KNOWLEDGE 
 const Cat = () => {
   const navigation = useNavigation();
 
@@ -37,23 +39,30 @@ const Cat = () => {
   }
   return (
     <ScrollView>
+     
       <NativeBaseProvider>
-
+      
         
-        <View>
+        <View >
+            {/* Top image for the Basic Knowledge page */}
             <Image
             source={study_dog}
             style={{ height: 250}}
             alt="study_dog"
             />
 
-            <View style={{paddingLeft: 10, paddingRight: 10}}>
+            <View style={styles.cardbox} >
 
                                   
               <View style={styles.header}>
                 <Text style={{fontSize:20, fontFamily: "PaytoneOne_400Regular", }}>Basic Knowledge
                     </Text>
               </View>
+
+              {/* <Iframe width="560" height="315" src="https://www.youtube.com/embed/bdFJ4H3WL3Q" 
+                title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen></Iframe> */}
+                
 
               <TouchableOpacity style={styles.card} onPress={() => setContent1(!content1)} > 
                 <Text style={styles.subt}>
@@ -159,6 +168,7 @@ const Cat = () => {
 
 
         </View>
+
       </NativeBaseProvider>
     </ScrollView>
 
@@ -168,13 +178,13 @@ const Cat = () => {
 };
 
 const styles = StyleSheet.create({
-  heading: {
-    textAlign: "center",
-    fontFamily: "PaytoneOne_400Regular",
-    color: "white",
-    paddingTop: 15,
-    fontSize: 16,
-    marginBottom: 15,
+  cardbox: {
+
+    alignItems: 'center',
+    justifyContent: 'flex-start', 
+    paddingLeft: 10,
+    paddingRight: 10
+    
   },
   paragraph: {
     textAlign: "left",
@@ -190,6 +200,7 @@ const styles = StyleSheet.create({
   subt: {
     fontSize: 14,
     fontWeight: "bold",
+    width:290,
     
   },
   tex1: {
@@ -220,50 +231,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#DDDDDD",
     
   },
-  prebox: {
-    paddingTop: 20,
-    paddingBottom: 20,
-    paddingLeft: 20,
-    paddingRight: 20,
-
-    
-    backgroundColor: '#FBDADB',
-
-    // backgroundColor: '#FBE2E1',
-    width: "auto",
-  },
-  postbox: {
-    paddingTop: 20,
-    paddingBottom: 20,
-    paddingLeft: 20,
-    paddingRight: 20,
-    justifyContent: "center",
-    //backgroundColor: '#535971',
-    backgroundColor: "#bbadc6",
-    width: "auto",
-  },
-  preadoption: {
-    paddingTop: 20,
-    paddingBottom: 20,
-    paddingLeft: 20,
-    paddingRight: 20,
-    justifyContent: "center",
-    backgroundColor: "#E19D98",
-    width: "auto",
-  },
-  postadoption: {
-    paddingTop: 20,
-    paddingBottom: 20,
-    paddingLeft: 20,
-    paddingRight: 20,
-    justifyContent: "center",
-    backgroundColor: "#535971",
-    width: "auto",
-  },
-  container: {
-    textAlign: "center",
-  },
-
+ 
   buttonbox: {
     // backgroundColor: '#ffffff',
     alignItems: "center",

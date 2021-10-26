@@ -39,12 +39,13 @@ const Preadoption = () => {
       <NativeBaseProvider>
         
         <View>
+            {/* Top image for the Common Misconception page */}
             <Image
             source={misconception}
             style={{ height: 250}}
             alt="misconception"
             />
-            <View style={{paddingLeft: 10, paddingRight: 10}}>
+            <View style={styles.cardbox}>
               <View style={styles.header}>
                 <Text style={{ fontSize:20, fontFamily: "PaytoneOne_400Regular",}}>Common Misconceptions 
                     </Text>
@@ -166,25 +167,10 @@ const Preadoption = () => {
 
             
 
-
-              <View style={styles.paragraph}>
-
-              </View>
-
-                
-
             </View>
             
-
-            
-            
         </View>
-      
-        <View style={styles.buttonbox} > 
-            
-            
 
-        </View>
 
 
         
@@ -194,13 +180,13 @@ const Preadoption = () => {
 }
 
 const styles = StyleSheet.create({
-  heading: {
-    textAlign: "center",
-    fontFamily: "PaytoneOne_400Regular",
-    color: "white",
-    paddingTop: 15,
-    fontSize: 16,
-    marginBottom: 15,
+  cardbox: {
+
+    alignItems: 'center',
+    justifyContent: 'flex-start', 
+    paddingLeft: 10,
+    paddingRight: 10
+    
   },
   paragraph: {
     textAlign: "left",
@@ -216,7 +202,7 @@ const styles = StyleSheet.create({
   subt: {
     fontSize: 14,
     fontWeight: "bold",
-    //fontFamily: "PaytoneOne_400Regular",
+    width:290,
     
   },
   tex1: {
@@ -242,10 +228,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#DDDDDD",
     
   },
-  container: {
-    textAlign: 'center',
-  },
-  
   buttonbox: {
     // backgroundColor: '#ffffff',
     alignItems: 'center',
