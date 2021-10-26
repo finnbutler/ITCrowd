@@ -121,23 +121,26 @@ const Cat = () => {
                         <Text style={styles.tex1}>
                   During the first few days can be a stressful time for both you and your new pet as you learn more about each other and start establishing routines. Here are some videos to get you started on preparing for your new family member:
                 </Text>
+                <Text style={{fontSize: 14, fontWeight: "bold", color: "#777",}}> 
+                   {"\n   "}LINK TO YOUTUBE VIDEOS
+                 </Text>
 
                 <Text style={styles.tex2}>
                   <Text style={{color: '#6495ed',fontWeight:'500'}}
                         onPress={() => Linking.openURL('https://www.youtube.com/watch?v=-_5xd0pSy28')}>
-                          {'\u2022'} https://www.youtube.com/watch?v=-_5xd0pSy28 {"\n"}
+                          {'\u2022'} Puppy First Day Home Tips {"\n"}
                   </Text>
                   <Text style={{color: '#6495ed',fontWeight:'500'}}
                         onPress={() => Linking.openURL('https://www.youtube.com/watch?v=-H0zq475mGA')}>
-                          {'\u2022'} https://www.youtube.com/watch?v=-H0zq475mGA {"\n"}
+                          {'\u2022'} 6 Tips for Bringing a New Cat Home {"\n"}
                   </Text>
                   <Text style={{color: '#6495ed',fontWeight:'500'}}
                         onPress={() => Linking.openURL('https://www.youtube.com/watch?v=rMUPeTda69s')}>
-                          {'\u2022'} https://www.youtube.com/watch?v=rMUPeTda69s {"\n"}
+                          {'\u2022'} How to prepare for a RESCUE DOG {"\n"}
                   </Text>
                   <Text style={{color: '#6495ed',fontWeight:'500'}}
                         onPress={() => Linking.openURL('https://www.youtube.com/watch?v=jPhGpktH56Q')}>
-                          {'\u2022'} https://www.youtube.com/watch?v=jPhGpktH56Q {"\n"}
+                          {'\u2022'} Tips for Adopting a Cat from a Shelter {"\n"}
                   </Text>
 
                                        

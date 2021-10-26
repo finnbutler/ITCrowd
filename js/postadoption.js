@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { ImageBackground,Text, StyleSheet, View, TouchableOpacity, ScrollView} from 'react-native';
+import { ImageBackground,Text, StyleSheet, View, TouchableOpacity, ScrollView, Linking} from 'react-native';
 import { NativeBaseProvider, Image, Button} from "native-base"; 
 
 import { useNavigation } from '@react-navigation/native';
@@ -26,7 +26,7 @@ const Postadoption = () => {
 
     // contents boolean variable with useState function to be triggered by button click 
     const [content1, setContent1] = useState(false);
-    const [content2, setContent2] = useState(false);
+    const [content2, setContent2] = useState(true);
  
 
   let [fontsLoaded, error] = useFonts({
@@ -131,18 +131,48 @@ const Postadoption = () => {
                 (
                   <View style={styles.paragraph}>
                         
-                    <Text style={styles.tex1}>
+                    {/* <Text style={styles.tex1}>
                       If you need emergency assistance, please use the following map to locate your nearest emergency veterinary clinic. {"\n"}
                     </Text>
                     <Text style={styles.tex2}>
                         {'\u2022'} <Text style={{fontWeight:"bold", }}>include google map here </Text>
                         
+                    </Text> */}
+
+
+                    <Text style={styles.tex1}>
+                      If you need <Text style={{color: '#F2552C'}}>emergency assistance </Text>, please use the following number to call your nearest emergency veterinary clinic. {"\n"}
                     </Text>
 
                     <Text style={styles.tex2}>
-                        {'\u2022'} <Text style={{fontWeight:"bold", }}>include google map here </Text>
+                        {'\u2022'} <Text style={{color: '#6495ed',fontWeight:'500',}}
+                            onPress={() => Linking.openURL('https://goo.gl/maps/f3Vpipxqm4ewWuQGA')}>
+                              {''} Woolloongabba Emergency Vet {"\n"}
+                        </Text>
+                        <Text >
+                          {'    '}Tel: 07 3456 0500{"\n"}
+                        </Text>
+
+                        {'\u2022'} <Text style={{color: '#6495ed',fontWeight:'500'}}
+                            onPress={() => Linking.openURL('https://g.page/BVECCS?share')}>
+                              {''} Brisbane Veterinary Emergency & Critical Care Service (BVECCS) {"\n"}
+                        </Text>
+                        <Text >
+                          {'    '}Tel: (07) 3264 8365{"\n"}
+                        </Text>
+
+                        {'\u2022'} <Text style={{color: '#6495ed',fontWeight:'500'}}
+                            onPress={() => Linking.openURL('https://goo.gl/maps/F8xW9CHsipM2xSaD8')}>
+                              {''} Animal Referral Hospital Brisbane{"\n"}
+                        </Text>
+                        <Text >
+                          {'    '}Tel: (07) 3172 0593{"\n"}
+                        </Text>
+
                         
                     </Text>
+
+                    
 
                     
                   </View>
