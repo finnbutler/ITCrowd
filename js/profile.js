@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  ImageBackground,
-  Text,
-  StyleSheet,
-  View,
-  TouchableOpacity,
-  ScrollView,
-} from "react-native";
+import { ImageBackground, Text,  StyleSheet, View, TouchableOpacity, ScrollView,} from "react-native";
 import { NativeBaseProvider, Image } from "native-base";
 import {
   useFonts,

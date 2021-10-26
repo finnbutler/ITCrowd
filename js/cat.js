@@ -15,7 +15,7 @@ import {
 } from '@expo-google-fonts/roboto'
 import AppLoading from 'expo-app-loading';
 import study_dog from "../assets/study_dog.jpg";
-import { bottom } from 'styled-system';
+
 // import Iframe from 'react-iframe';
 // import YoutubePlayer from 'react-native-youtube-iframe';
 
@@ -26,7 +26,7 @@ import { bottom } from 'styled-system';
 const Cat = () => {
   const navigation = useNavigation();
 
-    
+    // contents boolean variable with useState function to be triggered by button click 
     const [content1, setContent1] = useState(false);
     const [content2, setContent2] = useState(true);
 
@@ -51,6 +51,7 @@ const Cat = () => {
             alt="study_dog"
             />
 
+            {/* container for main contents */}
             <View style={styles.cardbox} >
 
                                   
@@ -63,7 +64,7 @@ const Cat = () => {
                 title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowfullscreen></Iframe> */}
                 
-
+              {/* drop-down button to make the corresponding contents visible */}
               <TouchableOpacity style={styles.card} onPress={() => setContent1(!content1)} > 
                 <Text style={styles.subt}>
                       Expenses
@@ -107,7 +108,7 @@ const Cat = () => {
 
               
               
-
+              {/* drop-down button to make the corresponding contents visible */}
               <TouchableOpacity style={styles.card} onPress={() => setContent2(!content2)} > 
                 <Text style={styles.subt}>
                      Bringing them home
@@ -149,12 +150,6 @@ const Cat = () => {
 
               
 
-              <View style={styles.paragraph}>
-
-              </View>
-
-                
-
             </View>
             
 
@@ -162,12 +157,6 @@ const Cat = () => {
             
         </View>
       
-        <View style={styles.buttonbox} > 
-            
-            
-
-
-        </View>
 
       </NativeBaseProvider>
     </ScrollView>
@@ -177,6 +166,7 @@ const Cat = () => {
   );
 };
 
+//style sheet for View, texts, touchoubleobject, etc..
 const styles = StyleSheet.create({
   cardbox: {
 
@@ -215,15 +205,6 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     
   }, 
-  box: {
-    paddingTop: 20,
-    paddingBottom: 20,
-    paddingLeft: 20,
-    paddingRight: 20,
-    justifyContent: "center",
-    backgroundColor: "#bbadc6",
-    width: "auto",
-  },
   card: {
     marginBottom: 10,
     padding: 5,
@@ -232,11 +213,7 @@ const styles = StyleSheet.create({
     
   },
  
-  buttonbox: {
-    // backgroundColor: '#ffffff',
-    alignItems: "center",
-    justifyContent: "flex-start",
-  },
+ 
 });
 
 export default Cat;
