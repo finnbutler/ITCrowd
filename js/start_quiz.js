@@ -224,7 +224,7 @@ function CardComponent() {
       <Stack p="4" space={5}>
         <Heading
           size="md"
-          ml="-1"
+          ml={-1}
           color="#545871"
           fontFamily="PaytoneOne_400Regular"
           textAlign="center"
@@ -301,16 +301,14 @@ function PetComponent() {
     });
 
     console.log(items);
-    //return "Name" + items[0].name + "Age" + items[0].age;
+    
   });
-  //});
-
   /* for (var i = 0; i < petArray.length; i++) {
  //  
     /*add all pet data for each attribute of pet in pet array */
   // }
   return (
-    <ScrollView>
+    
       <Box>
         {" "}
         <Text
@@ -326,20 +324,21 @@ function PetComponent() {
         </Text>
         <Box
           rounded="lg"
-          width="300px"
-          height="150px"
+          width={300}
+          height={150}
           shadow={1}
           _light={{ backgroundColor: "red.500" }}
           _dark={{ backgroundColor: "red.500" }}
         >
-          {items.map((item) => (
+          {items.map((item, index) => (
             <Box
               rounded="lg"
               overflow="hidden"
-              width="72"
+              width={72}
               shadow={1}
               _light={{ backgroundColor: "gray.50" }}
               _dark={{ backgroundColor: "gray.700" }}
+              key={index}
             >
               <Box>
                 <AspectRatio ratio={16 / 9}>
@@ -355,15 +354,15 @@ function PetComponent() {
                   _text={{ color: "white", fontWeight: "700", fontSize: "xs" }}
                   position="absolute"
                   bottom={0}
-                  px="3"
-                  py="1.5"
+                  px={3}
+                  py={1.5}
                 >
                   PET
                 </Center>
               </Box>
               <Stack p="4" space={3}>
                 <Stack space={2}>
-                  <Heading size="md" ml="-1">
+                  <Heading size="md" ml={-1}>
                     Name: {item.name}
                   </Heading>
                   <Text
@@ -371,8 +370,8 @@ function PetComponent() {
                     _light={{ color: "violet.500" }}
                     _dark={{ color: "violet.300" }}
                     fontWeight="500"
-                    ml="-0.5"
-                    mt="-1"
+                    ml={-0.5}
+                    mt={-1}
                   >
                     Age: {item.age}
                   </Text>
@@ -392,7 +391,7 @@ function PetComponent() {
           ))}
         </Box>
       </Box>
-    </ScrollView>
+    
   );
 }
 /* Self-authored component */
@@ -430,12 +429,14 @@ export default function StartQuizScreen() {
   }
   return (
     <NativeBaseProvider>
-      <View
+      <ScrollView>
+        <View
         style={{ marginLeft: "auto", marginRight: "auto", marginTop: "25%" }}
       >
         <CardComponent />
         <PetComponent />
       </View>
+      </ScrollView>
     </NativeBaseProvider>
   );
 }
