@@ -11,7 +11,7 @@ import {
 import { NativeBaseProvider, Image, Button } from "native-base";
 
 import { useNavigation } from "@react-navigation/native";
-import Geolocation from "react-native-geolocation-service";
+//import Geolocation from "react-native-geolocation-service";
 import {
   useFonts,
   PaytoneOne_400Regular,

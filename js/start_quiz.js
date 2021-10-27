@@ -21,6 +21,7 @@ import {
   Stack,
   Heading,
   Flex,
+  VStack,
 } from "native-base";
 import {
   useFonts,
@@ -44,7 +45,7 @@ var printablePetArray = [];
  */
 
 function saveData1(data, petData1) {
-  alert(data);
+  //alert(data);
   let petData = "";
   var petNameInput = String(petData1);
   //alert(petData1);
@@ -61,7 +62,7 @@ function saveData1(data, petData1) {
     }
   });
   if (petData == "") {
-    alert("nah!");
+    //alert("nah!");
   }
 
   //petArray.push(Firebase.database().ref(petNameString).val());
@@ -98,7 +99,7 @@ function saveData2(data, petData2, navigation) {
     }
   });
   if (petData == "") {
-    alert("nah!");
+    //alert("nah!");
   }
 
   /*var pushItem = Firebase.database().ref(petName);
@@ -180,12 +181,10 @@ function CardComponent() {
     if (Name1 == 0 && data == "") {
       setData("No Way!");
       //count++;
-    }
-    if (Name1 == 1 && data == "") {
+    } else if (Name1 == 1 && data == "") {
       setData("Yes!");
       //count++;
-    }
-    if (Name1 != "" && data == "") {
+    } else if (Name1 != "" && data == "") {
       setData(Name1);
     }
   });
@@ -196,11 +195,9 @@ function CardComponent() {
     const Name1 = snapshot.val();
     if (Name1 == 0 && data2 == "") {
       setData2("No Way!");
-    }
-    if (Name1 == 1 && data2 == "") {
+    } else if (Name1 == 1 && data2 == "") {
       setData2("Yes!");
-    }
-    if (Name1 != "" && data2 == "") {
+    } else if (Name1 != "" && data2 == "") {
       setData2(Name1);
     }
   });
@@ -216,7 +213,7 @@ function CardComponent() {
     }
   }
   /* Card Componented taken from nativebase.io with modified style changes 
-  REFERENCE: */
+  REFERENCE: nativebase.io */
   return (
     <Box
       rounded="lg"
@@ -251,6 +248,7 @@ function CardComponent() {
             title={data}
             size="sm" //  onPress={() => console.log('hello world')}
             margin={1}
+            backgroundColor="green.500"
             p={4}
             onPress={() =>
               saveData1(data, petData1, navigation) +
@@ -267,7 +265,7 @@ function CardComponent() {
             size="sm"
             margin={1}
             p={4}
-            colorScheme="secondary"
+            backgroundColor="red.500"
             onPress={() =>
               saveData2(data2, petData2, navigation) +
               addPosition(position) +
@@ -317,6 +315,9 @@ function PetComponent() {
  //  
     /*add all pet data for each attribute of pet in pet array */
   // }
+  // Majority of code for styles of the card has been taken from
+  // https://docs.nativebase.io/building-card and used with a change in style
+  // and content being pulled from firebase
   return (
     <ScrollView>
       <Box>
@@ -348,35 +349,33 @@ function PetComponent() {
                   source={{
                     uri: item.petPhotos,
                   }}
-                  alt="image"
+                  alt="Image of pet from PetFinder"
                 />
               </AspectRatio>
-              <Center
-                bg="violet.500"
-                _text={{ color: "white", fontWeight: "700", fontSize: "xs" }}
-                position="absolute"
-                bottom={0}
-                px={3}
-                py={1.5}
-              >
-                PET
-              </Center>
             </Box>
             <Stack p="4" space={3}>
               <Stack space={2}>
-                <Heading size="md" ml="-1">
+                <Heading
+                  size="md"
+                  ml="-1"
+                  _light={{ color: "white" }}
+                  _dark={{ color: "white" }}
+                >
                   Name: {item.name}
                 </Heading>
-                <Text fontSize="xs" fontWeight="500" ml="-0.5" mt="-1">
+                <Text
+                  fontSize="xs"
+                  _light={{ color: "white" }}
+                  _dark={{ color: "white" }}
+                  fontWeight="500"
+                  ml="-0.5"
+                  mt="-1"
+                >
                   Age: {item.age}
                 </Text>
               </Stack>
               <Text fontWeight="400">Description: {item.description}</Text>
-              <HStack
-                alignItems="center"
-                space={4}
-                justifyContent="space-between"
-              >
+              <VStack space={4} justifyContent="space-between">
                 <HStack alignItems="center">
                   <Button
                     onPress={() =>
@@ -387,7 +386,7 @@ function PetComponent() {
                     Email Agency{" "}
                   </Button>
                 </HStack>
-              </HStack>
+              </VStack>
             </Stack>
           </Box>
         ))}
