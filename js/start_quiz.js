@@ -333,7 +333,7 @@ function PetComponent() {
           {" "}
           Your Pets{" "}
         </Text>
-        {items.map((item) => (
+        {items.map((item, index) => (
           <Box
             rounded="lg"
             overflow="hidden"
@@ -342,6 +342,7 @@ function PetComponent() {
             _text={{ color: "white", fontWeight: "700", fontSize: "xs" }}
             _light={{ backgroundColor: "red.500" }}
             _dark={{ backgroundColor: "red.500" }}
+            key={index}
           >
             <Box>
               <AspectRatio ratio={16 / 9}>

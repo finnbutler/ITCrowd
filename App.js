@@ -56,8 +56,9 @@ function HomeScreen({ navigation }) {
         >
           <View
             style={{
-              marginTop: 80,
+              marginTop: 30,
               alignItems: "flex-end",
+              marginBottom: 80
             }}
           >
             <Text
@@ -65,6 +66,7 @@ function HomeScreen({ navigation }) {
               fontSize={25}
               fontFamily="PaytoneOne_400Regular"
               marginRight={4}
+              marginTop={20}
             >
               Purrrfect Pets!{" "}
             </Text>
@@ -116,7 +118,7 @@ function HomeScreen({ navigation }) {
             </Button>
           </View>
         </ImageBackground>
-        <View style={{ height: 500, backgroundColor: "#9e8fae" }}>
+        {/* <View style={{ height: 500, backgroundColor: "#9e8fae" }}>
           <Text
             marginTop={6}
             textAlign="center"
@@ -127,7 +129,7 @@ function HomeScreen({ navigation }) {
             Welcome to purrrfect pets! The world's first pet matching quiz, with
             real pets, in real time.
           </Text>
-        </View>
+        </View> */}
       </NativeBaseProvider>
     </ScrollView>
   );
