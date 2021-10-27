@@ -14,10 +14,15 @@ import {
   Roboto_400Regular,
 } from '@expo-google-fonts/roboto'
 import AppLoading from 'expo-app-loading';
+//Freepik, Cute dog with books in bed, (n.d.). [Online]. Available: https://www.freepik.com/free-photo/cute-dog-with-books-bed_13402708.htm. [Accessed: 2- Oct- 2021].
 import study_dog from "../assets/study_dog.jpg";
+//McCann Dog Training, Puppy First Day Home Tips - Professional Dog Training Tips, 2018. [Online]. Available: https://www.youtube.com/watch?v=-_5xd0pSy28. [Accessed: 2- Oct- 2021].
 import youtube1 from "../assets/yt1.jpg";
+//Petco, 6 Tips for Bringing a New Cat Home (Petco), 2020. [Online]. Available: https://www.youtube.com/watch?v=-H0zq475mGA. [Accessed: 2- Oct- 2021].
 import youtube2 from "../assets/yt2.jpg";
+//In Ruff Company, How to PREP for a RESCUE DOG | What to Expect (FIRST NIGHT), 2020. [Online]. Available: https://www.youtube.com/watch?v=rMUPeTda69s. [Accessed: 2- Oct- 2021].
 import youtube3 from "../assets/yt3.jpg";
+//Howdini, Cat Adoption & Rescue: Tips for Adopting a Cat from a Shelter, 2012. [Online]. Available: https://www.youtube.com/watch?v=jPhGpktH56Q. [Accessed: 2- Oct- 2021].
 import youtube4 from "../assets/yt4.jpg";
 
 
@@ -133,6 +138,7 @@ const Cat = () => {
                  </Text>
                   
                   {/* Youtube link with corresponding youtube thumbnails */}
+                  {/* "Puppy First Day Home Tips - Professional Dog Training Tips", Youtube, 2018. [Online]. Available: https://www.youtube.com/watch?v=-_5xd0pSy28. [Accessed: 27- Oct- 2021]. */}
                  <TouchableOpacity style={styles.imgbox} onPress={() => Linking.openURL('https://www.youtube.com/watch?v=-_5xd0pSy28')} > 
                   <Image
                     source={youtube1}
@@ -146,8 +152,9 @@ const Cat = () => {
                   </Text>
 
                  </TouchableOpacity>
-
-                 <TouchableOpacity style={styles.imgbox} onPress={() => Linking.openURL('https://www.youtube.com/watch?v=-_5xd0pSy28')} > 
+                  
+                 {/* "6 Tips for Bringing a New Cat Home", Youtube, 2014. [Online]. Available: https://www.youtube.com/watch?v=-_5xd0pSy28. [Accessed: 27- Oct- 2021]. */}
+                 <TouchableOpacity style={styles.imgbox} onPress={() => Linking.openURL('https://www.youtube.com/watch?v=-H0zq475mGA')} > 
                   <Image
                     source={youtube2}
                     style={{height: 180, width: 300 }}
@@ -160,7 +167,8 @@ const Cat = () => {
                   </Text>
                  </TouchableOpacity>
 
-                 <TouchableOpacity style={styles.imgbox} onPress={() => Linking.openURL('https://www.youtube.com/watch?v=-_5xd0pSy28')} > 
+                 {/* "How to PREP for a RESCUE DOG | What to Expect (FIRST NIGHT)", Youtube, 2020. [Online]. Available: https://www.youtube.com/watch?v=rMUPeTda69s. [Accessed: 27- Oct- 2021]. */}
+                 <TouchableOpacity style={styles.imgbox} onPress={() => Linking.openURL('https://www.youtube.com/watch?v=rMUPeTda69s')} > 
                   <Image
                     source={youtube3}
                     style={{ height: 180, width: 300}}
@@ -172,7 +180,8 @@ const Cat = () => {
                   </Text>
                  </TouchableOpacity>
 
-                 <TouchableOpacity style={styles.imgbox} onPress={() => Linking.openURL('https://www.youtube.com/watch?v=-_5xd0pSy28')} > 
+                 {/* "Cat Adoption & Rescue: Tips for Adopting a Cat from a Shelter", Youtube, 2012. [Online]. Available: https://www.youtube.com/watch?v=jPhGpktH56Q. [Accessed: 27- Oct- 2021]. */}
+                 <TouchableOpacity style={styles.imgbox} onPress={() => Linking.openURL('https://www.youtube.com/watch?v=jPhGpktH56Q')} > 
                     <Image
                       source={youtube4}
                       style={{ height: 180, width: 300 }}
