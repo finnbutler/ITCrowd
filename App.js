@@ -245,7 +245,7 @@ export default function App() {
                       resizeMode="contain"
                     />
                   ),
-                  headerTitleStyle: { textAlign: "center" },
+                  headerTitleStyle: { marginLeft:"auto", marginRight: "auto"  },
                   headerStyle: { height: 102 },
                 }}
               />
@@ -259,7 +259,7 @@ export default function App() {
                       resizeMode="contain"
                     />
                   ),
-                  headerTitleStyle: { flex: 1, textAlign: "center" },
+                  headerTitleStyle: { marginLeft:"auto", marginRight: "auto"  },
                   headerStyle: { height: 102 },
                 }}
                 component={QuizScreen}
@@ -274,7 +274,7 @@ export default function App() {
                       resizeMode="contain"
                     />
                   ),
-                  headerTitleStyle: { flex: 1, textAlign: "center" },
+                  headerTitleStyle: { marginLeft:"auto", marginRight: "auto" },
                   headerStyle: { height: 102 },
                 }}
                 component={AboutAdopting}
@@ -290,7 +290,7 @@ export default function App() {
                       resizeMode="contain"
                     />
                   ),
-                  headerTitleStyle: { flex: 1, textAlign: "center" },
+                  headerTitleStyle: {marginLeft:"auto", marginRight: "auto" },
                   headerStyle: { height: 102 },
                 }}
               />
@@ -307,7 +307,7 @@ export default function App() {
                 resizeMode="contain"
               />
             ),
-            headerTitleStyle: { flex: 1, textAlign: "center" },
+            headerTitleStyle: { marginLeft:"auto", marginRight: "auto"  },
             headerStyle: { height: 102 },
           }}
           component={SignUpScreen}
@@ -322,7 +322,7 @@ export default function App() {
                 resizeMode="contain"
               />
             ),
-            headerTitleStyle: { flex: 1, textAlign: "center" },
+            headerTitleStyle: { marginLeft:"auto", marginRight: "auto"  },
             headerStyle: { height: 102 },
           }}
           component={LogInScreen}
@@ -338,7 +338,7 @@ export default function App() {
                 resizeMode="contain"
               />
             ),
-            headerTitleStyle: { flex: 1, textAlign: "center" },
+            headerTitleStyle: { marginLeft:"auto", marginRight: "auto"  },
             headerStyle: { height: 102 },
           }}
           component={CatScreen}
@@ -353,7 +353,7 @@ export default function App() {
                 resizeMode="contain"
               />
             ),
-            headerTitleStyle: { flex: 1, textAlign: "center" },
+            headerTitleStyle: { marginLeft:"auto", marginRight: "auto"  },
             headerStyle: { height: 102 },
           }}
           component={MisconceptScreen}
@@ -368,7 +368,7 @@ export default function App() {
                 resizeMode="contain"
               />
             ),
-            headerTitleStyle: { flex: 1, textAlign: "center" },
+            headerTitleStyle: { marginLeft:"auto", marginRight: "auto" },
             headerStyle: { height: 102 },
           }}
           component={PostadoptScreen}
@@ -384,7 +384,7 @@ export default function App() {
                 resizeMode="contain"
               />
             ),
-            headerTitleStyle: { flex: 1, textAlign: "center" },
+            headerTitleStyle: { marginLeft:"auto", marginRight: "auto"  },
             headerStyle: { height: 102 },
           }}
           component={StartQuizScreen}

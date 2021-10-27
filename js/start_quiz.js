@@ -367,15 +367,15 @@ function PetComponent() {
                 <Heading
                   size="md"
                   ml="-1"
-                  _light={{ color: "white.500" }}
-                  _dark={{ color: "white.300" }}
+                  _light={{ color: "white" }}
+                  _dark={{ color: "white" }}
                 >
                   Name: {item.name}
                 </Heading>
                 <Text
                   fontSize="xs"
-                  _light={{ color: "white.500" }}
-                  _dark={{ color: "white.300" }}
+                  _light={{ color: "white" }}
+                  _dark={{ color: "white" }}
                   fontWeight="500"
                   ml="-0.5"
                   mt="-1"
