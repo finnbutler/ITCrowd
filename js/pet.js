@@ -33,7 +33,7 @@ const ProfileScreen = () => {
   ref1.on("value", function (snapshot) {
     const pet1 = snapshot.val();
     if (pet1[0] == "") {
-      setpostcode(pet1);
+      setpostcode(pet1[0]);
     }
   });
   ref1[2].on("value", function (snapshot) {

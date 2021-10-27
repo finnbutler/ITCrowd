@@ -46,7 +46,7 @@ var printablePetArray = [];
 function saveData1(data, petData1) {
   alert(currentPos);
   alert(data);
-  var petData = "";
+  let petData = "";
   var petNameInput = String(petData1);
   alert(petData1);
 
@@ -56,12 +56,15 @@ function saveData1(data, petData1) {
     const ref = snapshot.val();
     alert("tHIS ONE:" + ref);
     petData = ref;
+    if (petData != "") {
+      petArray.push(petData);
+      printablePetArray.push(petData);
+    }
   });
   if (petData == "") {
     alert("nah!");
   }
-  petArray.push(petData);
-  printablePetArray.push(petData);
+
   //petArray.push(Firebase.database().ref(petNameString).val());
 
   //printablePetArray.push(Firebase.database().ref(petNameString).val());
@@ -70,7 +73,7 @@ function saveData1(data, petData1) {
     .update({
       petArray: petArray,
     });
-  currentPos++;
+  currentPos = currentPos + 1;
   //this.props.navigation.state.params.refresh();
   //navigate("Child", { refresh: refreshFunction });
 
@@ -92,12 +95,15 @@ function saveData2(data, petData2, navigation) {
     const ref = snapshot.val();
     alert("tHIS ONE:" + ref);
     petData = ref;
+    if (petData != "") {
+      petArray.push(petData);
+      printablePetArray.push(petData);
+    }
   });
   if (petData == "") {
     alert("nah!");
   }
-  petArray.push(petData);
-  printablePetArray.push(petData);
+
   /*var pushItem = Firebase.database().ref(petName);
   pushItem.on("value", function (snapshot) {
     var pushable = snapshot.val();
@@ -287,14 +293,14 @@ function PetComponent() {
     //snapshot.forEach(function (childSnapshot) {
     //childData.push(JSON.parse(childSnapshot.val()));
     snapshot.forEach((child) => {
-      if (items.length != 5) {
+      if (items.length != 2 && child != "") {
         setItems([
           ...items,
           {
             name: child.val().Name,
             age: child.val().Age,
             description: child.val().Description,
-            petPhotos: child.val().PetPhots,
+            petPhotos: child.val().PetPhotos,
           },
         ]);
       }
@@ -324,73 +330,70 @@ function PetComponent() {
           {" "}
           Your Pets{" "}
         </Text>
-        <Box
-          rounded="lg"
-          width="300px"
-          height="150px"
-          shadow={1}
-          _light={{ backgroundColor: "red.500" }}
-          _dark={{ backgroundColor: "red.500" }}
-        >
-          {items.map((item) => (
-            <Box
-              rounded="lg"
-              overflow="hidden"
-              width="72"
-              shadow={1}
-              _light={{ backgroundColor: "gray.50" }}
-              _dark={{ backgroundColor: "gray.700" }}
-            >
-              <Box>
-                <AspectRatio ratio={16 / 9}>
-                  <Image
-                    source={{
-                      uri: "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/53225902/1/?bust=1633926865&width=600",
-                    }}
-                    alt="image"
-                  />
-                </AspectRatio>
-                <Center
-                  bg="violet.500"
-                  _text={{ color: "white", fontWeight: "700", fontSize: "xs" }}
-                  position="absolute"
-                  bottom={0}
-                  px="3"
-                  py="1.5"
-                >
-                  PET
-                </Center>
-              </Box>
-              <Stack p="4" space={3}>
-                <Stack space={2}>
-                  <Heading size="md" ml="-1">
-                    Name: {item.name}
-                  </Heading>
-                  <Text
-                    fontSize="xs"
-                    _light={{ color: "violet.500" }}
-                    _dark={{ color: "violet.300" }}
-                    fontWeight="500"
-                    ml="-0.5"
-                    mt="-1"
-                  >
-                    Age: {item.age}
-                  </Text>
-                </Stack>
-                <Text fontWeight="400">Description: {item.description}</Text>
-                <HStack
-                  alignItems="center"
-                  space={4}
-                  justifyContent="space-between"
-                >
-                  <HStack alignItems="center">
-                    <Button> Email Agency </Button>
-                  </HStack>
-                </HStack>
-              </Stack>
+        {items.map((item) => (
+          <Box
+            rounded="lg"
+            overflow="hidden"
+            width="72"
+            shadow={1}
+            _text={{ color: "white", fontWeight: "700", fontSize: "xs" }}
+            _light={{ backgroundColor: "red.500" }}
+            _dark={{ backgroundColor: "red.500" }}
+          >
+            <Box>
+              <AspectRatio ratio={16 / 9}>
+                <Image
+                  source={{
+                    uri: item.petPhotos,
+                  }}
+                  alt="image"
+                />
+              </AspectRatio>
+              <Center
+                bg="violet.500"
+                _text={{ color: "white", fontWeight: "700", fontSize: "xs" }}
+                position="absolute"
+                bottom={0}
+                px="3"
+                py="1.5"
+              >
+                PET
+              </Center>
             </Box>
-          ))}
-        </Box>
+            <Stack p="4" space={3}>
+              <Stack space={2}>
+                <Heading
+                  size="md"
+                  ml="-1"
+                  _light={{ color: "white.500" }}
+                  _dark={{ color: "white.300" }}
+                >
+                  Name: {item.name}
+                </Heading>
+                <Text
+                  fontSize="xs"
+                  _light={{ color: "white.500" }}
+                  _dark={{ color: "white.300" }}
+                  fontWeight="500"
+                  ml="-0.5"
+                  mt="-1"
+                >
+                  Age: {item.age}
+                </Text>
+              </Stack>
+              <Text fontWeight="400">Description: {item.description}</Text>
+              <HStack
+                alignItems="center"
+                space={4}
+                justifyContent="space-between"
+              >
+                <HStack alignItems="center">
+                  <Button> Email Agency </Button>
+                </HStack>
+              </HStack>
+            </Stack>
+          </Box>
+        ))}
       </Box>
     </ScrollView>
   );
