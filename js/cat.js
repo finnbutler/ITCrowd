@@ -15,6 +15,11 @@ import {
 } from '@expo-google-fonts/roboto'
 import AppLoading from 'expo-app-loading';
 import study_dog from "../assets/study_dog.jpg";
+import youtube1 from "../assets/yt1.jpg";
+import youtube2 from "../assets/yt2.jpg";
+import youtube3 from "../assets/yt3.jpg";
+import youtube4 from "../assets/yt4.jpg";
+
 
 // import Iframe from 'react-iframe';
 // import YoutubePlayer from 'react-native-youtube-iframe';
@@ -123,12 +128,65 @@ const Cat = () => {
                 </Text>
                 <Text style={{fontSize: 14, fontWeight: "bold", color: "#777",}}> 
                    {"\n   "}LINK TO YOUTUBE VIDEOS
+                   {"\n"} {"\n"}
                  </Text>
-
-                <Text style={styles.tex2}>
+                
+                 <TouchableOpacity style={styles.imgbox} onPress={() => Linking.openURL('https://www.youtube.com/watch?v=-_5xd0pSy28')} > 
+                  <Image
+                    source={youtube1}
+                    style={{ height: 180, width: 300 }}
+                    alt="youtube video link1"
+                    
+                    />
                   <Text style={{color: '#6495ed',fontWeight:'500'}}
                         onPress={() => Linking.openURL('https://www.youtube.com/watch?v=-_5xd0pSy28')}>
-                          {'\u2022'} Puppy First Day Home Tips {"\n"}
+                         Puppy First Day Home Tips {"\n"}{"\n"}
+                  </Text>
+
+                 </TouchableOpacity>
+
+                 <TouchableOpacity style={styles.imgbox} onPress={() => Linking.openURL('https://www.youtube.com/watch?v=-_5xd0pSy28')} > 
+                  <Image
+                    source={youtube2}
+                    style={{height: 180, width: 300 }}
+                    alt="youtube video link2"
+                    
+                    />
+                    <Text style={{color: '#6495ed',fontWeight:'500'}}
+                        onPress={() => Linking.openURL('https://www.youtube.com/watch?v=-H0zq475mGA')}>
+                           6 Tips for Bringing a New Cat Home {"\n"}{"\n"}
+                  </Text>
+                 </TouchableOpacity>
+
+                 <TouchableOpacity style={styles.imgbox} onPress={() => Linking.openURL('https://www.youtube.com/watch?v=-_5xd0pSy28')} > 
+                  <Image
+                    source={youtube3}
+                    style={{ height: 180, width: 300}}
+                    alt="youtube video link3"
+                  />
+                   <Text style={{color: '#6495ed',fontWeight:'500'}}
+                        onPress={() => Linking.openURL('https://www.youtube.com/watch?v=rMUPeTda69s')}>
+                          How to prepare for a RESCUE DOG {"\n"}{"\n"}
+                  </Text>
+                 </TouchableOpacity>
+
+                 <TouchableOpacity style={styles.imgbox} onPress={() => Linking.openURL('https://www.youtube.com/watch?v=-_5xd0pSy28')} > 
+                    <Image
+                      source={youtube4}
+                      style={{ height: 180, width: 300 }}
+                      alt="youtube video link4"
+                    />
+                    <Text style={{color: '#6495ed',fontWeight:'500'}}
+                          onPress={() => Linking.openURL('https://www.youtube.com/watch?v=jPhGpktH56Q')}>
+                           Tips for Adopting a Cat from a Shelter {"\n"}{"\n"}
+                    </Text>
+                 </TouchableOpacity>
+                 
+
+                {/* <Text style={styles.tex2}>
+                  <Text style={{color: '#6495ed',fontWeight:'500'}}
+                        onPress={() => Linking.openURL('https://www.youtube.com/watch?v=-_5xd0pSy28')}>
+                         Puppy First Day Home Tips {"\n"}
                   </Text>
                   <Text style={{color: '#6495ed',fontWeight:'500'}}
                         onPress={() => Linking.openURL('https://www.youtube.com/watch?v=-H0zq475mGA')}>
@@ -145,7 +203,7 @@ const Cat = () => {
 
                                        
 
-                </Text>
+                </Text> */}
     
                   </View>
                 ) : null}
@@ -214,6 +272,12 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: "#DDDDDD",
     
+  },
+  imgbox: {
+    alignItems: 'center',
+    justifyContent: 'flex-start', 
+    // paddingLeft: 10,
+    // paddingRight: 10
   },
  
  
