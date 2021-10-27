@@ -27,4 +27,4 @@ Pet API is used to bring pictures and information of dogs and cats.
 
 # Disclamier
 
-Some code is currently copied from tutorials and UI kits and unreferenced this is shortly due to be changed. 
+Some code is currently copied from tutorials and UI kits and is referenced in code and in the wiki 
