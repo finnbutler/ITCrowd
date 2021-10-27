@@ -160,7 +160,7 @@ function CardComponent() {
     "Sex",
     "isShotsCurrent",
     "isSpecialNeeds",
-    "isDeclawed",
+    "IsDeclawed",
     "BreedPrimary",
     "isSpayedorNeutered",
     "isHouseTrained",
