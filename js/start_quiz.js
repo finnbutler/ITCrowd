@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   RefreshControl,
   ScrollView,
+  Linking,
 } from "react-native";
 import {
   NativeBaseProvider,
@@ -156,7 +157,7 @@ function CardComponent() {
     "ColourPrimary",
     "Size",
     "Sex",
-    "IsShotsCurrent",
+    "isShotsCurrent",
     "IsSpecialNeeds",
     "IsDeclawed",
     "BreedPrimary",
@@ -304,7 +305,7 @@ function PetComponent() {
             name: child.val().Name,
             age: child.val().Age,
             description: child.val().Description,
-            petPhotos: child.val().PetPhots,
+            petPhotos: child.val().PhotoFull,
           },
         ]);
       }
@@ -389,7 +390,14 @@ function PetComponent() {
                 justifyContent="space-between"
               >
                 <HStack alignItems="center">
-                  <Button> Email Agency </Button>
+                  <Button
+                    onPress={() =>
+                      Linking.openURL("mailto:adopt@petfinder.com")
+                    }
+                  >
+                    {" "}
+                    Email Agency{" "}
+                  </Button>
                 </HStack>
               </HStack>
             </Stack>
