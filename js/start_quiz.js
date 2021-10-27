@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   RefreshControl,
   ScrollView,
+  Linking,
 } from "react-native";
 import {
   NativeBaseProvider,
@@ -43,8 +44,8 @@ var printablePetArray = [];
  */
 
 function saveData1(data, petData1) {
-  // alert(data);
-  var petData = "";
+  alert(data);
+  let petData = "";
   var petNameInput = String(petData1);
   //alert(petData1);
 
@@ -54,12 +55,15 @@ function saveData1(data, petData1) {
     const ref = snapshot.val();
     //alert("tHIS ONE:" + ref);
     petData = ref;
+    if (petData != "") {
+      petArray.push(petData);
+      printablePetArray.push(petData);
+    }
   });
   if (petData == "") {
     alert("nah!");
   }
-  petArray.push(petData);
-  printablePetArray.push(petData);
+
   //petArray.push(Firebase.database().ref(petNameString).val());
 
   //printablePetArray.push(Firebase.database().ref(petNameString).val());
@@ -88,12 +92,15 @@ function saveData2(data, petData2, navigation) {
     const ref = snapshot.val();
     //alert("tHIS ONE:" + ref);
     petData = ref;
+    if (petData != "") {
+      petArray.push(petData);
+      printablePetArray.push(petData);
+    }
   });
   if (petData == "") {
     alert("nah!");
   }
-  petArray.push(petData);
-  printablePetArray.push(petData);
+
   /*var pushItem = Firebase.database().ref(petName);
   pushItem.on("value", function (snapshot) {
     var pushable = snapshot.val();
@@ -150,7 +157,7 @@ function CardComponent() {
     "ColourPrimary",
     "Size",
     "Sex",
-    "IsShotsCurrent",
+    "isShotsCurrent",
     "IsSpecialNeeds",
     "IsDeclawed",
     "BreedPrimary",
@@ -246,7 +253,10 @@ function CardComponent() {
             margin={1}
             p={4}
             onPress={() =>
-              saveData1(data, petData1, navigation) + addPosition(position)+ setData("") + setData2("")
+              saveData1(data, petData1, navigation) +
+              addPosition(position) +
+              setData("") +
+              setData2("")
             }
           >
             <Text style={{ color: "white", fontFamily: "Roboto_400Regular" }}>
@@ -259,7 +269,10 @@ function CardComponent() {
             p={4}
             colorScheme="secondary"
             onPress={() =>
-              saveData2(data2, petData2, navigation) + addPosition(position) + setData2("") + setData("")
+              saveData2(data2, petData2, navigation) +
+              addPosition(position) +
+              setData2("") +
+              setData("")
             }
           >
             <Text style={{ color: "white", fontFamily: "Roboto_400Regular" }}>
@@ -292,57 +305,48 @@ function PetComponent() {
             name: child.val().Name,
             age: child.val().Age,
             description: child.val().Description,
-            petPhotos: child.val().PetPhots,
+            petPhotos: child.val().PhotoFull,
           },
         ]);
       }
     });
 
     console.log(items);
-
   });
   /* for (var i = 0; i < petArray.length; i++) {
  //  
     /*add all pet data for each attribute of pet in pet array */
   // }
   return (
-
-    <Box>
-      {" "}
-      <Text
-        style={{
-          color: "#545871",
-          fontSize: 15,
-          fontFamily: "PaytoneOne_400Regular",
-          textAlign: "center",
-        }}
-      >
+    <ScrollView>
+      <Box>
         {" "}
-        Your Pets{" "}
-      </Text>
-      <Box
-        rounded="lg"
-        width={300}
-        height={150}
-        shadow={1}
-        _light={{ backgroundColor: "red.500" }}
-        _dark={{ backgroundColor: "red.500" }}
-      >
-        {items.map((item, index) => (
+        <Text
+          style={{
+            color: "#545871",
+            fontSize: 15,
+            fontFamily: "PaytoneOne_400Regular",
+            textAlign: "center",
+          }}
+        >
+          {" "}
+          Your Pets{" "}
+        </Text>
+        {items.map((item) => (
           <Box
             rounded="lg"
             overflow="hidden"
-            width={72}
+            width="72"
             shadow={1}
-            _light={{ backgroundColor: "gray.50" }}
-            _dark={{ backgroundColor: "gray.700" }}
-            key={index}
+            _text={{ color: "white", fontWeight: "700", fontSize: "xs" }}
+            _light={{ backgroundColor: "red.500" }}
+            _dark={{ backgroundColor: "red.500" }}
           >
             <Box>
               <AspectRatio ratio={16 / 9}>
                 <Image
                   source={{
-                    uri: "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/53225902/1/?bust=1633926865&width=600",
+                    uri: item.petPhotos,
                   }}
                   alt="image"
                 />
@@ -360,16 +364,21 @@ function PetComponent() {
             </Box>
             <Stack p="4" space={3}>
               <Stack space={2}>
-                <Heading size="md" ml={-1}>
+                <Heading
+                  size="md"
+                  ml="-1"
+                  _light={{ color: "white.500" }}
+                  _dark={{ color: "white.300" }}
+                >
                   Name: {item.name}
                 </Heading>
                 <Text
                   fontSize="xs"
-                  _light={{ color: "violet.500" }}
-                  _dark={{ color: "violet.300" }}
+                  _light={{ color: "white.500" }}
+                  _dark={{ color: "white.300" }}
                   fontWeight="500"
-                  ml={-0.5}
-                  mt={-1}
+                  ml="-0.5"
+                  mt="-1"
                 >
                   Age: {item.age}
                 </Text>
@@ -381,15 +390,21 @@ function PetComponent() {
                 justifyContent="space-between"
               >
                 <HStack alignItems="center">
-                  <Button> Email Agency </Button>
+                  <Button
+                    onPress={() =>
+                      Linking.openURL("mailto:adopt@petfinder.com")
+                    }
+                  >
+                    {" "}
+                    Email Agency{" "}
+                  </Button>
                 </HStack>
               </HStack>
             </Stack>
           </Box>
         ))}
       </Box>
-    </Box>
-
+    </ScrollView>
   );
 }
 /* Self-authored component */
