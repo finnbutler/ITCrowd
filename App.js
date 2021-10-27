@@ -91,7 +91,7 @@ function HomeScreen({ navigation }) {
               marginRight={7}
             >
               <Text
-                fontSize="13"
+                fontSize={13}
                 color="#545871"
                 fontFamily="Roboto_400Regular"
               >
