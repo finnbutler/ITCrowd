@@ -34,7 +34,6 @@ import background from "../assets/login_background.jpg";
 import { NavigationContainer } from "@react-navigation/native";
 import { useNavigation } from "@react-navigation/native";
 
-var currentPos = 0;
 var petArray = [];
 var printablePetArray = [];
 
@@ -44,17 +43,16 @@ var printablePetArray = [];
  */
 
 function saveData1(data, petData1) {
-  alert(currentPos);
-  alert(data);
+  // alert(data);
   var petData = "";
   var petNameInput = String(petData1);
-  alert(petData1);
+  //alert(petData1);
 
   var refName = Firebase.database().ref(petData1);
   //var refName = Firebase.database().ref("8/data/6/name");
   refName.on("value", function (snapshot) {
     const ref = snapshot.val();
-    alert("tHIS ONE:" + ref);
+    //alert("tHIS ONE:" + ref);
     petData = ref;
   });
   if (petData == "") {
@@ -70,7 +68,6 @@ function saveData1(data, petData1) {
     .update({
       petArray: petArray,
     });
-  currentPos++;
   //this.props.navigation.state.params.refresh();
   //navigate("Child", { refresh: refreshFunction });
 
@@ -83,14 +80,13 @@ function saveData1(data, petData1) {
  */
 
 function saveData2(data, petData2, navigation) {
-  alert(currentPos);
-  alert(petData2);
+  //alert(petData2);
   let petData = "";
   var refName = Firebase.database().ref(petData2);
   //var refName = Firebase.database().ref("8/data/6/name");
   refName.on("value", function (snapshot) {
     const ref = snapshot.val();
-    alert("tHIS ONE:" + ref);
+    //alert("tHIS ONE:" + ref);
     petData = ref;
   });
   if (petData == "") {
@@ -104,27 +100,24 @@ function saveData2(data, petData2, navigation) {
     alert(pushable);
     printablePetArray.push(pushable);
   });*/
+
   Firebase.database()
     .ref("2/data/" + Firebase.auth().currentUser.uid)
     .update({
       petArray: petArray,
     });
-  currentPos = currentPos + 1;
   if (navigation.navigate("start_quiz")) {
     alert("yay!");
   }
-  /* add data to users pets */
-  //CardComponent();
 }
-function getPos(currentPoint) {
-  return currentPoint;
-}
+
 //Modified from NativeBase Card Component, with signification style changes
 /**
  * Component to display the UI for the questions asked to the user
  * also generates questions attached to firebase data
  * @returns void
  */
+
 function CardComponent() {
   const navigation = useNavigation();
   const [name, setRefName] = useState("");
@@ -164,7 +157,7 @@ function CardComponent() {
     "IsSpayedorNeutered",
     "IsHouseTrained",
   ];
-  var valueDB = listOfValues[currentPos];
+  var valueDB = listOfValues[position];
   var currentItem1 = "8/data/" + randomInt + "/" + valueDB;
   var currentItem2 = "8/data/" + randomInt2 + "/" + valueDB;
   var petData1 = "8/data/" + randomInt;
@@ -174,18 +167,18 @@ function CardComponent() {
   var item2 = Firebase.database().ref(currentItem2);
   item1.on("value", function (snapshot) {
     snapshot.val();
-    // alert(snapshot.val());
+    //alert(snapshot.val());
     const Name1 = snapshot.val();
-    var count = 0;
+    // var count = 0;
     if (Name1 == 0 && data == "") {
       setData("No Way!");
-      count++;
+      //count++;
     }
     if (Name1 == 1 && data == "") {
       setData("Yes!");
-      count++;
+      //count++;
     }
-    if (data == "" && count == 0) {
+    if (Name1 != "" && data == "") {
       setData(Name1);
     }
   });
@@ -194,13 +187,13 @@ function CardComponent() {
     snapshot.val();
     //alert(snapshot.val());
     const Name1 = snapshot.val();
-    if (Name1 == 0) {
+    if (Name1 == 0 && data2 == "") {
       setData2("No Way!");
     }
-    if (Name1 == 1) {
+    if (Name1 == 1 && data2 == "") {
       setData2("Yes!");
     }
-    if (data2 == "") {
+    if (Name1 != "" && data2 == "") {
       setData2(Name1);
     }
   });
@@ -210,6 +203,11 @@ function CardComponent() {
       var childData = childSnapshot.val();
     });
   });
+  function addPosition(position) {
+    if (position <= 11) {
+      setPosition(position + 1);
+    }
+  }
   /* Card Componented taken from nativebase.io with modified style changes 
   REFERENCE: */
   return (
@@ -248,7 +246,7 @@ function CardComponent() {
             margin={1}
             p={4}
             onPress={() =>
-              saveData1(data, petData1, navigation) + setPosition(position + 1)
+              saveData1(data, petData1, navigation) + addPosition(position)+ setData("") + setData2("")
             }
           >
             <Text style={{ color: "white", fontFamily: "Roboto_400Regular" }}>
@@ -261,7 +259,7 @@ function CardComponent() {
             p={4}
             colorScheme="secondary"
             onPress={() =>
-              saveData2(data2, petData2, navigation) + setPosition(position + 1)
+              saveData2(data2, petData2, navigation) + addPosition(position) + setData2("") + setData("")
             }
           >
             <Text style={{ color: "white", fontFamily: "Roboto_400Regular" }}>
@@ -301,97 +299,97 @@ function PetComponent() {
     });
 
     console.log(items);
-    
+
   });
   /* for (var i = 0; i < petArray.length; i++) {
  //  
     /*add all pet data for each attribute of pet in pet array */
   // }
   return (
-    
-      <Box>
+
+    <Box>
+      {" "}
+      <Text
+        style={{
+          color: "#545871",
+          fontSize: 15,
+          fontFamily: "PaytoneOne_400Regular",
+          textAlign: "center",
+        }}
+      >
         {" "}
-        <Text
-          style={{
-            color: "#545871",
-            fontSize: 15,
-            fontFamily: "PaytoneOne_400Regular",
-            textAlign: "center",
-          }}
-        >
-          {" "}
-          Your Pets{" "}
-        </Text>
-        <Box
-          rounded="lg"
-          width={300}
-          height={150}
-          shadow={1}
-          _light={{ backgroundColor: "red.500" }}
-          _dark={{ backgroundColor: "red.500" }}
-        >
-          {items.map((item, index) => (
-            <Box
-              rounded="lg"
-              overflow="hidden"
-              width={72}
-              shadow={1}
-              _light={{ backgroundColor: "gray.50" }}
-              _dark={{ backgroundColor: "gray.700" }}
-              key={index}
-            >
-              <Box>
-                <AspectRatio ratio={16 / 9}>
-                  <Image
-                    source={{
-                      uri: "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/53225902/1/?bust=1633926865&width=600",
-                    }}
-                    alt="image"
-                  />
-                </AspectRatio>
-                <Center
-                  bg="violet.500"
-                  _text={{ color: "white", fontWeight: "700", fontSize: "xs" }}
-                  position="absolute"
-                  bottom={0}
-                  px={3}
-                  py={1.5}
-                >
-                  PET
-                </Center>
-              </Box>
-              <Stack p="4" space={3}>
-                <Stack space={2}>
-                  <Heading size="md" ml={-1}>
-                    Name: {item.name}
-                  </Heading>
-                  <Text
-                    fontSize="xs"
-                    _light={{ color: "violet.500" }}
-                    _dark={{ color: "violet.300" }}
-                    fontWeight="500"
-                    ml={-0.5}
-                    mt={-1}
-                  >
-                    Age: {item.age}
-                  </Text>
-                </Stack>
-                <Text fontWeight="400">Description: {item.description}</Text>
-                <HStack
-                  alignItems="center"
-                  space={4}
-                  justifyContent="space-between"
-                >
-                  <HStack alignItems="center">
-                    <Button> Email Agency </Button>
-                  </HStack>
-                </HStack>
-              </Stack>
+        Your Pets{" "}
+      </Text>
+      <Box
+        rounded="lg"
+        width={300}
+        height={150}
+        shadow={1}
+        _light={{ backgroundColor: "red.500" }}
+        _dark={{ backgroundColor: "red.500" }}
+      >
+        {items.map((item, index) => (
+          <Box
+            rounded="lg"
+            overflow="hidden"
+            width={72}
+            shadow={1}
+            _light={{ backgroundColor: "gray.50" }}
+            _dark={{ backgroundColor: "gray.700" }}
+            key={index}
+          >
+            <Box>
+              <AspectRatio ratio={16 / 9}>
+                <Image
+                  source={{
+                    uri: "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/53225902/1/?bust=1633926865&width=600",
+                  }}
+                  alt="image"
+                />
+              </AspectRatio>
+              <Center
+                bg="violet.500"
+                _text={{ color: "white", fontWeight: "700", fontSize: "xs" }}
+                position="absolute"
+                bottom={0}
+                px={3}
+                py={1.5}
+              >
+                PET
+              </Center>
             </Box>
-          ))}
-        </Box>
+            <Stack p="4" space={3}>
+              <Stack space={2}>
+                <Heading size="md" ml={-1}>
+                  Name: {item.name}
+                </Heading>
+                <Text
+                  fontSize="xs"
+                  _light={{ color: "violet.500" }}
+                  _dark={{ color: "violet.300" }}
+                  fontWeight="500"
+                  ml={-0.5}
+                  mt={-1}
+                >
+                  Age: {item.age}
+                </Text>
+              </Stack>
+              <Text fontWeight="400">Description: {item.description}</Text>
+              <HStack
+                alignItems="center"
+                space={4}
+                justifyContent="space-between"
+              >
+                <HStack alignItems="center">
+                  <Button> Email Agency </Button>
+                </HStack>
+              </HStack>
+            </Stack>
+          </Box>
+        ))}
       </Box>
-    
+    </Box>
+
   );
 }
 /* Self-authored component */
@@ -431,11 +429,11 @@ export default function StartQuizScreen() {
     <NativeBaseProvider>
       <ScrollView>
         <View
-        style={{ marginLeft: "auto", marginRight: "auto", marginTop: "25%" }}
-      >
-        <CardComponent />
-        <PetComponent />
-      </View>
+          style={{ marginLeft: "auto", marginRight: "auto", marginTop: "25%" }}
+        >
+          <CardComponent />
+          <PetComponent />
+        </View>
       </ScrollView>
     </NativeBaseProvider>
   );
