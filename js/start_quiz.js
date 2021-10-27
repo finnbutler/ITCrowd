@@ -158,11 +158,11 @@ function CardComponent() {
     "Size",
     "Sex",
     "isShotsCurrent",
-    "IsSpecialNeeds",
-    "IsDeclawed",
+    "isSpecialNeeds",
+    "isDeclawed",
     "BreedPrimary",
-    "IsSpayedorNeutered",
-    "IsHouseTrained",
+    "isSpayedorNeutered",
+    "isHouseTrained",
   ];
   var valueDB = listOfValues[position];
   var currentItem1 = "8/data/" + randomInt + "/" + valueDB;
@@ -298,7 +298,7 @@ function PetComponent() {
     //snapshot.forEach(function (childSnapshot) {
     //childData.push(JSON.parse(childSnapshot.val()));
     snapshot.forEach((child) => {
-      if (items.length != 5) {
+      if (items.length != 1) {
         setItems([
           ...items,
           {
@@ -364,22 +364,10 @@ function PetComponent() {
             </Box>
             <Stack p="4" space={3}>
               <Stack space={2}>
-                <Heading
-                  size="md"
-                  ml="-1"
-                  _light={{ color: "white.500" }}
-                  _dark={{ color: "white.300" }}
-                >
+                <Heading size="md" ml="-1">
                   Name: {item.name}
                 </Heading>
-                <Text
-                  fontSize="xs"
-                  _light={{ color: "white.500" }}
-                  _dark={{ color: "white.300" }}
-                  fontWeight="500"
-                  ml="-0.5"
-                  mt="-1"
-                >
+                <Text fontSize="xs" fontWeight="500" ml="-0.5" mt="-1">
                   Age: {item.age}
                 </Text>
               </Stack>
