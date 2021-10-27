@@ -188,6 +188,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto_400Regular',
     fontSize: 14,
     color: "#545871",
+    width: 300,
   },
   header: {
     textAlign: "center",
