@@ -4,9 +4,9 @@ import {
   View,
   Image,
   ImageBackground,
-  TouchableOpacity
+  TouchableOpacity,
 } from "react-native";
-import { NativeBaseProvider, Input, Button, } from "native-base";
+import { NativeBaseProvider, Input, Button } from "native-base";
 import {
   useFonts,
   PaytoneOne_400Regular,
@@ -18,7 +18,7 @@ import Firebase from "../config/firebase";
 import "firebase/auth";
 import background from "../assets/login_background.jpg";
 import { NavigationContainer } from "@react-navigation/native";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
 
 const LoginScreen = () => {
   const navigation = useNavigation();
@@ -52,8 +52,6 @@ const LoginScreen = () => {
     }
   };
 
-  
-
   let [fontsLoaded, error] = useFonts({
     Roboto_400Regular,
     PaytoneOne_400Regular,
@@ -70,13 +68,20 @@ const LoginScreen = () => {
           flex: 1,
           justifyContent: "center",
         }}
-        alt="background_image">
-
+        alt="background_image"
+      >
         <View style={{ marginTop: -250 }}>
-          <Text style={{ marginBottom: 20, color: "#545871", textAlign: "center", 
-          fontSize: 20, fontFamily: "PaytoneOne_400Regular"}}>
+          <Text
+            style={{
+              marginBottom: 20,
+              color: "#545871",
+              textAlign: "center",
+              fontSize: 20,
+              fontFamily: "PaytoneOne_400Regular",
+            }}
+          >
             Login
-            </Text>
+          </Text>
           <Input
             inputStyle={{
               fontSize: 14,
@@ -130,12 +135,22 @@ const LoginScreen = () => {
               Login
             </Text>
           </Button>
-          <Text style={{color: "#545871", fontFamily: "Roboto_400Regular", textAlign: "center"}}>Do not have an account? <TouchableOpacity onPress={()=> navigation.navigate("Signup")}><Text style={{textDecorationLine: 'underline'}}>Sign up</Text></TouchableOpacity></Text>
+          <Text
+            style={{
+              color: "#545871",
+              fontFamily: "Roboto_400Regular",
+              textAlign: "center",
+            }}
+          >
+            Do not have an account?{" "}
+            <TouchableOpacity onPress={() => navigation.navigate("Signup")}>
+              <Text style={{ textDecorationLine: "underline" }}>Sign up</Text>
+            </TouchableOpacity>
+          </Text>
         </View>
       </ImageBackground>
     </NativeBaseProvider>
   );
 };
-
 
 export default LoginScreen;
