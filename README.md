@@ -28,4 +28,7 @@ Pet API is used to bring pictures and information of dogs and cats.
 # Disclamier
 
 Some code is currently copied from tutorials and UI kits and is referenced in code and in the wiki 
-https://github.com/finnbutler/ITCrowd.github.io/wiki 
+https://github.com/finnbutler/ITCrowd.github.io/wiki Some code on the quiz pages uses some of the example 
+card components and cards from the native base website where used this is referenced in full detail and has 
+been made very clear, code however has also been modified but the overall tags remain the same. 
+https://docs.nativebase.io/migration/card This has also been made clear as the function where this has been used as been named CardComponent, no infrigment was intended and the references has been made clear mulitple times. The majority of other code is our own styling, and where styling has been changed this is referenced. 
