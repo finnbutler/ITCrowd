@@ -253,7 +253,7 @@ function CardComponent() {
             title={data}
             size="sm" //  onPress={() => console.log('hello world')}
             margin={1}
-            backgroundColor="green"
+            backgroundColor="green.500"
             p={4}
             onPress={() =>
               saveData1(data, petData1, navigation) +
@@ -270,7 +270,7 @@ function CardComponent() {
             size="sm"
             margin={1}
             p={4}
-            backgroundColor="red"
+            backgroundColor="red.500"
             onPress={() =>
               saveData2(data2, petData2, navigation) +
               addPosition(position) +
@@ -355,8 +355,8 @@ function PetComponent() {
             width="72"
             shadow={1}
             _text={{ color: "white", fontWeight: "700", fontSize: "xs" }}
-            _light={{ backgroundColor: "red" }}
-            _dark={{ backgroundColor: "red" }}
+            _light={{ backgroundColor: "red.500" }}
+            _dark={{ backgroundColor: "red.500" }}
             key={index}
           >
             <Box>
