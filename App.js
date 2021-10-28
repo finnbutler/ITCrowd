@@ -26,6 +26,9 @@ import {
 } from "@expo-google-fonts/paytone-one";
 import { Roboto_400Regular } from "@expo-google-fonts/roboto";
 import AppLoading from "expo-app-loading";
+/* "Free Photo | Pet care concept. joyous dark skinned female owner holds her puppies in small wooden box, 
+ready to give them in right hands, rejoices dog family growing, wears yellow sweater", Freepik. [Online]. 
+Available: https://www.freepik.com/free-photo/pet-care-concept-joyous-dark-skinned-female-owner-holds-her-puppies-small-wooden-box-ready-give-them-right-hands-rejoices-dog-family-growing-wears-yellow-sweater_12495926.htm#page=1&query=pet%20box&position=26&from_view=search. [Accessed: 27- Oct- 2021]. */
 import background from "./assets/background.jpg";
 import Quiz from "./js/quiz.js";
 import logo from "./assets/Logo.jpg";
@@ -42,6 +45,7 @@ function HomeScreen({ navigation }) {
   return (
     <ScrollView>
       <NativeBaseProvider>
+     
         <ImageBackground
           source={background}
           resizeMode="cover"
@@ -54,8 +58,9 @@ function HomeScreen({ navigation }) {
         >
           <View
             style={{
-              marginTop: 80,
+              marginTop: 30,
               alignItems: "flex-end",
+              marginBottom: 80
             }}
           >
             <Text
@@ -63,6 +68,7 @@ function HomeScreen({ navigation }) {
               fontSize={25}
               fontFamily="PaytoneOne_400Regular"
               marginRight={4}
+              marginTop={20}
             >
               Purrrfect Pets!{" "}
             </Text>
@@ -114,18 +120,6 @@ function HomeScreen({ navigation }) {
             </Button>
           </View>
         </ImageBackground>
-        <View style={{ height: 500, backgroundColor: "#9e8fae" }}>
-          <Text
-            marginTop={6}
-            textAlign="center"
-            fontSize={24}
-            color="white"
-            fontFamily="PaytoneOne_400Regular"
-          >
-            Welcome to purrrfect pets! The world's first pet matching quiz, with
-            real pets, in real time.
-          </Text>
-        </View>
       </NativeBaseProvider>
     </ScrollView>
   );

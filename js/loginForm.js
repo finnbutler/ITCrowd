@@ -16,6 +16,9 @@ import AppLoading from "expo-app-loading";
 import { Roboto_400Regular } from "@expo-google-fonts/roboto";
 import Firebase from "../config/firebase";
 import "firebase/auth";
+/* "Free Photo | Adorable white bulldog puppy portrait", Freepik. [Online]. 
+Available: https://www.freepik.com/free-photo/adorable-white-bulldog-puppy-portrait_3532493.htm#page=1&query=bulldog&position=3&from_view=search. 
+[Accessed: 28- Oct- 2021]. */
 import background from "../assets/login_background.jpg";
 import { NavigationContainer } from "@react-navigation/native";
 import { useNavigation } from "@react-navigation/native";

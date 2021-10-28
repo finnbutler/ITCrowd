@@ -12,6 +12,7 @@ import {
   Roboto_400Regular,
 } from '@expo-google-fonts/roboto'
 import AppLoading from 'expo-app-loading';
+//Freepik, Close up cute french bulldog lying on shoulder of her female owner, (n.d.). [Online]. Available: https://www.freepik.com/free-photo/close-up-cute-french-bulldog-lying-shoulder-her-female-owner-picture-from-back-female-veterinarian-pressing-sad-puppy-her-while-doing-tests-relation-responsibility_8687960.htm. [Accessed: 2- Oct- 2021].
 import misconception from "../assets/misconception.jpg";
 
 
@@ -188,6 +189,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto_400Regular',
     fontSize: 14,
     color: "#545871",
+    width: 300,
   },
   header: {
     textAlign: "center",

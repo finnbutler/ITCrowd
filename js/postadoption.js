@@ -19,6 +19,8 @@ import {
 import { Roboto_400Regular } from "@expo-google-fonts/roboto";
 import AppLoading from "expo-app-loading";
 
+
+//Freepik, Cute little dog being sick, (n.d.). [Online]. Available: https://www.freepik.com/free-photo/cute-little-dog-being-sick_14724927.htm. [Accessed: 2- Oct- 2021].
 import sick_dog from "../assets/sick_dog.jpg";
 
 import { style } from "styled-system";
@@ -260,6 +262,7 @@ const styles = StyleSheet.create({
     fontFamily: "Roboto_400Regular",
     fontSize: 14,
     color: "#545871",
+    width: 300,
   },
   header: {
     textAlign: "center",

@@ -10,19 +10,20 @@ import org.json.*;
 import javax.json.*;
 
 /**
- * Takes the name of a pet data JSON file and creates a SQL INSERT file based on the pet data.
+ * Creates converted SQL INSERT script or JSON database file out of all pet data in "data/" folder.
  */
 public class ParsePetData {
     public static void main(String[] args) {
         LinkedList<PetData> allPetData = new LinkedList<>();
-        StringBuilder jsonString = new StringBuilder();
 
         // Read JSON files
         File dataFolder = new File("data/");
         File[] jsonFiles = dataFolder.listFiles();
 
         assert jsonFiles != null;
+        assert jsonFiles.length > 0;
         for (File jsonFile : jsonFiles) {
+            StringBuilder jsonString = new StringBuilder();
             try {
                 Scanner scanner = new Scanner(jsonFile);
                 while (scanner.hasNextLine()) {
@@ -94,10 +95,11 @@ public class ParsePetData {
                         isSpayedOrNeutered, isHouseTrained, isDeclawed, isSpecialNeeds,
                         isShotsCurrent, isFriendlyToChildren, isFriendlyToDogs, isFriendlyToCats,
                         photos_out);
+                petData.trimPetDescription();
                 allPetData.add(petData);
             }
         }
-        System.out.println("Number of pets: " + allPetData.size());
+
         writeToJson(allPetData);
     }
 
@@ -129,10 +131,16 @@ public class ParsePetData {
         // Write to JSON file
         try {
             JsonArrayBuilder petArray = Json.createArrayBuilder();
+            int petsWritten = 0;
 
             for (PetData petData : pets) {
-                petArray.add(petData.toJsonObject());
+                if (petData.getPhotos().size() > 0) {
+                    petArray.add(petData.toJsonObject());
+                    petsWritten++;
+                }
             }
+
+            System.out.println("Number of pets written: " + petsWritten);
 
             JsonObject json = Json.createObjectBuilder()
                     .add("data", petArray.build())

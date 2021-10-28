@@ -26,6 +26,10 @@ public class PhotoData {
         return json;
     }
 
+    public String getFull() {
+        return this.full;
+    }
+
     @Override
     public String toString() {
         return "\"" + this.small + "\", \"" + this.medium + "\", \"" + this.large + "\", \"" + this.full+ "\"";

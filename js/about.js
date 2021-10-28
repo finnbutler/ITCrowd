@@ -54,7 +54,7 @@ const AboutAdopting = () => {
               alt="misconception"
             />
             <View style={styles.text_in_card}>
-              <Text >Common Misconceptions</Text>
+              <Text style={styles.subt}>Common Misconceptions</Text>
               <Text style={{ color: "#777", paddingTop: 5 }}>
                 Misconceptions you should know before ...
               </Text>
@@ -71,7 +71,7 @@ const AboutAdopting = () => {
               alt="study_dog"
             />
             <View style={styles.text_in_card}>
-              <Text >Basic Knowledge</Text>
+              <Text style={styles.subt} >Basic Knowledge</Text>
               <Text style={{ color: "#777", paddingTop: 5, fontFamily: 'Roboto_400Regular', }}>
                 Knowledge you should know before ...
               </Text>
@@ -92,7 +92,7 @@ const AboutAdopting = () => {
               alt="sick_dog"
             />
             <View style={styles.text_in_card}>
-              <Text>Emergency help</Text>
+              <Text style={styles.subt}>Emergency help</Text>
               <Text style={{ color: "#777", paddingTop: 5 }}>
                 Urgent contacts and how to cope with ...
               </Text>
@@ -140,6 +140,12 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto_400Regular',
     fontSize: 14,
     color: "#545871",
+  },
+  subt: {
+    fontSize: 14,
+    fontWeight: "600",
+    width:290,
+    
   },
   
  

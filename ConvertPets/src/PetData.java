@@ -3,6 +3,7 @@ import org.json.JSONObject;
 import javax.json.*;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -87,6 +88,33 @@ public class PetData {
 
     }
 
+    public void trimPetDescription() {
+        if (this.description != null) {
+            int newlineIndex = -1;
+            char[] descChars = this.description.trim().toCharArray();
+            for (int i = 0; i < descChars.length; i++) {
+                if (descChars[i] == '\n') {
+                    newlineIndex = i;
+                    break;
+                }
+            }
+
+            if (newlineIndex != -1 && newlineIndex != descChars.length - 1) {
+                // Check for trim
+                String[] fragments = this.description.split("\n");
+                String[] startWords = fragments[0].split("\\W+");
+
+                if (startWords.length < 4) {
+                    // Remove start words
+                    char[] newChars = Arrays.copyOfRange(descChars, newlineIndex + 1, descChars.length);
+                    this.description = new String(newChars).trim();
+                }
+            }
+        } else {
+            this.description = "This pet is just a totally awesome dude and words cannot describe how cool they are!";
+        }
+    }
+
     public void jsonAddOrNull(JsonObjectBuilder json, String tag, Boolean val) {
         if (val == null) {
             json.add(tag, JsonValue.NULL);
@@ -113,8 +141,6 @@ public class PetData {
         jsonAddOrNull(json, "ColourPrimary", this.colourPrimary);
         jsonAddOrNull(json, "CreationTime", LocalDateTime.now().toString());
         jsonAddOrNull(json, "Description", this.description);
-        //jsonAddOrNull(json, "HappinessValue", this.);
-        //jsonAddOrNull(json, "ID", this.id);
         jsonAddOrNull(json, "IsDeclawed", this.isDeclawed);
         jsonAddOrNull(json, "isFriendlyToCats", this.isFriendlyToCats);
         jsonAddOrNull(json, "isFriendlyToDogs", this.isFriendlyToDogs);
@@ -127,7 +153,9 @@ public class PetData {
         jsonAddOrNull(json, "Size", this.size);
         jsonAddOrNull(json, "Species", this.species);
         jsonAddOrNull(json, "Type", this.type);
+        json.add("PhotoFull", this.photos.get(0).getFull());
         json.add("PetPhotos", photosTOJson());
+        json.add("ID", this.id);
         return json.build();
     }
 
@@ -164,6 +192,14 @@ public class PetData {
 
     private String printNullOrString(String in) {
         return (in == null)? "NULL": "\"" + in + "\"";
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public List<PhotoData> getPhotos() {
+        return this.photos;
     }
 
     @Override
