@@ -1,17 +1,11 @@
 import React, {useState} from 'react';
-import { ImageBackground,Text, StyleSheet, View, TouchableOpacity, ScrollView} from 'react-native';
+import { Text, StyleSheet, View, TouchableOpacity, ScrollView} from 'react-native';
 import { NativeBaseProvider, Image, Button} from "native-base"; 
-
 import { useNavigation } from '@react-navigation/native';
-
-import {
-  useFonts,
-  PaytoneOne_400Regular
-} from '@expo-google-fonts/paytone-one'
-import {
-  Roboto_400Regular,
-} from '@expo-google-fonts/roboto'
+import { useFonts, PaytoneOne_400Regular} from '@expo-google-fonts/paytone-one'
+import { Roboto_400Regular,} from '@expo-google-fonts/roboto'
 import AppLoading from 'expo-app-loading';
+
 //Freepik, Close up cute french bulldog lying on shoulder of her female owner, (n.d.). [Online]. Available: https://www.freepik.com/free-photo/close-up-cute-french-bulldog-lying-shoulder-her-female-owner-picture-from-back-female-veterinarian-pressing-sad-puppy-her-while-doing-tests-relation-responsibility_8687960.htm. [Accessed: 2- Oct- 2021].
 import misconception from "../assets/misconception.jpg";
 
@@ -21,6 +15,7 @@ const Preadoption = () => {
     const navigation = useNavigation();
 
     // contents boolean variable with useState function to be triggered by button click 
+    //  "Example to Hide Show View  Component in React Native on button Click", Expo, 2021. [Online]. Available: https://snack.expo.dev/@kkevranian/example-to-hide-show-view-component-in-react-native-on-button-click. [Accessed: 21- Oct- 2021].
     const [content1, setContent1] = useState(false);
     const [content2, setContent2] = useState(false);
     const [content3, setContent3] = useState(false);

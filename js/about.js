@@ -1,25 +1,18 @@
 import React from 'react';
-import { ImageBackground,Text, StyleSheet, View, TouchableOpacity, ScrollView} from 'react-native';
-import { NativeBaseProvider, Image, Button, Center} from "native-base"; 
-
+import { Text, StyleSheet, View, TouchableOpacity, ScrollView} from 'react-native';
+import { NativeBaseProvider, Image, } from "native-base"; 
 import { useNavigation } from '@react-navigation/native';
-
-import {
-  useFonts,
-  PaytoneOne_400Regular
-} from '@expo-google-fonts/paytone-one'
-import {
-  Roboto_400Regular,
-} from '@expo-google-fonts/roboto'
+import {  useFonts, PaytoneOne_400Regular} from '@expo-google-fonts/paytone-one'
+import { Roboto_400Regular,} from '@expo-google-fonts/roboto'
 import AppLoading from 'expo-app-loading';
 
+//Freepik, Cute little dog being sick, (n.d.). [Online]. Available: https://www.freepik.com/free-photo/cute-little-dog-being-sick_14724927.htm. [Accessed: 2- Oct- 2021].
 import sick_dog from "../assets/sick_dog.jpg";
+//Freepik, Cute dog with books in bed, (n.d.). [Online]. Available: https://www.freepik.com/free-photo/cute-dog-with-books-bed_13402708.htm. [Accessed: 2- Oct- 2021].
 import study_dog from "../assets/study_dog.jpg";
+//Freepik, Close up cute french bulldog lying on shoulder of her female owner, (n.d.). [Online]. Available: https://www.freepik.com/free-photo/close-up-cute-french-bulldog-lying-shoulder-her-female-owner-picture-from-back-female-veterinarian-pressing-sad-puppy-her-while-doing-tests-relation-responsibility_8687960.htm. [Accessed: 2- Oct- 2021].
 import misconception from "../assets/misconception.jpg";
 
-
-
-import { borderLeft, marginRight } from 'styled-system';
 
 // About page that lists useful information before and after adoption
 const AboutAdopting = () => {

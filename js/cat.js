@@ -1,8 +1,6 @@
-
 import React, {useState} from 'react';
-import { ImageBackground,Text, StyleSheet, View, TouchableOpacity, ScrollView, Linking, WebView } from 'react-native';
+import { Text, StyleSheet, View, TouchableOpacity, ScrollView, Linking, WebView } from 'react-native';
 import { NativeBaseProvider, Image, Button} from "native-base"; 
-
 
 import { useNavigation } from "@react-navigation/native";
 
@@ -37,6 +35,7 @@ const Cat = () => {
   const navigation = useNavigation();
 
     // contents boolean variable with useState function to be triggered by button click 
+    //  "Example to Hide Show View  Component in React Native on button Click", Expo, 2021. [Online]. Available: https://snack.expo.dev/@kkevranian/example-to-hide-show-view-component-in-react-native-on-button-click. [Accessed: 21- Oct- 2021].
     const [content1, setContent1] = useState(false);
     const [content2, setContent2] = useState(true);
 

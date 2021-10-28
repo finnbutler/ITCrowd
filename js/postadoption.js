@@ -1,24 +1,10 @@
 import React, { useState } from "react";
-import {
-  ImageBackground,
-  Text,
-  StyleSheet,
-  View,
-  TouchableOpacity,
-  ScrollView,
-  Linking,
-} from "react-native";
-import { NativeBaseProvider, Image, Button } from "native-base";
-
+import {Text, StyleSheet, View, TouchableOpacity, ScrollView, Linking,} from "react-native";
+import { NativeBaseProvider, Image} from "native-base";
 import { useNavigation } from "@react-navigation/native";
-//import Geolocation from "react-native-geolocation-service";
-import {
-  useFonts,
-  PaytoneOne_400Regular,
-} from "@expo-google-fonts/paytone-one";
+import { useFonts, PaytoneOne_400Regular,} from "@expo-google-fonts/paytone-one";
 import { Roboto_400Regular } from "@expo-google-fonts/roboto";
 import AppLoading from "expo-app-loading";
-
 
 //Freepik, Cute little dog being sick, (n.d.). [Online]. Available: https://www.freepik.com/free-photo/cute-little-dog-being-sick_14724927.htm. [Accessed: 2- Oct- 2021].
 import sick_dog from "../assets/sick_dog.jpg";
@@ -31,6 +17,7 @@ const Postadoption = () => {
   const navigation = useNavigation();
 
   // contents boolean variable with useState function to be triggered by button click
+  //  "Example to Hide Show View  Component in React Native on button Click", Expo, 2021. [Online]. Available: https://snack.expo.dev/@kkevranian/example-to-hide-show-view-component-in-react-native-on-button-click. [Accessed: 21- Oct- 2021].
   const [content1, setContent1] = useState(false);
   const [content2, setContent2] = useState(true);
 
