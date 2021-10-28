@@ -1,6 +1,6 @@
 import React from "react";
 import { Formik } from "formik";
-
+//Discarded code -- ignore
 export default function LoginForm() {
   return (
     <View>

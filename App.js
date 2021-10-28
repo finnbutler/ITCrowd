@@ -34,8 +34,6 @@ import Quiz from "./js/quiz.js";
 import logo from "./assets/Logo.jpg";
 import { createStackNavigator } from "@react-navigation/stack";
 
-// TODO: Replace the following with your app's Firebase project configuration
-
 function HomeScreen({ navigation }) {
   let [fontsLoaded, error] = useFonts({
     Roboto_400Regular,
@@ -195,6 +193,9 @@ export default function App() {
       initialColorMode: "dark",
     },
   });
+  //Component uses framework react navigation, some of the code is similar and taken from the tab component https://reactnavigation.org/
+  // "React Navigation | React Navigation", Reactnavigation.org, 2021. [Online]. Available: https://reactnavigation.org/. [Accessed: 27- Oct- 2021].
+
   const Tab = createBottomTabNavigator();
   const Stack = createStackNavigator();
   return (

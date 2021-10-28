@@ -124,7 +124,8 @@ function saveData2(data, petData2, navigation) {
 /**
  * Component to display the UI for the questions asked to the user
  * also generates questions attached to firebase data
- * @returns void
+ * @returns void -- shuffles questions and pets and pushes them to the firebase
+ * Majority is self authored and statically typed indexs for DB values and questions
  */
 
 function CardComponent() {
@@ -134,8 +135,8 @@ function CardComponent() {
   const [data2, setData2] = useState("");
   const [position, setPosition] = useState(0);
   var leadsRef = Firebase.database().ref("8/data/0");
-  var randomInt = Math.floor(Math.random() * 119);
-  var randomInt2 = Math.floor(Math.random() * 119);
+  var randomInt = Math.floor(Math.random() * (103 - 0 + 0) + 0);
+  var randomInt2 = Math.floor(Math.random() * (103 - 0 + 0) + 0);
   var questions = [
     "Which species is superior?",
     "Which name is more cool?",
@@ -143,9 +144,9 @@ function CardComponent() {
     "Do you like to listen to one song, or mix them together?",
     "What's your favourite colour? (ours is #f72fe3)",
     "Would you rather a small party or a medium disco?",
-    "Men or Women?",
-    "Vaxed or Unvaxed, or anti-vaxer? Haha, we're joking. ",
-    "Pet Living with a disability?",
+    "Male Pet or Female Pet?",
+    "Vaxed or Unvaxed, (or anti-vaxer)? Haha, we're joking. ",
+    "Pet Living with a disadvantage or disability?",
     "Do you like when the claws come out?",
     "What's a better breed?",
     "Do you want more pets?",
@@ -163,7 +164,7 @@ function CardComponent() {
     "isSpecialNeeds",
     "IsDeclawed",
     "BreedPrimary",
-    "isSpayedorNeutered",
+    "isSpayedOrNeutered",
     "isHouseTrained",
   ];
   var valueDB = listOfValues[position];
@@ -174,13 +175,14 @@ function CardComponent() {
 
   var item1 = Firebase.database().ref(currentItem1);
   var item2 = Firebase.database().ref(currentItem2);
+  //Firebase Code
   item1.on("value", function (snapshot) {
     snapshot.val();
     //alert(snapshot.val());
     const Name1 = snapshot.val();
     // var count = 0;
     if (Name1 == 0 && data == "") {
-      setData("No Way!");
+      setData("No Thanks");
       //count++;
     } else if (Name1 == 1 && data == "") {
       setData("Yes!");
@@ -195,7 +197,7 @@ function CardComponent() {
     //alert(snapshot.val());
     const Name1 = snapshot.val();
     if (Name1 == 0 && data2 == "") {
-      setData2("No Way!");
+      setData2("No Thanks");
     } else if (Name1 == 1 && data2 == "") {
       setData2("Yes!");
     } else if (Name1 != "" && data2 == "") {
@@ -214,7 +216,9 @@ function CardComponent() {
     }
   }
   /* Card Componented taken from nativebase.io with modified style changes 
-  REFERENCE: nativebase.io */
+  REFERENCE: nativebase.io -- colours were changed and different functionally 
+  however overall similar tags and code is utilised for this parts styles 
+  see our native base IEEE reference on github */
   return (
     <Box
       rounded="lg"
@@ -249,7 +253,7 @@ function CardComponent() {
             title={data}
             size="sm" //  onPress={() => console.log('hello world')}
             margin={1}
-            backgroundColor="green"
+            backgroundColor="green.500"
             p={4}
             onPress={() =>
               saveData1(data, petData1, navigation) +
@@ -266,7 +270,7 @@ function CardComponent() {
             size="sm"
             margin={1}
             p={4}
-            backgroundColor="red"
+            backgroundColor="red.500"
             onPress={() =>
               saveData2(data2, petData2, navigation) +
               addPosition(position) +
@@ -279,10 +283,19 @@ function CardComponent() {
             </Text>
           </Button>
         </Flex>
+        <Button
+          onPress={() =>
+            (randomInt =
+              Math.floor(Math.random() * 119) + setData2("") + setData(""))
+          }
+        >
+          Reshuffle{" "}
+        </Button>
       </Stack>
     </Box>
   );
 }
+/* Pets from user database */
 function PetComponent() {
   var count = 0;
   const [petArray, setPetArray] = useState([]);
@@ -296,6 +309,7 @@ function PetComponent() {
   ref1.on("value", function (snapshot) {
     //snapshot.forEach(function (childSnapshot) {
     //childData.push(JSON.parse(childSnapshot.val()));
+    //Function used with help from slacksoverflow.com forum on snapshot itteration functions
     snapshot.forEach((child) => {
       if (items.length != 1) {
         setItems([
@@ -341,8 +355,8 @@ function PetComponent() {
             width="72"
             shadow={1}
             _text={{ color: "white", fontWeight: "700", fontSize: "xs" }}
-            _light={{ backgroundColor: "red" }}
-            _dark={{ backgroundColor: "red" }}
+            _light={{ backgroundColor: "red.500" }}
+            _dark={{ backgroundColor: "red.500" }}
             key={index}
           >
             <Box>
@@ -413,6 +427,7 @@ function NoLogin() {
     </NativeBaseProvider>
   );
 }
+/** Function to expoert the quiz screen and componetns  */
 export default function StartQuizScreen() {
   const numberOfUsers = 15;
   const randomIndex = Math.floor(Math.random() * numberOfUsers);
