@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
   },
   subt: {
     fontSize: 14,
-    fontWeight: 600,
+    fontWeight: "600",
     width:290,
     
   },

@@ -5,6 +5,9 @@ import {
   View,
   ImageBackground,
 } from "react-native";
+/*"Free Photo | Cute little dog impersonating a business person", Freepik. [Online]. 
+Available: https://www.freepik.com/free-photo/cute-little-dog-impersonating-business-person_14724905.htm#page=1&query=pet%20business&position=0&from_view=search. 
+[Accessed: 28- Oct- 2021]. */
 import background from "../assets/quiz_background.jpg";
 import {
   NativeBaseProvider,
