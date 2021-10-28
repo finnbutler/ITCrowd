@@ -134,8 +134,8 @@ function CardComponent() {
   const [data2, setData2] = useState("");
   const [position, setPosition] = useState(0);
   var leadsRef = Firebase.database().ref("8/data/0");
-  var randomInt = Math.floor(Math.random() * (119 - 0 + 1) + 0);
-  var randomInt2 = Math.floor(Math.random() * (119 - 0 + 1) + 0);
+  var randomInt = Math.floor(Math.random() * (103 - 0 + 0) + 0);
+  var randomInt2 = Math.floor(Math.random() * (103 - 0 + 0) + 0);
   var questions = [
     "Which species is superior?",
     "Which name is more cool?",
