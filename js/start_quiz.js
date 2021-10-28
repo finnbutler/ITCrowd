@@ -373,7 +373,7 @@ function PetComponent() {
               <Stack space={2}>
                 <Heading
                   size="md"
-                  ml="-1"
+                  ml={-1}
                   _light={{ color: "white" }}
                   _dark={{ color: "white" }}
                 >
@@ -385,7 +385,7 @@ function PetComponent() {
                   _dark={{ color: "white" }}
                   fontWeight="500"
                   ml="-0.5"
-                  mt="-1"
+                  mt={-1}
                 >
                   Age: {item.age}
                 </Text>
