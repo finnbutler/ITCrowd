@@ -4,10 +4,20 @@ import { NativeBaseProvider, Image } from "native-base";
 import {  useFonts, PaytoneOne_400Regular,} from "@expo-google-fonts/paytone-one";
 import { Roboto_400Regular } from "@expo-google-fonts/roboto";
 import AppLoading from "expo-app-loading";
+/* m. abdelghaffar, Pixels. [Online]. Available: https://www.pexels.com/photo/3646889/. 
+[Accessed: 28- Oct- 2021].*/
 import profile from "../assets/pic.jpg";
-import email from "../assets/email (1).png";
+/* "Email free vector icons designed by Freepik", Flaticon. [Online]. 
+Available: https://www.flaticon.com/premium-icon/email_542689?term=email&page=1&position=2&page=1&position=2&related_id=542689&origin=search. 
+[Accessed: 28- Oct- 2021]. */
+import email from "../assets/email.png";
+/* "Phone Call free vector icons designed by Prosymbols", Flaticon. [Online]. 
+Available: https://www.flaticon.com/free-icon/phone-call_597177?term=phone&page=1&position=1&page=1&position=1&related_id=597177&origin=search. 
+[Accessed: 28- Oct- 2021].*/
 import phone from "../assets/phone-call.png";
-import date from "../assets/date-of-birth.png";
+/* "Pin free vector icons designed by Those Icons", Flaticon. [Online]. 
+Available: https://www.flaticon.com/free-icon/pin_484167?term=pin&page=1&position=11&page=1&position=11&related_id=484167&origin=search. 
+[Accessed: 28- Oct- 2021]. */
 import location from "../assets/pin.png";
 import Firebase from "../config/firebase";
 import { useNavigation } from "@react-navigation/native";
@@ -67,7 +77,7 @@ const ProfileScreen = () => {
     return <AppLoading />;
   }
   function NoLogin() {
-    return "Please head to the Login Screen!";
+    return <Text>Please head to the Login Screen!</Text>;
   }
   return (
     <ScrollView>
@@ -112,11 +122,11 @@ const ProfileScreen = () => {
             }}
           >
             <View style={styles.info}>
-              {/* <Image
+              <Image
                 source={email}
                 style={{ width: 25, height: 25, marginRight: 40 }}
                 alt="email_icon"
-              /> */}
+              />
               <Text style={styles.paragraph}>
                 Email Address{"\n"}
                 {user.email}
